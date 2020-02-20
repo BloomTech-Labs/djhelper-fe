@@ -1,8 +1,56 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const Register = (props) => {
+    const [userInfo, setUserInfo] = useState({
+        username: '',
+        password: '',
+        repassword: '',
+        name: '',
+        website: '',
+        phone: ''
+    });
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        console.log(userInfo);
+    }
+
+    const handleChange = e => {
+        setUserInfo({...userInfo, [e.target.name]:e.target.value});
+    }
+
     return(
-        <h1>Register</h1>
+        <div>
+            <form onSubmit={handleSubmit}>
+                <legend>Register</legend>
+                <hr/>
+                <div>
+                    <label htmlFor='username'>Username / Email</label>
+                    <input name='username' type='text' id='username' required onChange={handleChange}/>
+                </div>
+                <div>
+                    <label htmlFor='password'>Password</label>
+                    <input name='password' type='password' id='password' required onChange={handleChange}/>
+                </div>
+                <div>
+                    <label htmlFor='repassword'>Re-Enter Password</label>
+                    <input name='repassword' type='password' id='repassword' required onChange={handleChange}/>
+                </div>
+                <div>
+                    <label htmlFor='name'>Name</label>
+                    <input name='name' type='text' id='name' onChange={handleChange}/>
+                </div>
+                <div>
+                    <label htmlFor='website'>Your Website URL</label>
+                    <input name='website' type='url' id='website' onChange={handleChange}/>
+                </div>
+                <div>
+                    <label htmlFor='phone'>Phone Number</label>
+                    <input name='phone' type='phone' id='phone' onChange={handleChange}/>
+                </div>
+                <button type='submit'>Submit</button>
+            </form>
+        </div>
     )
 }
 

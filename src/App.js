@@ -12,7 +12,6 @@ function App() {
         <h1>
           DJ Helper
         </h1>
-        
       </header>
       
       <Route path='/register' component={Register}/>
