@@ -13,6 +13,15 @@ const Register = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         console.log(userInfo);
+        props.registerUser(userInfo, props.history);
+        setUserInfo({
+            username: '',
+            password: '',
+            repassword: '',
+            name: '',
+            website: '',
+            phone: ''
+        })
     }
 
     const handleChange = e => {
