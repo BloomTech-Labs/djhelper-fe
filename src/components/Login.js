@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from "react-router-dom";
 
 const Login = (props) => {
     const [userInfo, setUserInfo] = useState({
@@ -29,8 +30,8 @@ const Login = (props) => {
                     <label htmlFor='password'>Password</label>
                     <input name='password' type='password' id='password' required onChange={handleChange}/>
                 </div>
-                
-                <button type='submit'>Submit</button>
+
+                <Link to="/djs"><button type='submit'>Submit</button></Link>
             </form>
         </div>
     )
