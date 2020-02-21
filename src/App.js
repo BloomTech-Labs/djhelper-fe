@@ -32,6 +32,7 @@ function App() {
       .then(response => {
         console.log(response);
         setUser(response.data.user);
+        localStorage.setItem('token', response.data.token);
         history.push('/');
       })
       .catch(err => console.log(err));
