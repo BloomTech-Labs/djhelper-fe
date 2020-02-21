@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Home from './components/Home';
 import Register from './components/Register';
@@ -8,15 +8,20 @@ import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import DjInterface from './components/DjInterface';
 
+import { setName } from './actions/action';
+
 import './App.scss';
 import axios from 'axios';
 
 function App() {
   const [user, setUser] = useState(null);
   const name = useSelector(state => state.name);
+  const dispatch = useDispatch();
 
   const registerUser = (userInfo, history) => {
     console.log(userInfo);
+    dispatch(setName(userInfo.name));
+    console.log(name);
     const infoNeeded = {
       username: userInfo.username,
       password: userInfo.password,
@@ -33,12 +38,15 @@ function App() {
 
   const loginUser = (userInfo, history) => {
     console.log(userInfo);
+    dispatch(setName('bob'));
+    console.log(name);
     // TODO: Update url when available
     axios.post('https://business-card-collector.herokuapp.com/api/users/login', userInfo)
       .then(response => {
         console.log(response);
         setUser(response.data.user);
         localStorage.setItem('token', response.data.token);
+        //dispatch(setName(response.data.user.name));
         history.push('/');
       })
       .catch(err => console.log(err));

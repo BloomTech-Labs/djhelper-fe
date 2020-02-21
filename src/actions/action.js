@@ -1,6 +1,8 @@
 export const SET_NAME = 'SET_NAME';
 export const SET_USERNAME = 'SET_USERNAME';
 
+// action creators 
+
 export const setName = name => {
     return {type: SET_NAME, payload: name}
 }
