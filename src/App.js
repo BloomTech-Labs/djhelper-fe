@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Link} from 'react-router-dom';
 
 import Register from './components/Register';
 import Login from './components/Login';
@@ -46,7 +46,7 @@ function App() {
           DJ Helper
         </h1>
       </header>
-      {!user && <h2>Welcome, please register or log in to continue.</h2>}
+      {!user && <h2>Welcome! Please <Link to='/register'>register</Link> or <Link to='/login'>log in</Link> to continue.</h2>}
       {user && <h2>Welcome, {user.name}!</h2>}
       
       <Route path='/register' render={props => <Register {...props} registerUser={registerUser} />} />
