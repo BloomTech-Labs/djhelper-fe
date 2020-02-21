@@ -27,13 +27,7 @@ function App() {
       password: userInfo.password,
       name: userInfo.name
     }
-    // TODO: Update url when available
-    axios.post('https://business-card-collector.herokuapp.com/api/users/register', infoNeeded)
-      .then(response => {
-        console.log(response);
-        history.push('/login');
-      })
-      .catch(err => console.log(err));
+    dispatch(registerUser(infoNeeded, history));
   }
 
   const loginUser = (userInfo, history) => {
