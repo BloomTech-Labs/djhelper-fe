@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import {Route, Link} from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import Home from './components/Home';
 import Register from './components/Register';
@@ -12,6 +13,7 @@ import axios from 'axios';
 
 function App() {
   const [user, setUser] = useState(null);
+  const name = useSelector(state => state.name);
 
   const registerUser = (userInfo, history) => {
     console.log(userInfo);
@@ -50,6 +52,7 @@ function App() {
         <h1>
           DJ Helper
         </h1>
+        <p>{name}</p>
       </header>
       <Route exact path='/' render={props => <Home {...props} user={user} />} />
 
