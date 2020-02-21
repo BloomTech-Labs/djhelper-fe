@@ -15,7 +15,7 @@ import axios from 'axios';
 
 function App() {
   const [user, setUser] = useState(null);
-  const name = useSelector(state => state.name);
+  const name = useSelector(state => state.userReducer.name);
   const dispatch = useDispatch();
 
   const registerUser = (userInfo, history) => {
