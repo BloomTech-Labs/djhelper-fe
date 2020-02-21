@@ -3,6 +3,9 @@ import {Route, Link} from 'react-router-dom';
 
 import Register from './components/Register';
 import Login from './components/Login';
+import PrivateRoute from './components/PrivateRoute';
+import DjInterface from './components/DjInterface';
+
 import './App.scss';
 import axios from 'axios';
 
@@ -52,6 +55,8 @@ function App() {
       
       <Route path='/register' render={props => <Register {...props} registerUser={registerUser} />} />
       <Route path='/login' render={props => <Login {...props} loginUser={loginUser} />} />
+      {/*TODO: Modify path below to /djs/:id*/}
+      <PrivateRoute path='/djs' component={DjInterface} />
     </div>
   );
 }
