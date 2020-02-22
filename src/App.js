@@ -11,7 +11,6 @@ import DjInterface from './components/DjInterface';
 import { registerUserAction } from './actions/action';
 
 import './App.scss';
-//import axios from 'axios';
 
 function App() {
   
@@ -55,7 +54,7 @@ function App() {
         {name && <p>Welcome, {name}!</p>}
       </header>
 
-      <Route exact path='/' render={props => <Home {...props} name={name} />} />
+      <Route exact path='/' component={Home} />
       <Route path='/register' render={props => <Register {...props} registerUser={registerUser} />} />
       <Route path='/login' component={Login} />
 
