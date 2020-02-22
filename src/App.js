@@ -8,7 +8,7 @@ import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import DjInterface from './components/DjInterface';
 
-import { setName } from './actions/action';
+import { setName, registerUserAction } from './actions/action';
 
 import './App.scss';
 import axios from 'axios';
@@ -28,7 +28,8 @@ function App() {
       name: userInfo.name
     }
     //FIXME: Reducer/action is causing an infinite loop
-    //dispatch(registerUser(infoNeeded, history));
+    dispatch(registerUserAction(infoNeeded, history));
+    /*
     axios.post('https://business-card-collector.herokuapp.com/api/users/register', infoNeeded)
       .then(response => {
         console.log(response);
@@ -37,6 +38,7 @@ function App() {
       .catch(err => {
              console.log(err)
       });
+      */
   }
 
   const loginUser = (userInfo, history) => {
