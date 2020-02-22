@@ -21,7 +21,7 @@ export const registerUserAction = (infoNeeded, history) => dispatch => {
     dispatch({type: REGISTER_USER_START});
     axios.post('https://business-card-collector.herokuapp.com/api/users/register', infoNeeded)
       .then(response => {
-        console.log(response);
+        //console.log(response);
         history.push('/login');
         dispatch({type: REGISTER_USER_SUCCESS, payload: response.data});
       })

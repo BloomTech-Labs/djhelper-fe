@@ -20,25 +20,24 @@ function App() {
 
   const registerUser = (userInfo, history) => {
     console.log(userInfo);
-    dispatch(setName(userInfo.name));
-    console.log(name);
+    
+    //TODO: Once we have our own backend, we can also add phone and website to infoNeeded.
+    //The placeholder backend doesn't have those properties.
     const infoNeeded = {
       username: userInfo.username,
       password: userInfo.password,
       name: userInfo.name
     }
-    //FIXME: Reducer/action is causing an infinite loop
+    //For now, phone and website are stored in localStorage.
+    if (userInfo.phone) {
+      localStorage.setItem('phone', userInfo.phone);
+    }
+
+    if (userInfo.website) {
+      localStorage.setItem('website', userInfo.website);
+    }
+
     dispatch(registerUserAction(infoNeeded, history));
-    /*
-    axios.post('https://business-card-collector.herokuapp.com/api/users/register', infoNeeded)
-      .then(response => {
-        console.log(response);
-        history.push('/login');
-      })
-      .catch(err => {
-             console.log(err)
-      });
-      */
   }
 
   const loginUser = (userInfo, history) => {

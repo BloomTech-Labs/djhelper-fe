@@ -8,11 +8,12 @@ import {
 } from '../actions/action'
 
 const initialState = {
-    username: 'djtester',
-    name: 'DJ Tester',
+    username: '',
+    name: '',
+    phone: '',
+    website: '',
     registerUserStart: false,
-    registerUserError: false,
-    infoNeeded: {}
+    registerUserError: false
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -26,7 +27,11 @@ export const userReducer = (state = initialState, action) => {
             return {...state, registerUserStart: true}
 
         case REGISTER_USER_SUCCESS:
-            return {...state, registerUserStart: false, infoNeeded: action.payload }
+            return {...state, 
+                registerUserStart: false, 
+                name: action.payload.user.name,
+                username: action.payload.user.username
+            }
 
         case REGISTER_USER_ERROR:
             return {...state, registerUserStart: false, registerUserError: true}
