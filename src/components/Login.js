@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {Link} from "react-router-dom";
 
 const Login = (props) => {
     const [userInfo, setUserInfo] = useState({
@@ -9,6 +8,7 @@ const Login = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        console.log('hello', props);
         console.log(userInfo);
         props.loginUser(userInfo, props.history);
     }
@@ -31,7 +31,7 @@ const Login = (props) => {
                     <input name='password' type='password' id='password' required onChange={handleChange}/>
                 </div>
 
-                <Link to="/djs"><button type='submit'>Submit</button></Link>
+                <button type='submit'>Submit</button>
             </form>
         </div>
     )

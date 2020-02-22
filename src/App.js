@@ -27,21 +27,28 @@ function App() {
       password: userInfo.password,
       name: userInfo.name
     }
-    dispatch(registerUser(infoNeeded, history));
+    //FIXME: Reducer/action is causing an infinite loop
+    //dispatch(registerUser(infoNeeded, history));
+    axios.post('https://business-card-collector.herokuapp.com/api/users/register', infoNeeded)
+      .then(response => {
+        console.log(response);
+        history.push('/login');
+      })
+      .catch(err => {
+             console.log(err)
+      });
   }
 
   const loginUser = (userInfo, history) => {
     console.log(userInfo);
-    dispatch(setName('bob'));
-    console.log(name);
     // TODO: Update url when available
     axios.post('https://business-card-collector.herokuapp.com/api/users/login', userInfo)
       .then(response => {
         console.log(response);
         setUser(response.data.user);
         localStorage.setItem('token', response.data.token);
-        //dispatch(setName(response.data.user.name));
-        history.push('/');
+        dispatch(setName(response.data.user.name));
+        history.push('/djs');
       })
       .catch(err => console.log(err));
   }
@@ -62,6 +69,7 @@ function App() {
       <Route path='/login' render={props => <Login {...props} loginUser={loginUser} />} />
       {/*TODO: Modify path below to /djs/:id*/}
       <PrivateRoute path='/djs' component={DjInterface} />
+      
     </div>
   );
 }
