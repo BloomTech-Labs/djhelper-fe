@@ -1,4 +1,7 @@
 import React, {useState} from 'react';
+import { useDispatch } from 'react-redux';
+
+import { loginUser } from '../actions/action';
 
 const Login = (props) => {
     const [userInfo, setUserInfo] = useState({
@@ -6,11 +9,13 @@ const Login = (props) => {
         password: '',
     });
 
+    const dispatch = useDispatch();
+
     const handleSubmit = e => {
         e.preventDefault();
-        console.log('hello', props);
         console.log(userInfo);
-        props.loginUser(userInfo, props.history);
+        //props.loginUser(userInfo, props.history);
+        dispatch(loginUser(userInfo, props.history));
     }
 
     const handleChange = e => {

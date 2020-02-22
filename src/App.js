@@ -8,10 +8,10 @@ import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import DjInterface from './components/DjInterface';
 
-import { setName, registerUserAction } from './actions/action';
+import { registerUserAction } from './actions/action';
 
 import './App.scss';
-import axios from 'axios';
+//import axios from 'axios';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -31,15 +31,22 @@ function App() {
     //For now, phone and website are stored in localStorage.
     if (userInfo.phone) {
       localStorage.setItem('phone', userInfo.phone);
+    } else {
+      localStorage.removeItem('phone');
     }
 
     if (userInfo.website) {
       localStorage.setItem('website', userInfo.website);
+    } else {
+      localStorage.removeItem('website');
     }
+
+    localStorage.setItem('username', userInfo.username);
 
     dispatch(registerUserAction(infoNeeded, history));
   }
 
+  /*
   const loginUser = (userInfo, history) => {
     console.log(userInfo);
     // TODO: Update url when available
@@ -53,8 +60,7 @@ function App() {
       })
       .catch(err => console.log(err));
   }
-
-
+  */
 
   return (
     <div className="App">
@@ -67,7 +73,8 @@ function App() {
       <Route exact path='/' render={props => <Home {...props} user={user} />} />
 
       <Route path='/register' render={props => <Register {...props} registerUser={registerUser} />} />
-      <Route path='/login' render={props => <Login {...props} loginUser={loginUser} />} />
+      {/*<Route path='/login' render={props => <Login {...props} loginUser={loginUser} />} /> */}
+      <Route path='/login' component={Login} />
       {/*TODO: Modify path below to /djs/:id*/}
       <PrivateRoute path='/djs' component={DjInterface} />
       
