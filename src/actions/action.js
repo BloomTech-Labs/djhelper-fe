@@ -53,7 +53,7 @@ export const loginUser = (userInfo, history) => dispatch => {
             localStorage.removeItem('website');
         }
 
-        history.push('/djs');
+        history.push('/dj');
       })
       .catch(err => {
             dispatch({type: LOGIN_USER_ERROR, payload: err});

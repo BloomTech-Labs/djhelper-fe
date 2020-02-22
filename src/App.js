@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -14,7 +14,7 @@ import './App.scss';
 //import axios from 'axios';
 
 function App() {
-  const [user, setUser] = useState(null);
+  
   const name = useSelector(state => state.userReducer.name);
   const dispatch = useDispatch();
 
@@ -46,37 +46,20 @@ function App() {
     dispatch(registerUserAction(infoNeeded, history));
   }
 
-  /*
-  const loginUser = (userInfo, history) => {
-    console.log(userInfo);
-    // TODO: Update url when available
-    axios.post('https://business-card-collector.herokuapp.com/api/users/login', userInfo)
-      .then(response => {
-        console.log(response);
-        setUser(response.data.user);
-        localStorage.setItem('token', response.data.token);
-        dispatch(setName(response.data.user.name));
-        history.push('/djs');
-      })
-      .catch(err => console.log(err));
-  }
-  */
-
   return (
     <div className="App">
       <header className="App-header">
         <h1>
           DJ Helper
         </h1>
-        <p>{name}</p>
+        {name && <p>Welcome, {name}!</p>}
       </header>
-      <Route exact path='/' render={props => <Home {...props} user={user} />} />
 
+      <Route exact path='/' render={props => <Home {...props} name={name} />} />
       <Route path='/register' render={props => <Register {...props} registerUser={registerUser} />} />
-      {/*<Route path='/login' render={props => <Login {...props} loginUser={loginUser} />} /> */}
       <Route path='/login' component={Login} />
-      {/*TODO: Modify path below to /djs/:id*/}
-      <PrivateRoute path='/djs' component={DjInterface} />
+
+      <PrivateRoute path='/dj' component={DjInterface} />
       
     </div>
   );
