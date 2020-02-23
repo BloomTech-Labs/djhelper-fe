@@ -11,6 +11,10 @@ export const LOGIN_USER_START = 'LOGIN_USER_START';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 export const LOGIN_USER_ERROR = 'LOGIN_USER_ERROR';
 
+export const LOGOUT_USER_START = 'LOGOUT_USER_START';
+export const LOGOUT_USER_SUCCESS = 'LOGOUT_USER_SUCCESS';
+export const LOGOUT_USER_ERROR = 'LOGOUT_USER_ERROR';
+
 // action creators
 
 export const setName = name => {
@@ -50,4 +54,15 @@ export const loginUser = (userInfo, history) => dispatch => {
             dispatch({type: LOGIN_USER_ERROR, payload: err});
             console.log(err);
       });
+  }
+
+  export const logoutUser = () => dispatch => {
+      console.log('in action logoutUser');
+      //dispatch({type: LOGOUT_USER_START});
+      if (localStorage.getItem('token')) {
+          localStorage.removeItem('token');
+          //dispatch({type: LOGOUT_USER_SUCCESS});
+      } else {
+          //dispatch({type: LOGOUT_USER_ERROR, payload: 'no token found'})
+      }
   }

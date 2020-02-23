@@ -9,7 +9,11 @@ import {
 
     LOGIN_USER_START,
     LOGIN_USER_SUCCESS,
-    LOGIN_USER_ERROR
+    LOGIN_USER_ERROR,
+
+    LOGOUT_USER_START,
+    LOGOUT_USER_SUCCESS,
+    LOGOUT_USER_ERROR
 
 } from '../actions/action'
 
@@ -23,7 +27,9 @@ const initialState = {
     registerUserStart: false,
     registerUserError: false,
     loginUserStart: false,
-    loginUserError: false
+    loginUserError: false,
+    logoutUserStart: false,
+    logoutUserError: false
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -68,8 +74,18 @@ export const userReducer = (state = initialState, action) => {
             }
 
         case LOGIN_USER_ERROR:
-            return {...state, loginUserStart: false, loginUserError: true}
+            return {...state, loginUserStart: false, loginUserError: true
+            }
 
+        case LOGOUT_USER_START:
+            return {...state, logoutUserStart: true}
+
+        case LOGOUT_USER_SUCCESS:
+            return initialState;
+
+        case LOGOUT_USER_ERROR:
+            return {...state, logoutUserStart: false, logoutUserError: true}
+    
         default:
             return state;
     }

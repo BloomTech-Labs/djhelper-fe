@@ -8,7 +8,7 @@ import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import DjInterface from './components/DjInterface';
 
-import { registerUserAction } from './actions/action';
+import { registerUserAction, logoutUser } from './actions/action';
 
 import './App.scss';
 
@@ -34,6 +34,11 @@ function App() {
     dispatch(registerUserAction(infoNeeded, history));
   }
 
+  const handleLogout = () => {
+    console.log('time to logout');
+    dispatch(logoutUser());
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -41,6 +46,7 @@ function App() {
           DJ Helper
         </h1>
         {name && <p>Welcome, {name}!</p>}
+        <nav><button onClick={handleLogout}>Logout</button></nav>
       </header>
 
       <Route exact path='/' component={Home} />
