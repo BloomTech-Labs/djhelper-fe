@@ -9,7 +9,7 @@ const DjInterface = props => {
     const website = useSelector(state => state.userReducer.website);
 
     return (
-        
+
         <div>
             <h2>DJ Interface</h2>
             <div className='dj-interface'>
@@ -19,9 +19,9 @@ const DjInterface = props => {
                 {phone && <p>{phone}</p>}
                 {website &&  <p>{website}</p>}
             </div>
-            
+
             <p><span>Add Event and Event List coming soon!</span></p>
-            
+
         </div>
     )
 }

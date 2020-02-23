@@ -29,7 +29,8 @@ const initialState = {
     loginUserStart: false,
     loginUserError: false,
     logoutUserStart: false,
-    logoutUserError: false
+    logoutUserError: false,
+    tokenPresent: false,
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -43,8 +44,8 @@ export const userReducer = (state = initialState, action) => {
             return {...state, registerUserStart: true}
 
         case REGISTER_USER_SUCCESS:
-            return {...state, 
-                registerUserStart: false, 
+            return {...state,
+                registerUserStart: false,
                 name: action.payload.user.name,
                 username: action.payload.user.username,
                 id: action.payload.user.id,
@@ -54,8 +55,8 @@ export const userReducer = (state = initialState, action) => {
             }
 
         case REGISTER_USER_ERROR:
-            return {...state, 
-                registerUserStart: false, 
+            return {...state,
+                registerUserStart: false,
                 registerUserError: true
             }
 
@@ -63,8 +64,9 @@ export const userReducer = (state = initialState, action) => {
             return {...state, loginUserStart: true}
 
         case LOGIN_USER_SUCCESS:
-            return {...state, 
-                loginUserStart: false, 
+            return {...state,
+                tokenPresent: true,
+                loginUserStart: false,
                 name: action.payload.user.name,
                 username: action.payload.user.username,
                 id: action.payload.user.id,
@@ -85,7 +87,7 @@ export const userReducer = (state = initialState, action) => {
 
         case LOGOUT_USER_ERROR:
             return {...state, logoutUserStart: false, logoutUserError: true}
-    
+
         default:
             return state;
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Home from './components/Home';
@@ -13,13 +13,13 @@ import { registerUserAction, logoutUser } from './actions/action';
 import './App.scss';
 
 function App() {
-  
+
   const name = useSelector(state => state.userReducer.name);
   const dispatch = useDispatch();
 
   const registerUser = (userInfo, history) => {
     console.log(userInfo);
-    
+
     //TODO: Once we have our own backend, we will need to rename the phone_number to phone and profile_img_src to website.
     //The placeholder backend has different names for those fields.
     const infoNeeded = {
@@ -49,12 +49,19 @@ function App() {
         <nav><button onClick={handleLogout}>Logout</button></nav>
       </header>
 
+      <Switch>
+
       <Route exact path='/' component={Home} />
-      <Route path='/register' render={props => <Register {...props} registerUser={registerUser} />} />
+      <Route path='/register' render={props => <Register
+          {...props}
+          registerUser={registerUser}
+          />
+      } />
       <Route path='/login' component={Login} />
 
       <PrivateRoute path='/dj' component={DjInterface} />
-      
+
+      </Switch>
     </div>
   );
 }

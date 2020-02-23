@@ -58,11 +58,12 @@ export const loginUser = (userInfo, history) => dispatch => {
 
   export const logoutUser = () => dispatch => {
       console.log('in action logoutUser');
-      //dispatch({type: LOGOUT_USER_START});
+      dispatch({type: LOGOUT_USER_START});
       if (localStorage.getItem('token')) {
+          console.log(localStorage.getItem('token'))
           localStorage.removeItem('token');
-          //dispatch({type: LOGOUT_USER_SUCCESS});
+          dispatch({type: LOGOUT_USER_SUCCESS});
       } else {
-          //dispatch({type: LOGOUT_USER_ERROR, payload: 'no token found'})
+          dispatch({type: LOGOUT_USER_ERROR, payload: 'no token found'})
       }
   }
