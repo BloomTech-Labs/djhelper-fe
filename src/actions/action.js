@@ -44,15 +44,6 @@ export const loginUser = (userInfo, history) => dispatch => {
         console.log(response);
         localStorage.setItem('token', response.data.token);
         dispatch({type: LOGIN_USER_SUCCESS, payload: response.data});
-
-        //Checks to make sure the website and phone in local storage corresponds to the current user.
-        //If not, removes those items from local storage.
-        //TODO: Once we have our own back end, we can store phone and website in database and can remove this functionality.
-        if (response.data.user.username !== localStorage.getItem('username')) {
-            localStorage.removeItem('phone');
-            localStorage.removeItem('website');
-        }
-
         history.push('/dj');
       })
       .catch(err => {

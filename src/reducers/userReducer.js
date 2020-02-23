@@ -16,6 +16,7 @@ import {
 const initialState = {
     username: '',
     name: '',
+    email: '',
     phone: '',
     website: '',
     id: '',
@@ -39,7 +40,11 @@ export const userReducer = (state = initialState, action) => {
             return {...state, 
                 registerUserStart: false, 
                 name: action.payload.user.name,
-                username: action.payload.user.username
+                username: action.payload.user.username,
+                id: action.payload.user.id,
+                email: action.payload.user.email,
+                website: action.payload.user.profile_img_src,
+                phone: action.payload.user.phone_number
             }
 
         case REGISTER_USER_ERROR:
@@ -56,7 +61,10 @@ export const userReducer = (state = initialState, action) => {
                 loginUserStart: false, 
                 name: action.payload.user.name,
                 username: action.payload.user.username,
-                id: action.payload.user.id
+                id: action.payload.user.id,
+                email: action.payload.user.email,
+                website: action.payload.user.profile_img_src,
+                phone: action.payload.user.phone_number
             }
 
         case LOGIN_USER_ERROR:

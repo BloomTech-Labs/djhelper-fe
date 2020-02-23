@@ -20,27 +20,16 @@ function App() {
   const registerUser = (userInfo, history) => {
     console.log(userInfo);
     
-    //TODO: Once we have our own backend, we can also add phone and website to infoNeeded.
-    //The placeholder backend doesn't have those properties.
+    //TODO: Once we have our own backend, we will need to rename the phone_number to phone and profile_img_src to website.
+    //The placeholder backend has different names for those fields.
     const infoNeeded = {
       username: userInfo.username,
       password: userInfo.password,
-      name: userInfo.name
+      name: userInfo.name,
+      email: userInfo.email,
+      phone_number: userInfo.phone,
+      profile_img_src: userInfo.website
     }
-    //For now, phone and website are stored in localStorage.
-    if (userInfo.phone) {
-      localStorage.setItem('phone', userInfo.phone);
-    } else {
-      localStorage.removeItem('phone');
-    }
-
-    if (userInfo.website) {
-      localStorage.setItem('website', userInfo.website);
-    } else {
-      localStorage.removeItem('website');
-    }
-
-    localStorage.setItem('username', userInfo.username);
 
     dispatch(registerUserAction(infoNeeded, history));
   }
