@@ -6,6 +6,7 @@ const Register = (props) => {
         password: '',
         repassword: '',
         name: '',
+        email: '',
         website: '',
         phone: ''
     });
@@ -19,6 +20,7 @@ const Register = (props) => {
             password: '',
             repassword: '',
             name: '',
+            email: '',
             website: '',
             phone: ''
         })
@@ -34,7 +36,7 @@ const Register = (props) => {
                 <legend>Register</legend>
                 <hr/>
                 <div>
-                    <label htmlFor='username'>Username / Email</label>
+                    <label htmlFor='username'>Username</label>
                     <input name='username' type='text' id='username' required onChange={handleChange}/>
                 </div>
                 <div>
@@ -48,6 +50,10 @@ const Register = (props) => {
                 <div>
                     <label htmlFor='name'>Name</label>
                     <input name='name' type='text' id='name' onChange={handleChange}/>
+                </div>
+                <div>
+                    <label htmlFor='email'>Email</label>
+                    <input name='email' type='email' id='email' onChange={handleChange}/>
                 </div>
                 <div>
                     <label htmlFor='website'>Your Website URL</label>
