@@ -12,6 +12,7 @@ import DjInterface from './components/DjInterface';
 import { registerUserAction, logoutUser } from './actions/action';
 
 import './App.scss';
+import './css/index.css';
 
 function App() {
 
