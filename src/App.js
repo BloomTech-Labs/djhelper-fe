@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
+import NavigationBar from './components/NavigationBar';
 import Home from './components/Home';
 import Register from './components/Register';
 import Login from './components/Login';
@@ -41,16 +42,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>
-          DJ Helper
-        </h1>
-        {name && <p>Welcome, {name}!</p>}
-        <nav><button onClick={handleLogout}>Logout</button></nav>
-      </header>
-
-      <Switch>
-
+    <NavigationBar handleLogout={handleLogout}/>
       <Route exact path='/' component={Home} />
       <Route path='/register' render={props => <Register
           {...props}
@@ -61,7 +53,6 @@ function App() {
 
       <PrivateRoute path='/dj' component={DjInterface} />
 
-      </Switch>
     </div>
   );
 }

@@ -12,6 +12,8 @@ const DjInterface = props => {
 
         <div>
             <h2>DJ Interface</h2>
+
+            {name ? <p>Welcome, {name}!</p> : <p> Oops, looks like you don't have a name!</p>}
             <div className='dj-interface'>
                 {name && <h3>{name}</h3>}
                 {username && <p>{username}</p>}
