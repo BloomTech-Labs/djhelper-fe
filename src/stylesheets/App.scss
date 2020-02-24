@@ -1,0 +1,54 @@
+.app {
+    background-color: #383838;
+    color: white;
+}
+
+form {
+  margin: 1rem auto;
+  background: gray;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-radius: 3px;
+  padding: 3rem;
+  font-size: 1.5rem;
+  div {
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  legend {
+    align-self: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  label {
+    padding-right: 0.5rem;
+    width: 40%;
+  }
+  input {
+    line-height: 1.5rem;
+    border: none;
+    width: 60%;
+  }
+  button {
+    align-self: center;
+    font-size: 1.75rem;
+    margin: 1rem;
+    color: white;
+    background: black;
+    border: none;
+    padding: 0.5rem;
+    &:hover {
+      font-style: italic;
+    }
+  }
+}
+
+.loader {
+  margin: 2rem auto;
+  width: 10%;
+}
