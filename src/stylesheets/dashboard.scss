@@ -11,7 +11,7 @@
         flex-flow: row nowrap;
         justify-content: space-between;
         width: 40%;
-        border: solid @dashboardColor 1px;
+        border: solid $dashboardColor 1px;
         border-radius: 25px;
         padding: 5%;
     }

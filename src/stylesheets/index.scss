@@ -2,10 +2,10 @@
 // The cascade matters!
 
 // Vars and Mixins
-@import "variables";
+@import './variables';
 
 // General Styles Here
 
 // Components Here
-@import "app";
-@import "dashboard";
+@import './App.scss';
+@import './dashboard.scss';
