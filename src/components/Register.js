@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Form, Input} from "reactstrap";
 
 const Register = (props) => {
     const [userInfo, setUserInfo] = useState({
@@ -34,49 +35,64 @@ const Register = (props) => {
         setUserInfo({...userInfo, [e.target.name]:e.target.value});
     }
 
+    const passwordValidation = () => {
+        if (userInfo.repassword.length >= 1) {
+            if (userInfo.password === userInfo.repassword) {
+                return (<Input valid name='repassword' type='password' id='repassword' required onChange={handleChange}/>)
+            } else {
+                return (<Input invalid name='repassword' type='password' id='repassword' required onChange={handleChange}/>)
+            }
+        }
+        return (<Input name='repassword' type='password' id='repassword' required onChange={handleChange}/>)
+
+    }
+
     return(
         <div>
-            <form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
                 <legend>Register</legend>
                 <hr/>
                 <div>
                     <label htmlFor='username'>Username</label>
-                    <input name='username' type='text' id='username' required onChange={handleChange}/>
+                    <Input name='username' type='text' id='username' required onChange={handleChange}/>
                 </div>
                 <div>
                     <label htmlFor='password'>Password</label>
-                    <input name='password' type='password' id='password' required onChange={handleChange}/>
+                    {userInfo.password.length >= 1
+                        ? <Input valid name='password' type='password' id='password' required onChange={handleChange}/>
+                        : <Input name='password' type='password' id='password' required onChange={handleChange}/>
+                    }
                 </div>
                 <div>
                     <label htmlFor='repassword'>Re-Enter Password</label>
-                    <input name='repassword' type='password' id='repassword' required onChange={handleChange}/>
+                    {passwordValidation()}
                 </div>
                 <div>
                     <label htmlFor='name'>Name</label>
-                    <input name='name' type='text' id='name' onChange={handleChange}/>
+                    <Input name='name' type='text' id='name' onChange={handleChange}/>
                 </div>
                 <div>
                     <label htmlFor='email'>Email</label>
-                    <input name='email' type='email' id='email' onChange={handleChange}/>
+                    <Input name='email' type='email' id='email' onChange={handleChange}/>
                 </div>
                 <div>
                     <label htmlFor='website'>Your Website URL</label>
-                    <input name='website' type='url' id='website' onChange={handleChange}/>
+                    <Input name='website' type='url' id='website' onChange={handleChange}/>
                 </div>
                 <div>
                     <label htmlFor='phone'>Phone Number</label>
-                    <input name='phone' type='phone' id='phone' onChange={handleChange}/>
+                    <Input name='phone' type='phone' id='phone' onChange={handleChange}/>
                 </div>
                 <div>
                     <label htmlFor='bio'>Bio</label>
-                    <input name='bio' type='text' id='bio' onChange={handleChange}/>
+                    <Input name='bio' type='text' id='bio' onChange={handleChange}/>
                 </div>
                 <div>
                     <label htmlFor='profile_pic_url'>Link to Profile Image</label>
-                    <input name='profile_pic_url' type='text' id='profile_pic_url' onChange={handleChange}/>
+                    <Input name='profile_pic_url' type='text' id='profile_pic_url' onChange={handleChange}/>
                 </div>
                 <button type='submit'>Submit</button>
-            </form>
+            </Form>
         </div>
     )
 }
