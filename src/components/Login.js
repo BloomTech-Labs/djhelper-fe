@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import Loader from 'react-loader-spinner';
 
 import { loginUser } from '../actions/action';
 
@@ -8,6 +9,8 @@ const Login = (props) => {
         username: '',
         password: '',
     });
+    
+    const isLoggingIn = useSelector(state => state.userReducer.loginUserStart);
 
     const dispatch = useDispatch();
 
@@ -24,20 +27,28 @@ const Login = (props) => {
 
     return(
         <div>
-            <form onSubmit={handleSubmit}>
-                <legend>Login</legend>
-                <hr/>
-                <div>
-                    <label htmlFor='username'>Username / Email</label>
-                    <input name='username' type='text' id='username' required onChange={handleChange}/>
+            {isLoggingIn && 
+                <div className='loader'>
+                    <Loader type="Audio" color="purple" height={200} width={200} />
                 </div>
-                <div>
-                    <label htmlFor='password'>Password</label>
-                    <input name='password' type='password' id='password' required onChange={handleChange}/>
-                </div>
+            }
 
-                <button type='submit'>Submit</button>
-            </form>
+            {!isLoggingIn &&
+                <form onSubmit={handleSubmit}>
+                    <legend>Login</legend>
+                    <hr/>
+                    <div>
+                        <label htmlFor='username'>Username: </label>
+                        <input name='username' type='text' id='username' required onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor='password'>Password: </label>
+                        <input name='password' type='password' id='password' required onChange={handleChange}/>
+                    </div>
+
+                    <button type='submit'>Submit</button>
+                </form>
+            }
         </div>
     )
 }
