@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {Form, Input} from "reactstrap";
+import { useSelector } from 'react-redux';
+import Loader from 'react-loader-spinner';
 
 const Register = (props) => {
     const [userInfo, setUserInfo] = useState({
@@ -13,6 +15,8 @@ const Register = (props) => {
         bio: '',
         profile_pic_url: ''
     });
+
+    const isRegistering = useSelector(state => state.userReducer.registerUserStart);
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -60,47 +64,56 @@ const Register = (props) => {
 
     return(
         <div>
-            <Form onSubmit={handleSubmit}>
-                <legend>Register</legend>
-                <hr/>
-                <div>
-                    <label htmlFor='username'>Username</label>
-                    <Input name='username' type='text' id='username' required onChange={handleChange}/>
+            {isRegistering && 
+                <div className='loader'>
+                    <Loader type="Audio" color="purple" height={200} width={200} />
                 </div>
-                <div>
-                    <label htmlFor='password'>Password</label>
-                    {passwordValidation()}
-                </div>
-                <div>
-                    <label htmlFor='repassword'>Re-Enter Password</label>
-                    {repasswordValidation()}
-                </div>
-                <div>
-                    <label htmlFor='name'>Name</label>
-                    <Input name='name' type='text' id='name' onChange={handleChange}/>
-                </div>
-                <div>
-                    <label htmlFor='email'>Email</label>
-                    <Input name='email' type='email' id='email' onChange={handleChange}/>
-                </div>
-                <div>
-                    <label htmlFor='website'>Your Website URL</label>
-                    <Input name='website' type='url' id='website' onChange={handleChange}/>
-                </div>
-                <div>
-                    <label htmlFor='phone'>Phone Number</label>
-                    <Input name='phone' type='phone' id='phone' onChange={handleChange}/>
-                </div>
-                <div>
-                    <label htmlFor='bio'>Bio</label>
-                    <Input name='bio' type='text' id='bio' onChange={handleChange}/>
-                </div>
-                <div>
-                    <label htmlFor='profile_pic_url'>Link to Profile Image</label>
-                    <Input name='profile_pic_url' type='text' id='profile_pic_url' onChange={handleChange}/>
-                </div>
-                <button type='submit'>Submit</button>
-            </Form>
+            }
+
+            {!isRegistering &&
+
+                <Form onSubmit={handleSubmit}>
+                    <legend>Register</legend>
+                    <hr/>
+                    <div>
+                        <label htmlFor='username'>Username</label>
+                        <Input name='username' type='text' id='username' required onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor='password'>Password</label>
+                        {passwordValidation()}
+                    </div>
+                    <div>
+                        <label htmlFor='repassword'>Re-Enter Password</label>
+                        {repasswordValidation()}
+                    </div>
+                    <div>
+                        <label htmlFor='name'>Name</label>
+                        <Input name='name' type='text' id='name' onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor='email'>Email</label>
+                        <Input name='email' type='email' id='email' onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor='website'>Your Website URL</label>
+                        <Input name='website' type='url' id='website' onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor='phone'>Phone Number</label>
+                        <Input name='phone' type='phone' id='phone' onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor='bio'>Bio</label>
+                        <Input name='bio' type='text' id='bio' onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor='profile_pic_url'>Link to Profile Image</label>
+                        <Input name='profile_pic_url' type='text' id='profile_pic_url' onChange={handleChange}/>
+                    </div>
+                    <button type='submit'>Submit</button>
+                </Form>
+            }
         </div>
     )
 }
