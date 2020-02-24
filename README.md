@@ -65,12 +65,10 @@ To be the easiest way for DJs to collect and display relevant song requests at e
 
 #### React
 
-🚫 Why did you choose this framework?
-
--    point one
--    point two
--    point three
--    point four
+-    For this app to be successful, it needs to be handy for users to add song requests not only while before an event, but during the event. Therefore, it needs to be very easy to use on a mobile device.
+-    Using React with extra consideration to mobile-friendly styling will help, but we'd also like to use React Native to create a mobile version of the app.
+-    Using React will make the transition from a web app to a mobile app easier to implement.
+-    Our first iteration of our project will be a React web app. Our second will hopefully be adding a React Native mobile app.
 
 🚫List the rest of the front end features and libraries in the same format as the framework above.
 
@@ -78,11 +76,11 @@ To be the easiest way for DJs to collect and display relevant song requests at e
 
 #### [Back end](🚫link to back end repo here) built using:
 
-#### Express, Postgresql
+#### Express, Heroku, Postgresql
 
--    point one
--    point two
--    point three
+-    Using node with an Express server will allow us to query the data science's API as well as handle the requests from the front end.
+-    Using heroku with postrgresql (or another good option like MongoDB) will allow us to have data that persists, which will ideal for all users. 
+-    Implementing authentication and authorization with hashing (bcryptjs) and JSON web tokens or another method will insure that only authorized users will have access to sensitive data.
 
 🚫 List the rest of the back end end features and libraries in the same format as the framework above
 
