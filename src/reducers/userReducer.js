@@ -46,6 +46,8 @@ export const userReducer = (state = initialState, action) => {
             return {...state, registerUserStart: true}
 
         case REGISTER_USER_SUCCESS:
+            //TODO: change value of website to action.payload.user.website once backend is set up
+            //TODO: add bio once backend is set up
             return {...state,
                 registerUserStart: false,
                 name: action.payload.user.name,
@@ -53,7 +55,8 @@ export const userReducer = (state = initialState, action) => {
                 id: action.payload.user.id,
                 email: action.payload.user.email,
                 website: action.payload.user.profile_img_src,
-                phone: action.payload.user.phone_number
+                phone: action.payload.user.phone_number,
+                profile_pic_url: action.payload.user.profile_img_src
             }
 
         case REGISTER_USER_ERROR:
@@ -66,6 +69,8 @@ export const userReducer = (state = initialState, action) => {
             return {...state, loginUserStart: true}
 
         case LOGIN_USER_SUCCESS:
+            //TODO: change value of website to action.payload.user.website once backend is set up
+            //TODO: add bio once backend is set up
             return {...state,
                 tokenPresent: true,
                 loginUserStart: false,
@@ -74,7 +79,8 @@ export const userReducer = (state = initialState, action) => {
                 id: action.payload.user.id,
                 email: action.payload.user.email,
                 website: action.payload.user.profile_img_src,
-                phone: action.payload.user.phone_number
+                phone: action.payload.user.phone_number,
+                profile_pic_url: action.payload.user.profile_img_src
             }
 
         case LOGIN_USER_ERROR:
