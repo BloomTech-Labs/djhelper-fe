@@ -8,7 +8,9 @@ const Register = (props) => {
         name: '',
         email: '',
         website: '',
-        phone: ''
+        phone: '',
+        bio: '',
+        profile_pic_url: ''
     });
 
     const handleSubmit = e => {
@@ -22,7 +24,9 @@ const Register = (props) => {
             name: '',
             email: '',
             website: '',
-            phone: ''
+            phone: '',
+            bio: '',
+            profile_pic_url: ''
         })
     }
 
@@ -62,6 +66,14 @@ const Register = (props) => {
                 <div>
                     <label htmlFor='phone'>Phone Number</label>
                     <input name='phone' type='phone' id='phone' onChange={handleChange}/>
+                </div>
+                <div>
+                    <label htmlFor='bio'>Bio</label>
+                    <input name='bio' type='text' id='bio' onChange={handleChange}/>
+                </div>
+                <div>
+                    <label htmlFor='profile_pic_url'>Link to Profile Image</label>
+                    <input name='profile_pic_url' type='text' id='profile_pic_url' onChange={handleChange}/>
                 </div>
                 <button type='submit'>Submit</button>
             </form>

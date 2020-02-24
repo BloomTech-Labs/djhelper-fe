@@ -24,6 +24,8 @@ const initialState = {
     phone: '',
     website: '',
     id: '',
+    bio: '',
+    profile_img_src: '',
     registerUserStart: false,
     registerUserError: false,
     loginUserStart: false,

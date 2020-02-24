@@ -10,10 +10,14 @@
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-        width: 40%;
+        width: 50%;
         border: solid $dashboardColor 1px;
         border-radius: 25px;
         padding: 5%;
+        margin-bottom: 2rem;
+        @media (max-width: 500px) {
+            width: 95%;
+        }
     }
 
     .welcome {
