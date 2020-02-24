@@ -10,13 +10,12 @@
 
 ## 4️⃣ Contributors
 
-🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
 
-|                                       [Heather Nuffer](https://github.com/ethyl2)                                        |                                       [Student 2](https://github.com/)                                        |                                       [Student 3](https://github.com/)                                        |                                       [Student 4](https://github.com/)                                        |                                       [Student 5](https://github.com/)                                        |
+|                                       [Heather Nuffer](https://github.com/ethyl2)                                        |                                       [Dan Johnson](https://github.com/danimal-johnson)                                        |                                       [Andrew Garcia](https://github.com/aaamg)                                        |                                       [Phil MacEachron](https://github.com/phil-mac/)                                        |                                       [Humaira Syed](https://github.com/silvermaiden)                                        |
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-|                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |
-|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/honda0306)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)             |
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) |
+| [<img src="https://ca.slack-edge.com/T4JUEB3ME-UNLR217EK-bac3d83491a8-512" width = "200" />](https://github.com/)            | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UMGDV0UBB-2a6a88158d62-512" width = "200" />](https://github.com/)           | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UJPHBKQ6S-d05ed0e3a7be-512" width = "200" />](https://github.com/)           | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UN7FCNLAF-64d89b1f31d1-512" width = "200" />](https://github.com/)           |[<img src="https://ca.slack-edge.com/T4JUEB3ME-UJ32P8ZMZ-f1868140c153-512" width = "200" />](https://github.com/)                       |
+|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ethyl2)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/danimal-johnson)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/aaamg)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/phil-mac)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/silvermaiden)             |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/heather-nuffer/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/phil-maceachron-26104b71/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/humaira-syed) |
 
 <br>
 <br>
@@ -33,17 +32,15 @@
 
 ## Project Overview
 
-1️⃣ [Trello Board](🚫add link to trello board here)
+1️⃣ [Trello Board](https://trello.com/b/8PQ8BRod/labs-21-dj-helper)
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+1️⃣ [Product Canvas](https://www.notion.so/DJ-Helper-6b9f7ca95fec4c6ea8655c1d0c3c47b0)
 
-1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
+1️⃣ [UX Design files](https://www.figma.com/file/g79lCjYSWFCOBGyBRKzO96/DJ-Helper%2C-Emily?node-id=177%3A0) 
 
 🚫 Replace lorem ipsum with a description of your project
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+To be the easiest way for DJs to collect and display relevant song requests at events.
 
 
 ### 4️⃣ Key Features
