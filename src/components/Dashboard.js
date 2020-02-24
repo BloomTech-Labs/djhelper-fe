@@ -21,10 +21,17 @@ const Dashboard = () => {
             </div>
             <div className="board">
                 <div>
-                    <p>Events:</p>
+                    <h2>Profile:</h2>
+                    {name && <h3>{name}</h3>}
+                    {username && <p>Username: {username}</p>}
+                    {email && <p>Email: {email}</p>}
+                    {phone && <p>Phone: <a href={`tel:${phone}`}>{phone}</a></p>}
+                    {website && <p>Website: <a href={website}>{website}</a></p>}
                 </div>
+            </div>
+            <div className="board">
                 <div>
-                    <p>Messages:</p>
+                    <p>Events:</p>
                 </div>
             </div>
         </div>
