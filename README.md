@@ -4,7 +4,7 @@
 
 🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
-# 1️⃣ DJ Helper
+#  DJ Helper
 
 1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
 
@@ -15,6 +15,15 @@
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
 | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UNLR217EK-bac3d83491a8-512" width = "200" />](https://github.com/)            | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UMGDV0UBB-2a6a88158d62-512" width = "200" />](https://github.com/)           | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UJPHBKQ6S-d05ed0e3a7be-512" width = "200" />](https://github.com/)           | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UN7FCNLAF-64d89b1f31d1-512" width = "200" />](https://github.com/)           |[<img src="https://ca.slack-edge.com/T4JUEB3ME-UJ32P8ZMZ-f1868140c153-512" width = "200" />](https://github.com/)                       |
 |                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ethyl2)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/danimal-johnson)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/aaamg)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/phil-mac)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/silvermaiden)             |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/heather-nuffer/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/phil-maceachron-26104b71/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/humaira-syed) |
+
+<br>
+<br>
+
+|                                       [Stephanie Miller](https://github.com/shmilyface)                                        |                                       [Emily Arias](https://github.com/)                                        |                                       [Mariana Dominguez](https://github.com/madinanachan)                                        |                                       [Jordan Heuer](https://github.com/j-m-d-h)                                        |                                       [Isaac Lopez](https://github.com/lopez-isaac)                                        |
+| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
+| [<img src="https://ca.slack-edge.com/T4JUEB3ME-UHSAM16V7-6cb1101a892c-512" width = "200" />](https://github.com/)            | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UGVBY5QK0-0322eb799fbf-512" width = "200" />](https://github.com/)           | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UL44ALSSK-3e3a00d49ce2-512" width = "200" />](https://github.com/)           | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UJQR645R8-ea8dc0f12cf6-512" width = "200" />](https://github.com/)           |[<img src="https://ca.slack-edge.com/T4JUEB3ME-UNK2RKG2H-26c2bec454b7-512" width = "200" />](https://github.com/)                       |
+|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/shmilyface)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/madinanachan)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/j-m-d-h)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/lopez-isaac)             |
 | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/heather-nuffer/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/phil-maceachron-26104b71/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/humaira-syed) |
 
 <br>
@@ -32,13 +41,11 @@
 
 ## Project Overview
 
-1️⃣ [Trello Board](https://trello.com/b/8PQ8BRod/labs-21-dj-helper)
+ [Trello Board](https://trello.com/b/8PQ8BRod/labs-21-dj-helper)
 
-1️⃣ [Product Canvas](https://www.notion.so/DJ-Helper-6b9f7ca95fec4c6ea8655c1d0c3c47b0)
+ [Product Canvas](https://www.notion.so/DJ-Helper-6b9f7ca95fec4c6ea8655c1d0c3c47b0)
 
-1️⃣ [UX Design files](https://www.figma.com/file/g79lCjYSWFCOBGyBRKzO96/DJ-Helper%2C-Emily?node-id=177%3A0) 
-
-🚫 Replace lorem ipsum with a description of your project
+ [UX Design files](https://www.figma.com/file/g79lCjYSWFCOBGyBRKzO96/DJ-Helper%2C-Emily?node-id=177%3A0) 
 
 To be the easiest way for DJs to collect and display relevant song requests at events.
 
@@ -55,7 +62,8 @@ To be the easiest way for DJs to collect and display relevant song requests at e
 
 ### Front end built using:
 
-#### _Front end framework goes here_
+
+#### React
 
 🚫 Why did you choose this framework?
 
@@ -70,7 +78,7 @@ To be the easiest way for DJs to collect and display relevant song requests at e
 
 #### [Back end](🚫link to back end repo here) built using:
 
-#### 🚫 back end framework goes here
+#### Express, Postgresql
 
 -    point one
 -    point two
