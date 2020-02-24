@@ -1,38 +1,36 @@
 import React, {useState} from 'react';
 import {Form, Input} from "reactstrap";
 import { useSelector } from 'react-redux';
-import Loader from 'react-loader-spinner';
+//import Loader from 'react-loader-spinner';
 
-const Register = (props) => {
+const EditDJ = (props) => {
+
+    const name = useSelector(state => state.userReducer.name);
+    const username = useSelector(state => state.userReducer.username);
+    const email = useSelector(state => state.userReducer.email);
+    const phone = useSelector(state => state.userReducer.phone);
+    const website = useSelector(state => state.userReducer.website);
+    const bio = useSelector(state => state.userReducer.bio);
+    const profile_pic_url = useSelector(state => state.userReducer.profile_pic_url);
+    const id = useSelector(state => state.userReducer.id);
+
     const [userInfo, setUserInfo] = useState({
-        username: '',
+        username: username,
         password: '',
         repassword: '',
-        name: '',
-        email: '',
-        website: '',
-        phone: '',
-        bio: '',
-        profile_pic_url: ''
+        name: name,
+        email: email,
+        website: website,
+        phone: phone,
+        bio: bio,
+        profile_pic_url: profile_pic_url,
+        id: id
     });
-
-    const isRegistering = useSelector(state => state.userReducer.registerUserStart);
 
     const handleSubmit = e => {
         e.preventDefault();
         console.log(userInfo);
-        props.registerUser(userInfo, props.history);
-        setUserInfo({
-            username: '',
-            password: '',
-            repassword: '',
-            name: '',
-            email: '',
-            website: '',
-            phone: '',
-            bio: '',
-            profile_pic_url: ''
-        })
+        //props.registerUser(userInfo, props.history);
     }
 
     const handleChange = e => {
@@ -64,58 +62,79 @@ const Register = (props) => {
 
     return(
         <div>
-            {isRegistering && 
-                <div className='loader'>
-                    <Loader type="Audio" color="purple" height={200} width={200} />
-                </div>
-            }
 
-            {!isRegistering &&
 
                 <Form onSubmit={handleSubmit}>
-                    <legend>Register</legend>
+                    <legend>Update DJ Info</legend>
                     <hr/>
                     <div>
                         <label htmlFor='username'>Username</label>
-                        <Input name='username' type='text' id='username' required onChange={handleChange}/>
+                        <Input name='username' 
+                            type='text' 
+                            id='username'  
+                            onChange={handleChange}
+                            value={userInfo.username}/>
                     </div>
                     <div>
-                        <label htmlFor='password'>Password</label>
+                        <label htmlFor='password'>New Password</label>
                         {passwordValidation()}
                     </div>
                     <div>
-                        <label htmlFor='repassword'>Re-Enter Password</label>
+                        <label htmlFor='repassword'>Re-Enter New Password</label>
                         {repasswordValidation()}
                     </div>
                     <div>
                         <label htmlFor='name'>Name</label>
-                        <Input name='name' type='text' id='name' required onChange={handleChange}/>
+                        <Input name='name' 
+                            type='text' 
+                            id='name' 
+                            onChange={handleChange}
+                            value={userInfo.name}/>
                     </div>
                     <div>
                         <label htmlFor='email'>Email</label>
-                        <Input name='email' type='email' id='email' onChange={handleChange}/>
+                        <Input name='email' 
+                            type='email' 
+                            id='email' 
+                            onChange={handleChange}
+                            value={userInfo.email}/>
                     </div>
                     <div>
                         <label htmlFor='website'>Your Website URL</label>
-                        <Input name='website' type='url' id='website' onChange={handleChange}/>
+                        <Input name='website' 
+                            type='url' 
+                            id='website' 
+                            onChange={handleChange}
+                            value={userInfo.website}/>
                     </div>
                     <div>
                         <label htmlFor='phone'>Phone Number</label>
-                        <Input name='phone' type='phone' id='phone' onChange={handleChange}/>
+                        <Input name='phone' 
+                            type='phone' 
+                            id='phone' 
+                            onChange={handleChange}
+                            value={userInfo.phone}/>
                     </div>
                     <div>
                         <label htmlFor='bio'>Bio</label>
-                        <Input name='bio' type='text' id='bio' onChange={handleChange}/>
+                        <Input name='bio' 
+                            type='text' 
+                            id='bio' 
+                            onChange={handleChange}
+                            value={userInfo.bio}/>
                     </div>
                     <div>
                         <label htmlFor='profile_pic_url'>Link to Profile Image</label>
-                        <Input name='profile_pic_url' type='text' id='profile_pic_url' onChange={handleChange}/>
+                        <Input name='profile_pic_url' 
+                            type='text' 
+                            id='profile_pic_url' 
+                            onChange={handleChange}
+                            value={userInfo.profile_pic_url}/>
                     </div>
                     <button type='submit'>Submit</button>
                 </Form>
-            }
         </div>
     )
 }
 
-export default Register;
+export default EditDJ;

@@ -20,6 +20,10 @@ export const DELETE_USER_START = 'DELETE_USER_START';
 export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
 export const DELETE_USER_ERROR = 'DELETE_USER_ERROR';
 
+export const EDIT_USER_START = 'EDIT_USER_START';
+export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
+export const EDIT_USER_ERROR = 'EDIT_USER_ERROR';
+
 // action creators
 
 export const setName = name => {
@@ -89,4 +93,14 @@ export const loginUser = (userInfo, history) => dispatch => {
             console.log(err);
             dispatch({type: DELETE_USER_ERROR, payload: err})
         }) 
+  }
+
+  export const startEditUser = () =>  dispatch => {
+    dispatch({type: EDIT_USER_START});    
+  }
+
+  export const editUser = userInfo => dispatch => {
+    //axios call
+
+
   }

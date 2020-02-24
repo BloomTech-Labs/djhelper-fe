@@ -19,6 +19,10 @@ import {
     DELETE_USER_SUCCESS,
     DELETE_USER_ERROR,
 
+    EDIT_USER_START,
+    EDIT_USER_SUCCESS,
+    EDIT_USER_ERROR
+
 } from '../actions/action'
 
 const initialState = {
@@ -38,7 +42,9 @@ const initialState = {
     logoutUserError: false,
     tokenPresent: false,
     deleteUserStart: false,
-    deleteUserError: false
+    deleteUserError: false,
+    editUserStart: false,
+    editUserError: false
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -110,6 +116,9 @@ export const userReducer = (state = initialState, action) => {
 
         case DELETE_USER_ERROR:
             return {...state, deleteUserStart: false, deleteUserError: true};
+
+        case EDIT_USER_START:
+            return {...state, editUserStart: true};
 
         default:
             return state;
