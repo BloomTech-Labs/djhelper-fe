@@ -99,8 +99,14 @@ export const loginUser = (userInfo, history) => dispatch => {
     dispatch({type: EDIT_USER_START});    
   }
 
-  export const editUser = userInfo => dispatch => {
-    //axios call
-
-
+  export const editUser = (id, userInfo) => dispatch => {  
+    axiosWithAuth().put(`https://business-card-collector.herokuapp.com/api/users/${id}`, userInfo)
+        .then(response => {
+            console.log(response);
+            dispatch({type: EDIT_USER_SUCCESS, payload: response.data})
+        })
+        .catch(err => {
+            console.log(err);
+            dispatch({type: EDIT_USER_ERROR, payload: err})
+        })
   }

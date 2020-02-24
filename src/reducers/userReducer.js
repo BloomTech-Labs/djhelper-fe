@@ -120,6 +120,26 @@ export const userReducer = (state = initialState, action) => {
         case EDIT_USER_START:
             return {...state, editUserStart: true};
 
+        case EDIT_USER_SUCCESS:
+            //TODO: change value of website to action.payload.user.website once backend is set up
+            //TODO: add bio once backend is set up
+            return {...state,
+                editUserStart: false,
+                name: action.payload.name,
+                username: action.payload.username,
+                id: action.payload.id,
+                email: action.payload.email,
+                website: action.payload.profile_img_src,
+                phone: action.payload.phone_number,
+                profile_pic_url: action.payload.profile_img_src
+            }
+        
+        case EDIT_USER_ERROR:
+            return {...state,
+                editUserStart: false,
+                editUserError: true
+            };
+
         default:
             return state;
     }

@@ -1,9 +1,13 @@
 import React, {useState} from 'react';
 import {Form, Input} from "reactstrap";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 //import Loader from 'react-loader-spinner';
 
+import { editUser } from '../actions/action';
+
 const EditDJ = (props) => {
+
+    const dispatch = useDispatch();
 
     const name = useSelector(state => state.userReducer.name);
     const username = useSelector(state => state.userReducer.username);
@@ -30,7 +34,17 @@ const EditDJ = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         console.log(userInfo);
-        //props.registerUser(userInfo, props.history);
+        //TODO: Add bio and website when we have our own backend
+        const infoNeeded = {
+            username: userInfo.username,
+            password: userInfo.password,
+            name: userInfo.name,
+            email: userInfo.email,
+            phone_number: userInfo.phone,
+            profile_img_src: userInfo.profile_pic_url,
+          }
+        console.log("id: ", id);
+        dispatch(editUser(id, infoNeeded));
     }
 
     const handleChange = e => {
@@ -40,23 +54,23 @@ const EditDJ = (props) => {
     const passwordValidation = () => {
         if (userInfo.password.length >= 1) {
             if (userInfo.password.length >= 8) {
-                return <Input valid name='password' type='password' id='password' required onChange={handleChange}/>
+                return <Input valid name='password' type='password' id='password' onChange={handleChange}/>
             } else {
-                return <Input invalid name='password' type='password' id='password' required onChange={handleChange}/>
+                return <Input invalid name='password' type='password' id='password' onChange={handleChange}/>
             }
         }
-        return <Input name='password' type='password' id='password' required onChange={handleChange}/>
+        return <Input name='password' type='password' id='password' onChange={handleChange}/>
     }
 
     const repasswordValidation = () => {
         if (userInfo.repassword.length >= 1) {
             if (userInfo.password === userInfo.repassword) {
-                return (<Input valid name='repassword' type='password' id='repassword' required onChange={handleChange}/>)
+                return (<Input valid name='repassword' type='password' id='repassword' onChange={handleChange}/>)
             } else {
-                return (<Input invalid name='repassword' type='password' id='repassword' required onChange={handleChange}/>)
+                return (<Input invalid name='repassword' type='password' id='repassword' onChange={handleChange}/>)
             }
         }
-        return (<Input name='repassword' type='password' id='repassword' required onChange={handleChange}/>)
+        return (<Input name='repassword' type='password' id='repassword' onChange={handleChange}/>)
 
     }
 
