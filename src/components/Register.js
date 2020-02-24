@@ -36,6 +36,17 @@ const Register = (props) => {
     }
 
     const passwordValidation = () => {
+        if (userInfo.password.length >= 1) {
+            if (userInfo.password.length >= 8) {
+                return <Input valid name='password' type='password' id='password' required onChange={handleChange}/>
+            } else {
+                return <Input invalid name='password' type='password' id='password' required onChange={handleChange}/>
+            }
+        }
+        return <Input name='password' type='password' id='password' required onChange={handleChange}/>
+    }
+
+    const repasswordValidation = () => {
         if (userInfo.repassword.length >= 1) {
             if (userInfo.password === userInfo.repassword) {
                 return (<Input valid name='repassword' type='password' id='repassword' required onChange={handleChange}/>)
@@ -58,14 +69,11 @@ const Register = (props) => {
                 </div>
                 <div>
                     <label htmlFor='password'>Password</label>
-                    {userInfo.password.length >= 1
-                        ? <Input valid name='password' type='password' id='password' required onChange={handleChange}/>
-                        : <Input name='password' type='password' id='password' required onChange={handleChange}/>
-                    }
+                    {passwordValidation()}
                 </div>
                 <div>
                     <label htmlFor='repassword'>Re-Enter Password</label>
-                    {passwordValidation()}
+                    {repasswordValidation()}
                 </div>
                 <div>
                     <label htmlFor='name'>Name</label>
