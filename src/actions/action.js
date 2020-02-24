@@ -1,4 +1,5 @@
 import axios from "axios";
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 export const SET_NAME = 'SET_NAME';
 export const SET_USERNAME = 'SET_USERNAME';
@@ -14,6 +15,10 @@ export const LOGIN_USER_ERROR = 'LOGIN_USER_ERROR';
 export const LOGOUT_USER_START = 'LOGOUT_USER_START';
 export const LOGOUT_USER_SUCCESS = 'LOGOUT_USER_SUCCESS';
 export const LOGOUT_USER_ERROR = 'LOGOUT_USER_ERROR';
+
+export const DELETE_USER_START = 'DELETE_USER_START';
+export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
+export const DELETE_USER_ERROR = 'DELETE_USER_ERROR';
 
 // action creators
 
@@ -57,7 +62,7 @@ export const loginUser = (userInfo, history) => dispatch => {
   }
 
   export const logoutUser = () => dispatch => {
-      console.log('in action logoutUser');
+      
       dispatch({type: LOGOUT_USER_START});
       if (localStorage.getItem('token')) {
           console.log(localStorage.getItem('token'))
@@ -66,4 +71,22 @@ export const loginUser = (userInfo, history) => dispatch => {
       } else {
           dispatch({type: LOGOUT_USER_ERROR, payload: 'no token found'})
       }
+  }
+
+  export const deleteUser = id => dispatch => {
+      console.log('in deleteUser action');
+      dispatch({type: DELETE_USER_START});
+      axiosWithAuth().delete(`https://business-card-collector.herokuapp.com/api/users/${id}`)
+        .then(response => {
+            console.log(response);
+            if (localStorage.getItem('token')) {
+                console.log(localStorage.getItem('token'))
+                localStorage.removeItem('token');
+            }
+            dispatch({type: DELETE_USER_SUCCESS});
+        })
+        .catch(err => {
+            console.log(err);
+            dispatch({type: DELETE_USER_ERROR, payload: err})
+        }) 
   }

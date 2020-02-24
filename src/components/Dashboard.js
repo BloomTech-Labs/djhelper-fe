@@ -1,9 +1,15 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { Button } from 'reactstrap';
 //import Image from 'react-bootstrap/Image';
+
+import { deleteUser } from '../actions/action';
 
 
 const Dashboard = () => {
+
+    const dispatch = useDispatch();
+
     const name = useSelector(state => state.userReducer.name);
     const username = useSelector(state => state.userReducer.username);
     const email = useSelector(state => state.userReducer.email);
@@ -11,6 +17,12 @@ const Dashboard = () => {
     const website = useSelector(state => state.userReducer.website);
     const bio = useSelector(state => state.userReducer.bio);
     const profile_pic_url = useSelector(state => state.userReducer.profile_pic_url);
+    const id = useSelector(state => state.userReducer.id);
+
+    const handleDelete = () => {
+        console.log('time to delete dj user');
+        dispatch(deleteUser(id));  
+    }
 
     return (
         <div className="dashboard">
@@ -33,6 +45,10 @@ const Dashboard = () => {
                     {website && <p>Website: <a href={website}>{website}</a></p>}
                     {profile_pic_url && <div className='img-container'><img src={profile_pic_url} alt={name} /></div>}
                 </div>
+            </div>
+            
+            <div>
+                <Button onClick={handleDelete}>Delete DJ Account</Button>
             </div>
             <div className="board">
                 <div>
