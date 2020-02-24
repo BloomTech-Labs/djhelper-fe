@@ -48,7 +48,7 @@ const Dashboard = () => {
             </div>
             
             <div>
-                <Button onClick={handleDelete}>Delete DJ Account</Button>
+                <Button className="btn-danger" onClick={handleDelete}>Delete DJ Account</Button>
             </div>
             <div className="board">
                 <div>
