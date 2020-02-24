@@ -6,7 +6,7 @@
 
 #  DJ Helper
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+1️⃣ You can find the deployed project [here](https://master.d2poed2e8xjq7e.amplifyapp.com/register).
 
 ## 4️⃣ Contributors
 
