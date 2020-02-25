@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
+import { Link } from 'react-router-dom';
 
 import { loginUser } from '../actions/action';
 
@@ -26,7 +27,7 @@ const Login = (props) => {
     }
 
     return(
-        <div>
+        <div className='login-page'>
             {isLoggingIn && 
                 <div className='loader'>
                     <Loader type="Audio" color="purple" height={200} width={200} />
@@ -35,7 +36,7 @@ const Login = (props) => {
 
             {!isLoggingIn &&
                 <form onSubmit={handleSubmit}>
-                    <legend>Login</legend>
+                    <legend>Welcome back!</legend>
                     <hr/>
                     <div>
                         <label htmlFor='username'>Username: </label>
@@ -47,6 +48,8 @@ const Login = (props) => {
                     </div>
 
                     <button type='submit'>Submit</button>
+
+                    <p>Don't have an account yet? Register <Link to='/register'>here!</Link></p>
                 </form>
             }
         </div>
