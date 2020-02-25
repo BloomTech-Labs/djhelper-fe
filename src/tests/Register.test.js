@@ -1,53 +1,55 @@
 import React from 'react';
 import {debug, render, fireEvent, cleanup} from '@testing-library/react';
-import Login from '../components/Login';
+import Register from '../components/Register';
 import {Provider, useSelector} from "react-redux";
 import { Router, BrowserRouter, MemoryRouter } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 import {store} from "./store";
 
-test('Login page renders correctly', () => {
+test('Register page renders correctly', () => {
   const history = createMemoryHistory()
   const {container,queryByText, getByText, getByLabelText, getByTestId} = render(
         <Provider store={store} >
             <Router history={history}>
-                <Login />
+                <Register />
             </Router>
         </Provider>
   );
 
-  const header = queryByText('Welcome back!');
-  const username = getByText('Username:');
-  const password = getByText('Password:');
-  const submit = getByText('Submit');
-  const toRegistration = getByTestId('toRegistration');
+  const form = getByTestId('registerForm');
 
+  const header = queryByText('Know what your audience wants.');
+  const name = getByText('Name');
+  const email = getByText('Email');
+  const username = getByText('Username');
+  const password = getByText('Password');
+  const confirmPassword = getByText('Confirm Password');
+  const addMoreInfo = getByText('Add More Info (Optional)');
+  const submit = getByText('Submit');
+
+  expect(form).toBeInTheDocument();
   expect(header).toBeInTheDocument();
+  expect(name).toBeInTheDocument();
   expect(username).toBeInTheDocument();
   expect(password).toBeInTheDocument();
+  expect(confirmPassword).toBeInTheDocument();
+  expect(addMoreInfo).toBeInTheDocument();
   expect(submit).toBeInTheDocument();
-  expect(toRegistration).toBeInTheDocument();
 
-  //Finding inputs on Login page
-  const usernameInput = getByTestId('usernameInput');
-  const passwordInput = getByTestId('passwordInput');
-
-  expect(usernameInput).toBeInTheDocument();
-  expect(passwordInput).toBeInTheDocument();
 });
 
-test('here link on Login page takes user to registration page', () => {
+test('here link on Register page takes user to Login page', () => {
   const history = createMemoryHistory()
   const {container,queryByText, getByText, getByLabelText, getByTestId} = render(
         <Provider store={store} >
             <Router history={history}>
-                <Login />
+                <Register />
             </Router>
         </Provider>
   );
 
-  const toRegistration = getByTestId('toRegistration');
-  fireEvent.click(toRegistration);
+  const toLogin = getByTestId('toLogin');
+  fireEvent.click(toLogin);
   const currentUrl = history.entries[1].pathname;
-  expect(currentUrl).toMatch('/register');
+  expect(currentUrl).toMatch('/login');
 });

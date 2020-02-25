@@ -78,7 +78,7 @@ const Register = (props) => {
             </div>
 
             <div className='registration-page-block'>
-            {isRegistering && 
+            {isRegistering &&
                 <div className='loader'>
                     <Loader type="Audio" color="purple" height={200} width={200} />
                 </div>
@@ -86,7 +86,7 @@ const Register = (props) => {
 
             {!isRegistering &&
 
-                <Form onSubmit={handleSubmit}>
+                <Form data-testid='registerForm' onSubmit={handleSubmit}>
                     <legend>Register</legend>
                     <hr/>
                     <div>
@@ -111,8 +111,8 @@ const Register = (props) => {
                             {repasswordValidation()}
                         </div>
                     </div>
-                    
-                    
+
+
 
                     <Button onClick={triggerDisplayMore}>{displayMore? 'Hide More Info': 'Add More Info (Optional)' }</Button>
                     {displayMore && <div className='display-more'>
@@ -136,9 +136,9 @@ const Register = (props) => {
 
                     <button type='submit'>Submit</button>
 
-                    <p>Already have an account? Login <Link to='/login'>here</Link>.</p>
+                    <p>Already have an account? Login <Link data-testid="toLogin" to='/login'>here</Link>.</p>
                 </Form>
-                
+
             }
             </div>
         </div>

@@ -49,7 +49,7 @@ const Login = (props) => {
 
                     <button type='submit'>Submit</button>
 
-                    <p>Don't have an account yet? Register <Link to='/register'>here!</Link></p>
+                    <p >Don't have an account yet? Register <Link data-testid="toRegistration" to='/register'>here!</Link></p>
                 </form>
             }
         </div>
