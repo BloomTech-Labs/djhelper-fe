@@ -10,7 +10,7 @@ const Login = (props) => {
         username: '',
         password: '',
     });
-    
+
     const isLoggingIn = useSelector(state => state.userReducer.loginUserStart);
 
     const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const Login = (props) => {
 
     return(
         <div className='login-page'>
-            {isLoggingIn && 
+            {isLoggingIn &&
                 <div className='loader'>
                     <Loader type="Audio" color="purple" height={200} width={200} />
                 </div>

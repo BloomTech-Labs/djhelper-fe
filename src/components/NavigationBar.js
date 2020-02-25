@@ -15,7 +15,7 @@ import {
 const NavigationBar = (props) => {
     const tokenPresent = useSelector(state => state.userReducer.tokenPresent);
     return (
-        <Navbar color="dark" dark expand="md">
+        <Navbar data-testid="navBar" color="dark" dark expand="md">
             <NavbarBrand href="/">DJ Helper</NavbarBrand>
               <Nav className="mr-auto" navbar>
                 <NavItem>

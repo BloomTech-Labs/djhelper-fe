@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch} from 'react-router-dom';
+import { Route, Switch, BrowserRouter} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import NavigationBar from './components/NavigationBar';
@@ -44,19 +44,20 @@ function App() {
   }
 
   return (
-    <div className="App">
-    <NavigationBar handleLogout={handleLogout}/>
-      <Route exact path='/' component={Home} />
-      <Route path='/register' render={props => <Register
-          {...props}
-          registerUser={registerUser}
-          />
-      } />
-      <Route path='/login' component={Login} />
+        <div className="App">
+        <BrowserRouter>
+            <NavigationBar handleLogout={handleLogout}/>
+            <Route exact path='/' component={Home} />
+            <Route path='/register' render={props => <Register
+                {...props}
+                registerUser={registerUser}
+                />
+            } />
+            <Route path='/login' component={Login} />
+            <PrivateRoute path='/dj' component={DjInterface} />
+      </BrowserRouter>
+        </div>
 
-      <PrivateRoute path='/dj' component={DjInterface} />
-
-    </div>
   );
 }
 
