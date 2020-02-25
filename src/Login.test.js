@@ -7,7 +7,8 @@ import { compose, applyMiddleware } from "redux";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
 import { createMemoryHistory } from 'history'
-import { Router, BrowserRouter } from 'react-router-dom'
+import { Router, BrowserRouter, MemoryRouter } from 'react-router-dom'
+import $ from "jquery";
 
 import { createStore } from 'redux';
 import  rootReducer from './reducers';
@@ -19,18 +20,18 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, l
 
 test('Login page renders correctly', () => {
   const history = createMemoryHistory()
-  history.push('/login')
-  const simulatedDom = render(
+  const {container,queryByText, getByText} = render(
         <Provider store={store} >
             <Router history={history}>
-                    <App />
+                <Login />
             </Router>
         </Provider>
   );
-  const header = simulatedDom.queryByText('Welcome back!');
-  const username = simulatedDom.queryByText('Username:');
-  const password = simulatedDom.queryByText('Password:');
-  const submit = simulatedDom.queryByText('Submit');
+
+  const header = queryByText('Welcome back!');
+  const username = getByText('Username:');
+  const password = getByText('Password:');
+  const submit = getByText('Submit');
 
 
   expect(header).toBeInTheDocument();
