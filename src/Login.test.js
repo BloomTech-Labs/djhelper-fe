@@ -17,20 +17,24 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, logger)));
 
-test('Home page renders links for register and login', async () => {
+test('Login page renders correctly', () => {
   const history = createMemoryHistory()
+  history.push('/login')
   const simulatedDom = render(
-        <BrowserRouter>
-            <Provider store={store} >
-                    <Login />
-            </Provider>
-        </BrowserRouter>
+        <Provider store={store} >
+            <Router history={history}>
+                    <App />
+            </Router>
+        </Provider>
   );
   const header = simulatedDom.queryByText('Welcome back!');
   const username = simulatedDom.queryByText('Username:');
   const password = simulatedDom.queryByText('Password:');
+  const submit = simulatedDom.queryByText('Submit');
+
 
   expect(header).toBeInTheDocument();
   expect(username).toBeInTheDocument();
   expect(password).toBeInTheDocument();
+  expect(submit).toBeInTheDocument();
 });
