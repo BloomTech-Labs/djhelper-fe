@@ -15,20 +15,22 @@ import {
 const NavigationBar = (props) => {
     const tokenPresent = useSelector(state => state.userReducer.tokenPresent);
     return (
-        <Navbar data-testid="navBar" color="dark" dark expand="md">
-            <NavbarBrand href="/">DJ Helper</NavbarBrand>
-              <Nav className="mr-auto" navbar>
+        <Navbar className="navBar" data-testid="navBar" dark expand="md">
+            <NavbarBrand className="navElements" href="/">DJ Helper</NavbarBrand>
+              <Nav className=" navElements" navbar>
                 <NavItem>
                   <NavLink href="/register">Register</NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink href="https://github.com/Lambda-School-Labs/djhelper-fe">GitHub</NavLink>
                 </NavItem>
-             </Nav>
-            {tokenPresent
-                ? <Button  onClick={props.handleLogout}>Logout</Button>
-                : <Link to="/login"><Button>Login</Button></Link>
-            }
+                <NavItem>
+                    {tokenPresent
+                        ? <NavLink  onClick={props.handleLogout}>Logout</NavLink>
+                        : <NavLink href="/login">Login</NavLink>
+                    }
+                </NavItem>
+         </Nav>
         </Navbar>
     )
 }
