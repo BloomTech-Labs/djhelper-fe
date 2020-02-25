@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {Form, Input} from "reactstrap";
+import {Form, Input, Button} from "reactstrap";
 import { useSelector } from 'react-redux';
 import Loader from 'react-loader-spinner';
+import { Link } from 'react-router-dom';
 
 const Register = (props) => {
     const [userInfo, setUserInfo] = useState({
@@ -15,6 +16,8 @@ const Register = (props) => {
         bio: '',
         profile_pic_url: ''
     });
+
+    const [displayMore, setDisplayMore] = useState(false);
 
     const isRegistering = useSelector(state => state.userReducer.registerUserStart);
 
@@ -62,8 +65,19 @@ const Register = (props) => {
 
     }
 
+    const triggerDisplayMore = () => {
+        setDisplayMore(!displayMore);
+    }
+
     return(
-        <div>
+        <div className='registration-page'>
+            <div className='registration-page-block'>
+                <h1>
+                    Know what your audience wants.
+                </h1>
+            </div>
+
+            <div className='registration-page-block'>
             {isRegistering && 
                 <div className='loader'>
                     <Loader type="Audio" color="purple" height={200} width={200} />
@@ -76,44 +90,57 @@ const Register = (props) => {
                     <legend>Register</legend>
                     <hr/>
                     <div>
-                        <label htmlFor='username'>Username</label>
-                        <Input name='username' type='text' id='username' required onChange={handleChange}/>
-                    </div>
-                    <div>
-                        <label htmlFor='password'>Password</label>
-                        {passwordValidation()}
-                    </div>
-                    <div>
-                        <label htmlFor='repassword'>Re-Enter Password</label>
-                        {repasswordValidation()}
-                    </div>
-                    <div>
                         <label htmlFor='name'>Name</label>
-                        <Input name='name' type='text' id='name' onChange={handleChange}/>
+                        <Input name='name' type='text' id='name' required onChange={handleChange}/>
                     </div>
                     <div>
                         <label htmlFor='email'>Email</label>
                         <Input name='email' type='email' id='email' onChange={handleChange}/>
                     </div>
                     <div>
-                        <label htmlFor='website'>Your Website URL</label>
-                        <Input name='website' type='url' id='website' onChange={handleChange}/>
+                        <label htmlFor='username'>Username</label>
+                        <Input name='username' type='text' id='username' required onChange={handleChange}/>
                     </div>
-                    <div>
-                        <label htmlFor='phone'>Phone Number</label>
-                        <Input name='phone' type='phone' id='phone' onChange={handleChange}/>
+                    <div className='password-area'>
+                        <div>
+                            <label htmlFor='password'>Password</label>
+                            {passwordValidation()}
+                        </div>
+                        <div>
+                            <label htmlFor='repassword'>Confirm Password</label>
+                            {repasswordValidation()}
+                        </div>
                     </div>
-                    <div>
-                        <label htmlFor='bio'>Bio</label>
-                        <Input name='bio' type='text' id='bio' onChange={handleChange}/>
-                    </div>
-                    <div>
-                        <label htmlFor='profile_pic_url'>Link to Profile Image</label>
-                        <Input name='profile_pic_url' type='text' id='profile_pic_url' onChange={handleChange}/>
-                    </div>
+                    
+                    
+
+                    <Button onClick={triggerDisplayMore}>{displayMore? 'Hide More Info': 'Add More Info (Optional)' }</Button>
+                    {displayMore && <div className='display-more'>
+                        <div>
+                            <label htmlFor='website'>Your Website URL</label>
+                            <Input name='website' type='url' id='website' onChange={handleChange}/>
+                        </div>
+                        <div>
+                            <label htmlFor='phone'>Phone Number</label>
+                            <Input name='phone' type='phone' id='phone' onChange={handleChange}/>
+                        </div>
+                        <div>
+                            <label htmlFor='bio'>Bio</label>
+                            <Input name='bio' type='text' id='bio' onChange={handleChange}/>
+                        </div>
+                        <div>
+                            <label htmlFor='profile_pic_url'>Link to Profile Image</label>
+                            <Input name='profile_pic_url' type='text' id='profile_pic_url' onChange={handleChange}/>
+                        </div>
+                    </div>}
+
                     <button type='submit'>Submit</button>
+
+                    <p>Already have an account? Login <Link to='/login'>here</Link>.</p>
                 </Form>
+                
             }
+            </div>
         </div>
     )
 }

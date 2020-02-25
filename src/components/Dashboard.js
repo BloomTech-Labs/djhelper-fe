@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Button } from 'reactstrap';
 //import Image from 'react-bootstrap/Image';
 
-import { deleteUser } from '../actions/action';
+import { deleteUser, startEditUser } from '../actions/action';
+import EditDJ from './EditDJ';
 
 
 const Dashboard = () => {
@@ -18,10 +19,15 @@ const Dashboard = () => {
     const bio = useSelector(state => state.userReducer.bio);
     const profile_pic_url = useSelector(state => state.userReducer.profile_pic_url);
     const id = useSelector(state => state.userReducer.id);
+    const editUserStart = useSelector(state => state.userReducer.editUserStart);
 
-    const handleDelete = () => {
-        console.log('time to delete dj user');
+    const handleDelete = () => {  
         dispatch(deleteUser(id));  
+    }
+
+    const startEdit = () => {
+        console.log('time to edit dj user info');
+        dispatch(startEditUser());
     }
 
     return (
@@ -48,8 +54,16 @@ const Dashboard = () => {
             </div>
             
             <div>
+                <Button className="btn-secondary" onClick={startEdit}>Edit DJ Info</Button>
                 <Button className="btn-danger" onClick={handleDelete}>Delete DJ Account</Button>
             </div>
+            
+            {editUserStart && 
+                <div>
+                    <EditDJ />
+                </div>
+            }
+
             <div className="board">
                 <div>
                     <h2>Events:</h2>
