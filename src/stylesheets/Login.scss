@@ -10,7 +10,7 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
-    align-items: center !important;
+    align-items: center;
     border-radius: 5px;
     margin-top: 25vh;
     
@@ -18,7 +18,7 @@
     padding-right: 3rem;
     padding-bottom: 1rem;
     padding-top: 10vh;
-    font-size: 1vw !important;
+    font-size: 1vw;
     p{
         width: 90%;
         text-align: left;
@@ -52,6 +52,9 @@
             width: 90%;
             outline: none;
             font-size: 1vw;
+        }
+        #username {
+            /*border-top: solid 2px black; */
         }
         .password-area {
             display: flex;

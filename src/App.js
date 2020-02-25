@@ -45,17 +45,19 @@ function App() {
 
   return (
         <div className="App">
-        <BrowserRouter>
-            <NavigationBar handleLogout={handleLogout}/>
-            <Route exact path='/' component={Home} />
-            <Route path='/register' render={props => <Register
-                {...props}
-                registerUser={registerUser}
-                />
-            } />
-            <Route path='/login' component={Login} />
-            <PrivateRoute path='/dj' component={DjInterface} />
-      </BrowserRouter>
+            <div className="overlay">
+            <BrowserRouter>
+                <NavigationBar handleLogout={handleLogout}/>
+                <Route exact path='/' component={Home} />
+                <Route path='/register' render={props => <Register
+                    {...props}
+                    registerUser={registerUser}
+                    />
+                } />
+                <Route path='/login' component={Login} />
+                <PrivateRoute path='/dj' component={DjInterface} />
+          </BrowserRouter>
+            </div>
         </div>
 
   );

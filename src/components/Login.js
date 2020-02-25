@@ -41,7 +41,7 @@ const Login = (props) => {
                     <hr/>
                     <div>
                         <label  htmlFor='username'>Username or email: </label>
-                        <Input data-testid="usernameInput" name='username' type='text' id='username' required onChange={handleChange}/>
+                        <Input id="username" data-testid="usernameInput" name='username' type='text' id='username' required onChange={handleChange}/>
                     </div>
                     <div>
                         <label htmlFor='password'>Password: </label>

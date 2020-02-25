@@ -14,7 +14,18 @@
         align-items: flex-start;
         border-radius: 3px;
         padding: 3rem;
-        font-size: 1.5rem;
+        font-size: 1vw;
+        p {
+            width: 90%;
+            text-align: left;
+            margin-top: 8%;
+            text-decoration: none;
+            a {
+                color: black;
+            }
+    }
+
+        }
         div {
             padding-bottom: 0.5rem;
             display: flex;
@@ -26,13 +37,14 @@
             flex-flow: column nowrap;
         }
         legend {
-            align-self: center;
+            text-align: center;
             font-size: 2.5rem;
             font-weight: bold;
         }
         label {
             width: 90%;
-            font-size: 1rem;
+            font-size: 1vw;
+            font-weight: 700;
         }
         input {
             line-height: 1.5rem;
@@ -41,17 +53,22 @@
             outline: none;
         }
         .password-area {
+            margin-left: 1.4vw;
+            width: 90%;
             display: flex;
             flex-flow: row wrap;
-            justify-content: space-between;
-            align-items: flex-end;
+            justify-content: space-between !important;
             div {
-                width: 45%;
+                display: flex;
+                flex-flow: row wrap;
+                width: 50%;
             }
         }
         button {
             align-self: center;
-            font-size: 1.25rem;
+            width: 40%;
+            font-size: 1vw;
+            font-weight: 700;
             margin: 1rem;
             color: white;
             background: black;
@@ -62,7 +79,6 @@
                 font-style: italic;
             }
         }
-    }
     .registration-page-block {
         width: 35%;
         margin: 5rem 3rem;
