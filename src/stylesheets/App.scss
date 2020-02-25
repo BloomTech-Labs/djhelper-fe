@@ -10,7 +10,12 @@
 
 /*Login Page Styles */
 .login-page {
+  background-image: url('../images/djHelperBackground-min.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 110vh;
   form {
+    margin-top: 2rem;
     width: 50%;
   }
 }
