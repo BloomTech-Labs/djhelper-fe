@@ -57,6 +57,9 @@ const EditDJ = (props) => {
         if (userInfo.profile_pic_url.length > 0) {
             infoNeeded.profile_img_src = userInfo.profile_pic_url;
         }
+        if (userInfo.bio.length > 0) {
+            infoNeeded.job_description = userInfo.bio;
+        }
         
         console.log("id: ", id);
         dispatch(editUser(id, infoNeeded));

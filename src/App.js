@@ -32,6 +32,7 @@ function App() {
       email: userInfo.email,
       phone_number: userInfo.phone,
       profile_img_src: userInfo.profile_pic_url,
+      job_description: userInfo.bio
     }
 
     dispatch(registerUserAction(infoNeeded, history));

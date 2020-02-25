@@ -59,7 +59,7 @@ export const userReducer = (state = initialState, action) => {
 
         case REGISTER_USER_SUCCESS:
             //TODO: change value of website to action.payload.user.website once backend is set up
-            //TODO: add bio once backend is set up
+            //TODO: change value of bio once backend is set up
             return {...state,
                 registerUserStart: false,
                 name: action.payload.user.name,
@@ -68,7 +68,8 @@ export const userReducer = (state = initialState, action) => {
                 email: action.payload.user.email,
                 website: action.payload.user.profile_img_src,
                 phone: action.payload.user.phone_number,
-                profile_pic_url: action.payload.user.profile_img_src
+                profile_pic_url: action.payload.user.profile_img_src,
+                bio: action.payload.user.job_description
             }
 
         case REGISTER_USER_ERROR:
@@ -82,7 +83,7 @@ export const userReducer = (state = initialState, action) => {
 
         case LOGIN_USER_SUCCESS:
             //TODO: change value of website to action.payload.user.website once backend is set up
-            //TODO: add bio once backend is set up
+            //TODO: change value of bio once backend is set up
             return {...state,
                 tokenPresent: true,
                 loginUserStart: false,
@@ -92,7 +93,8 @@ export const userReducer = (state = initialState, action) => {
                 email: action.payload.user.email,
                 website: action.payload.user.profile_img_src,
                 phone: action.payload.user.phone_number,
-                profile_pic_url: action.payload.user.profile_img_src
+                profile_pic_url: action.payload.user.profile_img_src,
+                bio: action.payload.user.job_description
             }
 
         case LOGIN_USER_ERROR:
@@ -122,7 +124,7 @@ export const userReducer = (state = initialState, action) => {
 
         case EDIT_USER_SUCCESS:
             //TODO: change value of website to action.payload.user.website once backend is set up
-            //TODO: add bio once backend is set up
+            //TODO: change value of bio once backend is set up
             return {...state,
                 editUserStart: false,
                 name: action.payload.name,
@@ -131,7 +133,8 @@ export const userReducer = (state = initialState, action) => {
                 email: action.payload.email,
                 website: action.payload.profile_img_src,
                 phone: action.payload.phone_number,
-                profile_pic_url: action.payload.profile_img_src
+                profile_pic_url: action.payload.profile_img_src,
+                bio: action.payload.job_description
             }
         
         case EDIT_USER_ERROR:
