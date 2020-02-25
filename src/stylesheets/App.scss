@@ -1,6 +1,9 @@
 .App {
-    background: rgb(198,96,182); /*#383838; */
-    height: 100vh; /*Responsive unit, will now set height to viewheight*/
+  background-image: url('../images/djHelperBackground-min.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  min-height: 110vh; /*Responsive unit, will now set height to viewheight*/
 }
 
 .loader {
@@ -8,14 +11,4 @@
   width: 10%;
 }
 
-/*Login Page Styles */
-.login-page {
-  background-image: url('../images/djHelperBackground-min.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 110vh;
-  form {
-    margin-top: 2rem;
-    width: 50%;
-  }
-}
+

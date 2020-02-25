@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
+import {Form, Input, Button} from "reactstrap";
 
 import { loginUser } from '../actions/action';
 
@@ -40,14 +41,14 @@ const Login = (props) => {
                     <hr/>
                     <div>
                         <label  htmlFor='username'>Username: </label>
-                        <input data-testid="usernameInput" name='username' type='text' id='username' required onChange={handleChange}/>
+                        <Input data-testid="usernameInput" name='username' type='text' id='username' required onChange={handleChange}/>
                     </div>
                     <div>
                         <label htmlFor='password'>Password: </label>
-                        <input data-testid="passwordInput" name='password' type='password' id='password' required onChange={handleChange}/>
+                        <Input data-testid="passwordInput" name='password' type='password' id='password' required onChange={handleChange}/>
                     </div>
 
-                    <button type='submit'>Submit</button>
+                    <button type='submit'>Login</button>
 
                     <p >Don't have an account yet? Register <Link data-testid="toRegistration" to='/register'>here!</Link></p>
                 </form>
