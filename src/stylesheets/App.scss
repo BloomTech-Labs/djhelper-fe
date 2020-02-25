@@ -20,6 +20,9 @@ form {
     align-items: center;
     width: 100%;
   }
+  .display-more {
+    flex-flow: column nowrap;
+  }
   legend {
     align-self: center;
     font-size: 2.5rem;
