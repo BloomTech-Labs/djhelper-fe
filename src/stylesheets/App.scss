@@ -5,6 +5,9 @@
 
 .registration-page {
   background: rgb(198,96,182);
+  background-image: url('../images/djHelperBackground-min.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -86,7 +89,12 @@ form {
 
 /*Login Page Styles */
 .login-page {
+  background-image: url('../images/djHelperBackground-min.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 110vh;
   form {
+    margin-top: 2rem;
     width: 50%;
   }
 }
