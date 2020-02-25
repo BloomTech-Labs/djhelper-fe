@@ -39,12 +39,12 @@ const Login = (props) => {
                     <legend>Welcome back!</legend>
                     <hr/>
                     <div>
-                        <label htmlFor='username'>Username: </label>
-                        <input name='username' type='text' id='username' required onChange={handleChange}/>
+                        <label  htmlFor='username'>Username: </label>
+                        <input data-testid="usernameInput" name='username' type='text' id='username' required onChange={handleChange}/>
                     </div>
                     <div>
                         <label htmlFor='password'>Password: </label>
-                        <input name='password' type='password' id='password' required onChange={handleChange}/>
+                        <input data-testid="passwordInput" name='password' type='password' id='password' required onChange={handleChange}/>
                     </div>
 
                     <button type='submit'>Submit</button>

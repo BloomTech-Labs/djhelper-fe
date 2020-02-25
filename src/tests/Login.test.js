@@ -8,7 +8,7 @@ import {store} from "./store";
 
 test('Login page renders correctly', () => {
   const history = createMemoryHistory()
-  const {container,queryByText, getByText} = render(
+  const {container,queryByText, getByText, getByLabelText, getByTestId} = render(
         <Provider store={store} >
             <Router history={history}>
                 <Login />
@@ -21,9 +21,14 @@ test('Login page renders correctly', () => {
   const password = getByText('Password:');
   const submit = getByText('Submit');
 
+  const usernameInput = getByTestId('usernameInput');
+  const passwordInput = getByTestId('passwordInput');
+
 
   expect(header).toBeInTheDocument();
   expect(username).toBeInTheDocument();
   expect(password).toBeInTheDocument();
   expect(submit).toBeInTheDocument();
+  expect(usernameInput).toBeInTheDocument();
+  expect(passwordInput).toBeInTheDocument();
 });
