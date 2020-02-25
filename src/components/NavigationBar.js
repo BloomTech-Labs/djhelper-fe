@@ -1,5 +1,6 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutUser } from '../actions/action';
 import {Link} from "react-router-dom";
 import {
   Navbar,
@@ -14,6 +15,14 @@ import {
 
 const NavigationBar = (props) => {
     const tokenPresent = useSelector(state => state.userReducer.tokenPresent);
+
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+      console.log('time to logout');
+      dispatch(logoutUser());
+    }
+
     return (
         <Navbar className="navBar" data-testid="navBar" dark expand="md">
             <NavbarBrand className="navElements" href="/">DJ Helper</NavbarBrand>
@@ -26,7 +35,7 @@ const NavigationBar = (props) => {
                 </NavItem>
                 <NavItem>
                     {tokenPresent
-                        ? <NavLink  onClick={props.handleLogout}>Logout</NavLink>
+                        ? <NavLink  onClick={handleLogout}>Logout</NavLink>
                         : <NavLink href="/login">Login</NavLink>
                     }
                 </NavItem>

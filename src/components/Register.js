@@ -3,6 +3,7 @@ import {Form, Input, Button} from "reactstrap";
 import { useSelector } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
+import NavigationBar from './NavigationBar';
 
 const Register = (props) => {
     const [userInfo, setUserInfo] = useState({
@@ -71,6 +72,7 @@ const Register = (props) => {
 
     return(
         <div className='registration-page'>
+        <NavigationBar />
             <div className='registration-page-block'>
                 <h1>
                     Know what your audience wants.

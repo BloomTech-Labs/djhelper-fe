@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Switch, BrowserRouter} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import NavigationBar from './components/NavigationBar';
 import Home from './components/Home';
 import Register from './components/Register';
 import Login from './components/Login';
@@ -47,7 +46,6 @@ function App() {
         <div className="App">
             <div className="overlay">
             <BrowserRouter>
-                <NavigationBar handleLogout={handleLogout}/>
                 <Route exact path='/' component={Home} />
                 <Route path='/register' render={props => <Register
                     {...props}

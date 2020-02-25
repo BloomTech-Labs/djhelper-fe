@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
 import {Form, Input, Button} from "reactstrap";
+import NavigationBar from './NavigationBar';
 
 import { loginUser } from '../actions/action';
 
@@ -29,6 +30,7 @@ const Login = (props) => {
 
     return(
         <div className='login-page'>
+        <NavigationBar />
             {isLoggingIn &&
                 <div className='loader'>
                     <Loader type="Audio" color="purple" height={200} width={200} />

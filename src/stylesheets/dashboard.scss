@@ -1,10 +1,13 @@
 .dashboard {
+    background: #1E1E1E;
+    color: white;
     h1 {
         margin-top: 5vh;
     }
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    min-height: 110vh;
 
     .board {
         display: flex;
