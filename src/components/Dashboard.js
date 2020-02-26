@@ -3,11 +3,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Button } from 'reactstrap';
 import NavigationBar from './NavigationBar';
 import Songs from './Songs';
+import Event from './Event';
+import Carousel, { Dots } from '@brainhubeu/react-carousel';
+import '@brainhubeu/react-carousel/lib/style.css';
 //import Image from 'react-bootstrap/Image';
 
 import { deleteUser, startEditUser } from '../actions/action';
 import EditDJ from './EditDJ';
 
+const image = "https://www.photohound.co/assets/img/placeholders/spot.png";
 
 const Dashboard = () => {
 
@@ -90,7 +94,18 @@ const Dashboard = () => {
             </div>
         </div>
         <div className="upcoming-events">
-        <h6> Upcoming Events</h6>
+            <h6> Upcoming Events</h6>
+                <Carousel
+                className="carousel"
+                  slidesPerPage={4}
+                  arrows
+                  infinite
+                  >
+                    <Event num={1} />
+                    <Event num={2} />
+                    <Event num={3} />
+                    <Event num={4}/>
+                </Carousel>
         </div>
         <div className="past-events">
             <h6> Past Events</h6>

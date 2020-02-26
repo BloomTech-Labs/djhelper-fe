@@ -43,10 +43,29 @@
 
 
     .upcoming-events {
+        display: flex;
+        flex-flow: column nowrap;
         border: solid 2px white;
         width: 90%;
-        height: 25vh;
+        height: 27.5vh;
         margin-top: 4vh;
+        .carousel {
+            display: flex;
+            justify-content: space-around;
+        }
+        .events {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-around;
+            align-items: center;
+            height: 20vh;
+            width: 100%;
+            img {
+                height: 15vh;
+                width: 17vw;
+            }
+
+        }
 
     }
 
