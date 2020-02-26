@@ -9,7 +9,7 @@
         border: solid 2px white;
         width: 90%;
         height: 30vh;
-        margin-top: 4vh;
+        margin-top: 5vh;
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
@@ -20,9 +20,19 @@
             width: 20%;
         }
         .newest-song-requests {
+            display: flex;
+            flex-flow: column nowrap;
             border: solid 2px white;
             height: 28vh;
             width: 50%;
+            .songs {
+                border: solid white 2px;
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: space-between;
+                align-items: flex-start;
+                
+            }
         }
         .genre-graph {
             border: solid 2px white;

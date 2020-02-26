@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from 'reactstrap';
 import NavigationBar from './NavigationBar';
+import Songs from './Songs';
 //import Image from 'react-bootstrap/Image';
 
 import { deleteUser, startEditUser } from '../actions/action';
@@ -79,7 +80,10 @@ const Dashboard = () => {
                 <p> Event description goes here</p>
             </div>
             <div className="newest-song-requests">
-                <p> List of newest song requests goes here</p>
+                <p> Newest Requests</p>
+                <Songs />
+                <Songs />
+                <Songs />
             </div>
             <div className="genre-graph">
                 <p> Genre graph goes here</p>
