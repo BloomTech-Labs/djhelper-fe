@@ -20,7 +20,6 @@ const Login = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         console.log(userInfo);
-        //props.loginUser(userInfo, props.history);
         dispatch(loginUser(userInfo, props.history));
     }
 

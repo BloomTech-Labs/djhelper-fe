@@ -52,7 +52,7 @@ export const loginUser = (userInfo, history) => dispatch => {
     console.log(userInfo);
     dispatch({type: LOGIN_USER_START});
     // TODO: Update url when available
-    axios.post('https://business-card-collector.herokuapp.com/api/users/login', userInfo)
+    axios.post('http://localhost:8000/api/login/dj', userInfo)
       .then(response => {
         console.log(response);
         localStorage.setItem('token', response.data.token);

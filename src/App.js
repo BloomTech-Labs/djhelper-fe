@@ -15,7 +15,8 @@ import './stylesheets/index.scss';
 function App() {
 
   const dispatch = useDispatch();
-
+  //TODO: Hook the register submit button directly to registerUserAction since now the upcoming data is already formatted correctly.
+  //This middle step is now not needed.
   const registerUser = (userInfo, history) => {
     console.log(userInfo);
 
