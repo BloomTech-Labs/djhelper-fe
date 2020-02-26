@@ -7,6 +7,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import DjInterface from './components/DjInterface';
+import About from './components/About';
 
 import { registerUserAction } from './actions/action';
 
@@ -46,6 +47,7 @@ function App() {
                 } />
                 <Route path='/login' component={Login} />
                 <PrivateRoute path='/dj' component={DjInterface} />
+                <Route path='/about' component={About} />
           </BrowserRouter>
             </div>
         </div>

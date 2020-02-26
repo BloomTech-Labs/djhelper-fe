@@ -127,10 +127,10 @@ export const userReducer = (state = initialState, action) => {
                 username: action.payload.username,
                 id: action.payload.id,
                 email: action.payload.email,
-                website: action.payload.profile_img_src,
-                phone: action.payload.phone_number,
-                profile_pic_url: action.payload.profile_img_src,
-                bio: action.payload.job_description
+                website: action.payload.website,
+                phone: action.payload.phone,
+                profile_pic_url: action.payload.profile_pic_url,
+                bio: action.payload.bio
             }
         
         case EDIT_USER_ERROR:
