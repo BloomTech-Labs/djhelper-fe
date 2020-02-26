@@ -36,7 +36,7 @@ export const setUsername = username => {
 
 export const registerUserAction = (infoNeeded, history) => dispatch => {
     dispatch({type: REGISTER_USER_START});
-    axios.post('https://business-card-collector.herokuapp.com/api/users/register', infoNeeded)
+    axios.post('http://localhost:8000/api/register/dj', infoNeeded)
       .then(response => {
         //console.log(response);
         history.push('/login');
