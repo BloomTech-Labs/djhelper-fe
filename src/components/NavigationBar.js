@@ -25,7 +25,7 @@ const NavigationBar = (props) => {
             <NavbarBrand className="navElements" href="/">DJ Helper</NavbarBrand>
               <Nav className=" navElements" navbar>
                 <NavItem>
-                  <NavLink href="/register">Register</NavLink>
+                  <NavLink  data-testid='register-nav' href="/register">Register</NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink href="https://github.com/Lambda-School-Labs/djhelper-fe">GitHub</NavLink>

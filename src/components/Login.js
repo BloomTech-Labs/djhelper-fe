@@ -50,7 +50,7 @@ const Login = (props) => {
                         <Input data-testid="passwordInput" name='password' type='password' id='password' required onChange={handleChange}/>
                     </div>
 
-                    <button type='submit'>Login</button>
+                    <button data-testid='submit-button' type='submit'>Login</button>
 
                     <p>Don't have an account yet? <b><Link data-testid="toRegistration" to='/register'>Register here!</Link></b></p>
                 </form>

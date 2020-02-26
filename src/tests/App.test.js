@@ -41,15 +41,16 @@ test('Login link sends user to the login page', () => {
 
 test('Register link sends user to the register page', () => {
   const history = createMemoryHistory()
-  const {container,queryByText, getByText} = render(
+  const {container,queryByText, getByText, getByTestId } = render(
         <Provider store={store} >
             <Router history={history}>
                 <App />
             </Router>
         </Provider>
   );
-  //TODO: Find way to get this specific instance of 'register'
+  //TODO: Find way to get this specific instance of 'register'. Line 53 also causes an error.
   fireEvent.click(getByText(/register/i));
+  //fireEvent.click(getByTestId('register-nav'));
 
   const currentUrl = history.entries[1].pathname;
   expect(currentUrl).toMatch('/register');
