@@ -42,7 +42,7 @@ const Login = (props) => {
                     <legend>Welcome back!</legend>
                     <hr/>
                     <div>
-                        <label  htmlFor='username'>Username or email: </label>
+                        <label  htmlFor='username'>Username: </label>
                         <Input id="username" data-testid="usernameInput" name='username' type='text' id='username' required onChange={handleChange}/>
                     </div>
                     <div>
@@ -52,7 +52,7 @@ const Login = (props) => {
 
                     <button type='submit'>Login</button>
 
-                    <p >Don't have an account yet? <b><Link data-testid="toRegistration" to='/register'>Register here!</Link></b></p>
+                    <p>Don't have an account yet? <b><Link data-testid="toRegistration" to='/register'>Register here!</Link></b></p>
                 </form>
             }
         </div>

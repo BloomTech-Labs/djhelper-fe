@@ -138,7 +138,7 @@ const Register = (props) => {
 
                     <button type='submit'>Submit</button>
 
-                    <p>Already have an account? Login <Link data-testid="toLogin" to='/login'>here</Link>.</p>
+                    <p>Already have an account? <span className='bold-text'><Link data-testid="toLogin" to='/login'>Login here</Link></span>.</p>
                 </Form>
 
             }
