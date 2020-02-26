@@ -1,12 +1,6 @@
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.
-
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
-
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
-
 #  DJ Helper
 
-1️⃣ You can find the deployed project [here](https://master.d2poed2e8xjq7e.amplifyapp.com/register).
+You can find the deployed project [here](https://master.d2poed2e8xjq7e.amplifyapp.com/register).
 
 ## 4️⃣ Contributors
 
@@ -33,7 +27,7 @@
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
-![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](netlify link goes in these parenthesis)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
@@ -47,7 +41,7 @@
 
  [UX Design files](https://www.figma.com/file/g79lCjYSWFCOBGyBRKzO96/DJ-Helper%2C-Emily?node-id=177%3A0) 
 
-To be the easiest way for DJs to collect and display relevant song requests at events.
+Mission Statement: To be the easiest way for DJs to collect and display relevant song requests at events.
 
 
 ### 4️⃣ Key Features
@@ -72,15 +66,15 @@ To be the easiest way for DJs to collect and display relevant song requests at e
 
 🚫List the rest of the front end features and libraries in the same format as the framework above.
 
-#### Front end deployed to `🚫insert service here`
+#### Front end deployed to AWS.
 
 #### [Back end](🚫link to back end repo here) built using:
 
-#### Express, Heroku, Postgresql
+#### Express, Postgresql, AWS
 
 -    Using node with an Express server will allow us to query the data science's API as well as handle the requests from the front end.
--    Using heroku with postrgresql (or another good option like MongoDB) will allow us to have data that persists, which will ideal for all users. 
--    Implementing authentication and authorization with hashing (bcryptjs) and JSON web tokens or another method will insure that only authorized users will have access to sensitive data.
+-    Using AWS with postrgresql will allow us to have data that persists, which will ideal for all users. 
+-    Implementing authentication and authorization with hashing (bcryptjs) and JSON web tokens will insure that only authorized users will have access to sensitive data.
 
 🚫 List the rest of the back end end features and libraries in the same format as the framework above
 
@@ -148,7 +142,20 @@ In order for the app to function correctly, the user must set up their own envir
 
 # 4️⃣ Installation Instructions
 
-🚫explain how to install the required dependencies to get this project up and running with yarn and NPM
+To get the app running locally:
+
+1. Clone this repo
+
+2. `npm i` to install all required dependencies
+
+3. `npm start` to start the local server and run the app in the development mode.
+
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+    - The page will reload if you make edits.<br />
+
+    - You will also see any lint errors in the console.
+
 
 ## Other Scripts
 
@@ -197,4 +204,4 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](🚫_link to your backend readme here_) for details on the backend of our project.
+See [Backend Documentation](https://github.com/Lambda-School-Labs/djhelper-be/blob/master/README.md) for details on the backend of our project.
