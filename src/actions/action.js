@@ -80,7 +80,7 @@ export const loginUser = (userInfo, history) => dispatch => {
   export const deleteUser = id => dispatch => {
       console.log('in deleteUser action');
       dispatch({type: DELETE_USER_START});
-      axiosWithAuth().delete(`https://business-card-collector.herokuapp.com/api/users/${id}`)
+      axiosWithAuth().delete(`http://localhost:8000/api/delete-dj/${id}`)
         .then(response => {
             console.log(response);
             if (localStorage.getItem('token')) {
