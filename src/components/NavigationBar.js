@@ -1,15 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from '../actions/action';
-import {Link} from "react-router-dom";
+
 import {
   Navbar,
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  NavbarText,
-  Button
+  NavLink
 } from 'reactstrap';
 
 
@@ -19,7 +17,6 @@ const NavigationBar = (props) => {
     const dispatch = useDispatch();
 
     const handleLogout = () => {
-      console.log('time to logout');
       dispatch(logoutUser());
     }
 
