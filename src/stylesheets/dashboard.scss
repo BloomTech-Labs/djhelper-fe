@@ -5,8 +5,21 @@
     flex-flow: column nowrap;
     align-items: center;
 
+    .carousel {
+        display: flex;
+        justify-content: space-around;
+
+        button {
+            background: none;
+            border: none;
+        }
+
+        svg:hover {
+            color: grey;
+        }
+    }
+
     .preview-event-details {
-        border: solid 2px white;
         width: 90%;
         height: 30vh;
         margin-top: 5vh;
@@ -15,14 +28,12 @@
         justify-content: space-between;
 
         .event-description {
-            border: solid 2px white;
             height: 28vh;
             width: 20%;
         }
         .newest-song-requests {
             display: flex;
             flex-flow: column nowrap;
-            border: solid 2px white;
             height: 28vh;
             width: 50%;
             .songs {
@@ -35,7 +46,6 @@
             }
         }
         .genre-graph {
-            border: solid 2px white;
             height: 28vh;
             width: 20%;
         }
@@ -45,14 +55,9 @@
     .upcoming-events {
         display: flex;
         flex-flow: column nowrap;
-        border: solid 2px white;
         width: 90%;
         height: 27.5vh;
         margin-top: 4vh;
-        .carousel {
-            display: flex;
-            justify-content: space-around;
-        }
         .events {
             display: flex;
             flex-flow: column nowrap;
@@ -62,7 +67,7 @@
             width: 100%;
             img {
                 height: 15vh;
-                width: 17vw;
+                width: 15vw;
             }
 
         }
@@ -70,10 +75,25 @@
     }
 
     .past-events {
-        border: solid 2px white;
+        display: flex;
+        flex-flow: column nowrap;
         width: 90%;
         height: 40vh;
         margin-top: 4vh;
+        .events {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-around;
+            align-items: center;
+            height: 30vh;
+            width: 100%;
+            img {
+                height: 25vh;
+                width: 15vw;
+            }
+
+        }
+
 
     }
 

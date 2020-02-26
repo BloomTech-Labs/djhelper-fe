@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "@brainhubeu/react-carousel": "^1.12.9-alpha",
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.8",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -14,6 +17,7 @@
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-fontawesome": "^1.7.1",
     "react-loader-spinner": "^3.1.5",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
