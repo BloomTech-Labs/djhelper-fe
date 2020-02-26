@@ -129,7 +129,7 @@ In order for the app to function correctly, the user must set up their own envir
 
 # 5️⃣ Content Licenses
 
-🚫For all content - images, icons, etc, use this table to document permission of use. Remove the two placeholders and add you content to this table
+🚫For all content - images, icons, etc, use this table to document permission of use. Remove the two placeholders and add your content to this table
 
 | Image Filename | Source / Creator | License                                                                      |
 | -------------- | ---------------- | ---------------------------------------------------------------------------- |
