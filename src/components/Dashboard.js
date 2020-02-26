@@ -30,10 +30,7 @@ const Dashboard = () => {
         console.log('time to edit dj user info');
         dispatch(startEditUser());
     }
-
-    return (
-        <div className="dashboard">
-        <NavigationBar />
+        /*
             <h1> Dashboard</h1>
             <div className="welcome">
                 {name
@@ -72,6 +69,28 @@ const Dashboard = () => {
                     <p><span>Add Event and Event List coming soon!</span></p>
                 </div>
             </div>
+            */
+
+    return (
+        <div className="dashboard">
+        <NavigationBar />
+        <div className="preview-event-details">
+            <div className="event-description">
+                <p> Event description goes here</p>
+            </div>
+            <div className="newest-song-requests">
+                <p> List of newest song requests goes here</p>
+            </div>
+            <div className="genre-graph">
+                <p> Genre graph goes here</p>
+            </div>
+        </div>
+        <div className="upcoming-events">
+        <h6> Upcoming Events</h6>
+        </div>
+        <div className="past-events">
+            <h6> Past Events</h6>
+        </div>
         </div>
     )
 }

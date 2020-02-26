@@ -1,6 +1,56 @@
 .dashboard {
     background: #1E1E1E;
     color: white;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    .preview-event-details {
+        border: solid 2px white;
+        width: 90%;
+        height: 30vh;
+        margin-top: 4vh;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+
+        .event-description {
+            border: solid 2px white;
+            height: 28vh;
+            width: 20%;
+        }
+        .newest-song-requests {
+            border: solid 2px white;
+            height: 28vh;
+            width: 50%;
+        }
+        .genre-graph {
+            border: solid 2px white;
+            height: 28vh;
+            width: 20%;
+        }
+    }
+
+
+    .upcoming-events {
+        border: solid 2px white;
+        width: 90%;
+        height: 25vh;
+        margin-top: 4vh;
+
+    }
+
+    .past-events {
+        border: solid 2px white;
+        width: 90%;
+        height: 40vh;
+        margin-top: 4vh;
+
+    }
+
+
+
+
     h1 {
         margin-top: 5vh;
     }
