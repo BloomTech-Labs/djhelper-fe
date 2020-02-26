@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
+import { Input } from "reactstrap";
+import NavigationBar from './NavigationBar';
 
 import { loginUser } from '../actions/action';
 
@@ -28,6 +30,7 @@ const Login = (props) => {
 
     return(
         <div className='login-page'>
+        <NavigationBar />
             {isLoggingIn &&
                 <div className='loader'>
                     <Loader type="Audio" color="purple" height={200} width={200} />
@@ -39,17 +42,17 @@ const Login = (props) => {
                     <legend>Welcome back!</legend>
                     <hr/>
                     <div>
-                        <label htmlFor='username'>Username: </label>
-                        <input name='username' type='text' id='username' required onChange={handleChange}/>
+                        <label  htmlFor='username'>Username: </label>
+                        <Input id="username" data-testid="usernameInput" name='username' type='text'required onChange={handleChange}/>
                     </div>
                     <div>
                         <label htmlFor='password'>Password: </label>
-                        <input name='password' type='password' id='password' required onChange={handleChange}/>
+                        <Input data-testid="passwordInput" name='password' type='password' id='password' required onChange={handleChange}/>
                     </div>
 
-                    <button type='submit'>Submit</button>
+                    <button data-testid='submit-button' type='submit'>Login</button>
 
-                    <p>Don't have an account yet? Register <Link to='/register'>here!</Link></p>
+                    <p>Don't have an account yet? <b><Link data-testid="toRegistration" to='/register'>Register here!</Link></b></p>
                 </form>
             }
         </div>

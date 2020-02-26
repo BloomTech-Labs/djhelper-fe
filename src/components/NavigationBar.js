@@ -1,34 +1,42 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import {Link} from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutUser } from '../actions/action';
+
 import {
   Navbar,
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  NavbarText,
-  Button
+  NavLink
 } from 'reactstrap';
 
 
 const NavigationBar = (props) => {
     const tokenPresent = useSelector(state => state.userReducer.tokenPresent);
+
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+      dispatch(logoutUser());
+    }
+
     return (
-        <Navbar data-testid="navBar" color="dark" dark expand="md">
-            <NavbarBrand href="/">DJ Helper</NavbarBrand>
-              <Nav className="mr-auto" navbar>
+        <Navbar className="navBar" data-testid="navBar" dark expand="md">
+            <NavbarBrand className="navElements" href="/">DJ Helper</NavbarBrand>
+              <Nav className=" navElements" navbar>
                 <NavItem>
-                  <NavLink href="/register">Register</NavLink>
+                  <NavLink  data-testid='register-nav' href="/register">Register</NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink href="https://github.com/Lambda-School-Labs/djhelper-fe">GitHub</NavLink>
                 </NavItem>
-             </Nav>
-            {tokenPresent
-                ? <Button  onClick={props.handleLogout}>Logout</Button>
-                : <Link to="/login"><Button>Login</Button></Link>
-            }
+                <NavItem>
+                    {tokenPresent
+                        ? <NavLink  onClick={handleLogout}>Logout</NavLink>
+                        : <NavLink href="/login">Login</NavLink>
+                    }
+                </NavItem>
+         </Nav>
         </Navbar>
     )
 }

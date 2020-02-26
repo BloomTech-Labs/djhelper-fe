@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from 'reactstrap';
+import NavigationBar from './NavigationBar';
 //import Image from 'react-bootstrap/Image';
 
 import { deleteUser, startEditUser } from '../actions/action';
@@ -21,8 +22,8 @@ const Dashboard = () => {
     const id = useSelector(state => state.userReducer.id);
     const editUserStart = useSelector(state => state.userReducer.editUserStart);
 
-    const handleDelete = () => {  
-        dispatch(deleteUser(id));  
+    const handleDelete = () => {
+        dispatch(deleteUser(id));
     }
 
     const startEdit = () => {
@@ -32,13 +33,14 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard">
+        <NavigationBar />
             <h1> Dashboard</h1>
             <div className="welcome">
                 {name
                     ? <p>Welcome, {name}!</p>
                     : <p>Welcome</p>
                 }
-                
+
             </div>
             <div className="board">
                 <div>
@@ -52,13 +54,13 @@ const Dashboard = () => {
                     {profile_pic_url && <div className='img-container'><img src={profile_pic_url} alt={name} /></div>}
                 </div>
             </div>
-            
+
             <div>
                 <Button className="btn-secondary" onClick={startEdit}>Edit DJ Info</Button>
                 <Button className="btn-danger" onClick={handleDelete}>Delete DJ Account</Button>
             </div>
-            
-            {editUserStart && 
+
+            {editUserStart &&
                 <div>
                     <EditDJ />
                 </div>

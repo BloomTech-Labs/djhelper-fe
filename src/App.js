@@ -1,21 +1,19 @@
 import React from 'react';
-import { Route, Switch, BrowserRouter} from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { Route, BrowserRouter } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-import NavigationBar from './components/NavigationBar';
 import Home from './components/Home';
 import Register from './components/Register';
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import DjInterface from './components/DjInterface';
 
-import { registerUserAction, logoutUser } from './actions/action';
+import { registerUserAction } from './actions/action';
 
 import './stylesheets/index.scss';
 
 function App() {
 
-  const name = useSelector(state => state.userReducer.name);
   const dispatch = useDispatch();
 
   const registerUser = (userInfo, history) => {
@@ -38,24 +36,20 @@ function App() {
     dispatch(registerUserAction(infoNeeded, history));
   }
 
-  const handleLogout = () => {
-    console.log('time to logout');
-    dispatch(logoutUser());
-  }
-
   return (
         <div className="App">
-        <BrowserRouter>
-            <NavigationBar handleLogout={handleLogout}/>
-            <Route exact path='/' component={Home} />
-            <Route path='/register' render={props => <Register
-                {...props}
-                registerUser={registerUser}
-                />
-            } />
-            <Route path='/login' component={Login} />
-            <PrivateRoute path='/dj' component={DjInterface} />
-      </BrowserRouter>
+            <div className="overlay">
+            <BrowserRouter>
+                <Route exact path='/' component={Home} />
+                <Route path='/register' render={props => <Register
+                    {...props}
+                    registerUser={registerUser}
+                    />
+                } />
+                <Route path='/login' component={Login} />
+                <PrivateRoute path='/dj' component={DjInterface} />
+          </BrowserRouter>
+            </div>
         </div>
 
   );
