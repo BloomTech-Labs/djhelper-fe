@@ -48,7 +48,7 @@ test('Register link sends user to the register page', () => {
             </Router>
         </Provider>
   );
-
+  //TODO: Find way to get this specific instance of 'register'
   fireEvent.click(getByText(/register/i));
 
   const currentUrl = history.entries[1].pathname;
