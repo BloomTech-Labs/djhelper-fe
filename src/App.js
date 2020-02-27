@@ -8,6 +8,7 @@ import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import DjInterface from './components/DjInterface';
 import About from './components/About';
+import DJProfile from './components/DJProfile';
 
 import { registerUserAction } from './actions/action';
 
@@ -57,6 +58,7 @@ function App() {
                 } />
                 <Route path='/login' component={Login} />
                 <PrivateRoute path='/dj' component={DjInterface} />
+                <PrivateRoute path='/dj/profile' component={DJProfile} />
                 <Route path='/about' component={About} />
           </BrowserRouter>
             </div>
