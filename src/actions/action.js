@@ -82,7 +82,7 @@ export const loginUser = (userInfo, history) => dispatch => {
       dispatch({type: DELETE_USER_START});
       //TODO: Endpoint might change when auth router is set up in backend; change it here if needed.
       //TODO: Update endpoint when deployed endpoint is ready.
-      axiosWithAuth().delete(`http://localhost:8000/api/delete-dj/${id}`)
+      axiosWithAuth().delete(`http://localhost:8000/api/auth/dj/${id}`)
         .then(response => {
             console.log(response);
             if (localStorage.getItem('token')) {
