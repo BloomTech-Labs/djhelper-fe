@@ -102,10 +102,10 @@ export const loginUser = (userInfo, history) => dispatch => {
   }
 
   export const editUser = (id, userInfo) => dispatch => {  
-    axiosWithAuth().put(`http://localhost:8000/api/update-dj/${id}`, userInfo)
+    axiosWithAuth().put(`http://localhost:8000/api/auth/dj/${id}`, userInfo)
         .then(response => {
             console.log(response);
-            dispatch({type: EDIT_USER_SUCCESS, payload: response.data[0]})
+            dispatch({type: EDIT_USER_SUCCESS, payload: response.data})
         })
         .catch(err => {
             console.log(err);
