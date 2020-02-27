@@ -63,7 +63,7 @@ const About = () => {
             </div>
             
             <div className='get-started'>
-                <Link to='/register'>Let's Get Started</Link>
+                <Link to='/register' data-testid='toRegistration'>Let's Get Started</Link>
             </div>
         </div>
     )
