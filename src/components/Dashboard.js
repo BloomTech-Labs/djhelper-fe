@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Button } from 'reactstrap';
 import NavigationBar from './NavigationBar';
 import PreviewEventDetails from './PreviewEventDetails';
+import DashboardWelcome from './DashboardWelcome';
 import Event from './Event';
 import Carousel, { Dots } from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
@@ -102,6 +103,14 @@ const Dashboard = () => {
                 </div>
             }
             */
+    const whichComponent = () => {
+        if (data.active.length > 1) {
+            return <PreviewEventDetails data={data} setData={setData} currentlyActive={currentlyActive} />
+        } else {
+            return <DashboardWelcome name={name} />
+        }
+    }
+
 
     let thing = data.active
     let currentlyActive = data[thing];
@@ -109,7 +118,8 @@ const Dashboard = () => {
     return (
         <div className="dashboard">
         <NavigationBar />
-        <PreviewEventDetails data={data} setData={setData} currentlyActive={currentlyActive} />
+        {whichComponent()}
+
            <div className="upcoming-events">
             <h6> Upcoming Events</h6>
                 <Carousel
