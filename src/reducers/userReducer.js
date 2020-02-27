@@ -58,18 +58,16 @@ export const userReducer = (state = initialState, action) => {
             return {...state, registerUserStart: true}
 
         case REGISTER_USER_SUCCESS:
-            //TODO: change value of website to action.payload.user.website once backend is set up
-            //TODO: change value of bio once backend is set up
             return {...state,
                 registerUserStart: false,
-                name: action.payload.user.name,
-                username: action.payload.user.username,
-                id: action.payload.user.id,
-                email: action.payload.user.email,
-                website: action.payload.user.profile_img_src,
-                phone: action.payload.user.phone_number,
-                profile_pic_url: action.payload.user.profile_img_src,
-                bio: action.payload.user.job_description
+                name: action.payload.name,
+                username: action.payload.username,
+                id: action.payload.id,
+                email: action.payload.email,
+                website: action.payload.website,
+                phone: action.payload.phone,
+                profile_pic_url: action.payload.profile_pic_url,
+                bio: action.payload.bio
             }
 
         case REGISTER_USER_ERROR:
@@ -82,19 +80,17 @@ export const userReducer = (state = initialState, action) => {
             return {...state, loginUserStart: true}
 
         case LOGIN_USER_SUCCESS:
-            //TODO: change value of website to action.payload.user.website once backend is set up
-            //TODO: change value of bio once backend is set up
             return {...state,
                 tokenPresent: true,
                 loginUserStart: false,
-                name: action.payload.user.name,
-                username: action.payload.user.username,
-                id: action.payload.user.id,
-                email: action.payload.user.email,
-                website: action.payload.user.profile_img_src,
-                phone: action.payload.user.phone_number,
-                profile_pic_url: action.payload.user.profile_img_src,
-                bio: action.payload.user.job_description
+                name: action.payload.name,
+                username: action.payload.username,
+                id: action.payload.id,
+                email: action.payload.email,
+                website: action.payload.website,
+                phone: action.payload.phone,
+                profile_pic_url: action.payload.profile_pic_url,
+                bio: action.payload.bio
             }
 
         case LOGIN_USER_ERROR:
@@ -131,10 +127,10 @@ export const userReducer = (state = initialState, action) => {
                 username: action.payload.username,
                 id: action.payload.id,
                 email: action.payload.email,
-                website: action.payload.profile_img_src,
-                phone: action.payload.phone_number,
-                profile_pic_url: action.payload.profile_img_src,
-                bio: action.payload.job_description
+                website: action.payload.website,
+                phone: action.payload.phone,
+                profile_pic_url: action.payload.profile_pic_url,
+                bio: action.payload.bio
             }
         
         case EDIT_USER_ERROR:

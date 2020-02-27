@@ -35,7 +35,7 @@ const EditDJ = (props) => {
         e.preventDefault();
         console.log(userInfo);
         let infoNeeded = {};
-        //TODO: Add bio and website when we have our own backend
+
         if (userInfo.username.length > 0) {
             infoNeeded.username = userInfo.username;
         }
@@ -52,13 +52,17 @@ const EditDJ = (props) => {
             infoNeeded.email = userInfo.email;
         }
         if (userInfo.phone.length > 0) {
-            infoNeeded.phone_number = userInfo.phone;
+            infoNeeded.phone = userInfo.phone;
         }
         if (userInfo.profile_pic_url.length > 0) {
-            infoNeeded.profile_img_src = userInfo.profile_pic_url;
+            infoNeeded.profile_pic_url = userInfo.profile_pic_url;
         }
         if (userInfo.bio.length > 0) {
-            infoNeeded.job_description = userInfo.bio;
+            infoNeeded.bio = userInfo.bio;
+        }
+
+        if (userInfo.website.length > 0) {
+            infoNeeded.website = userInfo.website;
         }
         
         console.log("id: ", id);

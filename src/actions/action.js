@@ -36,7 +36,7 @@ export const setUsername = username => {
 
 export const registerUserAction = (infoNeeded, history) => dispatch => {
     dispatch({type: REGISTER_USER_START});
-    axios.post('https://business-card-collector.herokuapp.com/api/users/register', infoNeeded)
+    axios.post('http://localhost:8000/api/register/dj', infoNeeded)
       .then(response => {
         //console.log(response);
         history.push('/login');
@@ -51,8 +51,8 @@ export const registerUserAction = (infoNeeded, history) => dispatch => {
 export const loginUser = (userInfo, history) => dispatch => {
     console.log(userInfo);
     dispatch({type: LOGIN_USER_START});
-    // TODO: Update url when available
-    axios.post('https://business-card-collector.herokuapp.com/api/users/login', userInfo)
+    // TODO: Update url when deployed backend is available
+    axios.post('http://localhost:8000/api/login/dj', userInfo)
       .then(response => {
         console.log(response);
         localStorage.setItem('token', response.data.token);
@@ -80,7 +80,9 @@ export const loginUser = (userInfo, history) => dispatch => {
   export const deleteUser = id => dispatch => {
       console.log('in deleteUser action');
       dispatch({type: DELETE_USER_START});
-      axiosWithAuth().delete(`https://business-card-collector.herokuapp.com/api/users/${id}`)
+      //TODO: Endpoint might change when auth router is set up in backend; change it here if needed.
+      //TODO: Update endpoint when deployed endpoint is ready.
+      axiosWithAuth().delete(`http://localhost:8000/api/auth/dj/${id}`)
         .then(response => {
             console.log(response);
             if (localStorage.getItem('token')) {
@@ -100,7 +102,7 @@ export const loginUser = (userInfo, history) => dispatch => {
   }
 
   export const editUser = (id, userInfo) => dispatch => {  
-    axiosWithAuth().put(`https://business-card-collector.herokuapp.com/api/users/${id}`, userInfo)
+    axiosWithAuth().put(`http://localhost:8000/api/auth/dj/${id}`, userInfo)
         .then(response => {
             console.log(response);
             dispatch({type: EDIT_USER_SUCCESS, payload: response.data})
