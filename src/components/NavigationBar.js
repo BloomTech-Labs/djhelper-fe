@@ -31,6 +31,9 @@ const NavigationBar = (props) => {
                   <NavLink href="https://github.com/Lambda-School-Labs/djhelper-fe">GitHub</NavLink>
                 </NavItem>
                 <NavItem>
+                  <NavLink href="/about">About</NavLink>
+                </NavItem>
+                <NavItem>
                     {tokenPresent
                         ? <NavLink  onClick={handleLogout}>Logout</NavLink>
                         : <NavLink href="/login">Login</NavLink>

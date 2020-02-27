@@ -86,4 +86,25 @@
             }
         }
     }
+    .get-started {
+        padding: 1rem;
+        background:$mediumPurple;
+        color: $mediumPurple;
+        margin: 1rem auto;
+        width: 12rem;
+        border-radius: 3px;
+        text-align: center;
+        font-weight: bold;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+            transform: scale(1.2);
+        }
+        a {
+            color: white;
+            font-size: 1.5rem;
+            &:hover {
+                text-decoration: none;   
+            }
+        }
+    }
 }

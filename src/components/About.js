@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMusic, faUserCircle, faFile, faEdit, faCheckCircle, faTrophy, faListOl } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import NavigationBar from './NavigationBar';
 
 
@@ -61,6 +62,9 @@ const About = () => {
                 </div>
             </div>
             
+            <div className='get-started'>
+                <Link to='/register'>Let's Get Started</Link>
+            </div>
         </div>
     )
 }
