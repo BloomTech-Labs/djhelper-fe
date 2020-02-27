@@ -20,7 +20,7 @@ const DJProfile = props => {
                 <div className='image-container'>
                     <img src={profile_pic_url} alt='dj profile' />
                 </div>
-                <button onClick={dispatch(editUserStart)}>Edit</button>
+                <button>Edit</button>
             </div>
 
             <div className='text-side'>

@@ -57,9 +57,9 @@ function App() {
                     />
                 } />
                 <Route path='/login' component={Login} />
-                <PrivateRoute path='/dj' component={DjInterface} />
-                <PrivateRoute path='/dj/profile' component={DJProfile} />
-                <Route path='/about' component={About} />
+                <PrivateRoute exact path='/dj' component={DjInterface} />
+                <Route path='/dj/profile' component={DJProfile} />
+                <PrivateRoute path='/about' component={About} />
           </BrowserRouter>
             </div>
         </div>
