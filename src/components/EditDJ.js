@@ -20,8 +20,8 @@ const EditDJ = (props) => {
 
     const [userInfo, setUserInfo] = useState({
         username: username,
-        password: '',
-        repassword: '',
+        //password: '',
+        //repassword: '',
         name: name,
         email: email,
         website: website,

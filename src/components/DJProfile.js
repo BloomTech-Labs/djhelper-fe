@@ -1,6 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { startEditUser } from '../actions/action';
+
+import EditDJ from './EditDJ';
+import NavigationBar from './NavigationBar';
+
+import DJMixer from '../images/DJMixer.jpg';
 
 const DJProfile = props => {
     const dispatch = useDispatch();
@@ -11,35 +16,38 @@ const DJProfile = props => {
     const website = useSelector(state => state.userReducer.website);
     const bio = useSelector(state => state.userReducer.bio);
     const profile_pic_url = useSelector(state => state.userReducer.profile_pic_url);
-    const id = useSelector(state => state.userReducer.id);
     const editUserStart = useSelector(state => state.userReducer.editUserStart);
-
+    
     return (
-        <div>
-            <div className='image-side'>
-                <div className='image-container'>
-                    <img src={profile_pic_url} alt='dj profile' />
+        <div className='dj-profile-page'>
+            <NavigationBar />
+            <div className='main-content'>
+                <div className='side image-side'>
+                    <div className='image-container'>
+                        <img src={DJMixer} alt='dj profile' />
+                    </div>
+                    <button>Edit</button>
                 </div>
-                <button>Edit</button>
-            </div>
 
-            <div className='text-side'>
-                <h1>{username}</h1>
+                <div className='side text-side'>
+                    <div>
+                        <h1>{username}</h1>
 
-                <p>{bio}</p>
+                        <p>{bio}</p>
 
-                <h3>Name</h3>
-                <p>{name}</p>
+                        <h3>Name</h3>
+                        <p>{name}</p>
 
-                <h3>Email</h3>
-                <p><a href={`mailto:${email}`}>{email}</a></p>
+                        <h3>Email</h3>
+                        <p><a href={`mailto:${email}`}>{email}</a></p>
 
-                <h3>Website</h3>
-                <p><a href={website}>{website}</a></p>
+                        <h3>Website</h3>
+                        <p><a href={website}>{website}</a></p>
 
-                <h3>Phone</h3>
-                <p><a href={`tel:${phone}`}>{phone}</a></p>
-
+                        <h3>Phone</h3>
+                        <p><a href={`tel:${phone}`}>{phone}</a></p>
+                    </div>
+                </div>
             </div>
 
             
@@ -48,3 +56,11 @@ const DJProfile = props => {
 }
 
 export default DJProfile;
+
+/*
+//To add:
+
+                {editUserStart &&
+                <EditDJ />
+                }
+*/

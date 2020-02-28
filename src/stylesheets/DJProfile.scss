@@ -1,0 +1,20 @@
+.dj-profile-page  {
+    background: black;
+    color: white;
+    min-height: 110vh;
+    .main-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        div {
+            width: 40%;
+            background: gray;
+            .image-container {
+                width: 60%;
+                img {
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+}
