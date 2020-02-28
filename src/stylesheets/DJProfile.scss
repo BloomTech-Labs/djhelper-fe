@@ -1,18 +1,74 @@
 .dj-profile-page  {
-    background: black;
+    background: $dark3;
+    background-image: url('../images/profile-banner.svg');
+    background-repeat: repeat-x;
     color: white;
     min-height: 110vh;
     .main-content {
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-top: 5rem;
+        margin-left: 2rem;
         div {
-            width: 40%;
-            background: gray;
             .image-container {
-                width: 60%;
+                width: 18rem;
+                display: inline-block;
+                position: relative;
+                height: 18rem;
+                overflow: hidden;
+                border-radius: 50%;
+                margin: 1rem;
                 img {
-                    max-width: 100%;
+                    width: auto;
+                    height: 100%;
+                    margin-left: -50px;
+                }
+            }
+        }
+        .image-side {
+            width: 30%;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: center;
+            button {
+                width: 10rem;
+                background: black;
+                color: white;
+                border-radius: 3px;
+                border: none;
+                outline: none;
+                transition: all 0.2 ease-in-out;
+                font-weight: bold;
+                padding: 0.25rem;
+                font-size: 1.25rem;
+                &:hover {
+                    transform: scale(1.2);
+                }
+            }
+        }
+        .text-side {
+            width: 30%;
+            margin-top: 4rem;
+            background: $dark3;
+            h1 {
+                font-size: 5rem;
+                padding: 1rem;
+            }
+            h3 {
+                color: $headlineGray;
+                font-size: 1.5rem;
+            }
+            p {
+                margin-left: 2rem;
+                font-size: 1.25rem;
+            }
+            a {
+                color: white;
+                &:hover {
+                    text-decoration: none;
+                    color: $lightPurple;
                 }
             }
         }
