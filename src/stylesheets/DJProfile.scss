@@ -4,6 +4,7 @@
     background-repeat: repeat-x;
     color: white;
     min-height: 110vh;
+    padding-bottom: 5%;
     .main-content {
         display: flex;
         flex-flow: row wrap;
@@ -84,7 +85,9 @@
             }
         }
         .text-side {
-            width: 30%;
+            width: 35%;
+            word-wrap: break-word;
+            overflow-x: auto;
             margin-top: 6rem;
             background: $dark3;
             @media (max-width: 1150px) {
@@ -94,8 +97,9 @@
                 width: 80%;
             }
             h1 {
-                font-size: 5rem;
+                font-size: 4vw;
                 padding: 1rem;
+                width: 100%;
             }
             h3 {
                 color: $headlineGray;
@@ -113,7 +117,6 @@
                 }
             }
             form {
-                border: solid pink 2px;
                 label {
                     font-weight: bold;
                     font-size: 1.25rem;
