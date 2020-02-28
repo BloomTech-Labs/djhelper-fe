@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt} from '@fortawesome/free-solid-svg-icons';
 
-import { editUser } from '../actions/action';
+import { editUser, cancelEditUser } from '../actions/action';
 
 import DJMixer from '../images/DJMixer.jpg';
 
@@ -24,7 +24,6 @@ const EditDJ = (props) => {
 
     const [profileImg, setProfileImg] = useState(DJMixer);
     const profile = useRef();
-    const [isEditing, setIsEditing] = useState(false);
     const [wantsToChangeImg, setWantsToChangeImg] = useState(false);
 
     useEffect(() => {
@@ -37,7 +36,6 @@ const EditDJ = (props) => {
         let height = profile.current.naturalHeight;
         let width = profile.current.naturalWidth;
         let orientation = (height > width)? 'portrait': 'landscape';
-        //console.log('width: ', width, '. Height: ', height, '. Orientation: ', orientation);
         if (orientation === 'landscape') {
             profile.current.classList.add('landscape');
         } else {
@@ -45,16 +43,8 @@ const EditDJ = (props) => {
         }   
     }
 
-    const handleClick = () => {
-        console.log('time to edit');
-        setIsEditing(!isEditing);
-    }
-
-
     const [userInfo, setUserInfo] = useState({
         username: username,
-        //password: '',
-        //repassword: '',
         name: name,
         email: email,
         website: website,
@@ -101,6 +91,11 @@ const EditDJ = (props) => {
         setUserInfo({...userInfo, [e.target.name]:e.target.value});
     }
 
+    const handleCancel = () => {
+        console.log('time to cancel edit');
+        dispatch(cancelEditUser());
+    }
+
     return(
         <div>
             <div className='main-content'>
@@ -108,7 +103,8 @@ const EditDJ = (props) => {
                     <div className='image-container'>
                         <img src={profileImg} alt='dj profile' ref={profile} onLoad={handleOrientation}/>
                     </div>
-                    <button onClick={handleClick}>Edit</button>
+                    <button onClick={handleSubmit} className='save'>Save</button>
+                    <button onClick={handleCancel} className='cancel'>Cancel</button>
                     <span className='edit-icon' onClick={() => setWantsToChangeImg(!wantsToChangeImg)}><FontAwesomeIcon icon={faPencilAlt} /></span>
                 </div>
 
@@ -184,7 +180,6 @@ const EditDJ = (props) => {
                                 onChange={handleChange}
                                 value={userInfo.profile_pic_url}/>
                         </div>
-                        <button type='submit'>Submit</button>
                     </Form>
                 </div>
             </div>

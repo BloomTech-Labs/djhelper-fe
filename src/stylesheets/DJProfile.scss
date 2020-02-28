@@ -61,6 +61,16 @@
                 &:hover {
                     transform: scale(1.2);
                 }
+                &.cancel {
+                    background: black;
+                    color: white;
+                    border: 2px solid white;
+                    margin-top: 1rem;
+                }
+                &.save {
+                    background: white;
+                    color: black;
+                }
             }
             .edit-icon {
                 font-size: 6rem;

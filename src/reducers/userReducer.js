@@ -21,7 +21,8 @@ import {
 
     EDIT_USER_START,
     EDIT_USER_SUCCESS,
-    EDIT_USER_ERROR
+    EDIT_USER_ERROR,
+    EDIT_USER_CANCEL
 
 } from '../actions/action'
 
@@ -139,6 +140,12 @@ export const userReducer = (state = initialState, action) => {
                 editUserStart: false,
                 editUserError: true
             };
+
+        case EDIT_USER_CANCEL:
+            return {...state,
+                editUserStart: false,
+                editUserError: false
+            }
 
         default:
             return state;

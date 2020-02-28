@@ -19,8 +19,7 @@ const DJProfile = props => {
     const editUserStart = useSelector(state => state.userReducer.editUserStart);
 
     const [profileImg, setProfileImg] = useState(DJMixer);
-    const [isEditing, setIsEditing] = useState(false);
-
+    
     const profile = useRef();
 
     useEffect(() => {
@@ -33,7 +32,6 @@ const DJProfile = props => {
         let height = profile.current.naturalHeight;
         let width = profile.current.naturalWidth;
         let orientation = (height > width)? 'portrait': 'landscape';
-        //console.log('width: ', width, '. Height: ', height, '. Orientation: ', orientation);
         if (orientation === 'landscape') {
             profile.current.classList.add('landscape');
         } else {
@@ -42,14 +40,13 @@ const DJProfile = props => {
     }
 
     const handleClick = () => {
-        console.log('time to edit');
-        setIsEditing(!isEditing);
+        dispatch(startEditUser());
     }
     
     return (
         <div className='dj-profile-page'>
             <NavigationBar />
-            {!isEditing && 
+            {!editUserStart && 
             <div className='main-content'>
                 <div className='side image-side'>
                     <div className='image-container'>
@@ -80,25 +77,14 @@ const DJProfile = props => {
             </div>
             }
 
-            { isEditing &&
+            { editUserStart &&
             <div>
-                <h2 style={{color: 'white'}}>Time to Edit</h2>
-                <button onClick={handleClick}>Edit</button>
                 <EditDJ />
             </div>
             }
-
-            
+ 
         </div>
     )
 }
 
 export default DJProfile;
-
-/*
-//To add:
-
-                {editUserStart &&
-                <EditDJ />
-                }
-*/

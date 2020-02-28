@@ -23,6 +23,7 @@ export const DELETE_USER_ERROR = 'DELETE_USER_ERROR';
 export const EDIT_USER_START = 'EDIT_USER_START';
 export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
 export const EDIT_USER_ERROR = 'EDIT_USER_ERROR';
+export const EDIT_USER_CANCEL = 'EDIT_USER_CANCEL';
 
 // action creators
 
@@ -111,4 +112,8 @@ export const loginUser = (userInfo, history) => dispatch => {
             console.log(err);
             dispatch({type: EDIT_USER_ERROR, payload: err})
         })
+  }
+
+  export const cancelEditUser = () =>  dispatch => {
+    dispatch({type: EDIT_USER_CANCEL});    
   }
