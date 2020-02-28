@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {Form, Input} from "reactstrap";
 import { useSelector, useDispatch } from 'react-redux';
-//import Loader from 'react-loader-spinner';
+import Loader from 'react-loader-spinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt} from '@fortawesome/free-solid-svg-icons';
 
@@ -21,6 +21,7 @@ const EditDJ = (props) => {
     const bio = useSelector(state => state.userReducer.bio);
     const profile_pic_url = useSelector(state => state.userReducer.profile_pic_url);
     const id = useSelector(state => state.userReducer.id);
+    const editUserProcessing = useSelector(state => state.userReducer.editUserProcessing);
 
     const [profileImg, setProfileImg] = useState(DJMixer);
     const profile = useRef();
@@ -109,78 +110,86 @@ const EditDJ = (props) => {
                 </div>
 
                 <div className='side text-side'>
-                    <Form onSubmit={handleSubmit}>
-                        {wantsToChangeImg &&
-                        <div>
-                            <label htmlFor='profile_pic_url'>Link to Profile Image</label>
-                            <Input name='profile_pic_url' 
-                                type='text' 
-                                id='profile_pic_url' 
-                                onChange={handleChange}
-                                value={userInfo.profile_pic_url}/>
-                        </div>
-                        }
+                    {editUserProcessing &&
+                    <div className='loader'>
+                        <Loader type="Audio" color="purple" height={200} width={200} />
+                    </div>
+                    }
 
-                        <div>
-                            <label htmlFor='username'>Username</label>
-                            <Input name='username' 
-                                type='text' 
-                                id='username'  
-                                onChange={handleChange}
-                                value={userInfo.username}/>
-                        </div>
+                    {!editUserProcessing &&
+                        <Form onSubmit={handleSubmit}>
+                            {wantsToChangeImg &&
+                            <div>
+                                <label htmlFor='profile_pic_url'>Link to Profile Image</label>
+                                <Input name='profile_pic_url' 
+                                    type='text' 
+                                    id='profile_pic_url' 
+                                    onChange={handleChange}
+                                    value={userInfo.profile_pic_url}/>
+                            </div>
+                            }
 
-                        <div>
-                            <label htmlFor='bio'>Bio</label>
-                            <Input name='bio' 
-                                type='text' 
-                                id='bio' 
-                                onChange={handleChange}
-                                value={userInfo.bio}/>
-                        </div>
-                    
-                        <div>
-                            <label htmlFor='name'>Name</label>
-                            <Input name='name' 
-                                type='text' 
-                                id='name' 
-                                onChange={handleChange}
-                                value={userInfo.name}/>
-                        </div>
-                        <div>
-                            <label htmlFor='email'>Email</label>
-                            <Input name='email' 
-                                type='email' 
-                                id='email' 
-                                onChange={handleChange}
-                                value={userInfo.email}/>
-                        </div>
-                        <div>
-                            <label htmlFor='website'>Your Website URL</label>
-                            <Input name='website' 
-                                type='url' 
-                                id='website' 
-                                onChange={handleChange}
-                                value={userInfo.website}/>
-                        </div>
-                        <div>
-                            <label htmlFor='phone'>Phone Number</label>
-                            <Input name='phone' 
-                                type='phone' 
-                                id='phone' 
-                                onChange={handleChange}
-                                value={userInfo.phone}/>
-                        </div>
+                            <div>
+                                <label htmlFor='username'>Username</label>
+                                <Input name='username' 
+                                    type='text' 
+                                    id='username'  
+                                    onChange={handleChange}
+                                    value={userInfo.username}/>
+                            </div>
+
+                            <div>
+                                <label htmlFor='bio'>Bio</label>
+                                <Input name='bio' 
+                                    type='text' 
+                                    id='bio' 
+                                    onChange={handleChange}
+                                    value={userInfo.bio}/>
+                            </div>
                         
-                        <div>
-                            <label htmlFor='profile_pic_url'>Link to Profile Image</label>
-                            <Input name='profile_pic_url' 
-                                type='text' 
-                                id='profile_pic_url' 
-                                onChange={handleChange}
-                                value={userInfo.profile_pic_url}/>
-                        </div>
-                    </Form>
+                            <div>
+                                <label htmlFor='name'>Name</label>
+                                <Input name='name' 
+                                    type='text' 
+                                    id='name' 
+                                    onChange={handleChange}
+                                    value={userInfo.name}/>
+                            </div>
+                            <div>
+                                <label htmlFor='email'>Email</label>
+                                <Input name='email' 
+                                    type='email' 
+                                    id='email' 
+                                    onChange={handleChange}
+                                    value={userInfo.email}/>
+                            </div>
+                            <div>
+                                <label htmlFor='website'>Your Website URL</label>
+                                <Input name='website' 
+                                    type='url' 
+                                    id='website' 
+                                    onChange={handleChange}
+                                    value={userInfo.website}/>
+                            </div>
+                            <div>
+                                <label htmlFor='phone'>Phone Number</label>
+                                <Input name='phone' 
+                                    type='phone' 
+                                    id='phone' 
+                                    onChange={handleChange}
+                                    value={userInfo.phone}/>
+                            </div>
+                            
+                            <div>
+                                <label htmlFor='profile_pic_url'>Link to Profile Image</label>
+                                <Input name='profile_pic_url' 
+                                    type='text' 
+                                    id='profile_pic_url' 
+                                    onChange={handleChange}
+                                    value={userInfo.profile_pic_url}/>
+                            </div>
+                        </Form>
+                    }
                 </div>
             </div>
         </div>

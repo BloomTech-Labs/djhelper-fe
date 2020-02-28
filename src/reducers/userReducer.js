@@ -20,6 +20,7 @@ import {
     DELETE_USER_ERROR,
 
     EDIT_USER_START,
+    EDIT_USER_START_PROCESSING,
     EDIT_USER_SUCCESS,
     EDIT_USER_ERROR,
     EDIT_USER_CANCEL
@@ -45,11 +46,9 @@ const initialState = {
     deleteUserStart: false,
     deleteUserError: false,
     editUserStart: false,
-    editUserError: false
+    editUserError: false,
+    editUserProcessing: false
 }
-
-//TODO: change value of website to action.payload.user.website once backend is set up
-//TODO: change value of bio once backend is set up
 
 export const userReducer = (state = initialState, action) => {
     switch(action.type) {
@@ -125,6 +124,7 @@ export const userReducer = (state = initialState, action) => {
         case EDIT_USER_SUCCESS:
             return {...state,
                 editUserStart: false,
+                editUserProcessing: false,
                 name: action.payload.name,
                 username: action.payload.username,
                 id: action.payload.id,
@@ -138,6 +138,7 @@ export const userReducer = (state = initialState, action) => {
         case EDIT_USER_ERROR:
             return {...state,
                 editUserStart: false,
+                editUserProcessing: false,
                 editUserError: true
             };
 
@@ -146,6 +147,10 @@ export const userReducer = (state = initialState, action) => {
                 editUserStart: false,
                 editUserError: false
             }
+
+        case EDIT_USER_START_PROCESSING:
+            return {...state,
+                editUserProcessing: true}
 
         default:
             return state;

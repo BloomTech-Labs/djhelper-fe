@@ -21,6 +21,7 @@ export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
 export const DELETE_USER_ERROR = 'DELETE_USER_ERROR';
 
 export const EDIT_USER_START = 'EDIT_USER_START';
+export const EDIT_USER_START_PROCESSING = 'EDIT_USER_START_PROCESSING';
 export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
 export const EDIT_USER_ERROR = 'EDIT_USER_ERROR';
 export const EDIT_USER_CANCEL = 'EDIT_USER_CANCEL';
@@ -102,7 +103,8 @@ export const loginUser = (userInfo, history) => dispatch => {
     dispatch({type: EDIT_USER_START});    
   }
 
-  export const editUser = (id, userInfo) => dispatch => {  
+  export const editUser = (id, userInfo) => dispatch => {
+    dispatch({type: EDIT_USER_START_PROCESSING});  
     axiosWithAuth().put(`http://localhost:8000/api/auth/dj/${id}`, userInfo)
         .then(response => {
             console.log(response);
