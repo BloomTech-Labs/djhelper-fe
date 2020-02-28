@@ -1,13 +1,21 @@
 .navBar {
-    NavLink {
-        color: white;
-        &:hover {
-            color: lightgrey;
-        }
-
-    }
     a {
         color: white;
+        &:hover {
+            color:lightgrey;
+        }
+
+        &:active {
+            color: grey;
+        }
+    }
+
+    .selected {
+        color: grey;
+       &:hover {
+            color:grey;
+        }
+
     }
 
     .links {
@@ -42,16 +50,6 @@
         width: 65%;
     }
 
-    .icons {
-        color: white;
-        &:hover {
-            color:lightgrey;
-        }
-        #home {
-            color:grey;
-        }
-
-    }
 }
 
 

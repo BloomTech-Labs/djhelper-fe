@@ -15,26 +15,40 @@ import {
 const NavigationBar = (props) => {
     const tokenPresent = useSelector(state => state.userReducer.tokenPresent);
 
+    let home;
+    let djProfile;
     const dispatch = useDispatch();
 
     const handleLogout = () => {
       dispatch(logoutUser());
+    }
+    const selectedIcon = () => {
+        console.log(window.location.pathname);
+        let url = window.location.pathname;
+        if (url === '/dj') {
+           home = "selected";
+           djProfile = "";
+        } else {
+            home = "";
+            djProfile = "selected";
+        }
     }
 
     const navState = () => {
         if (tokenPresent) {
             return (
               <Nav className="navElementsIcons" navbar>
-                <NavItem className="icons" id="profile">
-                        <NavLink to="/dj/profile" className="icons" data-testid='register-nav'>
+              {selectedIcon()}
+                <NavItem id="profile">
+                        <NavLink to="/dj/profile" className={djProfile} data-testid='register-nav'>
                               <FontAwesomeIcon
                                 icon="user"
                                 size="1x"
                             />
                       </NavLink>
                 </NavItem>
-                <NavItem className="icons" id="home">
-                      <NavLink id="home" data-testid='register-nav' to="/dj">
+                <NavItem id="home">
+                      <NavLink id="home" className={home} data-testid='register-nav' to="/dj">
                               <FontAwesomeIcon
                                 icon="home"
                                 size="1x"
