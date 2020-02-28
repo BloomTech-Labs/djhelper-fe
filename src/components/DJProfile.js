@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { startEditUser } from '../actions/action';
 
@@ -17,6 +17,15 @@ const DJProfile = props => {
     const bio = useSelector(state => state.userReducer.bio);
     const profile_pic_url = useSelector(state => state.userReducer.profile_pic_url);
     const editUserStart = useSelector(state => state.userReducer.editUserStart);
+
+    const [profileImg, setProfileImg] = useState(DJMixer);
+
+    useEffect(() => {
+        if (profile_pic_url && profile_pic_url.length > 0) {
+            setProfileImg(profile_pic_url);
+        }
+
+    }, [profile_pic_url])
     
     return (
         <div className='dj-profile-page'>
@@ -24,7 +33,7 @@ const DJProfile = props => {
             <div className='main-content'>
                 <div className='side image-side'>
                     <div className='image-container'>
-                        <img src={DJMixer} alt='dj profile' />
+                        <img src={profileImg} alt='dj profile' />
                     </div>
                     <button>Edit</button>
                 </div>
