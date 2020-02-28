@@ -62,6 +62,16 @@
                     transform: scale(1.2);
                 }
             }
+            .edit-icon {
+                font-size: 6rem;
+                position: absolute;
+                top: 48%;
+                left: 17%;
+                transform: translate(-50%, -50%);
+                &:hover {
+                    color: $lightPurple;
+                }
+            }
         }
         .text-side {
             width: 30%;
@@ -90,6 +100,21 @@
                 &:hover {
                     text-decoration: none;
                     color: $lightPurple;
+                }
+            }
+            form {
+                label {
+                    font-weight: bold;
+                    font-size: 1.25rem;
+                }
+                input {
+                    background: $dark2;
+                    border: none;
+                    color: white;
+                    padding-left: 1.25rem;
+                }
+                div{
+                    margin-top: 1rem;
                 }
             }
         }

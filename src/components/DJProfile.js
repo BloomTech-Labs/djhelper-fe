@@ -19,6 +19,7 @@ const DJProfile = props => {
     const editUserStart = useSelector(state => state.userReducer.editUserStart);
 
     const [profileImg, setProfileImg] = useState(DJMixer);
+    const [isEditing, setIsEditing] = useState(false);
 
     const profile = useRef();
 
@@ -39,16 +40,22 @@ const DJProfile = props => {
             profile.current.classList.remove('landscape');
         }   
     }
+
+    const handleClick = () => {
+        console.log('time to edit');
+        setIsEditing(!isEditing);
+    }
     
     return (
         <div className='dj-profile-page'>
             <NavigationBar />
+            {!isEditing && 
             <div className='main-content'>
                 <div className='side image-side'>
                     <div className='image-container'>
                         <img src={profileImg} alt='dj profile' ref={profile} onLoad={handleOrientation}/>
                     </div>
-                    <button>Edit</button>
+                    <button onClick={handleClick}>Edit</button>
                 </div>
 
                 <div className='side text-side'>
@@ -71,6 +78,15 @@ const DJProfile = props => {
                     </div>
                 </div>
             </div>
+            }
+
+            { isEditing &&
+            <div>
+                <h2 style={{color: 'white'}}>Time to Edit</h2>
+                <button onClick={handleClick}>Edit</button>
+                <EditDJ />
+            </div>
+            }
 
             
         </div>
