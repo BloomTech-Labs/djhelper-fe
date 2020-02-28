@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { startEditUser } from '../actions/action';
 
@@ -20,12 +20,25 @@ const DJProfile = props => {
 
     const [profileImg, setProfileImg] = useState(DJMixer);
 
+    const profile = useRef();
+
     useEffect(() => {
         if (profile_pic_url && profile_pic_url.length > 0) {
             setProfileImg(profile_pic_url);
         }
-
     }, [profile_pic_url])
+
+    const handleOrientation = () => {
+        let height = profile.current.naturalHeight;
+        let width = profile.current.naturalWidth;
+        let orientation = (height > width)? 'portrait': 'landscape';
+        //console.log('width: ', width, '. Height: ', height, '. Orientation: ', orientation);
+        if (orientation === 'landscape') {
+            profile.current.classList.add('landscape');
+        } else {
+            profile.current.classList.remove('landscape');
+        }   
+    }
     
     return (
         <div className='dj-profile-page'>
@@ -33,7 +46,7 @@ const DJProfile = props => {
             <div className='main-content'>
                 <div className='side image-side'>
                     <div className='image-container'>
-                        <img src={profileImg} alt='dj profile' />
+                        <img src={profileImg} alt='dj profile' ref={profile} onLoad={handleOrientation}/>
                     </div>
                     <button>Edit</button>
                 </div>
