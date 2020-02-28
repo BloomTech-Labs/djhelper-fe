@@ -1,4 +1,4 @@
-.dj-profile-page  {
+.dj-profile-page {
     background: $dark3;
     background-image: url('../images/profile-banner.svg');
     background-repeat: repeat-x;
@@ -31,7 +31,7 @@
                         width: auto;
                         height: 100%;
                         margin-left: -50px;
-                    }   
+                    }
                 }
             }
         }
@@ -85,7 +85,7 @@
         }
         .text-side {
             width: 30%;
-            margin-top: 4rem;
+            margin-top: 6rem;
             background: $dark3;
             @media (max-width: 1150px) {
                 width: 50%;
@@ -113,6 +113,7 @@
                 }
             }
             form {
+                border: solid pink 2px;
                 label {
                     font-weight: bold;
                     font-size: 1.25rem;
@@ -123,7 +124,7 @@
                     color: white;
                     padding-left: 1.25rem;
                 }
-                div{
+                div {
                     margin-top: 1rem;
                 }
             }
