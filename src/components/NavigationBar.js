@@ -25,24 +25,24 @@ const NavigationBar = (props) => {
         if (tokenPresent) {
             return (
               <Nav className="navElementsIcons" navbar>
-                <NavItem className="icons">
+                <NavItem className="icons" id="profile">
                         <NavLink to="/dj/profile" className="icons" data-testid='register-nav'>
                               <FontAwesomeIcon
                                 icon="user"
-                                size="2x"
+                                size="1x"
                             />
                       </NavLink>
                 </NavItem>
-                <NavItem className="icons">
+                <NavItem className="icons" id="home">
                       <NavLink id="home" data-testid='register-nav' to="/dj">
                               <FontAwesomeIcon
                                 icon="home"
-                                size="2x"
+                                size="1x"
                             />
                       </NavLink>
                 </NavItem>
 
-                <NavItem>
+                <NavItem className="links">
                   <NavLink to="/">About</NavLink>
                         <Nav onClick={handleLogout}>Logout</Nav>
                 </NavItem>
