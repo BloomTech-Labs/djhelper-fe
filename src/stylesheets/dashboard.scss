@@ -1,6 +1,105 @@
 .dashboard {
     background: #1E1E1E;
     color: white;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    .carousel {
+        display: flex;
+        justify-content: space-around;
+
+        button {
+            background: none;
+            border: none;
+        }
+
+        svg:hover {
+            color: grey;
+        }
+    }
+
+    .preview-event-details {
+        width: 90%;
+        height: 30vh;
+        margin-top: 5vh;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+
+        .event-description {
+            height: 28vh;
+            width: 20%;
+        }
+        .newest-song-requests {
+            display: flex;
+            flex-flow: column nowrap;
+            height: 28vh;
+            width: 50%;
+            .songs {
+                border: solid white 2px;
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: space-between;
+                align-items: flex-start;
+                
+            }
+        }
+        .genre-graph {
+            height: 28vh;
+            width: 20%;
+        }
+    }
+
+
+    .upcoming-events {
+        display: flex;
+        flex-flow: column nowrap;
+        width: 90%;
+        height: 27.5vh;
+        margin-top: 4vh;
+        .events {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-around;
+            align-items: center;
+            height: 20vh;
+            width: 100%;
+            img {
+                height: 15vh;
+                width: 15vw;
+            }
+
+        }
+
+    }
+
+    .past-events {
+        display: flex;
+        flex-flow: column nowrap;
+        width: 90%;
+        height: 40vh;
+        margin-top: 4vh;
+        .events {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-around;
+            align-items: center;
+            height: 30vh;
+            width: 100%;
+            img {
+                height: 25vh;
+                width: 15vw;
+            }
+
+        }
+
+
+    }
+
+
+
+
     h1 {
         margin-top: 5vh;
     }

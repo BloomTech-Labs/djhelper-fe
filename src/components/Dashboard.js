@@ -1,14 +1,65 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from 'reactstrap';
 import NavigationBar from './NavigationBar';
+import PreviewEventDetails from './PreviewEventDetails';
+import DashboardWelcome from './DashboardWelcome';
+import Event from './Event';
+import Carousel, { Dots } from '@brainhubeu/react-carousel';
+import '@brainhubeu/react-carousel/lib/style.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //import Image from 'react-bootstrap/Image';
 
 import { deleteUser, startEditUser } from '../actions/action';
 import EditDJ from './EditDJ';
 
+const image = "https://www.photohound.co/assets/img/placeholders/spot.png";
 
 const Dashboard = () => {
+
+    const [data, setData] = useState({
+        event1: {
+            name: "Bill and Grace",
+            description: "A traditional, peaceful wedding.",
+            newRequests: {
+                "Mr Blue Sky": "The Electric Light Orchestra",
+                "Eyes": "Rogue Waves",
+                "Don't Stop Me Now": "Queen"
+            }
+        },
+        event2: {
+            name: "Ellie and Mona",
+            description: "A more modern, fun wedding.",
+            newRequests: {
+                "Mr Blue Sky": "The Electric Light Orchestra",
+                "Eyes": "Rogue Waves",
+                "Don't Stop Me Now": "Queen"
+            }
+
+        },
+        event3: {
+            name: "Charles and Elizabeth",
+            description: "A senior wedding.",
+            newRequests: {
+                "Mr Blue Sky": "The Electric Light Orchestra",
+                "Eyes": "Rogue Waves",
+                "Don't Stop Me Now": "Queen"
+            }
+
+        },
+        event4: {
+            name: "Chris and Kat",
+            description: "Very atmospheric and sentimental wedding.",
+            newRequests: {
+                "Mr Blue Sky": "The Electric Light Orchestra",
+                "Eyes": "Rogue Waves",
+                "Don't Stop Me Now": "Queen"
+            }
+
+        },
+        active: "",
+    })
+
 
     const dispatch = useDispatch();
 
@@ -26,34 +77,20 @@ const Dashboard = () => {
         dispatch(deleteUser(id));
     }
 
+
+
     const startEdit = () => {
         console.log('time to edit dj user info');
         dispatch(startEditUser());
     }
-
-    return (
-        <div className="dashboard">
-        <NavigationBar />
+        /*
             <h1> Dashboard</h1>
             <div className="welcome">
-                {name
-                    ? <p>Welcome, {name}!</p>
-                    : <p>Welcome</p>
-                }
-
             </div>
             <div className="board">
                 <div>
                     <h2>Profile:</h2>
-                    {name && <h3>{name}</h3>}
-                    {bio && <p><span>{bio}</span></p>}
-                    {username && <p>Username: {username}</p>}
-                    {email && <p>Email: {email}</p>}
-                    {phone && <p>Phone: <a href={`tel:${phone}`}>{phone}</a></p>}
-                    {website && <p>Website: <a href={website}>{website}</a></p>}
-                    {profile_pic_url && <div className='img-container'><img src={profile_pic_url} alt={name} /></div>}
-                </div>
-            </div>
+              </div>
 
             <div>
                 <Button className="btn-secondary" onClick={startEdit}>Edit DJ Info</Button>
@@ -65,13 +102,81 @@ const Dashboard = () => {
                     <EditDJ />
                 </div>
             }
+            */
+    const whichComponent = () => {
+        if (data.active.length > 1) {
+            return <PreviewEventDetails data={data} setData={setData} currentlyActive={currentlyActive} />
+        } else {
+            return <DashboardWelcome name={name} />
+        }
+    }
 
-            <div className="board">
-                <div>
-                    <h2>Events:</h2>
-                    <p><span>Add Event and Event List coming soon!</span></p>
-                </div>
-            </div>
+
+    let thing = data.active
+    let currentlyActive = data[thing];
+    console.log([data[thing]])
+    return (
+        <div className="dashboard">
+        <NavigationBar />
+        {whichComponent()}
+
+           <div className="upcoming-events">
+            <h6> Upcoming Events</h6>
+                <Carousel
+                className="carousel"
+                  slidesPerPage={4}
+                  arrows
+                  arrowLeft={
+                     <FontAwesomeIcon
+                        icon="caret-left"
+                        size="2x"
+                    />
+                  }
+                    arrowRight={
+                        <FontAwesomeIcon
+                            icon="caret-right"
+                            size="2x"
+                        />
+                    }
+                    addArrowClickHandler
+
+                  infinite
+                  >
+                    <Event num={1} data={data} setData={setData} />
+                    <Event num={2} data={data} setData={setData} />
+                    <Event num={3} data={data} setData={setData} />
+                    <Event num={4} data={data} setData={setData} />
+                </Carousel>
+        </div>
+        <div className="past-events">
+            <h6> Past Events</h6>
+                <Carousel
+                className="carousel"
+                  slidesPerPage={4}
+                  arrows
+                  arrowLeft={
+                     <FontAwesomeIcon
+                        icon="caret-left"
+                        size="2x"
+                    />
+                  }
+                    arrowRight={
+                        <FontAwesomeIcon
+                            icon="caret-right"
+                            size="2x"
+                        />
+                    }
+                    addArrowClickHandler
+
+                  infinite
+                  >
+                    <Event num={1} />
+                    <Event num={2} />
+                    <Event num={3} />
+                    <Event num={4}/>
+                </Carousel>
+
+        </div>
         </div>
     )
 }

@@ -1,4 +1,35 @@
 .navBar {
+    a {
+        color: white;
+        &:hover {
+            color:lightgrey;
+        }
+
+        &:active {
+            color: grey;
+        }
+    }
+
+    .selected {
+        color: grey;
+       &:hover {
+            color:grey;
+        }
+
+    }
+
+    .links {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        width: 20%;
+        margin-left: 53%;
+    }
+     #profile {
+         margin-left: 20%;
+     }
+
+ 
     width: 100%;
     display: flex;
     flex-flow: row nowrap;
@@ -11,6 +42,14 @@
         justify-content: space-between;
         width: 20%;
     }
+
+    .navElementsIcons {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        width: 65%;
+    }
+
 }
 
 

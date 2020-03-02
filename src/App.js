@@ -7,30 +7,40 @@ import Register from './components/Register';
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import DjInterface from './components/DjInterface';
+import About from './components/About';
+import DJProfile from './components/DJProfile';
 
 import { registerUserAction } from './actions/action';
 
 import './stylesheets/index.scss';
 
+// import the library
+import { library } from '@fortawesome/fontawesome-svg-core';
+
+// import your icons
+import { fas } from '@fortawesome/free-solid-svg-icons';
+
+library.add(
+  fas
+  // more icons go here
+);
 function App() {
 
   const dispatch = useDispatch();
-
+  //TODO: Hook the register submit button directly to registerUserAction since now the upcoming data is already formatted correctly.
+  //This middle step is now not needed.
   const registerUser = (userInfo, history) => {
     console.log(userInfo);
 
-    //TODO: Once we have our own backend, we will need to rename the phone_number to phone and profile_img_src to website.
-    //The placeholder backend has different names for those fields.
-    // Add website
-    // bio: userInfo.bio
     const infoNeeded = {
       username: userInfo.username,
       password: userInfo.password,
       name: userInfo.name,
       email: userInfo.email,
-      phone_number: userInfo.phone,
-      profile_img_src: userInfo.profile_pic_url,
-      job_description: userInfo.bio
+      phone: userInfo.phone,
+      profile_pic_url: userInfo.profile_pic_url,
+      bio: userInfo.bio,
+      website: userInfo.website
     }
 
     dispatch(registerUserAction(infoNeeded, history));
@@ -47,7 +57,9 @@ function App() {
                     />
                 } />
                 <Route path='/login' component={Login} />
-                <PrivateRoute path='/dj' component={DjInterface} />
+                <PrivateRoute exact path='/dj' component={DjInterface} />
+                <Route path='/dj/profile' component={DJProfile} />
+                <PrivateRoute path='/about' component={About} />
           </BrowserRouter>
             </div>
         </div>

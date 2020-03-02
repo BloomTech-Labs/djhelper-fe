@@ -1,0 +1,136 @@
+.dj-profile-page {
+    background: $dark3;
+    background-image: url('../images/profile-banner.svg');
+    background-repeat: repeat-x;
+    color: white;
+    min-height: 110vh;
+    padding-bottom: 5%;
+    .main-content {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-top: 5rem;
+        margin-left: 2rem;
+        @media (max-width: 600px) {
+            flex-flow: column nowrap;
+            align-items: center;
+        }
+        div {
+            .image-container {
+                width: 18rem;
+                display: inline-block;
+                position: relative;
+                height: 18rem;
+                overflow: hidden;
+                border-radius: 50%;
+                margin: 1rem;
+                img {
+                    width: 100%;
+                    height: auto;
+                    &.landscape {
+                        width: auto;
+                        height: 100%;
+                        margin-left: -50px;
+                    }
+                }
+            }
+        }
+        .image-side {
+            width: 30%;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: center;
+            @media (max-width: 900px) {
+                width: 50%;
+            }
+            @media (max-width: 600px) {
+                width: 90%;
+            }
+            button {
+                width: 10rem;
+                background: black;
+                color: white;
+                border-radius: 3px;
+                border: none;
+                outline: none;
+                transition: all 0.2 ease-in-out;
+                font-weight: bold;
+                padding: 0.25rem;
+                font-size: 1.25rem;
+                &:hover {
+                    transform: scale(1.2);
+                }
+                &.cancel {
+                    background: black;
+                    color: white;
+                    border: 2px solid white;
+                    margin-top: 1rem;
+                }
+                &.save {
+                    background: white;
+                    color: black;
+                }
+            }
+            .edit-icon {
+                font-size: 6rem;
+                position: absolute;
+                top: 48%;
+                left: 17%;
+                transform: translate(-50%, -50%);
+                &:hover {
+                    color: $lightPurple;
+                }
+            }
+        }
+        .text-side {
+            width: 35%;
+            word-wrap: break-word;
+            overflow-x: auto;
+            margin-top: 6rem;
+            background: $dark3;
+            @media (max-width: 1150px) {
+                width: 50%;
+            }
+            @media (max-width: 600px) {
+                width: 80%;
+            }
+            h1 {
+                font-size: 4vw;
+                padding: 1rem;
+                width: 100%;
+            }
+            h3 {
+                color: $headlineGray;
+                font-size: 1.5rem;
+            }
+            p {
+                margin-left: 2rem;
+                font-size: 1.25rem;
+            }
+            a {
+                color: white;
+                &:hover {
+                    text-decoration: none;
+                    color: $lightPurple;
+                }
+            }
+            form {
+                label {
+                    font-weight: bold;
+                    font-size: 1.25rem;
+                }
+                input {
+                    background: $dark2;
+                    border: none;
+                    color: white;
+                    padding-left: 1.25rem;
+                }
+                div {
+                    margin-top: 1rem;
+                }
+            }
+        }
+    }
+}
