@@ -39,7 +39,7 @@ export const setUsername = username => {
 export const registerUserAction = (infoNeeded, history) => dispatch => {
     dispatch({type: REGISTER_USER_START}); //http://localhost:8000
     // http://ec2-18-218-74-229.us-east-2.compute.amazonaws.com/api/register/dj/
-    axios.post('http://localhost:800/api/register/dj/', infoNeeded)
+    axios.post('http://localhost:8000/api/register/dj/', infoNeeded)
       .then(response => {
         //console.log(response);
         history.push('/login');
