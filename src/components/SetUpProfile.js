@@ -17,6 +17,10 @@ const SetUpProfile = props => {
             setUserInput({...userInput, [e.target.name]: e.target.value});
     }
 
+    const handleCancel = () => {
+        props.history.push('/dj');
+    }
+
     const handleSubmit = e => {
         e.preventDefault();
         console.log(userInput);
@@ -86,7 +90,7 @@ const SetUpProfile = props => {
 
                 <div className='button-area'>
                     <button type='submit'>Submit</button>
-                    <button className='skip'>Skip</button>
+                    <button className='skip' onClick={handleCancel}>Skip</button>
                 </div>
 
             </form>

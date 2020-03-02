@@ -136,7 +136,8 @@ export const loginUser = (userInfo, history) => dispatch => {
         })
         .catch(err => {
             console.log(err);
-            dispatch({type: UPDATE_USER_ERROR, payload: err})
+            dispatch({type: UPDATE_USER_ERROR, payload: err});
+            history.push('/dj');
         })
 
   }
