@@ -26,6 +26,10 @@ export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
 export const EDIT_USER_ERROR = 'EDIT_USER_ERROR';
 export const EDIT_USER_CANCEL = 'EDIT_USER_CANCEL';
 
+export const UPDATE_USER_START ='UPDATE_USER_START';
+export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
+export const UPDATE_USER_ERROR = 'UPDATE_USER_ERROR';
+
 // action creators
 
 export const setName = name => {
@@ -119,4 +123,20 @@ export const loginUser = (userInfo, history) => dispatch => {
 
   export const cancelEditUser = () =>  dispatch => {
     dispatch({type: EDIT_USER_CANCEL});
+  }
+
+  export const updateUser = (history, id, userInfo) => dispatch => {
+    dispatch({type: UPDATE_USER_START});
+    axiosWithAuth().put(`http://ec2-18-218-74-229.us-east-2.compute.amazonaws.com/api/auth/dj/${id}`, userInfo)
+        .then(response => {
+            console.log(response);
+            dispatch({type: UPDATE_USER_SUCCESS, payload: response.data});
+            history.push('/dj');
+
+        })
+        .catch(err => {
+            console.log(err);
+            dispatch({type: UPDATE_USER_ERROR, payload: err})
+        })
+
   }

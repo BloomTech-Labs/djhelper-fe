@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useSelector, useDispatch } from 'react-redux';
-import { editUser, cancelEditUser } from '../actions/action';
+import { updateUser } from '../actions/action';
 
 const SetUpProfile = props => {
     const dispatch = useDispatch();
 
     const name = useSelector(state => state.userReducer.name) || 'DJ';
     const id = useSelector(state => state.userReducer.id);
-    const editUserProcessing = useSelector(state => state.userReducer.editUserProcessing);
 
     const [userInput, setUserInput] = useState({website: '', phone: '', profile_pic_url: '', bio: ''});
     const [wantsToChangeImg, setWantsToChangeImg] = useState(false);
@@ -39,7 +38,7 @@ const SetUpProfile = props => {
         
         console.log("id: ", id);
         console.log("infoNeeded: ", infoNeeded);
-        dispatch(editUser(id, infoNeeded));
+        dispatch(updateUser(props.history, id, infoNeeded));
     }
 
     return (
