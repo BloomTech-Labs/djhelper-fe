@@ -38,7 +38,7 @@ export const setUsername = username => {
 
 export const registerUserAction = (infoNeeded, history) => dispatch => {
     dispatch({type: REGISTER_USER_START});
-    axios.post('http://localhost:8000/api/register/dj', infoNeeded)
+    axios.post('http://ec2-18-218-74-229.us-east-2.compute.amazonaws.com/api/register/dj/', infoNeeded)
       .then(response => {
         //console.log(response);
         history.push('/login');
@@ -54,7 +54,7 @@ export const loginUser = (userInfo, history) => dispatch => {
     console.log(userInfo);
     dispatch({type: LOGIN_USER_START});
     // TODO: Update url when deployed backend is available
-    axios.post('http://localhost:8000/api/login/dj', userInfo)
+    axios.post('http://ec2-18-218-74-229.us-east-2.compute.amazonaws.com/api/login/dj/', userInfo)
       .then(response => {
         console.log(response);
         localStorage.setItem('token', response.data.token);
@@ -68,7 +68,7 @@ export const loginUser = (userInfo, history) => dispatch => {
   }
 
   export const logoutUser = () => dispatch => {
-      
+
       dispatch({type: LOGOUT_USER_START});
       if (localStorage.getItem('token')) {
           console.log(localStorage.getItem('token'))
@@ -84,7 +84,7 @@ export const loginUser = (userInfo, history) => dispatch => {
       dispatch({type: DELETE_USER_START});
       //TODO: Endpoint might change when auth router is set up in backend; change it here if needed.
       //TODO: Update endpoint when deployed endpoint is ready.
-      axiosWithAuth().delete(`http://localhost:8000/api/auth/dj/${id}`)
+      axiosWithAuth().delete(`http://ec2-18-218-74-229.us-east-2.compute.amazonaws.com/api/auth/dj/${id}`)
         .then(response => {
             console.log(response);
             if (localStorage.getItem('token')) {
@@ -96,16 +96,16 @@ export const loginUser = (userInfo, history) => dispatch => {
         .catch(err => {
             console.log(err);
             dispatch({type: DELETE_USER_ERROR, payload: err})
-        }) 
+        })
   }
 
   export const startEditUser = () =>  dispatch => {
-    dispatch({type: EDIT_USER_START});    
+    dispatch({type: EDIT_USER_START});
   }
 
   export const editUser = (id, userInfo) => dispatch => {
-    dispatch({type: EDIT_USER_START_PROCESSING});  
-    axiosWithAuth().put(`http://localhost:8000/api/auth/dj/${id}`, userInfo)
+    dispatch({type: EDIT_USER_START_PROCESSING});
+    axiosWithAuth().put(`http://ec2-18-218-74-229.us-east-2.compute.amazonaws.com/api/auth/dj/${id}`, userInfo)
         .then(response => {
             console.log(response);
             dispatch({type: EDIT_USER_SUCCESS, payload: response.data})
@@ -117,5 +117,5 @@ export const loginUser = (userInfo, history) => dispatch => {
   }
 
   export const cancelEditUser = () =>  dispatch => {
-    dispatch({type: EDIT_USER_CANCEL});    
+    dispatch({type: EDIT_USER_CANCEL});
   }
