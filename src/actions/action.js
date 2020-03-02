@@ -60,7 +60,7 @@ export const loginUser = (userInfo, history) => dispatch => {
         console.log(response);
         localStorage.setItem('token', response.data.token);
         dispatch({type: LOGIN_USER_SUCCESS, payload: response.data});
-        history.push('/dj');
+        history.push('/dj/setup');
       })
       .catch(err => {
             dispatch({type: LOGIN_USER_ERROR, payload: err});
