@@ -24,7 +24,6 @@ test('Register page renders correctly', () => {
   const username = getByText('Username');
   const password = getByText('Password');
   const confirmPassword = getByText('Confirm Password');
-  const addMoreInfo = getByText('Add More Info (Optional)');
   const submit = getByText('Submit');
 
   expect(form).toBeInTheDocument();
@@ -33,7 +32,6 @@ test('Register page renders correctly', () => {
   expect(username).toBeInTheDocument();
   expect(password).toBeInTheDocument();
   expect(confirmPassword).toBeInTheDocument();
-  expect(addMoreInfo).toBeInTheDocument();
   expect(submit).toBeInTheDocument();
 
 });

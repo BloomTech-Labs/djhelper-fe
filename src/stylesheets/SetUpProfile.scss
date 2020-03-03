@@ -1,0 +1,128 @@
+.setup-page {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    background: black;
+    color: white;
+    min-height: 110vh;
+    .side {
+        width: 40%;
+        margin: 2px 1px;
+        
+    }
+    .left-side {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        .check-container {
+            width: 8rem;
+            height: 8rem;
+            border-radius: 50%;
+            background-image: linear-gradient($gradientPink, $gradientPurple);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 5rem;
+            color: black;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            font-size: 2.5rem;
+        }
+        p {
+            font-size: 1.25rem;
+        }
+    }
+    .right-side {
+        .loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form {
+            width: 90%;
+        }
+        background: $dark2;
+        padding: 3rem;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        div {
+            padding: 1rem;
+        }
+        .input-group {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: flex-start;
+            input {
+                background: $dark1;
+                border: none;
+                line-height: 2rem;
+                border-radius: 3px;
+                width: 100%;
+                color: $mediumPurple;
+                &:focus {
+                    background: rgb(65, 65, 65);
+                    color: white;
+                }
+            }
+            textarea {
+                background: $dark1;
+                border: none;
+                line-height: 2rem;
+                width: 100%;
+                border-radius: 3px;
+                color: $mediumPurple;
+                &:focus {
+                    background: rgb(65, 65, 65);
+                    color: white;
+                }
+            }
+        }
+        .button-area {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+        }
+        button {
+            background: black;
+            outline: none;
+            border-radius: 3px;
+            border: none;
+            color: white;
+            padding: 0.75rem;
+            transition: all  0.2s ease-in-out;
+            width: 40%;
+            &:hover {
+                transform: scale(1.2);
+            }
+            &.skip {
+                background: $dark3;
+            }
+        }
+        .img-area {
+            width: 18rem;
+            height: 18rem;
+            border-radius: 50%;
+            background: $dark1;
+            .plus-area {
+                background: white;
+                color: black;
+                border-radius: 50%;
+                position: relative;
+                left: 14rem;
+                top: 13rem;
+                width: 4rem;
+                height: 4rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+    
+}
