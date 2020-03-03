@@ -2,41 +2,48 @@ export const upcomingEvents = {
     event1: {
         name: "Bill and Grace",
         description: "A traditional, peaceful wedding.",
+        date: '04/10/2020',
         newRequests: {
             "Mr Blue Sky": "The Electric Light Orchestra",
             "Eyes": "Rogue Waves",
             "Don't Stop Me Now": "Queen"
-        }
+        },
+        imgUrl: 'https://images.unsplash.com/photo-1508219803418-5f1f89469b50?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
     },
     event2: {
         name: "Ellie and Mona",
         description: "A more modern, fun wedding.",
+        date: '07/14/2020',
         newRequests: {
-            "Mr Blue Sky": "The Electric Light Orchestra",
-            "Eyes": "Rogue Waves",
-            "Don't Stop Me Now": "Queen"
-        }
+            'Hold My Hand': 'Hootie and the Blowfish',
+            'Genie in a Bottle': 'Christina Aguilera',
+            'Baby One More Time': 'Britney Spears'
+        },
+        imgUrl: 'https://images.unsplash.com/photo-1561928070-590b9c48f0bb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
 
     },
     event3: {
         name: "Charles and Elizabeth",
         description: "A senior wedding.",
+        date: '03/30/2020',
         newRequests: {
-            "Mr Blue Sky": "The Electric Light Orchestra",
-            "Eyes": "Rogue Waves",
-            "Don't Stop Me Now": "Queen"
-        }
+            'Luck Be A Lady': 'Frank Sinatra',
+            'Boogie Woogie Bugle Boy': 'Andrews Sisters',
+            'It Had to Be You': 'Harry Connick Jr'
+        },
+        imgUrl: 'https://images.unsplash.com/photo-1532329683184-6ffd13057d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
 
     },
     event4: {
         name: "Chris and Kat",
         description: "Very atmospheric and sentimental wedding.",
+        date: '06/10/2020',
         newRequests: {
-            "Mr Blue Sky": "The Electric Light Orchestra",
-            "Eyes": "Rogue Waves",
-            "Don't Stop Me Now": "Queen"
-        }
-
+            'Endless Love': 'Diana Ross and Lionel Richie',
+            'How Deep is Your Love': 'Bee Gees',
+            'Happy Together': 'The Turtles'
+        },
+        imgUrl: 'https://images.unsplash.com/photo-1494859632785-32abaf5241f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
     },
     active: "",
 }
