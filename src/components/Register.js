@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Form, Input, Button} from "reactstrap";
+import { Form, Input } from "reactstrap";
 import { useSelector } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
@@ -17,8 +17,6 @@ const Register = (props) => {
         bio: '',
         profile_pic_url: ''
     });
-
-    const [displayMore, setDisplayMore] = useState(false);
 
     const isRegistering = useSelector(state => state.userReducer.registerUserStart);
 
@@ -64,10 +62,6 @@ const Register = (props) => {
         }
         return (<Input name='repassword' type='password' id='repassword' required onChange={handleChange}/>)
 
-    }
-
-    const triggerDisplayMore = () => {
-        setDisplayMore(!displayMore);
     }
 
     return(

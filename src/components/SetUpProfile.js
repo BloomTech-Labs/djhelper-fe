@@ -76,8 +76,8 @@ const SetUpProfile = props => {
             }
              
             {!editUserStart &&
-            <div className='img-area' ref={profilePic}>
-                <div className='plus-area' onClick={() => setWantsToChangeImg(!wantsToChangeImg)}>
+            <div className='img-area' ref={profilePic} data-testid='img-area'>
+                <div className='plus-area' onClick={() => setWantsToChangeImg(!wantsToChangeImg)} data-testid='plus-area'>
                     <FontAwesomeIcon icon={faPlus} />
                 </div>
             </div>
@@ -112,8 +112,8 @@ const SetUpProfile = props => {
                 </div>
 
                 <div className='button-area'>
-                    <button type='submit'>Submit</button>
-                    <button className='skip' onClick={handleCancel}>Skip</button>
+                    <button type='submit' data-testid='submit-button'>Submit</button>
+                    <button className='skip' data-testid='skip-button' onClick={handleCancel}>Skip</button>
                 </div>
 
             </form>
