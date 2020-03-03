@@ -121,7 +121,10 @@ const Dashboard = () => {
         {whichComponent()}
 
            <div className="upcoming-events">
+           <div className="labels">
             <h6> Upcoming Events</h6>
+            <h6> Create a New Event</h6>
+            </div>
                 <Carousel
                 className="carousel"
                   slidesPerPage={4}
