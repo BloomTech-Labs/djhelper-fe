@@ -47,6 +47,53 @@ export const pastEvents = {
         },
         imageUrl: 'https://images.unsplash.com/photo-1549981118-d720d448ab86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
     },
+    event5: {
+        name: 'Emily & Gael\'s Taco Party',
+        description: 'Couple is fairly young, so audience may consist of primarily young friends and older family members.',
+        date: '05/05/2019',
+        newRequests: {
+            'It\'s Raining Tacos': 'Parry Gripp & BooneBum',
+            'Hailing Taquitos': 'Parry Gripp & BooneBum',
+            'Spice Up Your Life': 'The Spice Girls'
+        },
+        imageUrl: 'https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
+    },
+    
+    event6: {
+        name: 'DarkWings Night Club',
+        description: 'Late night full moon celebration party',
+        date: '03/05/2020',
+        newRequests: {
+            'Moonage Daydream': 'David Bowie',
+            'C Moon Cry Like A Baby': 'Simple Minds',
+            'Moon Two': 'Chris Carter'
+        },
+        imageUrl: 'https://images.unsplash.com/photo-1558317751-bc3ed6f85f72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
+    },
+
+    event7: {
+        name: 'Soap Lake School Homecoming Dance',
+        description: 'Semi-formal event with an Under-the-Sea theme',
+        date: '10/01/2019',
+        newRequests: {
+            'Rock Lobster': 'The B-52\'s',
+            'Ocean Drive': 'Duke Dumont',
+            'The Pirates Who Don\'t Do Anything': 'Relient K'
+        },
+        imageUrl: 'https://images.unsplash.com/photo-1516970739312-08b075784b71?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
+    },
+    event8: {
+        name: 'Kristina & Bryce\'s Wedding',
+        description: 'Couple is fairly young, so audience may consist of primarily young friends and older family members.',
+        date: '02/28/2019',
+        newRequests: {
+            'Marry Me': 'Train',
+            'You Are the Best Thing': 'Ray LaMontagne',
+            'At Last': 'Etta James'
+        },
+        imageUrl: 'https://images.unsplash.com/photo-1459259191495-52eccde892c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
+    },
+
     active: '',
 }
 
