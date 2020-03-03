@@ -9,7 +9,7 @@ import Carousel, { Dots } from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //import Image from 'react-bootstrap/Image';
-
+import { pastEvents } from '../data/pastEvents.js';
 import { deleteUser, startEditUser } from '../actions/action';
 import EditDJ from './EditDJ';
 
@@ -60,6 +60,7 @@ const Dashboard = () => {
         active: "",
     })
 
+    const [pastEventData, setPastEventData] = useState(pastEvents);
 
     const dispatch = useDispatch();
 
@@ -173,10 +174,10 @@ const Dashboard = () => {
 
                   infinite
                   >
-                    <Event num={1} />
-                    <Event num={2} />
-                    <Event num={3} />
-                    <Event num={4}/>
+                    <Event num={1} data={pastEventData} setData={setPastEventData}/>
+                    <Event num={2} data={pastEventData} setData={setPastEventData}/>
+                    <Event num={3} data={pastEventData} setData={setPastEventData}/>
+                    <Event num={4} data={pastEventData} setData={setPastEventData}/>
                 </Carousel>
 
         </div>
