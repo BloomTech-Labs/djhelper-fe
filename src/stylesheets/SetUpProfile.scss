@@ -59,6 +59,11 @@
                 line-height: 2rem;
                 border-radius: 3px;
                 width: 100%;
+                color: $mediumPurple;
+                &:focus {
+                    background: rgb(65, 65, 65);
+                    color: white;
+                }
             }
             textarea {
                 background: $dark1;
@@ -66,6 +71,11 @@
                 line-height: 2rem;
                 width: 100%;
                 border-radius: 3px;
+                color: $mediumPurple;
+                &:focus {
+                    background: rgb(65, 65, 65);
+                    color: white;
+                }
             }
         }
         .button-area {
@@ -80,8 +90,11 @@
             border: none;
             color: white;
             padding: 0.75rem;
-           
+            transition: all  0.2s ease-in-out;
             width: 40%;
+            &:hover {
+                transform: scale(1.2);
+            }
             &.skip {
                 background: $dark3;
             }
