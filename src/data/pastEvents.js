@@ -93,7 +93,17 @@ export const pastEvents = {
         },
         imageUrl: 'https://images.unsplash.com/photo-1459259191495-52eccde892c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
     },
-
+    event9: {
+        name: 'Amy\'s Wedding',
+        description: 'Casual event at a senior center',
+        date: '01/24/2020',
+        newRequests: {
+            'Forever And Ever Amen': 'Randy Travis',
+            'In the Mood': 'Benny Goodman',
+            'Dancing in the Street': 'Mick Jagger'
+        },
+        imageUrl: 'https://images.unsplash.com/photo-1500900173725-e0978c945e23?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
+    },
     active: '',
 }
 
