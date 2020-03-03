@@ -4,12 +4,14 @@ import { faCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateUser } from '../actions/action';
 import { validUrl } from '../utils/validUrl';
+import Loader from 'react-loader-spinner';
 
 const SetUpProfile = props => {
     const dispatch = useDispatch();
 
     const name = useSelector(state => state.userReducer.name) || 'DJ';
     const id = useSelector(state => state.userReducer.id);
+    const editUserStart = useSelector(state => state.userReducer.editUserStart);
 
     const [userInput, setUserInput] = useState({website: '', phone: '', profile_pic_url: '', bio: ''});
     const [wantsToChangeImg, setWantsToChangeImg] = useState(false);
@@ -68,12 +70,20 @@ const SetUpProfile = props => {
             <p>Let's get your profile set up.</p>
         </div>
         <div className='side right-side'>
+            {editUserStart && <div className='loader'>
+                    <Loader type="Audio" color="purple" height={200} width={200} />
+                </div>
+            }
+             
+            {!editUserStart &&
             <div className='img-area' ref={profilePic}>
                 <div className='plus-area' onClick={() => setWantsToChangeImg(!wantsToChangeImg)}>
                     <FontAwesomeIcon icon={faPlus} />
                 </div>
-
             </div>
+            }
+
+            
             <form onSubmit={handleSubmit}>
                 {wantsToChangeImg &&
                     <div className='input-group'>
@@ -108,6 +118,7 @@ const SetUpProfile = props => {
 
             </form>
             </div>
+        
         </div>
     )
 }

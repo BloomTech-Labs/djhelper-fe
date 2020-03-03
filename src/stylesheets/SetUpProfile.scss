@@ -36,6 +36,11 @@
         }
     }
     .right-side {
+        .loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         form {
             width: 90%;
         }
@@ -119,4 +124,5 @@
             }
         }
     }
+    
 }

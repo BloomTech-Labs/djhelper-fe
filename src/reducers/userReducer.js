@@ -51,7 +51,7 @@ const initialState = {
     deleteUserError: false,
     editUserStart: false,
     editUserError: false,
-    editUserProcessing: false
+    editUserProcessing: false,
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -159,7 +159,7 @@ export const userReducer = (state = initialState, action) => {
         
         case UPDATE_USER_START:
             return {...state, 
-                editUserStart: true
+                editUserStart: true,
             }
 
         case UPDATE_USER_SUCCESS:
@@ -176,7 +176,7 @@ export const userReducer = (state = initialState, action) => {
                 editUserStart: false,
                 editUserError: true
             }
-            
+
         default:
             return state;
     }
