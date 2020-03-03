@@ -50,7 +50,7 @@ const DJProfile = props => {
             <NavigationBar />
             {!editUserStart &&
             <div className='main-content'>
-                <div className='side image-side'>
+                <div className='image-side'>
                     <div className='image-container'>
                         <img src={profileImg} alt='dj profile' ref={profile} onLoad={handleOrientation}/>
                     </div>
@@ -63,8 +63,7 @@ const DJProfile = props => {
                         </div>
                     </div>
 
-                    <div className='side text-side'>
-                        <div>
+                    <div className='text-side profile-width'>
                             <p>{bio}</p>
 
                             <h3>Name</h3>
@@ -78,7 +77,6 @@ const DJProfile = props => {
 
                             <h3>Phone</h3>
                             <p className="shift"><a href={`tel:${phone}`}>{phone}</a></p>
-                        </div>
                     </div>
                 </div>
             </div>
