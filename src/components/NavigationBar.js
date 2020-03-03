@@ -43,7 +43,7 @@ const NavigationBar = (props) => {
                         <NavLink to="/dj/profile" className={djProfile} data-testid='register-nav'>
                               <FontAwesomeIcon
                                 icon="user"
-                                size="1x"
+                                size="2x"
                             />
                       </NavLink>
                 </NavItem>
@@ -51,7 +51,7 @@ const NavigationBar = (props) => {
                       <NavLink id="home" className={home} data-testid='register-nav' to="/dj">
                               <FontAwesomeIcon
                                 icon="home"
-                                size="1x"
+                                size="2x"
                             />
                       </NavLink>
                 </NavItem>
@@ -65,7 +65,7 @@ const NavigationBar = (props) => {
         } else {
             return (
 
-              <Nav className=" navElements" navbar>
+              <Nav className="navElements" navbar>
                     <NavItem>
                       <NavLink data-testid='register-nav' to="/register">Register</NavLink>
                     </NavItem>
