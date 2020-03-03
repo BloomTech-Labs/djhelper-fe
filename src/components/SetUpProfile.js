@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateUser } from '../actions/action';
+import { validUrl } from '../utils/validUrl';
 
 const SetUpProfile = props => {
     const dispatch = useDispatch();
@@ -12,6 +13,8 @@ const SetUpProfile = props => {
 
     const [userInput, setUserInput] = useState({website: '', phone: '', profile_pic_url: '', bio: ''});
     const [wantsToChangeImg, setWantsToChangeImg] = useState(false);
+
+    const profilePic = useRef();
 
     const handleChange = e => {
             setUserInput({...userInput, [e.target.name]: e.target.value});
@@ -45,6 +48,16 @@ const SetUpProfile = props => {
         dispatch(updateUser(props.history, id, infoNeeded));
     }
 
+    useEffect(()=> {
+        //console.log(userInput.profile_pic_url);
+        //console.log(validUrl(userInput.profile_pic_url));
+        if (validUrl(userInput.profile_pic_url)) {
+            profilePic.current.style['background-image'] = `url(${userInput.profile_pic_url})`;
+            profilePic.current.style['background-size'] = 'cover';
+            profilePic.current.style['background-repeat'] = 'no-repeat';
+        }
+    }, [userInput.profile_pic_url]);
+
     return (
         <div className='setup-page'>
         <div className='side left-side'>
@@ -55,7 +68,7 @@ const SetUpProfile = props => {
             <p>Let's get your profile set up.</p>
         </div>
         <div className='side right-side'>
-            <div className='img-area'>
+            <div className='img-area' ref={profilePic}>
                 <div className='plus-area' onClick={() => setWantsToChangeImg(!wantsToChangeImg)}>
                     <FontAwesomeIcon icon={faPlus} />
                 </div>
