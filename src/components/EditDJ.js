@@ -5,6 +5,7 @@ import Loader from 'react-loader-spinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt} from '@fortawesome/free-solid-svg-icons';
 
+
 import { editUser, cancelEditUser } from '../actions/action';
 
 import DJMixer from '../images/DJMixer.jpg';
@@ -41,11 +42,10 @@ const EditDJ = (props) => {
             profile.current.classList.add('landscape');
         } else {
             profile.current.classList.remove('landscape');
-        }   
+        }
     }
 
     const [userInfo, setUserInfo] = useState({
-        username: username,
         name: name,
         email: email,
         website: website,
@@ -60,10 +60,6 @@ const EditDJ = (props) => {
         console.log(userInfo);
         let infoNeeded = {};
 
-        if (userInfo.username.length > 0) {
-            infoNeeded.username = userInfo.username;
-        }
-        
         if (userInfo.name.length > 0) {
             infoNeeded.name = userInfo.name;
         }
@@ -83,7 +79,7 @@ const EditDJ = (props) => {
         if (userInfo.website.length > 0) {
             infoNeeded.website = userInfo.website;
         }
-        
+
         console.log("id: ", id);
         dispatch(editUser(id, infoNeeded));
     }
@@ -97,102 +93,92 @@ const EditDJ = (props) => {
         dispatch(cancelEditUser());
     }
 
-    return(
-        <div>
+    return (
             <div className='main-content'>
-                <div className='side image-side'>
+                <div className='image-side'>
                     <div className='image-container'>
                         <img src={profileImg} alt='dj profile' ref={profile} onLoad={handleOrientation}/>
+                        <span className='edit-icon' onClick={() => setWantsToChangeImg(!wantsToChangeImg)}><FontAwesomeIcon icon="pencil-alt" size="2x"/></span>
                     </div>
                     <button onClick={handleSubmit} className='save'>Save</button>
                     <button onClick={handleCancel} className='cancel'>Cancel</button>
-                    <span className='edit-icon' onClick={() => setWantsToChangeImg(!wantsToChangeImg)}><FontAwesomeIcon icon={faPencilAlt} /></span>
                 </div>
 
-                <div className='side text-side'>
-                    {editUserProcessing &&
-                    <div className='loader'>
-                        <Loader type="Audio" color="purple" height={200} width={200} />
+                    <div className='text-side form-width'>
+                        {editUserProcessing &&
+                        <div className='loader'>
+                            <Loader type="Audio" color="purple" height={200} width={200} />
+                        </div>
+                        }
+
+                        {!editUserProcessing &&
+                            <Form onSubmit={handleSubmit}>
+                                {wantsToChangeImg &&
+                                <div>
+                                    <label htmlFor='profile_pic_url'>Link to Profile Image</label>
+                                    <Input name='profile_pic_url'
+                                        type='text'
+                                        id='profile_pic_url'
+                                        onChange={handleChange}
+                                        value={userInfo.profile_pic_url}/>
+                                </div>
+                                }
+                                <div>
+                                    <label htmlFor='name'>Name</label>
+                                    <Input name='name'
+                                        type='text'
+                                        id='name'
+                                        onChange={handleChange}
+                                        value={userInfo.name}/>
+                                </div>
+
+
+                                <div>
+                                    <label htmlFor='bio'>Bio</label>
+                                    <Input name='bio'
+                                        type='text'
+                                        id='bio'
+                                        onChange={handleChange}
+                                        value={userInfo.bio}/>
+                                </div>
+
+                                <div>
+                                    <label htmlFor='email'>Email</label>
+                                    <Input name='email'
+                                        type='email'
+                                        id='email'
+                                        onChange={handleChange}
+                                        value={userInfo.email}/>
+                                </div>
+                                <div>
+                                    <label htmlFor='website'>Your Website URL</label>
+                                    <Input name='website'
+                                        type='url'
+                                        id='website'
+                                        onChange={handleChange}
+                                        value={userInfo.website}/>
+                                </div>
+                                <div>
+                                    <label htmlFor='phone'>Phone Number</label>
+                                    <Input name='phone'
+                                        type='phone'
+                                        id='phone'
+                                        onChange={handleChange}
+                                        value={userInfo.phone}/>
+                                </div>
+
+                                <div>
+                                    <label htmlFor='profile_pic_url'>Link to Profile Image</label>
+                                    <Input name='profile_pic_url'
+                                        type='text'
+                                        id='profile_pic_url'
+                                        onChange={handleChange}
+                                        value={userInfo.profile_pic_url}/>
+                                </div>
+                            </Form>
+                        }
                     </div>
-                    }
-
-                    {!editUserProcessing &&
-                        <Form onSubmit={handleSubmit}>
-                            {wantsToChangeImg &&
-                            <div>
-                                <label htmlFor='profile_pic_url'>Link to Profile Image</label>
-                                <Input name='profile_pic_url' 
-                                    type='text' 
-                                    id='profile_pic_url' 
-                                    onChange={handleChange}
-                                    value={userInfo.profile_pic_url}/>
-                            </div>
-                            }
-
-                            <div>
-                                <label htmlFor='username'>Username</label>
-                                <Input name='username' 
-                                    type='text' 
-                                    id='username'  
-                                    onChange={handleChange}
-                                    value={userInfo.username}/>
-                            </div>
-
-                            <div>
-                                <label htmlFor='bio'>Bio</label>
-                                <Input name='bio' 
-                                    type='text' 
-                                    id='bio' 
-                                    onChange={handleChange}
-                                    value={userInfo.bio}/>
-                            </div>
-                        
-                            <div>
-                                <label htmlFor='name'>Name</label>
-                                <Input name='name' 
-                                    type='text' 
-                                    id='name' 
-                                    onChange={handleChange}
-                                    value={userInfo.name}/>
-                            </div>
-                            <div>
-                                <label htmlFor='email'>Email</label>
-                                <Input name='email' 
-                                    type='email' 
-                                    id='email' 
-                                    onChange={handleChange}
-                                    value={userInfo.email}/>
-                            </div>
-                            <div>
-                                <label htmlFor='website'>Your Website URL</label>
-                                <Input name='website' 
-                                    type='url' 
-                                    id='website' 
-                                    onChange={handleChange}
-                                    value={userInfo.website}/>
-                            </div>
-                            <div>
-                                <label htmlFor='phone'>Phone Number</label>
-                                <Input name='phone' 
-                                    type='phone' 
-                                    id='phone' 
-                                    onChange={handleChange}
-                                    value={userInfo.phone}/>
-                            </div>
-                            
-                            <div>
-                                <label htmlFor='profile_pic_url'>Link to Profile Image</label>
-                                <Input name='profile_pic_url' 
-                                    type='text' 
-                                    id='profile_pic_url' 
-                                    onChange={handleChange}
-                                    value={userInfo.profile_pic_url}/>
-                            </div>
-                        </Form>
-                    }
-                </div>
             </div>
-        </div>
     )
 }
 
