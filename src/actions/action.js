@@ -64,7 +64,12 @@ export const loginUser = (userInfo, history) => dispatch => {
         console.log(response);
         localStorage.setItem('token', response.data.token);
         dispatch({type: LOGIN_USER_SUCCESS, payload: response.data});
-        history.push('/dj/setup');
+        
+        if (response.data.bio.length === 0 && response.data.phone.length === 0 && response.data.website.length === 0 && response.data.profile_pic_url.length === 0) {
+            history.push('/dj/setup');
+        } else {
+            history.push('/dj');
+        }
       })
       .catch(err => {
             dispatch({type: LOGIN_USER_ERROR, payload: err});
