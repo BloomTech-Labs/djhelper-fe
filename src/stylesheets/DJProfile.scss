@@ -26,10 +26,12 @@
                 margin: 1rem;
                 span {
                     border-radius: 50%;
-                    padding: 18rem;
-                    margin-left: 30%;
+                    border: solid pink 2px;
+                    padding: 7.5rem;
+                    margin-left: 32%;
+                    transition: 0.3s;
                     &:hover {
-                        background: pink;
+                        background: rgba(211, 98, 255, 0.2);
                     }
                 }
 
@@ -39,7 +41,7 @@
                     &.landscape {
                         width: auto;
                         height: 100%;
-                        margin-left: -50px;
+                        margin-left: -100px;
                     }
                 }
             }
@@ -63,7 +65,7 @@
                 border-radius: 3px;
                 border: none;
                 outline: none;
-                transition: all 0.2 ease-in-out;
+                transition: 0.3s;
                 font-weight: bold;
                 padding: 0.25rem;
                 font-size: 1.25rem;
@@ -90,6 +92,7 @@
             }
             .edit-icon {
                 border: solid pink 2px;
+                border-radius: 50%;
                 font-size: 2rem;
                 position: absolute;
                 top: 48%;
