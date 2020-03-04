@@ -5,6 +5,8 @@ import { startEditUser } from '../actions/action';
 import EditDJ from './EditDJ';
 import NavigationBar from './NavigationBar';
 
+
+import Draggable, {DraggableCore} from 'react-draggable';
 import DJMixer from '../images/DJMixer.jpg';
 
 const DJProfile = props => {
@@ -19,7 +21,7 @@ const DJProfile = props => {
     const editUserStart = useSelector(state => state.userReducer.editUserStart);
 
     const [profileImg, setProfileImg] = useState(DJMixer);
-    
+
     const profile = useRef();
 
     useEffect(() => {
@@ -36,53 +38,52 @@ const DJProfile = props => {
             profile.current.classList.add('landscape');
         } else {
             profile.current.classList.remove('landscape');
-        }   
+        }
     }
 
     const handleClick = () => {
         dispatch(startEditUser());
     }
-    
+
     return (
         <div className='dj-profile-page'>
             <NavigationBar />
-            {!editUserStart && 
+            {!editUserStart &&
             <div className='main-content'>
-                <div className='side image-side'>
+                <div className='image-side'>
                     <div className='image-container'>
                         <img src={profileImg} alt='dj profile' ref={profile} onLoad={handleOrientation}/>
                     </div>
                     <button onClick={handleClick}>Edit</button>
                 </div>
+                <div>
+                    <div className='header'>
+                        <div>
+                            <h1>{username}</h1>
+                        </div>
+                    </div>
 
-                <div className='side text-side'>
-                    <div>
-                        <h1>{username}</h1>
+                    <div className='text-side profile-width'>
+                            <p>{bio}</p>
 
-                        <p>{bio}</p>
+                            <h3>Name</h3>
+                            <p className="shift">{name}</p>
 
-                        <h3>Name</h3>
-                        <p>{name}</p>
+                            <h3>Email</h3>
+                            <p className="shift"><a href={`mailto:${email}`}>{email}</a></p>
 
-                        <h3>Email</h3>
-                        <p><a href={`mailto:${email}`}>{email}</a></p>
+                            <h3>Website</h3>
+                            <p className="shift"><a href={website}>{website}</a></p>
 
-                        <h3>Website</h3>
-                        <p><a href={website}>{website}</a></p>
-
-                        <h3>Phone</h3>
-                        <p><a href={`tel:${phone}`}>{phone}</a></p>
+                            <h3>Phone</h3>
+                            <p className="shift"><a href={`tel:${phone}`}>{phone}</a></p>
                     </div>
                 </div>
             </div>
             }
-
             { editUserStart &&
-            <div>
                 <EditDJ />
-            </div>
             }
- 
         </div>
     )
 }

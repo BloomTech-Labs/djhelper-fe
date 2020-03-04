@@ -23,7 +23,11 @@ import {
     EDIT_USER_START_PROCESSING,
     EDIT_USER_SUCCESS,
     EDIT_USER_ERROR,
-    EDIT_USER_CANCEL
+    EDIT_USER_CANCEL,
+
+    UPDATE_USER_START,
+    UPDATE_USER_SUCCESS,
+    UPDATE_USER_ERROR
 
 } from '../actions/action'
 
@@ -47,7 +51,7 @@ const initialState = {
     deleteUserError: false,
     editUserStart: false,
     editUserError: false,
-    editUserProcessing: false
+    editUserProcessing: false,
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -150,7 +154,28 @@ export const userReducer = (state = initialState, action) => {
 
         case EDIT_USER_START_PROCESSING:
             return {...state,
-                editUserProcessing: true}
+                editUserProcessing: true
+            }
+        
+        case UPDATE_USER_START:
+            return {...state, 
+                editUserStart: true,
+            }
+
+        case UPDATE_USER_SUCCESS:
+            return {...state,
+                editUserStart: false,
+                website: action.payload.website,
+                phone: action.payload.phone,
+                profile_pic_url: action.payload.profile_pic_url,
+                bio: action.payload.bio
+            }
+
+        case UPDATE_USER_ERROR:
+            return {...state,
+                editUserStart: false,
+                editUserError: true
+            }
 
         default:
             return state;

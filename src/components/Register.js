@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Form, Input, Button} from "reactstrap";
+import { Form, Input } from "reactstrap";
 import { useSelector } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
@@ -17,8 +17,6 @@ const Register = (props) => {
         bio: '',
         profile_pic_url: ''
     });
-
-    const [displayMore, setDisplayMore] = useState(false);
 
     const isRegistering = useSelector(state => state.userReducer.registerUserStart);
 
@@ -66,10 +64,6 @@ const Register = (props) => {
 
     }
 
-    const triggerDisplayMore = () => {
-        setDisplayMore(!displayMore);
-    }
-
     return(
         <div className='registration-page'>
         <NavigationBar />
@@ -113,28 +107,6 @@ const Register = (props) => {
                             {repasswordValidation()}
                         </div>
                     </div>
-
-
-
-                    <Button onClick={triggerDisplayMore}>{displayMore? 'Hide More Info': 'Add More Info (Optional)' }</Button>
-                    {displayMore && <div className='display-more'>
-                        <div>
-                            <label htmlFor='website'>Your Website URL</label>
-                            <Input name='website' type='url' id='website' onChange={handleChange}/>
-                        </div>
-                        <div>
-                            <label htmlFor='phone'>Phone Number</label>
-                            <Input name='phone' type='phone' id='phone' onChange={handleChange}/>
-                        </div>
-                        <div>
-                            <label htmlFor='bio'>Bio</label>
-                            <Input name='bio' type='text' id='bio' onChange={handleChange}/>
-                        </div>
-                        <div>
-                            <label htmlFor='profile_pic_url'>Link to Profile Image</label>
-                            <Input name='profile_pic_url' type='text' id='profile_pic_url' onChange={handleChange}/>
-                        </div>
-                    </div>}
 
                     <button type='submit'>Submit</button>
 

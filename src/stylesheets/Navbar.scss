@@ -1,21 +1,14 @@
 .navBar {
+    padding-left: 2%;
+    padding-right: 2%;
+
     a {
         color: white;
+
+        text-decoration: none;
         &:hover {
             color:lightgrey;
         }
-
-        &:active {
-            color: grey;
-        }
-    }
-
-    .selected {
-        color: grey;
-       &:hover {
-            color:grey;
-        }
-
     }
 
     .links {
@@ -26,7 +19,8 @@
         margin-left: 53%;
     }
      #profile {
-         margin-left: 20%;
+         margin-left: 10%;
+         margin-right: 13%;
      }
 
  
@@ -44,11 +38,32 @@
     }
 
     .navElementsIcons {
+
+        a {
+            color: grey;
+            &:hover {
+                color:lightgrey;
+            }
+
+            &:active {
+                color: white;
+            }
+        }
+
+        .selected {
+            color: white;
+           &:hover {
+                color:white;
+            }
+
+        }
+
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
         width: 65%;
     }
+
 
 }
 

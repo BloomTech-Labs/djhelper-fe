@@ -7,11 +7,11 @@
     padding-bottom: 5%;
     .main-content {
         display: flex;
-        flex-flow: row wrap;
+        flex-flow: row nowrap;
         justify-content: flex-start;
         align-items: flex-start;
         margin-top: 5rem;
-        margin-left: 2rem;
+        margin-left: 10vw;
         @media (max-width: 600px) {
             flex-flow: column nowrap;
             align-items: center;
@@ -19,25 +19,34 @@
         div {
             .image-container {
                 width: 18rem;
-                display: inline-block;
                 position: relative;
                 height: 18rem;
                 overflow: hidden;
                 border-radius: 50%;
                 margin: 1rem;
+                span {
+                    border-radius: 50%;
+                    border: solid pink 2px;
+                    padding: 7.5rem;
+                    margin-left: 32%;
+                    transition: 0.3s;
+                    &:hover {
+                        background: rgba(211, 98, 255, 0.2);
+                    }
+                }
+
                 img {
                     width: 100%;
                     height: auto;
                     &.landscape {
                         width: auto;
                         height: 100%;
-                        margin-left: -50px;
+                        margin-left: -100px;
                     }
                 }
             }
         }
         .image-side {
-            width: 30%;
             display: flex;
             flex-flow: column nowrap;
             justify-content: center;
@@ -48,6 +57,7 @@
             @media (max-width: 600px) {
                 width: 90%;
             }
+
             button {
                 width: 10rem;
                 background: black;
@@ -55,12 +65,19 @@
                 border-radius: 3px;
                 border: none;
                 outline: none;
-                transition: all 0.2 ease-in-out;
+                transition: 0.3s;
                 font-weight: bold;
                 padding: 0.25rem;
                 font-size: 1.25rem;
+                -webkit-box-shadow: 14px 10px 10px -10px rgba(0,0,0,0.35);
+                -moz-box-shadow: 14px 10px 10px -10px rgba(0,0,0,0.35);
+                box-shadow: 4px 5px 10px 0px rgba(0,0,0,0.35);
                 &:hover {
-                    transform: scale(1.2);
+                    color: black;
+                    background: white;
+                }
+                &:active {
+                    background: grey;
                 }
                 &.cancel {
                     background: black;
@@ -74,7 +91,9 @@
                 }
             }
             .edit-icon {
-                font-size: 6rem;
+                border: solid pink 2px;
+                border-radius: 50%;
+                font-size: 2rem;
                 position: absolute;
                 top: 48%;
                 left: 17%;
@@ -84,11 +103,34 @@
                 }
             }
         }
+        .header {
+            display: inline-block;
+            margin-top: 17vh;
+            padding-top: 2%;
+            padding-left: 2%;
+            padding-right: 2%;
+            background: $dark3;
+            h1 {
+                font-size: 3.5rem;
+                font-weight: bold !important;
+            }
+            white-space: nowrap;
+
+        }
+        .form-width {
+            margin-top: 16%;
+            width: 40vw;
+        }
+        .profile-width {
+            width: 50vw;
+        }
+
         .text-side {
-            width: 35%;
+            display: flex;
+            flex-flow: column nowrap;
+            padding-left: 2%;
             word-wrap: break-word;
-            overflow-x: auto;
-            margin-top: 6rem;
+            overflow-x: visible;
             background: $dark3;
             @media (max-width: 1150px) {
                 width: 50%;
@@ -99,15 +141,21 @@
             h1 {
                 font-size: 4vw;
                 padding: 1rem;
-                width: 100%;
+                width: 50%;
+                font-weight: 700;
             }
             h3 {
                 color: $headlineGray;
-                font-size: 1.5rem;
+                font-size: 1rem;
+                font-weight:600;
             }
             p {
-                margin-left: 2rem;
-                font-size: 1.25rem;
+                padding-bottom: 2%;
+                width: 75%;
+                font-size: 1rem;
+            }
+            .shift {
+                padding-left: 2%;
             }
             a {
                 color: white;
@@ -116,6 +164,7 @@
                     color: $lightPurple;
                 }
             }
+
             form {
                 label {
                     font-weight: bold;

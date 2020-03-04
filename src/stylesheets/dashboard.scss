@@ -1,9 +1,17 @@
 .dashboard {
-    background: #1E1E1E;
-    color: white;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    background: $dark3;
+    background-image: url('../images/profile-banner.svg');
+    background-repeat: repeat-x;
+    color: white;
+    min-height: 110vh;
+    padding-bottom: 5%;
+
+    .welcome {
+        height: 32vh;
+    }
 
     .carousel {
         display: flex;
@@ -53,6 +61,12 @@
 
 
     .upcoming-events {
+        .labels {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            margin-bottom: 2vh;
+        }
         display: flex;
         flex-flow: column nowrap;
         width: 90%;

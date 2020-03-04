@@ -45,6 +45,7 @@ test('here link on Login page takes user to registration page', () => {
             </Router>
         </Provider>
   );
+  const tokenPresent=true;
 
   const toRegistration = getByTestId('toRegistration');
   fireEvent.click(toRegistration);
