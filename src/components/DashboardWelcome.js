@@ -5,7 +5,7 @@ const DashboardWelcome = (props) => {
 
     return (
         <div className="welcome">
-            <h1> Welcome, {props.name}!</h1>
+            <h1 data-testid="header"> Welcome, {props.name}!</h1>
         </div>
 
     )

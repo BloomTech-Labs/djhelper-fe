@@ -15,7 +15,7 @@ import EditDJ from './EditDJ';
 
 const image = "https://www.photohound.co/assets/img/placeholders/spot.png";
 
-const Dashboard = () => {
+const Dashboard = (props) => {
 
     const [data, setData] = useState({
         event1: {
@@ -115,19 +115,18 @@ const Dashboard = () => {
 
     let thing = data.active
     let currentlyActive = data[thing];
-    console.log([data[thing]])
     return (
         <div className="dashboard">
-        <NavigationBar />
+        <NavigationBar tokenPresent={props.tokenPresent} />
         {whichComponent()}
 
            <div className="upcoming-events">
-           <div className="labels">
-            <h6> Upcoming Events</h6>
-            <h6> Create a New Event</h6>
-            </div>
-                <Carousel
-                className="carousel"
+               <div className="labels">
+                   <h6> Upcoming Events</h6>
+                   <h6> Create a New Event</h6>
+               </div>
+               <Carousel
+                  className="carousel"
                   slidesPerPage={4}
                   arrows
                   arrowLeft={

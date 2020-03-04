@@ -35,12 +35,12 @@ const NavigationBar = (props) => {
     }
 
     const navState = () => {
-        if (tokenPresent) {
+        if (tokenPresent || props.tokenPresent) {
             return (
               <Nav className="navElementsIcons" navbar>
               {selectedIcon()}
                 <NavItem id="profile">
-                        <NavLink to="/dj/profile" className={djProfile} data-testid='register-nav'>
+                        <NavLink to="/dj/profile/" className={djProfile} data-testid='profile'>
                               <FontAwesomeIcon
                                 icon="user"
                                 size="2x"
@@ -48,7 +48,7 @@ const NavigationBar = (props) => {
                       </NavLink>
                 </NavItem>
                 <NavItem id="home">
-                      <NavLink id="home" className={home} data-testid='register-nav' to="/dj">
+                      <NavLink id="home" className={home} data-testid='home' to="/dj/">
                               <FontAwesomeIcon
                                 icon="home"
                                 size="2x"
