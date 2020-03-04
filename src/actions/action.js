@@ -1,4 +1,3 @@
-import axios from "axios";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 export const SET_NAME = 'SET_NAME';
@@ -26,127 +25,129 @@ export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
 export const EDIT_USER_ERROR = 'EDIT_USER_ERROR';
 export const EDIT_USER_CANCEL = 'EDIT_USER_CANCEL';
 
-export const UPDATE_USER_START ='UPDATE_USER_START';
+export const UPDATE_USER_START = 'UPDATE_USER_START';
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 export const UPDATE_USER_ERROR = 'UPDATE_USER_ERROR';
 
 // action creators
 
 export const setName = name => {
-    return {type: SET_NAME, payload: name}
-}
+  return { type: SET_NAME, payload: name };
+};
 
 export const setUsername = username => {
-    return {type: SET_USERNAME, payload: username}
-}
+  return { type: SET_USERNAME, payload: username };
+};
 
 //export const Uri = 'https://ec2-18-218-74-229.us-east-2.compute.amazonaws.com'
-export const Uri = 'https://localhost:8000/'
-
+export const Uri = 'https://localhost:8000/';
 
 export const registerUserAction = (infoNeeded, history) => dispatch => {
-    dispatch({type: REGISTER_USER_START});
-    // http://ec2-18-218-74-229.us-east-2.compute.amazonaws.com/api/register/dj/
-    axios.post(`https://localhost:8000/api/register/dj/`, infoNeeded)
-      .then(response => {
-        //console.log(response);
-        history.push('/login');
-        dispatch({type: REGISTER_USER_SUCCESS, payload: response.data});
-      })
-      .catch(err => {
-             console.log(err)
-             dispatch({type: REGISTER_USER_ERROR, payload: err})
-      });
-}
+  dispatch({ type: REGISTER_USER_START });
+  axiosWithAuth()
+    .post('/register/dj/', infoNeeded)
+    .then(response => {
+      //console.log(response);
+      history.push('/login');
+      dispatch({ type: REGISTER_USER_SUCCESS, payload: response.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: REGISTER_USER_ERROR, payload: err });
+    });
+};
 
 export const loginUser = (userInfo, history) => dispatch => {
-    console.log(userInfo);
-    dispatch({type: LOGIN_USER_START});
-    // http://ec2-18-218-74-229.us-east-2.compute.amazonaws.com/api/login/dj/
-    axios.post(' https://ec2-18-218-74-229.us-east-2.compute.amazonaws.com/api/login/dj/', userInfo)
-      .then(response => {
-        console.log(response);
-        localStorage.setItem('token', response.data.token);
-        dispatch({type: LOGIN_USER_SUCCESS, payload: response.data});
+  console.log(userInfo);
+  dispatch({ type: LOGIN_USER_START });
+  axiosWithAuth()
+    .post('/login/dj/', userInfo)
+    .then(response => {
+      console.log(response);
+      localStorage.setItem('token', response.data.token);
+      dispatch({ type: LOGIN_USER_SUCCESS, payload: response.data });
 
-        if (response.data.bio.length === 0 && response.data.phone.length === 0 && response.data.website.length === 0 && response.data.profile_pic_url.length === 0) {
-            history.push('/dj/setup');
-        } else {
-            history.push('/dj');
-        }
-      })
-      .catch(err => {
-            dispatch({type: LOGIN_USER_ERROR, payload: err});
-            console.log(err);
-      });
-  }
-
-  export const logoutUser = () => dispatch => {
-
-      dispatch({type: LOGOUT_USER_START});
-      if (localStorage.getItem('token')) {
-          console.log(localStorage.getItem('token'))
-          localStorage.removeItem('token');
-          dispatch({type: LOGOUT_USER_SUCCESS});
+      if (
+        response.data.bio.length === 0 &&
+        response.data.phone.length === 0 &&
+        response.data.website.length === 0 &&
+        response.data.profile_pic_url.length === 0
+      ) {
+        history.push('/dj/setup');
       } else {
-          dispatch({type: LOGOUT_USER_ERROR, payload: 'no token found'})
+        history.push('/dj');
       }
+    })
+    .catch(err => {
+      dispatch({ type: LOGIN_USER_ERROR, payload: err });
+      console.log(err);
+    });
+};
+
+export const logoutUser = () => dispatch => {
+  dispatch({ type: LOGOUT_USER_START });
+  if (localStorage.getItem('token')) {
+    console.log(localStorage.getItem('token'));
+    localStorage.removeItem('token');
+    dispatch({ type: LOGOUT_USER_SUCCESS });
+  } else {
+    dispatch({ type: LOGOUT_USER_ERROR, payload: 'no token found' });
   }
+};
 
-  export const deleteUser = id => dispatch => {
-      console.log('in deleteUser action');
-      dispatch({type: DELETE_USER_START});
-      // http://ec2-18-218-74-229.us-east-2.compute.amazonaws.com/api/auth/dj/${id}
-      axiosWithAuth().delete(`https://ec2-18-218-74-229.us-east-2.compute.amazonaws.com/api/auth/dj/${id}`)
-        .then(response => {
-            console.log(response);
-            if (localStorage.getItem('token')) {
-                console.log(localStorage.getItem('token'))
-                localStorage.removeItem('token');
-            }
-            dispatch({type: DELETE_USER_SUCCESS});
-        })
-        .catch(err => {
-            console.log(err);
-            dispatch({type: DELETE_USER_ERROR, payload: err})
-        })
-  }
+export const deleteUser = id => dispatch => {
+  console.log('in deleteUser action');
+  dispatch({ type: DELETE_USER_START });
+  axiosWithAuth()
+    .delete(`/auth/dj/${id}`)
+    .then(response => {
+      console.log(response);
+      if (localStorage.getItem('token')) {
+        console.log(localStorage.getItem('token'));
+        localStorage.removeItem('token');
+      }
+      dispatch({ type: DELETE_USER_SUCCESS });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: DELETE_USER_ERROR, payload: err });
+    });
+};
 
-  export const startEditUser = () =>  dispatch => {
-    dispatch({type: EDIT_USER_START});
-  }
+export const startEditUser = () => dispatch => {
+  dispatch({ type: EDIT_USER_START });
+};
 
-  export const editUser = (id, userInfo) => dispatch => {
-    dispatch({type: EDIT_USER_START_PROCESSING});
-    // http://ec2-18-218-74-229.us-east-2.compute.amazonaws.com/api/auth/dj/${id}
-    axiosWithAuth().put(`https://ec2-18-218-74-229.us-east-2.compute.amazonaws.com/api/auth/dj/${id}`, userInfo)
-        .then(response => {
-            console.log(response);
-            dispatch({type: EDIT_USER_SUCCESS, payload: response.data})
-        })
-        .catch(err => {
-            console.log(err);
-            dispatch({type: EDIT_USER_ERROR, payload: err})
-        })
-  }
+export const editUser = (id, userInfo) => dispatch => {
+  dispatch({ type: EDIT_USER_START_PROCESSING });
+  axiosWithAuth()
+    .put(`/auth/dj/${id}`, userInfo)
+    .then(response => {
+      console.log(response);
+      dispatch({ type: EDIT_USER_SUCCESS, payload: response.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: EDIT_USER_ERROR, payload: err });
+    });
+};
 
-  export const cancelEditUser = () =>  dispatch => {
-    dispatch({type: EDIT_USER_CANCEL});
-  }
+export const cancelEditUser = () => dispatch => {
+  dispatch({ type: EDIT_USER_CANCEL });
+};
 
-  export const updateUser = (history, id, userInfo) => dispatch => {
-    dispatch({type: UPDATE_USER_START});
-    axiosWithAuth().put(`https://ec2-18-218-74-229.us-east-2.compute.amazonaws.com/api/auth/dj/${id}`, userInfo)
-        .then(response => {
-            console.log(response);
-            dispatch({type: UPDATE_USER_SUCCESS, payload: response.data});
-            history.push('/dj');
-
-        })
-        .catch(err => {
-            console.log(err);
-            dispatch({type: UPDATE_USER_ERROR, payload: err});
-            history.push('/dj');
-        })
-
-  }
+export const updateUser = (history, id, userInfo) => dispatch => {
+  dispatch({ type: UPDATE_USER_START });
+  axiosWithAuth()
+    .put(`/auth/dj/${id}`, userInfo)
+    .then(response => {
+      console.log(response);
+      dispatch({ type: UPDATE_USER_SUCCESS, payload: response.data });
+      history.push('/dj');
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: UPDATE_USER_ERROR, payload: err });
+      history.push('/dj');
+    });
+};
