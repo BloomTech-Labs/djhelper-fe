@@ -8,14 +8,27 @@ const Home = props => {
 
   return (
     <div>
-      <NavigationBar />
-      {!name && (
-        <h2>
-          Welcome! Please <Link to="/register">register</Link> or{' '}
-          <Link to="/login">log in</Link> to continue.
-        </h2>
-      )}
-      {name && <h2>Welcome, {name}!</h2>}
+      <div className="header">
+        <NavigationBar />
+        <h1>DJ Helper</h1>
+        <h2>How DJs easily collect song requests</h2>
+        <h2>And everyone upvotes the songs they also want to hear!</h2>
+      </div>
+
+      <div className="main-content">
+        {!name && (
+          <>
+            <h2>Welcome!</h2>
+            <h3>
+              Please
+              <Link to="/register"> register</Link> or
+              <Link to="/login"> log in </Link>
+              to continue.
+            </h3>
+          </>
+        )}
+        {name && <h2>Welcome, {name}!</h2>}
+      </div>
     </div>
   );
 };
