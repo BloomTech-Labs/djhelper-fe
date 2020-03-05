@@ -1,82 +1,68 @@
-#  DJ Helper
+# DJ Helper
 
-You can find the deployed project [here](https://master.d2poed2e8xjq7e.amplifyapp.com/register).
+You can find the deployed project [here](https://www.dj-helper.com/register).
 
-## 4️⃣ Contributors
+## Contributors
 
-
-|                                       [Heather Nuffer](https://github.com/ethyl2)                                        |                                       [Dan Johnson](https://github.com/danimal-johnson)                                        |                                       [Andrew Garcia](https://github.com/aaamg)                                        |                                       [Phil MacEachron](https://github.com/phil-mac/)                                        |                                       [Humaira Syed](https://github.com/silvermaiden)                                        |
-| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-| [<img src="https://ca.slack-edge.com/T4JUEB3ME-UNLR217EK-bac3d83491a8-512" width = "200" />](https://github.com/)            | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UMGDV0UBB-2a6a88158d62-512" width = "200" />](https://github.com/)           | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UJPHBKQ6S-d05ed0e3a7be-512" width = "200" />](https://github.com/)           | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UN7FCNLAF-64d89b1f31d1-512" width = "200" />](https://github.com/)           |[<img src="https://ca.slack-edge.com/T4JUEB3ME-UJ32P8ZMZ-f1868140c153-512" width = "200" />](https://github.com/)                       |
-|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ethyl2)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/danimal-johnson)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/aaamg)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/phil-mac)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/silvermaiden)             |
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/heather-nuffer/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/phil-maceachron-26104b71/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/humaira-syed) |
-
-<br>
-<br>
-
-|                                       [Stephanie Miller](https://github.com/shmilyface)                                        |                                       [Emily Arias](https://github.com/)                                        |                                       [Mariana Dominguez](https://github.com/madinanachan)                                        |                                       [Jordan Heuer](https://github.com/j-m-d-h)                                        |                                       [Isaac Lopez](https://github.com/lopez-isaac)                                        |
-| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-| [<img src="https://ca.slack-edge.com/T4JUEB3ME-UHSAM16V7-6cb1101a892c-512" width = "200" />](https://github.com/)            | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UGVBY5QK0-0322eb799fbf-512" width = "200" />](https://github.com/)           | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UL44ALSSK-3e3a00d49ce2-512" width = "200" />](https://github.com/)           | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UJQR645R8-ea8dc0f12cf6-512" width = "200" />](https://github.com/)           |[<img src="https://ca.slack-edge.com/T4JUEB3ME-UNK2RKG2H-26c2bec454b7-512" width = "200" />](https://github.com/)                       |
-|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/shmilyface)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/madinanachan)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/j-m-d-h)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/lopez-isaac)             |
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/heather-nuffer/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/phil-maceachron-26104b71/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/humaira-syed) |
+|                                           [Heather Nuffer](https://github.com/ethyl2)                                           |                                 [Dan Johnson](https://github.com/danimal-johnson)                                 |                                     [Andrew Garcia](https://github.com/aaamg)                                     |                                              [Phil MacEachron](https://github.com/phil-mac/)                                              |                                      [Humaira Syed](https://github.com/silvermaiden)                                      |
+| :-----------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: |
+|        [<img src="https://ca.slack-edge.com/T4JUEB3ME-UNLR217EK-bac3d83491a8-512" width = "200" />](https://github.com/)        | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UMGDV0UBB-2a6a88158d62-512" width = "200" />](https://github.com/) | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UJPHBKQ6S-d05ed0e3a7be-512" width = "200" />](https://github.com/) |             [<img src="https://ca.slack-edge.com/T4JUEB3ME-UN7FCNLAF-64d89b1f31d1-512" width = "200" />](https://github.com/)             |     [<img src="https://ca.slack-edge.com/T4JUEB3ME-UJ32P8ZMZ-f1868140c153-512" width = "200" />](https://github.com/)     |
+|                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ethyl2)                       |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/danimal-johnson)            |                [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/aaamg)                 |                           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/phil-mac)                           |                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/silvermaiden)                 |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/heather-nuffer/) |   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)   |   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)   | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/phil-maceachron-26104b71/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/humaira-syed) |
 
 <br>
 <br>
 
-🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
+|                                        [Stephanie Miller](https://github.com/shmilyface)                                        |                                        [Emily Arias](https://github.com/)                                         |                               [Mariana Dominguez](https://github.com/madinanachan)                                |                                                [Jordan Heuer](https://github.com/j-m-d-h)                                                 |                                       [Isaac Lopez](https://github.com/lopez-isaac)                                       |
+| :-----------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: |
+|        [<img src="https://ca.slack-edge.com/T4JUEB3ME-UHSAM16V7-6cb1101a892c-512" width = "200" />](https://github.com/)        | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UGVBY5QK0-0322eb799fbf-512" width = "200" />](https://github.com/) | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UL44ALSSK-3e3a00d49ce2-512" width = "200" />](https://github.com/) |             [<img src="https://ca.slack-edge.com/T4JUEB3ME-UJQR645R8-ea8dc0f12cf6-512" width = "200" />](https://github.com/)             |     [<img src="https://ca.slack-edge.com/T4JUEB3ME-UNK2RKG2H-26c2bec454b7-512" width = "200" />](https://github.com/)     |
+|                     [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/shmilyface)                     |                   [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                   |             [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/madinanachan)             |                           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/j-m-d-h)                            |                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/lopez-isaac)                  |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/heather-nuffer/) |   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)   |   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)   | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/phil-maceachron-26104b71/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/humaira-syed) |
+
+<br>
+<br>
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](netlify link goes in these parenthesis)
+![React](https://img.shields.io/badge/react-v16.12.0--alpha.2-blue.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
-🚫 more info on using badges [here](https://github.com/badges/shields)
+[![code style: eslint](https://img.shields.io/badge/code_style-eslint-ff69b4.svg?style=flat-square)](https://github.com/eslint/eslint)
 
 ## Project Overview
 
- [Trello Board](https://trello.com/b/8PQ8BRod/labs-21-dj-helper)
+[Trello Board](https://trello.com/b/8PQ8BRod/labs-21-dj-helper)
 
- [Product Canvas](https://www.notion.so/DJ-Helper-6b9f7ca95fec4c6ea8655c1d0c3c47b0)
+[Product Canvas](https://www.notion.so/DJ-Helper-6b9f7ca95fec4c6ea8655c1d0c3c47b0)
 
- [UX Design files](https://www.figma.com/file/g79lCjYSWFCOBGyBRKzO96/DJ-Helper%2C-Emily?node-id=177%3A0) 
+[UX Design files](https://www.figma.com/file/g79lCjYSWFCOBGyBRKzO96/DJ-Helper%2C-Emily?node-id=177%3A0)
 
 Mission Statement: To be the easiest way for DJs to collect and display relevant song requests at events.
 
-
 ### 4️⃣ Key Features
 
--    feature one
--    feature two
--    feature three
--    feature four
--    feature five
+- DJs can create accounts.
+- DJs can sign in to their accounts.
+- DJs can add additional profile information: their website, phone, bio, and link to their profile image.
+- DJs can edit their profile information.
+- DJs can delete their accounts.
+- DJs can see their dashboards.
 
 ## 1️⃣ Tech Stack
 
-### Front end built using:
+### Front end built using: React.
 
+Packages used for styling: bootstrap, reactstrap, node-sass, react-loader-spinner, @fortawesome/fontawesome-svg-core, @fortawesome/free-brands-svg-icons, @fortawesome/free-regular-svg-icons, @fortawesome/free-solid-svg-icons, @fortawesome/react-fontawesome.
 
-#### React
+Packages used for state management: redux, react-redux, redux-thunk.
 
--    For this app to be successful, it needs to be handy for users to add song requests not only while before an event, but during the event. Therefore, it needs to be very easy to use on a mobile device.
--    Using React with extra consideration to mobile-friendly styling will help, but we'd also like to use React Native to create a mobile version of the app.
--    Using React will make the transition from a web app to a mobile app easier to implement.
--    Our first iteration of our project will be a React web app. Our second will hopefully be adding a React Native mobile app.
+Packages used for testing: @testing-library/jest-dom, @testing-library/react, @testing-library/user-event.
 
-🚫List the rest of the front end features and libraries in the same format as the framework above.
+Packages used for development (linters): eslint, eslint-config-airbnb, eslint-config-node, eslint-config-prettier, eslint-plugin-import, eslint-plugin-jsx-ally, eslint-plugin-node, eslint-plugin-prettier, eslint-plugin-react, eslint-plugin-react-hooks, prettier.
 
-#### Front end deployed to AWS.
+#### Front end deployed to AWS at [dj-helper.com](https://www.dj-helper.com/register).
 
-#### [Back end](🚫link to back end repo here) built using:
+#### [Back end](https://github.com/Lambda-School-Labs/djhelper-be) built using:
 
 #### Express, Postgresql, AWS
-
--    Using node with an Express server will allow us to query the data science's API as well as handle the requests from the front end.
--    Using AWS with postrgresql will allow us to have data that persists, which will ideal for all users. 
--    Implementing authentication and authorization with hashing (bcryptjs) and JSON web tokens will insure that only authorized users will have access to sensitive data.
-
-🚫 List the rest of the back end end features and libraries in the same format as the framework above
 
 # APIs
 
@@ -152,10 +138,9 @@ To get the app running locally:
 
 4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-    - The page will reload if you make edits.<br />
+   - The page will reload if you make edits.<br />
 
-    - You will also see any lint errors in the console.
-
+   - You will also see any lint errors in the console.
 
 ## Other Scripts
 
@@ -173,12 +158,13 @@ When contributing to this repository, please first discuss the change you wish t
 Please note we have a [code of conduct](./CODE_OF_CONDUCT.md). Please follow it in all your interactions with the project.
 
 ## Issue/Bug Request
-   
- **If you are having an issue with the existing project code, please submit a bug report under the following guidelines:**
- - Check first to see if your issue has already been reported.
- - Check to see if the issue has recently been fixed by attempting to reproduce the issue using the latest master branch in the repository.
- - Create a live example of the problem.
- - Submit a detailed bug report including your environment & browser, steps to reproduce the issue, actual and expected outcomes,  where you believe the issue is originating from, and any potential solutions you have considered.
+
+**If you are having an issue with the existing project code, please submit a bug report under the following guidelines:**
+
+- Check first to see if your issue has already been reported.
+- Check to see if the issue has recently been fixed by attempting to reproduce the issue using the latest master branch in the repository.
+- Create a live example of the problem.
+- Submit a detailed bug report including your environment & browser, steps to reproduce the issue, actual and expected outcomes, where you believe the issue is originating from, and any potential solutions you have considered.
 
 ### Feature Requests
 
