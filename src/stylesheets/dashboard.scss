@@ -8,7 +8,7 @@
     padding-bottom: 5%;
 
     .welcome {
-        height: 32vh;
+        height: 47vh;
     }
 
     .carousel {
@@ -27,8 +27,7 @@
 
     .preview-event-details {
         width: 90%;
-        height: 30vh;
-        margin-top: 5vh;
+        height: 47vh;
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
@@ -59,6 +58,15 @@
 
 
     .upcoming-events {
+        h5 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #525252;
+            padding-left: 2%;
+        }
+        h6 {
+            color: #F59EF7;
+        }
         .labels {
             display: flex;
             flex-flow: row nowrap;
@@ -72,19 +80,25 @@
         margin-top: 4vh;
         .events {
             background: #2E2E2E;
-
-            border-top: solid 5px rgba(211, 98, 255, 0);
+            border-top: solid 5px rgba(252, 123, 255, 0);
+            padding-left: 5%;
+            padding-right: 5%;
+            text-align: left;
             display: flex;
             margin-top: 2px;
             flex-flow: column nowrap;
             justify-content: space-around;
-            align-items: center;
-            height: 15vh;
-            width: 90%;
+            height: 100%;
+            width: 85%;
             color: white;
-            p {
+            h2 {
                 font-size: 1.5rem;
                 font-weight: 700;
+                
+            }
+
+            p {
+                font-size: 0.75rem;
             }
 
         }
@@ -114,15 +128,6 @@
             }
 
         }
-
-
-    }
-
-
-
-
-    h1 {
-        margin-top: 5vh;
     }
     display: flex;
     flex-flow: column nowrap;
@@ -149,9 +154,8 @@
             }
         }
     }
-
     .welcome {
-        margin-top: 3vh;
+        padding-top: 20vh;
     }
 
 }

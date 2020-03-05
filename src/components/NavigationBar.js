@@ -35,7 +35,7 @@ const NavigationBar = props => {
           {selectedIcon()}
           <NavItem id="profile">
             <NavLink
-              to="/dj/profile/"
+              to="/dj/profile"
               className={djProfile}
               data-testid="profile"
             >
@@ -43,7 +43,7 @@ const NavigationBar = props => {
             </NavLink>
           </NavItem>
           <NavItem id="home">
-            <NavLink id="home" className={home} data-testid="home" to="/dj/">
+            <NavLink id="home" className={home} data-testid="home" to="/dj">
               <FontAwesomeIcon icon="home" size="2x" />
             </NavLink>
           </NavItem>

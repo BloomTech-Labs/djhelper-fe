@@ -17,7 +17,8 @@ const Event = props => {
             props.setData({ ...props.data, active: `event${props.num}` })
               }
         >
-          <p>{event.name}</p>
+          <h2>{event.name}</h2>
+          <p> Date: 05/03/2020</p>
         </button>
   );
 };

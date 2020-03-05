@@ -77,8 +77,8 @@ const Dashboard = props => {
 
       <div className="upcoming-events" data-testid="upcoming-carousel">
         <div className="labels">
-          <h6> Upcoming Events</h6>
-          <h6> Create a New Event</h6>
+          <h5>Upcoming</h5>
+          <h6>Add new event</h6>
         </div>
         <Carousel
           className="carousel"
