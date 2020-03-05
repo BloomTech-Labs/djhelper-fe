@@ -67,7 +67,7 @@ const Login = props => {
           </button>
 
           <p>
-            Don't have an account yet?{' '}
+            Don&rsquo;t have an account yet?{' '}
             <b>
               <Link data-testid="toRegistration" to="/register">
                 Register here!
