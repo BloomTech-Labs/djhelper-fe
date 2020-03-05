@@ -1,7 +1,8 @@
 
 import React from 'react';
 import {debug, render, fireEvent, cleanup} from '@testing-library/react';
-import Dashboard from '../components/Dashboard';;
+import Dashboard from '../components/Dashboard';
+import App from '../App.js';
 import {Provider, useSelector} from "react-redux";
 import { Router, BrowserRouter, MemoryRouter } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
@@ -26,6 +27,16 @@ test('Dashboard page renders correctly', () => {
   const navBar = getByTestId('navBar');
   expect(navBar).toBeInTheDocument();
 
+  const upcomingHeader = getByText(/Upcoming Events/i);
+  const pastHeader = getByText(/Past Events/i);
+  const upcomingEvents = getByTestId('upcoming-carousel');
+  const pastEvents = getByTestId('past-carousel');
+
+  expect(upcomingHeader).toBeInTheDocument();
+  expect(pastHeader).toBeInTheDocument();
+  expect(upcomingEvents).toBeInTheDocument();
+  expect(pastEvents).toBeInTheDocument();
+
 });
 
 test('Dashboard page navbar profile icon leads to DJProfile component', () => {
@@ -42,7 +53,7 @@ test('Dashboard page navbar profile icon leads to DJProfile component', () => {
   expect(profileButton).toBeInTheDocument();
   fireEvent.click(profileButton);
   const currentUrl = history.entries[1].pathname;
-  expect(currentUrl).toMatch('/dj/profile/');
+  expect(currentUrl).toMatch('/dj/profile');
 
 });
 
@@ -60,7 +71,7 @@ test('Dashboard page navbar home icon leads to Dashboard component', () => {
   expect(homeButton).toBeInTheDocument();
   fireEvent.click(homeButton);
   const currentUrl = history.entries[1].pathname;
-  expect(currentUrl).toMatch('/dj/');
+  expect(currentUrl).toMatch('/dj');
 
 });
 
