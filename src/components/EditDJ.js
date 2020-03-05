@@ -8,11 +8,10 @@ import { editUser, cancelEditUser, deleteUser } from '../actions/action';
 
 import DJMixer from '../images/DJMixer.jpg';
 
-const EditDJ = props => {
+const EditDJ = () => {
   const dispatch = useDispatch();
 
   const name = useSelector(state => state.userReducer.name);
-  const username = useSelector(state => state.userReducer.username);
   const email = useSelector(state => state.userReducer.email);
   const phone = useSelector(state => state.userReducer.phone);
   const website = useSelector(state => state.userReducer.website);
@@ -36,9 +35,9 @@ const EditDJ = props => {
   }, [profile_pic_url]);
 
   const handleOrientation = () => {
-    let height = profile.current.naturalHeight;
-    let width = profile.current.naturalWidth;
-    let orientation = height > width ? 'portrait' : 'landscape';
+    const height = profile.current.naturalHeight;
+    const width = profile.current.naturalWidth;
+    const orientation = height > width ? 'portrait' : 'landscape';
     if (orientation === 'landscape') {
       profile.current.classList.add('landscape');
     } else {
@@ -47,13 +46,13 @@ const EditDJ = props => {
   };
 
   const [userInfo, setUserInfo] = useState({
-    name: name,
-    email: email,
-    website: website,
-    phone: phone,
-    bio: bio,
-    profile_pic_url: profile_pic_url,
-    id: id
+    name,
+    email,
+    website,
+    phone,
+    bio,
+    profile_pic_url,
+    id
   });
 
   const handleSubmit = e => {
