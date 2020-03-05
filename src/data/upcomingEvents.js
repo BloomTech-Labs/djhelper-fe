@@ -57,7 +57,7 @@ export const upcomingEvents = {
         imgUrl: 'https://images.unsplash.com/photo-1567768823253-c4fe2bf7143e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
     },
     event6: {
-        name: 'Devin\s D&D Event',
+        name: 'Devin\'s D&D Event',
         description: 'All-Night Extreme Game Night',
         date: '05/20/2020',
         newRequests: {

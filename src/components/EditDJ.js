@@ -1,185 +1,214 @@
 import React, { useState, useRef, useEffect } from 'react';
-import {Form, Input} from "reactstrap";
+import { Form, Input } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt} from '@fortawesome/free-solid-svg-icons';
-
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { editUser, cancelEditUser } from '../actions/action';
 
 import DJMixer from '../images/DJMixer.jpg';
 
-const EditDJ = (props) => {
+const EditDJ = props => {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  const name = useSelector(state => state.userReducer.name);
+  const username = useSelector(state => state.userReducer.username);
+  const email = useSelector(state => state.userReducer.email);
+  const phone = useSelector(state => state.userReducer.phone);
+  const website = useSelector(state => state.userReducer.website);
+  const bio = useSelector(state => state.userReducer.bio);
+  const profile_pic_url = useSelector(
+    state => state.userReducer.profile_pic_url
+  );
+  const id = useSelector(state => state.userReducer.id);
+  const editUserProcessing = useSelector(
+    state => state.userReducer.editUserProcessing
+  );
 
-    const name = useSelector(state => state.userReducer.name);
-    const username = useSelector(state => state.userReducer.username);
-    const email = useSelector(state => state.userReducer.email);
-    const phone = useSelector(state => state.userReducer.phone);
-    const website = useSelector(state => state.userReducer.website);
-    const bio = useSelector(state => state.userReducer.bio);
-    const profile_pic_url = useSelector(state => state.userReducer.profile_pic_url);
-    const id = useSelector(state => state.userReducer.id);
-    const editUserProcessing = useSelector(state => state.userReducer.editUserProcessing);
+  const [profileImg, setProfileImg] = useState(DJMixer);
+  const profile = useRef();
+  const [wantsToChangeImg, setWantsToChangeImg] = useState(false);
 
-    const [profileImg, setProfileImg] = useState(DJMixer);
-    const profile = useRef();
-    const [wantsToChangeImg, setWantsToChangeImg] = useState(false);
+  useEffect(() => {
+    if (profile_pic_url && profile_pic_url.length > 0) {
+      setProfileImg(profile_pic_url);
+    }
+  }, [profile_pic_url]);
 
-    useEffect(() => {
-        if (profile_pic_url && profile_pic_url.length > 0) {
-            setProfileImg(profile_pic_url);
-        }
-    }, [profile_pic_url])
+  const handleOrientation = () => {
+    let height = profile.current.naturalHeight;
+    let width = profile.current.naturalWidth;
+    let orientation = height > width ? 'portrait' : 'landscape';
+    if (orientation === 'landscape') {
+      profile.current.classList.add('landscape');
+    } else {
+      profile.current.classList.remove('landscape');
+    }
+  };
 
-    const handleOrientation = () => {
-        let height = profile.current.naturalHeight;
-        let width = profile.current.naturalWidth;
-        let orientation = (height > width)? 'portrait': 'landscape';
-        if (orientation === 'landscape') {
-            profile.current.classList.add('landscape');
-        } else {
-            profile.current.classList.remove('landscape');
-        }
+  const [userInfo, setUserInfo] = useState({
+    name: name,
+    email: email,
+    website: website,
+    phone: phone,
+    bio: bio,
+    profile_pic_url: profile_pic_url,
+    id: id
+  });
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(userInfo);
+    let infoNeeded = {};
+
+    if (userInfo.name.length > 0) {
+      infoNeeded.name = userInfo.name;
+    }
+    if (userInfo.email.length > 0) {
+      infoNeeded.email = userInfo.email;
+    }
+    if (userInfo.phone.length > 0) {
+      infoNeeded.phone = userInfo.phone;
+    }
+    if (userInfo.profile_pic_url.length > 0) {
+      infoNeeded.profile_pic_url = userInfo.profile_pic_url;
+    }
+    if (userInfo.bio.length > 0) {
+      infoNeeded.bio = userInfo.bio;
     }
 
-    const [userInfo, setUserInfo] = useState({
-        name: name,
-        email: email,
-        website: website,
-        phone: phone,
-        bio: bio,
-        profile_pic_url: profile_pic_url,
-        id: id
-    });
-
-    const handleSubmit = e => {
-        e.preventDefault();
-        console.log(userInfo);
-        let infoNeeded = {};
-
-        if (userInfo.name.length > 0) {
-            infoNeeded.name = userInfo.name;
-        }
-        if (userInfo.email.length > 0) {
-            infoNeeded.email = userInfo.email;
-        }
-        if (userInfo.phone.length > 0) {
-            infoNeeded.phone = userInfo.phone;
-        }
-        if (userInfo.profile_pic_url.length > 0) {
-            infoNeeded.profile_pic_url = userInfo.profile_pic_url;
-        }
-        if (userInfo.bio.length > 0) {
-            infoNeeded.bio = userInfo.bio;
-        }
-
-        if (userInfo.website.length > 0) {
-            infoNeeded.website = userInfo.website;
-        }
-
-        console.log("id: ", id);
-        dispatch(editUser(id, infoNeeded));
+    if (userInfo.website.length > 0) {
+      infoNeeded.website = userInfo.website;
     }
 
-    const handleChange = e => {
-        setUserInfo({...userInfo, [e.target.name]:e.target.value});
-    }
+    console.log('id: ', id);
+    dispatch(editUser(id, infoNeeded));
+  };
 
-    const handleCancel = () => {
-        console.log('time to cancel edit');
-        dispatch(cancelEditUser());
-    }
+  const handleChange = e => {
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+  };
 
-    return (
-            <div className='main-content'>
-                <div className='image-side'>
-                    <div className='image-container'>
-                        <img src={profileImg} alt='dj profile' ref={profile} onLoad={handleOrientation}/>
-                        <span className='edit-icon' onClick={() => setWantsToChangeImg(!wantsToChangeImg)}><FontAwesomeIcon icon="pencil-alt" size="2x"/></span>
-                    </div>
-                    <button onClick={handleSubmit} className='save'>Save</button>
-                    <button onClick={handleCancel} className='cancel'>Cancel</button>
-                </div>
+  const handleCancel = () => {
+    console.log('time to cancel edit');
+    dispatch(cancelEditUser());
+  };
 
-                    <div className='text-side form-width'>
-                        {editUserProcessing &&
-                        <div className='loader'>
-                            <Loader type="Audio" color="purple" height={200} width={200} />
-                        </div>
-                        }
+  return (
+    <div className="main-content">
+      <div className="image-side">
+        <div className="image-container">
+          <img
+            src={profileImg}
+            alt="dj profile"
+            ref={profile}
+            onLoad={handleOrientation}
+          />
+          <span
+            className="edit-icon"
+            onClick={() => setWantsToChangeImg(!wantsToChangeImg)}
+          >
+            <FontAwesomeIcon icon="pencil-alt" size="2x" />
+          </span>
+        </div>
+        <button onClick={handleSubmit} className="save">
+          Save
+        </button>
+        <button onClick={handleCancel} className="cancel">
+          Cancel
+        </button>
+      </div>
 
-                        {!editUserProcessing &&
-                            <Form onSubmit={handleSubmit}>
-                                {wantsToChangeImg &&
-                                <div>
-                                    <label htmlFor='profile_pic_url'>Link to Profile Image</label>
-                                    <Input name='profile_pic_url'
-                                        type='text'
-                                        id='profile_pic_url'
-                                        onChange={handleChange}
-                                        value={userInfo.profile_pic_url}/>
-                                </div>
-                                }
-                                <div>
-                                    <label htmlFor='name'>Name</label>
-                                    <Input name='name'
-                                        type='text'
-                                        id='name'
-                                        onChange={handleChange}
-                                        value={userInfo.name}/>
-                                </div>
+      <div className="text-side form-width">
+        {editUserProcessing && (
+          <div className="loader">
+            <Loader type="Audio" color="purple" height={200} width={200} />
+          </div>
+        )}
 
-
-                                <div>
-                                    <label htmlFor='bio'>Bio</label>
-                                    <Input name='bio'
-                                        type='text'
-                                        id='bio'
-                                        onChange={handleChange}
-                                        value={userInfo.bio}/>
-                                </div>
-
-                                <div>
-                                    <label htmlFor='email'>Email</label>
-                                    <Input name='email'
-                                        type='email'
-                                        id='email'
-                                        onChange={handleChange}
-                                        value={userInfo.email}/>
-                                </div>
-                                <div>
-                                    <label htmlFor='website'>Your Website URL</label>
-                                    <Input name='website'
-                                        type='url'
-                                        id='website'
-                                        onChange={handleChange}
-                                        value={userInfo.website}/>
-                                </div>
-                                <div>
-                                    <label htmlFor='phone'>Phone Number</label>
-                                    <Input name='phone'
-                                        type='phone'
-                                        id='phone'
-                                        onChange={handleChange}
-                                        value={userInfo.phone}/>
-                                </div>
-
-                                <div>
-                                    <label htmlFor='profile_pic_url'>Link to Profile Image</label>
-                                    <Input name='profile_pic_url'
-                                        type='text'
-                                        id='profile_pic_url'
-                                        onChange={handleChange}
-                                        value={userInfo.profile_pic_url}/>
-                                </div>
-                            </Form>
-                        }
-                    </div>
+        {!editUserProcessing && (
+          <Form onSubmit={handleSubmit}>
+            {wantsToChangeImg && (
+              <div>
+                <label htmlFor="profile_pic_url">Link to Profile Image</label>
+                <Input
+                  name="profile_pic_url"
+                  type="text"
+                  id="profile_pic_url"
+                  onChange={handleChange}
+                  value={userInfo.profile_pic_url}
+                />
+              </div>
+            )}
+            <div>
+              <label htmlFor="name">Name</label>
+              <Input
+                name="name"
+                type="text"
+                id="name"
+                onChange={handleChange}
+                value={userInfo.name}
+              />
             </div>
-    )
-}
+
+            <div>
+              <label htmlFor="bio">Bio</label>
+              <Input
+                name="bio"
+                type="text"
+                id="bio"
+                onChange={handleChange}
+                value={userInfo.bio}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="email">Email</label>
+              <Input
+                name="email"
+                type="email"
+                id="email"
+                onChange={handleChange}
+                value={userInfo.email}
+              />
+            </div>
+            <div>
+              <label htmlFor="website">Your Website URL</label>
+              <Input
+                name="website"
+                type="url"
+                id="website"
+                onChange={handleChange}
+                value={userInfo.website}
+              />
+            </div>
+            <div>
+              <label htmlFor="phone">Phone Number</label>
+              <Input
+                name="phone"
+                type="phone"
+                id="phone"
+                onChange={handleChange}
+                value={userInfo.phone}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="profile_pic_url">Link to Profile Image</label>
+              <Input
+                name="profile_pic_url"
+                type="text"
+                id="profile_pic_url"
+                onChange={handleChange}
+                value={userInfo.profile_pic_url}
+              />
+            </div>
+          </Form>
+        )}
+      </div>
+    </div>
+  );
+};
 
 export default EditDJ;
