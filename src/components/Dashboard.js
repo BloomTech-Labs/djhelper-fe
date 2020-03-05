@@ -75,7 +75,7 @@ const Dashboard = props => {
       <NavigationBar tokenPresent={props.tokenPresent} />
       {whichComponent()}
 
-      <div className="upcoming-events">
+      <div className="upcoming-events" data-testid="upcoming-carousel">
         <div className="labels">
           <h6> Upcoming Events</h6>
           <h6> Create a New Event</h6>
@@ -95,7 +95,7 @@ const Dashboard = props => {
           <Event num={4} data={data} setData={setData} />
         </Carousel>
       </div>
-      <div className="past-events">
+      <div className="past-events" data-testid="past-carousel">
         <h6> Past Events</h6>
         <Carousel
           className="carousel"
