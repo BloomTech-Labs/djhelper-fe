@@ -37,7 +37,7 @@ You can find the deployed project [here](https://www.dj-helper.com/register).
 
 Mission Statement: To be the easiest way for DJs to collect and display relevant song requests at events.
 
-### 4️⃣ Key Features
+### Key Features
 
 - DJs can create accounts.
 - DJs can sign in to their accounts.
@@ -46,7 +46,7 @@ Mission Statement: To be the easiest way for DJs to collect and display relevant
 - DJs can delete their accounts.
 - DJs can see their dashboards.
 
-## 1️⃣ Tech Stack
+## Tech Stack
 
 ### Front end built using: React.
 
@@ -64,69 +64,28 @@ Packages used for development (linters): eslint, eslint-config-airbnb, eslint-co
 
 #### Express, Postgresql, AWS
 
-# APIs
+Packages for authentication: jsonwebtoken, bcryptjs
 
-## 2️⃣ Authentication API here
+Packages for database setup/management: knex, knex-cleaner, pg
 
-🚫Replace text below with a description of the API
+Packages for security: cors, dotenv, fs, helmet, https
 
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
+Packages for server setup/management: express, morgan
 
-## 2️⃣ Payment API here
-
-🚫Replace text below with a description of the API
-
-This is the way you take out your flustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
-
-# 3️⃣ Environment Variables
+# Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-🚫These are just examples, replace them with the specifics for your app
+    *  REACT_APP_BACKEND_HOST = this is "http://localhost:8000" if running locally, OR the back end deployed url if using the deployed back end. Currently the url is http://ec2-18-218-74-229.us-east-2.compute.amazonaws.com. This will change once we have a certificate.
+                          |
 
-    *  REACT_APP_apiKey - this is your Google API key, which can be generated in the Google Cloud Console
-    *  REACT_APP_authDomain - when you set up your Firebase project, this information will be in the dashboard
-    *  REACT_APP_databaseURL - in the Firebase dashboard
-    *  REACT_APP_projectID - in the Firebase dashboard
-    *  REACT_APP_storageBucket - in the Firebase dashboard
-    *  REACT_APP_messagingSenderId - in the Firebase dashboard
-    *  REACT_APP_stripe_API - this is your public Stripe API key, generated in the Stripe dashboard
-    *  REACT_APP_backendURL - optional for your local development server
-    *  REACT_APP_clientid - this is the Stripe_connect clientID, generated in Stripe_connect settings
-    *  REACT_APP_stripe_plan - this is the ID for a second Stripe subscription plan, generated under Stripe products
+# Testing
 
-# 5️⃣ Content Licenses
+Testing is done using the @testing-library/jest-dom, @testing-library/react, and @testing-library/user-event packages. Tests are located in the [src/tests directory](https://github.com/Lambda-School-Labs/djhelper-fe/tree/master/src/tests). Tests are groups into files by component.
 
-🚫For all content - images, icons, etc, use this table to document permission of use. Remove the two placeholders and add your content to this table
+Our UX team member also runs surveys and user tests. Her results can be found [here](https://www.notion.so/User-Research-b5b3512626624497bd973628842a8b2a).
 
-| Image Filename | Source / Creator | License                                                                      |
-| -------------- | ---------------- | ---------------------------------------------------------------------------- |
-| doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
-| rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
-
-# 4️⃣ Testing
-
-🚫Document what you used for testing and why
-
-# 4️⃣ Installation Instructions
+# Installation Instructions
 
 To get the app running locally:
 
