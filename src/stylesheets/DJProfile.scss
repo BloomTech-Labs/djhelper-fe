@@ -59,14 +59,13 @@
       }
 
       button {
-        width: 10rem;
+        width: 18rem;
         background: black;
         color: white;
         border-radius: 3px;
         border: none;
         outline: none;
         transition: 0.3s;
-        font-weight: bold;
         padding: 0.25rem;
         font-size: 1.25rem;
         -webkit-box-shadow: 14px 10px 10px -10px rgba(0, 0, 0, 0.35);
@@ -80,14 +79,27 @@
           background: grey;
         }
         &.cancel {
+          background: white;
+          color: black;
+          margin-top: 1rem;
+          &:hover {
+            background: $mediumPurple;
+          }
+        }
+        &.save {
+          margin-top: 2rem;
+        }
+        &.delete {
+          margin-top: 1rem;
           background: black;
           color: white;
           border: 2px solid white;
-          margin-top: 1rem;
-        }
-        &.save {
-          background: white;
-          color: black;
+          &:hover {
+            cursor: url('../images/exclamationPoint.cur');
+            background: $lightPurple;
+            color: black;
+            border: $lightPurple;
+          }
         }
       }
       .edit-icon {

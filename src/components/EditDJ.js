@@ -3,9 +3,8 @@ import { Form, Input } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
-import { editUser, cancelEditUser } from '../actions/action';
+import { editUser, cancelEditUser, deleteUser } from '../actions/action';
 
 import DJMixer from '../images/DJMixer.jpg';
 
@@ -60,7 +59,7 @@ const EditDJ = props => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(userInfo);
-    let infoNeeded = {};
+    const infoNeeded = {};
 
     if (userInfo.name.length > 0) {
       infoNeeded.name = userInfo.name;
@@ -95,6 +94,10 @@ const EditDJ = props => {
     dispatch(cancelEditUser());
   };
 
+  const handleDelete = () => {
+    dispatch(deleteUser(id));
+  };
+
   return (
     <div className="main-content">
       <div className="image-side">
@@ -112,11 +115,14 @@ const EditDJ = props => {
             <FontAwesomeIcon icon="pencil-alt" size="2x" />
           </span>
         </div>
-        <button onClick={handleSubmit} className="save">
+        <button onClick={handleSubmit} className="save" type="button">
           Save
         </button>
-        <button onClick={handleCancel} className="cancel">
+        <button onClick={handleCancel} className="cancel" type="button">
           Cancel
+        </button>
+        <button onClick={handleDelete} className="delete" type="button">
+          Delete Profile
         </button>
       </div>
 
