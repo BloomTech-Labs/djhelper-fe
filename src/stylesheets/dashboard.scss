@@ -3,8 +3,6 @@
     flex-flow: column nowrap;
     align-items: center;
     background: $dark3;
-    background-image: url('../images/profile-banner.svg');
-    background-repeat: repeat-x;
     color: white;
     min-height: 110vh;
     padding-bottom: 5%;
@@ -73,18 +71,27 @@
         height: 27.5vh;
         margin-top: 4vh;
         .events {
+            background: #2E2E2E;
+
+            border-top: solid 5px rgba(211, 98, 255, 0);
             display: flex;
+            margin-top: 2px;
             flex-flow: column nowrap;
             justify-content: space-around;
             align-items: center;
-            height: 20vh;
-            width: 100%;
-            img {
-                height: 15vh;
-                width: 15vw;
+            height: 15vh;
+            width: 90%;
+            color: white;
+            p {
+                font-size: 1.5rem;
+                font-weight: 700;
             }
 
         }
+        .selected {
+            border-top: solid 5px rgba(211, 98, 255, 1);
+        }
+
 
     }
 
