@@ -44,7 +44,6 @@ export const registerUserAction = (infoNeeded, history) => dispatch => {
   axiosWithAuth()
     .post('/register/dj/', infoNeeded)
     .then(response => {
-      //console.log(response);
       history.push('/login');
       dispatch({ type: REGISTER_USER_SUCCESS, payload: response.data });
     })

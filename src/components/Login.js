@@ -39,7 +39,6 @@ const Login = props => {
         <form onSubmit={handleSubmit}>
           <legend>Welcome back!</legend>
           <hr />
-          <hr />
           <div>
             <label htmlFor="username">Username: </label>
             <Input
