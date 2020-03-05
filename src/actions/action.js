@@ -39,9 +39,6 @@ export const setUsername = username => {
   return { type: SET_USERNAME, payload: username };
 };
 
-//export const Uri = 'https://ec2-18-218-74-229.us-east-2.compute.amazonaws.com'
-export const Uri = 'https://localhost:8000/';
-
 export const registerUserAction = (infoNeeded, history) => dispatch => {
   dispatch({ type: REGISTER_USER_START });
   axiosWithAuth()
