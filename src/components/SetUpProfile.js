@@ -161,7 +161,7 @@ const SetUpProfile = props => {
 };
 
 SetUpProfile.propTypes = {
-  history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired
+  history: PropTypes.shape({ push: PropTypes.func.isRequired })
 };
 
 export default SetUpProfile;

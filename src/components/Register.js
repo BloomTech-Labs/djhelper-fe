@@ -195,7 +195,7 @@ const Register = props => {
 };
 
 Register.propTypes = {
-  history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired
+  history: PropTypes.shape({ push: PropTypes.func.isRequired })
 };
 
 export default Register;
