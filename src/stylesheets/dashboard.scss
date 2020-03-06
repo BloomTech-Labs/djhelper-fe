@@ -28,6 +28,7 @@
 
     .preview-event-details {
         padding-top: 5%;
+        margin-bottom: 5%;
         width: 90%;
         height: 47vh;
         display: flex;
@@ -35,9 +36,44 @@
         justify-content: space-between;
         font-size: 0.75rem;
         color: #C7C7C7;
+        button {
+            width: 95%;
+            background: black;
+            color: white;
+            border-radius: 3px;
+            border: none;
+            outline: none;
+            transition: 0.3s;
+            padding: 0.4rem;
+            padding-bottom: 0.6rem;
+            padding-top: 0.6rem;
+            font-size: 0.75rem;
+            -webkit-box-shadow: 14px 10px 10px -10px rgba(0,0,0,0.35);
+            -moz-box-shadow: 14px 10px 10px -10px rgba(0,0,0,0.35);
+            box-shadow: 4px 5px 10px 0px rgba(0,0,0,0.35);
+            &:hover {
+                color: black;
+                background: white;
+            }
+            &:active {
+                background: grey;
+            }
+            &.cancel {
+                background: black;
+                color: white;
+                border: 2px solid white;
+                margin-top: 1rem;
+            }
+            &.save {
+                background: white;
+                color: black;
+            }
+        }
+
 
         h3 {
             font-size: 2.2rem;
+            margin-bottom: 7%;
         }
         .bold {
             color: white;
@@ -45,20 +81,13 @@
         }
 
         .event-description {
-            width: 25%;
-        }
-        .description {
-            max-width: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            text-rendering: none;
-            display: inline-block;
-            -webkit-line-clamp: 2; // max nb lines to show
-            -webkit-box-orient: vertical;
+            width: 23%;
+            height: 45vh;
+            margin-bottom: 50vh !important;
+            p {
+                width: 95%;
 
-
-
+            }
         }
         .newest-song-requests {
             display: flex;
@@ -83,9 +112,9 @@
 
     .upcoming-events {
         h5 {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            color: #525252;
+            color: rgba(255, 255, 255, 0.3);
         }
         h6 {
             color: #F59EF7;
@@ -114,6 +143,7 @@
             height: 100%;
             width: 85%;
             color: white;
+            transition: 0.3s;
             h2 {
                 font-size: 1.5rem;
                 font-weight: 700;
