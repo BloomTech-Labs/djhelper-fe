@@ -8,7 +8,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={props => {
-        console.log(props);
         if (tokenPresent) {
           return <Component {...props} />;
         } else {
