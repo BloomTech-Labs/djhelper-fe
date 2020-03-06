@@ -7,7 +7,7 @@ const Home = props => {
   const name = useSelector(state => state.userReducer.name);
 
   return (
-    <div>
+    <div className="home-page">
       <div className="header">
         <NavigationBar />
         <h1>DJ Helper</h1>
