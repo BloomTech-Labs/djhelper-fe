@@ -7,13 +7,13 @@
     min-height: 110vh;
     padding-bottom: 5%;
 
+
     .welcome {
         height: 47vh;
     }
 
     .carousel {
         display: flex;
-        justify-content: space-around;
 
         button {
             background: none;
@@ -26,15 +26,38 @@
     }
 
     .preview-event-details {
+        padding-top: 4%;
+        padding-left: 2.5%;
         width: 90%;
         height: 47vh;
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
+        font-size: 0.75rem;
+        color: #C7C7C7;
+        h3 {
+            font-size: 2rem;
+        }
+        .bold {
+            color: white;
+            font-weight: 700;
+        }
 
         .event-description {
-            height: 28vh;
             width: 20%;
+        }
+        .description {
+            display: block;
+            height: 40px;
+            width: 100%;
+            overflow: hidden;
+
+            &:after {
+                display: block;
+                content: '...';
+                border: pink solid 2px;
+        }
+
         }
         .newest-song-requests {
             display: flex;
@@ -62,7 +85,7 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: #525252;
-            padding-left: 2%;
+            padding-left: 2.75%;
         }
         h6 {
             color: #F59EF7;
