@@ -10,6 +10,7 @@
 
     .welcome {
         height: 47vh;
+        margin-bottom: 5%;
     }
 
     .carousel {
@@ -93,13 +94,41 @@
             display: flex;
             flex-flow: column nowrap;
             height: 28vh;
-            width: 50%;
+            width: 68%;
+            padding-left: 3%;
+            
+            #vote {
+                color: green;
+                background: transparent;
+                box-shadow: none;
+                padding-bottom: 2%;
+            }
+
+            #song-type {
+                display: flex;
+                flex-flow: column nowrap;
+                align-items: center;
+                background: url('../images/Blue.png');
+                background-repeat: no-repeat;
+                border-radius: none;
+                width: 25px;
+                height: 25px;
+                background-size: cover;
+                box-shadow: none;
+            }
+            h3 {
+                color: white;
+                font-weight: 700;
+                font-size: 1.3rem;
+            }
             .songs {
-                border: solid white 2px;
                 display: flex;
                 flex-flow: row nowrap;
                 justify-content: space-between;
                 align-items: flex-start;
+                button {
+                    width: 10%;
+                }
                 
             }
         }
@@ -111,6 +140,10 @@
 
 
     .upcoming-events {
+        button {
+            background: transparent;
+            border: none;
+        }
         h5 {
             font-size: 1.2rem;
             font-weight: 700;
@@ -168,16 +201,43 @@
         width: 90%;
         height: 40vh;
         margin-top: 4vh;
+        h5 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
         .events {
+
+            margin-top: 2px;
+            background: #2E2E2E;
+            text-align: left;
+            border-radius: 10px;
+            color: white;
             display: flex;
             flex-flow: column nowrap;
             justify-content: space-around;
             align-items: center;
-            height: 30vh;
-            width: 100%;
+            padding-left: 5%;
+            padding-right: 5%;
+            margin-top: 2px;
+            height: 100%;
+            width: 85%;
+            color: white;
+            transition: 0.3s;
+
             img {
                 height: 25vh;
                 width: 15vw;
+            }
+            h2 {
+                font-size: 1.5rem;
+                font-weight: 700;
+                
+            }
+
+            p {
+                font-size: 0.75rem;
             }
 
         }
