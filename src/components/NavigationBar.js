@@ -18,7 +18,7 @@ const NavigationBar = props => {
 
   const selectedIcon = () => {
     console.log(window.location.pathname);
-    let url = window.location.pathname;
+    const url = window.location.pathname;
     if (url === '/dj') {
       home = 'selected';
       djProfile = '';

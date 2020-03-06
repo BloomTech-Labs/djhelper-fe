@@ -2,9 +2,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useSelector, useDispatch } from 'react-redux';
+import Loader from 'react-loader-spinner';
+import PropTypes from 'prop-types';
 import { updateUser } from '../actions/action';
 import { validUrl } from '../utils/validUrl';
-import Loader from 'react-loader-spinner';
 
 const SetUpProfile = props => {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ const SetUpProfile = props => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(userInput);
-    let infoNeeded = {};
+    const infoNeeded = {};
 
     if (userInput.phone.length > 0) {
       infoNeeded.phone = userInput.phone;
@@ -56,8 +57,6 @@ const SetUpProfile = props => {
   };
 
   useEffect(() => {
-    //console.log(userInput.profile_pic_url);
-    //console.log(validUrl(userInput.profile_pic_url));
     if (validUrl(userInput.profile_pic_url)) {
       profilePic.current.style[
         'background-image'
@@ -150,6 +149,7 @@ const SetUpProfile = props => {
               className="skip"
               data-testid="skip-button"
               onClick={handleCancel}
+              type="button"
             >
               Skip
             </button>
@@ -158,6 +158,10 @@ const SetUpProfile = props => {
       </div>
     </div>
   );
+};
+
+SetUpProfile.propTypes = {
+  history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired
 };
 
 export default SetUpProfile;
