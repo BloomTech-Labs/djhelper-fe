@@ -8,9 +8,7 @@ const PreviewEventDetails = props => {
     <div className="preview-event-details">
       <div className="event-description">
         <h3 className="bold"> {currentlyActive.name}</h3>
-        <div><p className="bold"> Event Type: </p> {currentlyActive.eventType} </div>
-
-        <br />
+        <p><b> Event Type:</b> {currentlyActive.eventType}</p>
         <br />
         <p className="bold"> Description:</p>
         <p className="description">{currentlyActive.description}</p>
