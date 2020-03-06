@@ -48,16 +48,16 @@
             width: 25%;
         }
         .description {
-            display: block;
-            height: 40px;
-            width: 100%;
+            max-width: 100%;
+            white-space: nowrap;
             overflow: hidden;
+            text-overflow: ellipsis;
+            text-rendering: none;
+            display: inline-block;
+            -webkit-line-clamp: 2; // max nb lines to show
+            -webkit-box-orient: vertical;
 
 
-            &:after {
-                display: block;
-                content: '...';
-        }
 
         }
         .newest-song-requests {
