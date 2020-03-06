@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useState, useRef, useEffect } from 'react';
 import { Form, Input } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
@@ -80,7 +81,6 @@ const EditDJ = () => {
       infoNeeded.website = userInfo.website;
     }
 
-    console.log('id: ', id);
     dispatch(editUser(id, infoNeeded));
   };
 

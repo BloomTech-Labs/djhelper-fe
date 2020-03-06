@@ -3,6 +3,7 @@ import { Form, Input } from 'reactstrap';
 import { useSelector } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import NavigationBar from './NavigationBar';
 
 const Register = props => {
@@ -191,6 +192,10 @@ const Register = props => {
       </div>
     </div>
   );
+};
+
+Register.propTypes = {
+  history: PropTypes.shape({ push: PropTypes.func.isRequired })
 };
 
 export default Register;
