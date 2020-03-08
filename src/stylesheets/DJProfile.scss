@@ -1,185 +1,200 @@
 .dj-profile-page {
-    background: $dark3;
-    background-image: url('../images/profile-banner.svg');
-    background-repeat: repeat-x;
-    color: white;
-    min-height: 110vh;
-    padding-bottom: 5%;
-    .main-content {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: flex-start;
-        align-items: flex-start;
-        margin-top: 5rem;
-        margin-left: 10vw;
-        @media (max-width: 600px) {
-            flex-flow: column nowrap;
-            align-items: center;
+  background: $dark3;
+  background-image: url('../images/profile-banner.svg');
+  background-repeat: repeat-x;
+  color: white;
+  min-height: 110vh;
+  padding-bottom: 5%;
+  .main-content {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 5rem;
+    margin-left: 10vw;
+    @media (max-width: 600px) {
+      flex-flow: column nowrap;
+      align-items: center;
+    }
+    div {
+      .image-container {
+        width: 18rem;
+        position: relative;
+        height: 18rem;
+        overflow: hidden;
+        border-radius: 50%;
+        margin: 1rem;
+        span {
+          border-radius: 50%;
+          border: solid pink 2px;
+          padding: 7.5rem;
+          margin-left: 32%;
+          transition: 0.3s;
+          &:hover {
+            background: rgba(211, 98, 255, 0.2);
+          }
+        }
+
+        img {
+          width: 100%;
+          height: auto;
+          &.landscape {
+            width: auto;
+            height: 100%;
+            margin-left: -100px;
+          }
+        }
+      }
+    }
+    .image-side {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      @media (max-width: 900px) {
+        width: 50%;
+      }
+      @media (max-width: 600px) {
+        width: 90%;
+      }
+
+      button {
+        width: 18rem;
+        background: black;
+        color: white;
+        border-radius: 3px;
+        border: none;
+        outline: none;
+        transition: 0.3s;
+        padding: 0.25rem;
+        font-size: 1.25rem;
+        -webkit-box-shadow: 14px 10px 10px -10px rgba(0, 0, 0, 0.35);
+        -moz-box-shadow: 14px 10px 10px -10px rgba(0, 0, 0, 0.35);
+        box-shadow: 4px 5px 10px 0px rgba(0, 0, 0, 0.35);
+        &:hover {
+          color: black;
+          background: white;
+        }
+        &:active {
+          background: grey;
+        }
+        &.cancel {
+          background: white;
+          color: black;
+          margin-top: 1rem;
+          &:hover {
+            background: $mediumPurple;
+          }
+        }
+        &.save {
+          margin-top: 2rem;
+        }
+        &.delete {
+          margin-top: 1rem;
+          background: black;
+          color: white;
+          border: 2px solid white;
+          &:hover {
+            background: $lightPurple;
+            border: $lightPurple;
+          }
+        }
+      }
+      .edit-icon {
+        border: solid pink 2px;
+        border-radius: 50%;
+        font-size: 2rem;
+        position: absolute;
+        top: 48%;
+        left: 17%;
+        transform: translate(-50%, -50%);
+        &:hover {
+          color: $lightPurple;
+        }
+      }
+    }
+    .header {
+      display: inline-block;
+      margin-top: 17vh;
+      padding-top: 2%;
+      padding-left: 2%;
+      padding-right: 2%;
+      background: $dark3;
+      h1 {
+        font-size: 3.5rem;
+        font-weight: bold !important;
+      }
+      white-space: nowrap;
+    }
+    .form-width {
+      margin-top: 16%;
+      width: 40vw;
+    }
+    .profile-width {
+      width: 50vw;
+    }
+
+    .text-side {
+      display: flex;
+      flex-flow: column nowrap;
+      padding-left: 2%;
+      word-wrap: break-word;
+      overflow-x: visible;
+      background: $dark3;
+      @media (max-width: 1150px) {
+        width: 50%;
+      }
+      @media (max-width: 600px) {
+        width: 80%;
+      }
+      h1 {
+        font-size: 4vw;
+        padding: 1rem;
+        width: 50%;
+        font-weight: 700;
+      }
+      h3 {
+        color: $headlineGray;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+      p {
+        padding-bottom: 2%;
+        width: 75%;
+        font-size: 1rem;
+      }
+      .shift {
+        padding-left: 2%;
+      }
+      a {
+        color: white;
+        &:hover {
+          text-decoration: none;
+          color: $lightPurple;
+        }
+      }
+
+      form {
+        label {
+          font-weight: bold;
+          font-size: 1.25rem;
+        }
+        input {
+          background: $dark2;
+          border: none;
+          color: white;
+          padding-left: 1.25rem;
+          &:hover {
+            border-top: 3px solid $lightPurple;
+            border-radius: 0px 0px 3px 3px;
+            outline: none;
+            padding-left: 0.5rem;
+          }
         }
         div {
-            .image-container {
-                width: 18rem;
-                position: relative;
-                height: 18rem;
-                overflow: hidden;
-                border-radius: 50%;
-                margin: 1rem;
-                span {
-                    border-radius: 50%;
-                    border: solid pink 2px;
-                    padding: 7.5rem;
-                    margin-left: 32%;
-                    transition: 0.3s;
-                    &:hover {
-                        background: rgba(211, 98, 255, 0.2);
-                    }
-                }
-
-                img {
-                    width: 100%;
-                    height: auto;
-                    &.landscape {
-                        width: auto;
-                        height: 100%;
-                        margin-left: -100px;
-                    }
-                }
-            }
+          margin-top: 1rem;
         }
-        .image-side {
-            display: flex;
-            flex-flow: column nowrap;
-            justify-content: center;
-            align-items: center;
-            @media (max-width: 900px) {
-                width: 50%;
-            }
-            @media (max-width: 600px) {
-                width: 90%;
-            }
-
-            button {
-                width: 10rem;
-                background: black;
-                color: white;
-                border-radius: 3px;
-                border: none;
-                outline: none;
-                transition: 0.3s;
-                font-weight: bold;
-                padding: 0.25rem;
-                font-size: 1.25rem;
-                -webkit-box-shadow: 14px 10px 10px -10px rgba(0,0,0,0.35);
-                -moz-box-shadow: 14px 10px 10px -10px rgba(0,0,0,0.35);
-                box-shadow: 4px 5px 10px 0px rgba(0,0,0,0.35);
-                &:hover {
-                    color: black;
-                    background: white;
-                }
-                &:active {
-                    background: grey;
-                }
-                &.cancel {
-                    background: black;
-                    color: white;
-                    border: 2px solid white;
-                    margin-top: 1rem;
-                }
-                &.save {
-                    background: white;
-                    color: black;
-                }
-            }
-            .edit-icon {
-                border: solid pink 2px;
-                border-radius: 50%;
-                font-size: 2rem;
-                position: absolute;
-                top: 48%;
-                left: 17%;
-                transform: translate(-50%, -50%);
-                &:hover {
-                    color: $lightPurple;
-                }
-            }
-        }
-        .header {
-            display: inline-block;
-            margin-top: 17vh;
-            padding-top: 2%;
-            padding-left: 2%;
-            padding-right: 2%;
-            background: $dark3;
-            h1 {
-                font-size: 3.5rem;
-                font-weight: bold !important;
-            }
-            white-space: nowrap;
-
-        }
-        .form-width {
-            margin-top: 16%;
-            width: 40vw;
-        }
-        .profile-width {
-            width: 50vw;
-        }
-
-        .text-side {
-            display: flex;
-            flex-flow: column nowrap;
-            padding-left: 2%;
-            word-wrap: break-word;
-            overflow-x: visible;
-            background: $dark3;
-            @media (max-width: 1150px) {
-                width: 50%;
-            }
-            @media (max-width: 600px) {
-                width: 80%;
-            }
-            h1 {
-                font-size: 4vw;
-                padding: 1rem;
-                width: 50%;
-                font-weight: 700;
-            }
-            h3 {
-                color: $headlineGray;
-                font-size: 1rem;
-                font-weight:600;
-            }
-            p {
-                padding-bottom: 2%;
-                width: 75%;
-                font-size: 1rem;
-            }
-            .shift {
-                padding-left: 2%;
-            }
-            a {
-                color: white;
-                &:hover {
-                    text-decoration: none;
-                    color: $lightPurple;
-                }
-            }
-
-            form {
-                label {
-                    font-weight: bold;
-                    font-size: 1.25rem;
-                }
-                input {
-                    background: $dark2;
-                    border: none;
-                    color: white;
-                    padding-left: 1.25rem;
-                }
-                div {
-                    margin-top: 1rem;
-                }
-            }
-        }
+      }
     }
+  }
 }

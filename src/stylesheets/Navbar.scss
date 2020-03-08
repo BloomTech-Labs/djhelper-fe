@@ -1,71 +1,70 @@
 .navBar {
+
     padding-left: 2%;
     padding-right: 2%;
     background: #121212;
 
-    a {
-        color: white;
 
-        text-decoration: none;
-        &:hover {
-            color:lightgrey;
-        }
+  .logout-item {
+    cursor: pointer;
+  }
+
+  a {
+    color: white;
+
+    text-decoration: none;
+    &:hover {
+      color: lightgrey;
     }
+  }
 
-    .links {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        width: 20%;
-        margin-left: 53%;
-    }
-     #profile {
-         margin-left: 10%;
-         margin-right: 13%;
-     }
-
- 
-    width: 100%;
+  .links {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    font-weight: 700;
+    width: 20%;
+    margin-left: 53%;
+  }
+  #profile {
+    margin-left: 10%;
+    margin-right: 13%;
+  }
 
-    .navElements {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        width: 20%;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  font-weight: 700;
+
+  .navElements {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 20%;
+  }
+
+  .navElementsIcons {
+    a {
+      color: grey;
+      &:hover {
+        color: lightgrey;
+      }
+
+      &:active {
+        color: white;
+      }
     }
 
-    .navElementsIcons {
-
-        a {
-            color: grey;
-            &:hover {
-                color:lightgrey;
-            }
-
-            &:active {
-                color: white;
-            }
-        }
-
-        .selected {
-            color: white;
-           &:hover {
-                color:white;
-            }
-
-        }
-
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        width: 65%;
+    .selected {
+      color: white;
+      &:hover {
+        color: white;
+      }
     }
 
-
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 65%;
+  }
 }
-
-

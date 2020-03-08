@@ -1,19 +1,18 @@
+/* eslint-disable camelcase */
 import React, { useState, useRef, useEffect } from 'react';
 import { Form, Input } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
-import { editUser, cancelEditUser } from '../actions/action';
+import { editUser, cancelEditUser, deleteUser } from '../actions/action';
 
 import DJMixer from '../images/DJMixer.jpg';
 
-const EditDJ = props => {
+const EditDJ = () => {
   const dispatch = useDispatch();
 
   const name = useSelector(state => state.userReducer.name);
-  const username = useSelector(state => state.userReducer.username);
   const email = useSelector(state => state.userReducer.email);
   const phone = useSelector(state => state.userReducer.phone);
   const website = useSelector(state => state.userReducer.website);
@@ -37,9 +36,9 @@ const EditDJ = props => {
   }, [profile_pic_url]);
 
   const handleOrientation = () => {
-    let height = profile.current.naturalHeight;
-    let width = profile.current.naturalWidth;
-    let orientation = height > width ? 'portrait' : 'landscape';
+    const height = profile.current.naturalHeight;
+    const width = profile.current.naturalWidth;
+    const orientation = height > width ? 'portrait' : 'landscape';
     if (orientation === 'landscape') {
       profile.current.classList.add('landscape');
     } else {
@@ -48,19 +47,19 @@ const EditDJ = props => {
   };
 
   const [userInfo, setUserInfo] = useState({
-    name: name,
-    email: email,
-    website: website,
-    phone: phone,
-    bio: bio,
-    profile_pic_url: profile_pic_url,
-    id: id
+    name,
+    email,
+    website,
+    phone,
+    bio,
+    profile_pic_url,
+    id
   });
 
   const handleSubmit = e => {
     e.preventDefault();
     console.log(userInfo);
-    let infoNeeded = {};
+    const infoNeeded = {};
 
     if (userInfo.name.length > 0) {
       infoNeeded.name = userInfo.name;
@@ -82,7 +81,6 @@ const EditDJ = props => {
       infoNeeded.website = userInfo.website;
     }
 
-    console.log('id: ', id);
     dispatch(editUser(id, infoNeeded));
   };
 
@@ -93,6 +91,10 @@ const EditDJ = props => {
   const handleCancel = () => {
     console.log('time to cancel edit');
     dispatch(cancelEditUser());
+  };
+
+  const handleDelete = () => {
+    dispatch(deleteUser(id));
   };
 
   return (
@@ -112,11 +114,14 @@ const EditDJ = props => {
             <FontAwesomeIcon icon="pencil-alt" size="2x" />
           </span>
         </div>
-        <button onClick={handleSubmit} className="save">
+        <button onClick={handleSubmit} className="save" type="button">
           Save
         </button>
-        <button onClick={handleCancel} className="cancel">
+        <button onClick={handleCancel} className="cancel" type="button">
           Cancel
+        </button>
+        <button onClick={handleDelete} className="delete" type="button">
+          Delete Profile
         </button>
       </div>
 

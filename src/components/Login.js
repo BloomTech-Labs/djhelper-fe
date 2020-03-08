@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
 import { Input } from 'reactstrap';
+import PropTypes from 'prop-types';
 import NavigationBar from './NavigationBar';
 
 import { loginUser } from '../actions/action';
@@ -39,7 +40,6 @@ const Login = props => {
         <form onSubmit={handleSubmit}>
           <legend>Welcome back!</legend>
           <hr />
-          <hr />
           <div>
             <label htmlFor="username">Username: </label>
             <Input
@@ -68,7 +68,7 @@ const Login = props => {
           </button>
 
           <p>
-            Don't have an account yet?{' '}
+            Don&rsquo;t have an account yet?{' '}
             <b>
               <Link data-testid="toRegistration" to="/register">
                 Register here!
@@ -79,6 +79,10 @@ const Login = props => {
       )}
     </div>
   );
+};
+
+Login.propTypes = {
+  history: PropTypes.shape({ push: PropTypes.func.isRequired })
 };
 
 export default Login;
