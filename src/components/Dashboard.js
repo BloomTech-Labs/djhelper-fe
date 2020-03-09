@@ -13,7 +13,7 @@ const Dashboard = props => {
   const [data, setData] = useState({
     event1: {
       name: 'Bill and Grace',
-      eventType: 'A traditional, peaceful wedding.',
+      event_type: 'A traditional, peaceful wedding.',
       description: "Couple is fairly young so audience may consist of primarily young friends and older family members. Other things I may want to know include this and that and maybe some of Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       newRequests: {
         'Mr Blue Sky': 'The Electric Light Orchestra',
@@ -24,7 +24,7 @@ const Dashboard = props => {
     },
     event2: {
       name: 'Ellie and Mona',
-      eventType: 'A more modern, fun wedding.',
+      event_type: 'A more modern, fun wedding.',
       description: "Couple is fairly young so audience may consist of primarily young friends and older family members. Other things I may want to know include this and that and maybe some of Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       newRequests: {
         'Mr Blue Sky': 'The Electric Light Orchestra',
@@ -35,7 +35,7 @@ const Dashboard = props => {
     },
     event3: {
       name: 'Charles and Elizabeth',
-      eventType: 'A senior wedding.',
+      event_type: 'A senior wedding.',
       description: "Couple is fairly young so audience may consist of primarily young friends and older family members. Other things I may want to know include this and that and maybe some of Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       newRequests: {
         'Mr Blue Sky': 'The Electric Light Orchestra',
@@ -46,7 +46,7 @@ const Dashboard = props => {
     },
     event4: {
       name: 'Chris and Kat',
-      eventType: 'Very atmospheric and sentimental wedding.',
+      event_type: 'Very atmospheric and sentimental wedding.',
       description: "Couple is fairly young so audience may consist of primarily young friends and older family members. Other things I may want to know include this and that and maybe some of Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       newRequests: {
         'Mr Blue Sky': 'The Electric Light Orchestra',

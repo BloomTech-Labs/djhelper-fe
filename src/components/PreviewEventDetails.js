@@ -9,7 +9,7 @@ const PreviewEventDetails = props => {
     <div className="preview-event-details">
       <div className="event-description">
         <h3 className="bold">{currentlyActive.name}</h3>
-        <p><b className="bold">Event Type:</b> {currentlyActive.eventType}</p>
+        <p><b className="bold">Event Type:</b> {currentlyActive.event_type}</p>
         <p><b className="bold">Date: </b>{currentlyActive.date}</p>
         <p className="bold">Description:</p>
         <Dotdotdot clamp={3}>
