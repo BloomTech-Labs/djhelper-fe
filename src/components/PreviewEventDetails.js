@@ -16,7 +16,12 @@ const PreviewEventDetails = props => {
         <Dotdotdot clamp={3}>
             <p>{currentlyActive.description}</p>
         </Dotdotdot>
-        <Link to={`/dj/event/${currentlyActive.id}`}><button>Go to Event Page</button></Link>
+        <Link to={{
+            pathname: `/dj/event/${currentlyActive.id}`,
+        state: {
+            event: currentlyActive
+        }
+        }}><button>Go to Event Page</button></Link>
       </div>
       <div className="newest-song-requests">
         <h3> Newest Requests</h3>
