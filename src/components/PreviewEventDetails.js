@@ -1,6 +1,7 @@
 import React from 'react';
 import Songs from './Songs';
 import Dotdotdot from 'react-dotdotdot';
+import {Link} from 'react-router-dom';
 
 const PreviewEventDetails = props => {
   const { data, setData, currentlyActive } = props;
@@ -15,7 +16,7 @@ const PreviewEventDetails = props => {
         <Dotdotdot clamp={3}>
             <p>{currentlyActive.description}</p>
         </Dotdotdot>
-        <button>Go to Event Page</button>
+        <Link to={`/dj/event/${currentlyActive.id}`}><button>Go to Event Page</button></Link>
       </div>
       <div className="newest-song-requests">
         <h3> Newest Requests</h3>

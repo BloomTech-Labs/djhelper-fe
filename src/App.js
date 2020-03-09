@@ -7,6 +7,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import DjInterface from './components/DjInterface';
+import EventPage from './components/EventPage';
 import About from './components/About';
 import DJProfile from './components/DJProfile';
 import SetUpProfile from './components/SetUpProfile';
@@ -59,6 +60,7 @@ function App() {
                 } />
                 <Route path='/login' component={Login} />
                 <PrivateRoute exact path='/dj' component={DjInterface} />
+                <PrivateRoute exact path='/dj/event/:id' component={EventPage} />
                 <PrivateRoute path='/dj/profile' component={DJProfile} />
                 <Route path='/about' component={About} />
                 <PrivateRoute path='/dj/setup' component={SetUpProfile} />
