@@ -73,6 +73,7 @@ const Dashboard = props => {
           data={data}
           setData={setData}
           currentlyActive={currentlyActive}
+          tokenPresent={props.tokenPresent}
         />
       );
     } else {

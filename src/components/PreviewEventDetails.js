@@ -19,7 +19,8 @@ const PreviewEventDetails = props => {
         <Link to={{
             pathname: `/dj/event/${currentlyActive.id}`,
         state: {
-            event: currentlyActive
+            event: currentlyActive,
+            tokenPresent: props.tokenPresent
         }
         }}><button>Go to Event Page</button></Link>
       </div>
