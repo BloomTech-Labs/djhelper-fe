@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import NavigationBar from './NavigationBar';
 
 import djTurntable from '../images/djTurntable-min.jpg';
+import { validUrl } from '../utils/validUrl';
 
 const AddEvent = props => {
   const [eventData, setEventData] = useState({
@@ -18,6 +19,14 @@ const AddEvent = props => {
     state: '',
     zip: ''
   });
+
+  const EventPic = useRef();
+
+  useEffect(() => {
+    if (validUrl(eventData.img_url)) {
+      EventPic.current.src = eventData.img_url;
+    }
+  }, [eventData.img_url]);
 
   const handleInputChange = e => {
     setEventData({ ...eventData, [e.target.name]: e.target.value });
@@ -39,7 +48,7 @@ const AddEvent = props => {
         <form onSubmit={handleSubmit}>
           <div className="form-section">
             <div className="img-container">
-              <img src={djTurntable} alt="event" />
+              <img src={djTurntable} ref={EventPic} alt="event" />
             </div>
             <div className="input-group">
               <label htmlFor="img_url">Link to Event Image: </label>
