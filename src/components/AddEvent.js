@@ -93,6 +93,52 @@ const AddEvent = props => {
             value={eventData.address_line_1}
           />
         </div>
+
+        <div>
+          <label htmlFor="address-line-2">Address Line 2: </label>
+          <input
+            type="text"
+            name="address_line_2"
+            id="address_line_2"
+            onChange={handleInputChange}
+            value={eventData.address_line_2}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="city">City: </label>
+          <input
+            type="text"
+            name="city"
+            id="city"
+            onChange={handleInputChange}
+            value={eventData.city}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="state">State: </label>
+          <input
+            type="text"
+            name="state"
+            id="state"
+            onChange={handleInputChange}
+            value={eventData.state}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="zip">City: </label>
+          <input
+            type="text"
+            name="zip"
+            id="zip"
+            onChange={handleInputChange}
+            value={eventData.zip}
+          />
+        </div>
+
+        <button type="submit">Add Event</button>
       </form>
     </div>
   );
