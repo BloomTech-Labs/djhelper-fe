@@ -1,35 +1,99 @@
 .add-event {
-  background: black;
+  background: $dark1;
   color: white;
-  min-height: 110vh;
-  form {
-    width: 40%;
-    margin: 2rem auto;
-    background: $dark3;
-    legend {
-      text-align: center;
-    }
-    .input-group {
-      margin: 1rem 0;
-      background: $dark1;
+  background-image: url('../images/profile-banner.svg');
+  background-repeat: repeat-x;
+  .add-event-title {
+    text-align: center;
+    padding-top: 6rem;
+  }
+  .main-form {
+    width: 80%;
+    margin: 12rem auto 2rem;
+    form {
       display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      label {
-        margin-right: 1rem;
-        margin-left: 0.5rem;
-        width: 35%;
+      flex-flow: row wrap;
+      justify-content: space-around;
+      align-items: stretch;
+      .form-section {
+        width: 40%;
+        .img-container {
+          width: 90%;
+          margin: auto;
+          img {
+            max-width: 100%;
+            border-radius: 3px;
+          }
+        }
       }
-      input {
-        width: 60%;
+      .input-group {
+        margin: 1rem 0;
+        display: flex;
+        flex-flow: column wrap;
+
+        label {
+          margin-right: 1rem;
+          margin-left: 0.5rem;
+        }
+        input {
+          background: $dark2;
+          outline: none;
+          border: none;
+          color: white;
+          border-radius: 3px;
+        }
+        textarea {
+          background: $dark2;
+          outline: none;
+          border: none;
+          color: white;
+          border-radius: 3px;
+        }
       }
-      textarea {
-        width: 60%;
+      .last-line-address {
+        display: flex;
+        flex-flow: row wrap;
+        .city {
+          width: 50%;
+          margin-right: 1rem;
+        }
+        .state {
+          width: 15%;
+          margin-right: 1rem;
+          .input {
+            max-width: 90%;
+            margin-right: 1rem;
+          }
+        }
+        .zip {
+          width: 15%;
+          .input {
+            width: 100%;
+          }
+        }
       }
-    }
-    button {
-      margin: 2rem auto;
-      width: 6rem;
+      button {
+        width: 18rem;
+        background: black;
+        margin-bottom: 3rem;
+        color: white;
+        border-radius: 3px;
+        border: none;
+        outline: none;
+        transition: 0.3s;
+        padding: 0.25rem;
+        font-size: 1.25rem;
+        -webkit-box-shadow: 14px 10px 10px -10px rgba(0, 0, 0, 0.35);
+        -moz-box-shadow: 14px 10px 10px -10px rgba(0, 0, 0, 0.35);
+        box-shadow: 4px 5px 10px 0px rgba(0, 0, 0, 0.35);
+        &:hover {
+          color: black;
+          background: white;
+        }
+        &:active {
+          background: grey;
+        }
+      }
     }
   }
 }
