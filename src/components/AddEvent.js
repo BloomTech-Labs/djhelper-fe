@@ -2,7 +2,20 @@ import React, { useState } from 'react';
 import NavigationBar from './NavigationBar';
 
 const AddEvent = props => {
-  const [eventData, setEventData] = useState({});
+  const [eventData, setEventData] = useState({
+    name: '',
+    date: '',
+    start_time: '',
+    end_time: '',
+    event_type: '',
+    description: '',
+    img_url: '',
+    address_line_1: '',
+    address_line_2: '',
+    city: '',
+    state: '',
+    zip: ''
+  });
 
   const handleInputChange = e => {
     setEventData({ ...eventData, [e.target.name]: e.target.value });
@@ -27,6 +40,7 @@ const AddEvent = props => {
             id="name"
             onChange={handleInputChange}
             value={eventData.name}
+            required
           />
         </div>
 
@@ -38,6 +52,7 @@ const AddEvent = props => {
             id="event_type"
             onChange={handleInputChange}
             value={eventData.event_type}
+            required
           />
         </div>
 
@@ -49,6 +64,7 @@ const AddEvent = props => {
             id="description"
             onChange={handleInputChange}
             value={eventData.description}
+            required
           />
         </div>
 
@@ -60,6 +76,7 @@ const AddEvent = props => {
             id="date"
             onChange={handleInputChange}
             value={eventData.date}
+            required
           />
         </div>
 
@@ -137,6 +154,17 @@ const AddEvent = props => {
             id="zip"
             onChange={handleInputChange}
             value={eventData.zip}
+          />
+        </div>
+
+        <div className="img_url">
+          <label htmlFor="img_url">Zip: </label>
+          <input
+            type="text"
+            name="img_url"
+            id="img_url"
+            onChange={handleInputChange}
+            value={eventData.img_url}
           />
         </div>
 
