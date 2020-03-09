@@ -13,84 +13,85 @@
     align-items: center;
     border-radius: 5px;
     margin-top: 25vh;
-    
+
     padding-left: 3rem;
     padding-right: 3rem;
     padding-bottom: 1rem;
     padding-top: 10vh;
     font-size: 1vw;
-    p{
-        width: 90%;
-        text-align: left;
-        margin-top: 8%;
-        text-decoration: none;
-        a {
-            color: black;
-        }
+    p {
+      width: 90%;
+      text-align: left;
+      margin-top: 8%;
+      text-decoration: none;
+      a {
+        color: black;
+      }
     }
-        div {
-            width: 100%;
-            padding-bottom: 0.5rem;
-            font-size: 1.8vw;
-            display: flex;
-            flex-flow: column nowrap;
-            align-items: center;
-        }
-        legend {
-            font-size: 4vw;
-            font-weight: normal;
-            text-align: center;
-        }
-        label {
-            width: 90%;
-            font-size: 1vw;
-            font-weight: 700;
-        }
-        input {
-            line-height: 1.5rem;
-            border: none;
-            width: 90%;
-            outline: none;
-            font-size: 1vw;
-        }
-        #username {
-            /*border-top: solid 2px black; */
-        }
-        .password-area {
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: space-between;
-            align-items: flex-end;
-            div {
-                width: 45%;
-            }
-        }
-        button {
-            align-self: center;
-            width: 40%;
-            font-size: 1vw;
-            font-weight: 700;
-            margin: 1rem;
-            margin-top: 10%;
-            color: white;
-            background: black;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            &:hover {
-                font-style: italic;
-            }
-        }
+    div {
+      width: 100%;
+      padding-bottom: 0.5rem;
+      font-size: 1.8vw;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
     }
-    .registration-page-block {
-        width: 35%;
-        margin: 5rem 3rem;
+    legend {
+      font-size: 4vw;
+      font-weight: normal;
+      text-align: center;
     }
-    h1 {
-        font-size: 5rem;
-        color: white;
-        font-weight: bold;
+    label {
+      width: 90%;
+      font-size: 1vw;
+      font-weight: 700;
+    }
+    input {
+      line-height: 1.5rem;
+      border: none;
+      width: 90%;
+      outline: none;
+      font-size: 1vw;
+      &:hover {
+        border-top: 3px solid black;
+        border-radius: 0px 0px 3px 3px;
+        outline: none;
+      }
     }
 
-
+    .password-area {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      div {
+        width: 45%;
+      }
+    }
+    button {
+      align-self: center;
+      width: 40%;
+      font-size: 1vw;
+      font-weight: 700;
+      margin: 1rem;
+      margin-top: 10%;
+      color: white;
+      background: black;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      &:hover {
+        font-style: italic;
+      }
+    }
+  }
+  .registration-page-block {
+    width: 35%;
+    margin: 5rem 3rem;
+  }
+  h1 {
+    font-size: 5rem;
+    color: white;
+    font-weight: bold;
+  }
 }

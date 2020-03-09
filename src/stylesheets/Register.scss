@@ -1,94 +1,98 @@
 /* Registration Page Styling */
 
 .registration-page {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  form {
+    margin: 1rem auto;
+    background: rgba(255, 255, 255, 0.75);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-radius: 3px;
+    padding: 3rem;
+    font-size: 1vw;
+    p {
+      width: 90%;
+      text-align: left;
+      margin-top: 8%;
+      text-decoration: none;
+      a {
+        color: black;
+      }
+    }
+  }
+  div {
+    padding-bottom: 0.5rem;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 100%;
+  }
+  .display-more {
+    flex-flow: column nowrap;
+  }
+  legend {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  label {
+    width: 90%;
+    font-size: 1vw;
+    font-weight: 700;
+  }
+  input {
+    line-height: 1.5rem;
+    border: none;
+    width: 90%;
+    outline: none;
+    &:hover {
+      border-top: 3px solid black;
+      border-radius: 0px 0px 3px 3px;
+      outline: none;
+    }
+  }
+  .password-area {
+    margin-left: 1.4vw;
+    width: 90%;
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-    form {
-        margin: 1rem auto;
-        background: rgba(255, 255, 255, 0.75);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: flex-start;
-        border-radius: 3px;
-        padding: 3rem;
-        font-size: 1vw;
-        p {
-            width: 90%;
-            text-align: left;
-            margin-top: 8%;
-            text-decoration: none;
-            a {
-                color: black;
-            }
+    justify-content: space-between !important;
+    div {
+      display: flex;
+      flex-flow: row wrap;
+      width: 50%;
     }
-
-        }
-        div {
-            padding-bottom: 0.5rem;
-            display: flex;
-            flex-flow: column nowrap;
-            align-items: center;
-            width: 100%;
-        }
-        .display-more {
-            flex-flow: column nowrap;
-        }
-        legend {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: bold;
-        }
-        label {
-            width: 90%;
-            font-size: 1vw;
-            font-weight: 700;
-        }
-        input {
-            line-height: 1.5rem;
-            border: none;
-            width: 90%;
-            outline: none;
-        }
-        .password-area {
-            margin-left: 1.4vw;
-            width: 90%;
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: space-between !important;
-            div {
-                display: flex;
-                flex-flow: row wrap;
-                width: 50%;
-            }
-        }
-        button {
-            align-self: center;
-            width: 40%;
-            font-size: 1vw;
-            font-weight: 700;
-            margin: 1rem;
-            color: white;
-            background: black;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            &:hover {
-                font-style: italic;
-            }
-        }
-    .registration-page-block {
-        width: 35%;
-        margin: 5rem 3rem;
+  }
+  button {
+    align-self: center;
+    width: 40%;
+    font-size: 1vw;
+    font-weight: 700;
+    margin: 1rem;
+    color: white;
+    background: black;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    &:hover {
+      font-style: italic;
     }
-    h1 {
-        font-size: 5rem;
-        color: white;
-        font-weight: bold;
-    }
-    .bold-text {
-        font-weight: bold;
-    }
+  }
+  .registration-page-block {
+    width: 35%;
+    margin: 5rem 3rem;
+  }
+  h1 {
+    font-size: 5rem;
+    color: white;
+    font-weight: bold;
+  }
+  .bold-text {
+    font-weight: bold;
+  }
 }
