@@ -8,22 +8,20 @@ const PreviewEventDetails = props => {
   return (
     <div className="preview-event-details">
       <div className="event-description">
-        <h3 className="bold"> {currentlyActive.name}</h3>
-        <p><b className="bold"> Event Type:</b> {currentlyActive.eventType}</p>
-        <br />
-        <p className="bold"> Description:</p>
+        <h3 className="bold">{currentlyActive.name}</h3>
+        <p><b className="bold">Event Type:</b> {currentlyActive.eventType}</p>
+        <p><b className="bold">Date: </b>{currentlyActive.date}</p>
+        <p className="bold">Description:</p>
         <Dotdotdot clamp={3}>
             <p>{currentlyActive.description}</p>
         </Dotdotdot>
+        <button>Go to Event Page</button>
       </div>
       <div className="newest-song-requests">
-        <p> Newest Requests</p>
+        <h3> Newest Requests</h3>
         <Songs />
         <Songs />
         <Songs />
-      </div>
-      <div className="genre-graph">
-        <p> Genre graph goes here</p>
       </div>
     </div>
   );
