@@ -1,21 +1,25 @@
 import React from 'react';
 
 const Event = props => {
+    let eventClass;
+    if (props.data.active === `event${props.num}`) {
+        eventClass = 'selected'
+    } else {
+        eventClass = ''
+    }
+
+        let eventNum = `event${props.num}`;
+        let event = props.data[eventNum];
   return (
-    <div className="events">
-      <p> image {props.num}</p>
-      {props.data ? (
         <button
+          className={`events ${eventClass}`}
           onClick={() =>
             props.setData({ ...props.data, active: `event${props.num}` })
-          }
+              }
         >
-          <img src={require('../images/placeholder.jpeg')} alt="event image" />
+          <h2>{event.name}</h2>
+          <p> Date: 05/03/2020</p>
         </button>
-      ) : (
-        <img src={require('../images/placeholder.jpeg')} alt="event image" />
-      )}
-    </div>
   );
 };
 

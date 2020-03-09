@@ -1,18 +1,15 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Songs = () => {
   return (
     <div className="songs">
-      <input type="checkbox" />
+      <button id='song-type'></button>
       <p> Song name title</p>
       <br />
       <p> Artist Name</p>
       <br />
-      <p> Votes</p>
-      <br />
-      <button> |></button>
-      <p> Sample</p>
-      <br />
+      <button id='vote'><FontAwesomeIcon icon="caret-up" size="2x" /></button> <p>003</p>
     </div>
   );
 };
