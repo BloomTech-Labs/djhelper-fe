@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import NavigationBar from './NavigationBar';
-import PreviewEventDetails from './PreviewEventDetails';
+import Carousel from '@brainhubeu/react-carousel';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import DashboardWelcome from './DashboardWelcome';
 import Event from './Event';
-import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { pastEvents } from '../data/pastEvents.js';
+import PreviewEventDetails from './PreviewEventDetails';
+import { pastEvents } from '../data/pastEvents';
+import NavigationBar from './NavigationBar';
 
 const Dashboard = props => {
   const [data, setData] = useState({
