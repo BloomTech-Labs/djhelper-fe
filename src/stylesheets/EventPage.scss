@@ -1,0 +1,136 @@
+.event-page {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    background: $dark3;
+    color: white;
+    min-height: 110vh;
+    padding-bottom: 5%;
+
+    .event-details {
+        padding-top: 5%;
+        margin-bottom: 5%;
+        width: 90%;
+        height: 47vh;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        font-size: 0.75rem;
+        color: #C7C7C7;
+        button {
+            width: 95%;
+            background: black;
+            color: white;
+            border-radius: 3px;
+            border: none;
+            outline: none;
+            transition: 0.3s;
+            padding: 0.4rem;
+            padding-bottom: 0.6rem;
+            padding-top: 0.6rem;
+            font-size: 0.75rem;
+            -webkit-box-shadow: 14px 10px 10px -10px rgba(0,0,0,0.35);
+            -moz-box-shadow: 14px 10px 10px -10px rgba(0,0,0,0.35);
+            box-shadow: 4px 5px 10px 0px rgba(0,0,0,0.35);
+            &:hover {
+                color: black;
+                background: white;
+            }
+            &:active {
+                background: grey;
+            }
+            &.cancel {
+                background: black;
+                color: white;
+                border: 2px solid white;
+                margin-top: 1rem;
+            }
+            &.save {
+                background: white;
+                color: black;
+            }
+        }
+
+
+        h3 {
+            font-size: 2.2rem;
+            margin-bottom: 7%;
+        }
+        .bold {
+            color: white;
+            font-weight: 700;
+        }
+
+        .event-description {
+            width: 23%;
+            height: 45vh;
+            margin-bottom: 50vh !important;
+            p {
+                width: 95%;
+
+            }
+        }
+        .playlist {
+            display: flex;
+            flex-flow: column nowrap;
+            height: 28vh;
+            width: 50%;
+            
+            #vote {
+                color: green;
+                background: transparent;
+                box-shadow: none;
+                padding-bottom: 2%;
+            }
+
+            #song-type {
+                display: flex;
+                flex-flow: row nowrap;
+                align-items: center;
+                background-repeat: no-repeat;
+                border-radius: 0%;
+                width: 25px;
+                height: 25px;
+                background-size: cover;
+                box-shadow: none;
+            }
+            h3 {
+                color: white;
+                font-weight: 700;
+                font-size: 1.3rem;
+            }
+            .songs {
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: space-between;
+                align-items: flex-start;
+                button {
+                    width: 10%;
+                }
+                
+            }
+        }
+        #requests {
+            width: 200%;
+            margin-top: 9%;
+            overflow-y: scroll;
+            margin-right: 3%;
+            .songs {
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: space-between;
+                align-items: flex-start;
+                button {
+                    width: 10%;
+                    margin-right: 10%;
+                }
+
+            }
+        }
+        .genre-graph {
+            height: 28vh;
+            width: 20%;
+        }
+
+    }
+}

@@ -7,9 +7,9 @@ const EventPage = (props) => {
     console.log(props);
     const { name, event_type, description, id, date } = props.location.state.event;
     return (
-   <div className="dashboard">
+   <div className="event-page">
       <NavigationBar tokenPresent={props.location.state.tokenPresent} />
-    <div className="preview-event-details">
+    <div className="event-details">
       <div className="event-description">
         <h3 className="bold">{name}</h3>
         <p><b className="bold">Event Type:</b> {event_type}</p>
@@ -17,9 +17,26 @@ const EventPage = (props) => {
         <p className="bold">Description:</p>
             <p>{description}</p>
         <button> Edit </button>
+      <div className='playlist' id='requests'>
+        <h3> Requests </h3>
+        <Songs />
+        <Songs />
+        <Songs />
+        <Songs />
+        <Songs />
+        <Songs />
+
       </div>
-      <div className="newest-song-requests">
+
+      </div>
+      <div className='playlist'>
         <h3> Playlist </h3>
+        <Songs />
+        <Songs />
+        <Songs />
+        <Songs />
+        <Songs />
+        <Songs />
         <Songs />
         <Songs />
         <Songs />
