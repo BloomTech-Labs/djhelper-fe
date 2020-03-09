@@ -63,7 +63,7 @@ function App() {
           <PrivateRoute path="/dj/profile" component={DJProfile} />
           <Route path="/about" component={About} />
           <PrivateRoute path="/dj/setup" component={SetUpProfile} />
-          <Route path="/dj/addEvent" component={AddEvent} />
+          <PrivateRoute path="/dj/addEvent" component={AddEvent} />
         </BrowserRouter>
       </div>
     </div>
