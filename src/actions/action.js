@@ -154,7 +154,7 @@ export const updateUser = (history, id, userInfo) => dispatch => {
 
 export const addEvent = (eventInfo, history) => dispatch => {
   dispatch({ type: ADD_EVENT_START });
-  // TODO: axiosWithAuth goes here
+  // TODO: axiosWithAuth goes here -- probably a call to the 'add location' endpoint first, then to the 'add event' endpoint
   dispatch({ type: ADD_EVENT_SUCCESS, payload: eventInfo });
   history.push('/dj');
   // TODO: handle error

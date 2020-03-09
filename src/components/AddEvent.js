@@ -21,7 +21,10 @@ const AddEvent = props => {
     address_line_2: '',
     city: '',
     state: '',
-    zip: ''
+    zip: '',
+    playlist_id: '',
+    request_list_id: '',
+    location_id: ''
   });
 
   const EventPic = useRef();
