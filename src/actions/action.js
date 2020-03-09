@@ -29,6 +29,10 @@ export const UPDATE_USER_START = 'UPDATE_USER_START';
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 export const UPDATE_USER_ERROR = 'UPDATE_USER_ERROR';
 
+export const ADD_EVENT_START = 'ADD_EVENT_START';
+export const ADD_EVENT_SUCCESS = 'ADD_EVENT_SUCCESS';
+export const ADD_EVENT_ERROR = 'ADD_EVENT_ERROR';
+
 // action creators
 
 export const setName = name => {
@@ -146,4 +150,12 @@ export const updateUser = (history, id, userInfo) => dispatch => {
       dispatch({ type: UPDATE_USER_ERROR, payload: err });
       history.push('/dj');
     });
+};
+
+export const addEvent = (eventInfo, history) => dispatch => {
+  dispatch({ type: ADD_EVENT_START });
+  // TODO: axiosWithAuth goes here
+  dispatch({ type: ADD_EVENT_SUCCESS, payload: eventInfo });
+  history.push('/dj');
+  // TODO: handle error
 };

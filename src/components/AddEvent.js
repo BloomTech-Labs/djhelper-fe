@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import NavigationBar from './NavigationBar';
 
 import djTurntable from '../images/djTurntable-min.jpg';
 import { validUrl } from '../utils/validUrl';
+import { addEvent } from '../actions/action';
 
 const AddEvent = props => {
+  const id = useSelector(state => state.userReducer.id);
   const [eventData, setEventData] = useState({
+    dj_id: id,
     name: '',
     date: '',
     start_time: '',
@@ -21,6 +25,7 @@ const AddEvent = props => {
   });
 
   const EventPic = useRef();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (validUrl(eventData.img_url)) {
@@ -35,7 +40,7 @@ const AddEvent = props => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(eventData);
-    // TODO: Send eventData to the back end.
+    dispatch(addEvent(eventData, props.history));
   };
 
   return (
