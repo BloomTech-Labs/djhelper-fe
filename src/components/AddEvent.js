@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import NavigationBar from './NavigationBar';
 
 const AddEvent = props => {
   const [eventData, setEventData] = useState({});
@@ -14,10 +15,11 @@ const AddEvent = props => {
   };
 
   return (
-    <div>
+    <div className="add-event">
+      <NavigationBar />
       <form onSubmit={handleSubmit}>
         <legend>Add Event</legend>
-        <div>
+        <div className="input-group">
           <label htmlFor="name">Event Name:</label>
           <input
             type="text"
@@ -28,40 +30,7 @@ const AddEvent = props => {
           />
         </div>
 
-        <div>
-          <label htmlFor="date">Date: </label>
-          <input
-            type="date"
-            name="date"
-            id="date"
-            onChange={handleInputChange}
-            value={eventData.date}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="start_time">Start Time: </label>
-          <input
-            type="time"
-            name="start_time"
-            id="start_time"
-            value={eventData.start_time}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="end_time">End Time: </label>
-          <input
-            type="time"
-            name="end_time"
-            id="end_time"
-            value={eventData.end_time}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div>
+        <div className="input-group">
           <label htmlFor="event_type">Type of Event: </label>
           <input
             type="text"
@@ -72,7 +41,7 @@ const AddEvent = props => {
           />
         </div>
 
-        <div>
+        <div className="input-group">
           <label htmlFor="description">Description: </label>
           <textarea
             type="text"
@@ -83,7 +52,40 @@ const AddEvent = props => {
           />
         </div>
 
-        <div>
+        <div className="input-group">
+          <label htmlFor="date">Date: </label>
+          <input
+            type="date"
+            name="date"
+            id="date"
+            onChange={handleInputChange}
+            value={eventData.date}
+          />
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="start_time">Start Time: </label>
+          <input
+            type="time"
+            name="start_time"
+            id="start_time"
+            value={eventData.start_time}
+            onChange={handleInputChange}
+          />
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="end_time">End Time: </label>
+          <input
+            type="time"
+            name="end_time"
+            id="end_time"
+            value={eventData.end_time}
+            onChange={handleInputChange}
+          />
+        </div>
+
+        <div className="input-group">
           <label htmlFor="address_line_1">Address Line 1: </label>
           <input
             type="text"
@@ -94,7 +96,7 @@ const AddEvent = props => {
           />
         </div>
 
-        <div>
+        <div className="input-group">
           <label htmlFor="address-line-2">Address Line 2: </label>
           <input
             type="text"
@@ -105,7 +107,7 @@ const AddEvent = props => {
           />
         </div>
 
-        <div>
+        <div className="input-group">
           <label htmlFor="city">City: </label>
           <input
             type="text"
@@ -116,7 +118,7 @@ const AddEvent = props => {
           />
         </div>
 
-        <div>
+        <div className="input-group">
           <label htmlFor="state">State: </label>
           <input
             type="text"
@@ -127,8 +129,8 @@ const AddEvent = props => {
           />
         </div>
 
-        <div>
-          <label htmlFor="zip">City: </label>
+        <div className="input-group">
+          <label htmlFor="zip">Zip: </label>
           <input
             type="text"
             name="zip"
