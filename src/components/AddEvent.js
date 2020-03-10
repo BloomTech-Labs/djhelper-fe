@@ -36,6 +36,7 @@ const AddEvent = props => {
   const [showMoreLocationData, setShowMoreLocationData] = useState(false);
 
   const EventPic = useRef();
+  const LocationPic = useRef();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,6 +44,12 @@ const AddEvent = props => {
       EventPic.current.src = eventData.img_url;
     }
   }, [eventData.img_url]);
+
+  useEffect(() => {
+    if (validUrl(eventData.location_img_url)) {
+      LocationPic.current.src = eventData.location_img_url;
+    }
+  }, [eventData.location_img_url]);
 
   const handleInputChange = e => {
     setEventData({ ...eventData, [e.target.name]: e.target.value });
@@ -180,6 +187,11 @@ const AddEvent = props => {
             </div>
 
             {showMoreLocationData && (
+              <div className="venue-info-title">
+                <h2>Venue Info: </h2>
+              </div>
+            )}
+            {showMoreLocationData && (
               <div className="input-group">
                 <label htmlFor="location_name">Venue Name: </label>
                 <input
@@ -275,7 +287,7 @@ const AddEvent = props => {
 
             {showMoreLocationData && (
               <div className="img-container">
-                <img src={stage} alt="sample stage" />
+                <img src={stage} alt="sample stage" ref={LocationPic} />
               </div>
             )}
             <button type="submit">Add Event</button>
