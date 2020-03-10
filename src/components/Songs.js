@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Songs = () => {
+const Songs = (props) => {
 
     function getRandomIntInclusive(min, max) {
       min = Math.ceil(min);
@@ -19,17 +19,40 @@ const Songs = () => {
     let randomNum = getRandomIntInclusive(1,5)
     let key = 'image' + randomNum;
     let songIcon = imageList[key];
-    console.log();
+    console.log(console.log(props));
+
+    const placeholderVsResults = () => {
+        if (props.items) {
+            console.log(props.items)
+             return (
+                <div className="songs">
+                  <button style={{backgroundImage: `url(${songIcon})`}} id='song-type' ></button>
+                  <p> {props.items.name}</p>
+                  <br />
+                  <p>{props.items.artists[0].name}</p>
+                  <br />
+                  <button id='vote'><FontAwesomeIcon icon="caret-up" size="2x" /></button> <p>003</p>
+                </div>
+          );
+        } else {
+             return (
+                <div className="songs">
+                  <button style={{backgroundImage: `url(${songIcon})`}} id='song-type' ></button>
+                  <p> Song name title</p>
+                  <br />
+                  <p> Artist Name</p>
+                  <br />
+                  <button id='vote'><FontAwesomeIcon icon="caret-up" size="2x" /></button> <p>003</p>
+                </div>
+              );
+
+        }
+    }
 
   return (
-    <div className="songs">
-      <button style={{backgroundImage: `url(${songIcon})`}} id='song-type' ></button>
-      <p> Song name title</p>
-      <br />
-      <p> Artist Name</p>
-      <br />
-      <button id='vote'><FontAwesomeIcon icon="caret-up" size="2x" /></button> <p>003</p>
-    </div>
+      <div>
+          {placeholderVsResults()}
+        </div>
   );
 };
 

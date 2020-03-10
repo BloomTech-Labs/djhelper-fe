@@ -1,4 +1,7 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { axiosWithAuthSpotify, axiosWithAuthSpotifySearch } from '../utils/axiosWithAuthSpotify';
+
+import URLSearchParams from '@ungap/url-search-params';
 
 export const SET_NAME = 'SET_NAME';
 export const SET_USERNAME = 'SET_USERNAME';
@@ -29,6 +32,10 @@ export const UPDATE_USER_START = 'UPDATE_USER_START';
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 export const UPDATE_USER_ERROR = 'UPDATE_USER_ERROR';
 
+export const SEARCH_FOR_TRACK_START = 'SEARCH_FOR_TRACK_START';
+export const SEARCH_FOR_TRACK_SUCCESS = 'SEARCH_FOR_TRACK_SUCCESS';
+export const SEARCH_FOR_TRACK_ERROR = 'SEARCH_FOR_TRACK_ERROR';
+
 // action creators
 
 export const setName = name => {
@@ -56,12 +63,32 @@ export const registerUserAction = (infoNeeded, history) => dispatch => {
 export const loginUser = (userInfo, history) => dispatch => {
   console.log(userInfo);
   dispatch({ type: LOGIN_USER_START });
+
+
   axiosWithAuth()
     .post('/login/dj/', userInfo)
     .then(response => {
       console.log(response);
       localStorage.setItem('token', response.data.token);
       dispatch({ type: LOGIN_USER_SUCCESS, payload: response.data });
+
+    // Getting client id, secret, and grant type into correct format
+    let data = new URLSearchParams({
+        client_id: 'OGZlMzYxN2QxMjc0NGY2YmI3YzRmZGFmNWMwMjJlMDI6YzMzYWZkNjY1NTI5NDE4YjgwZTkyZTYyOGM5MTQwMGE=',
+        grant_type: 'client_credentials'}
+    );
+
+
+    // Getting an access token for the spotify API
+      axiosWithAuthSpotify()
+      .post('/api/token', data)
+      .then(response => {
+          localStorage.setItem('spotifyAccessToken', response.data.access_token);
+          console.log(response.data);
+      })
+      .catch(err => {
+          console.log(err.response);
+      })
 
       if (
         response.data.bio.length === 0 &&
@@ -146,4 +173,24 @@ export const updateUser = (history, id, userInfo) => dispatch => {
       dispatch({ type: UPDATE_USER_ERROR, payload: err });
       history.push('/dj');
     });
-};
+}
+
+export const searchForTrack = (searchTerm) => dispatch => {
+    dispatch({ type: SEARCH_FOR_TRACK_START});
+
+    axiosWithAuthSpotifySearch()
+    .get(`?q=<${searchTerm}>&type=track`)
+    .then(response => {
+        console.log(response);
+        dispatch({type: SEARCH_FOR_TRACK_SUCCESS, payload: response.data.tracks.items});
+    })
+    .catch(err => {
+        console.log(err);
+        dispatch({type: SEARCH_FOR_TRACK_ERROR, payload: err});
+    })
+}
+
+
+
+;
+
