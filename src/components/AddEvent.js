@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import NavigationBar from './NavigationBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import NavigationBar from './NavigationBar';
 
 import djTurntable from '../images/djTurntable-min.jpg';
 import stage from '../images/stage-min.jpg';
@@ -85,7 +85,7 @@ const AddEvent = props => {
       <div className="main-form">
         <form onSubmit={handleSubmit}>
           <div className="form-section">
-            <div className="img-container">
+            <div className="img-container" data-testid="event-img-container">
               <span className="pencil" onClick={handleEventImageChange}>
                 <FontAwesomeIcon icon="pencil-alt" size="2x" />
               </span>
@@ -259,7 +259,12 @@ const AddEvent = props => {
                 />
               </div>
             )}
-            <button type="button" onClick={handleVenueInfo} className="more">
+            <button
+              type="button"
+              onClick={handleVenueInfo}
+              className="more"
+              data-testid="showMoreLocationData"
+            >
               {!showMoreLocationData
                 ? 'Show More Venue Info'
                 : 'Hide More Venue Info'}
@@ -305,14 +310,19 @@ const AddEvent = props => {
             </div>
 
             {showMoreLocationData && (
-              <div className="img-container">
+              <div
+                className="img-container"
+                data-testid="location-img-container"
+              >
                 <span className="pencil" onClick={handleLocationImageChange}>
                   <FontAwesomeIcon icon="pencil-alt" size="2x" />
                 </span>
                 <img src={stage} alt="sample stage" ref={LocationPic} />
               </div>
             )}
-            <button type="submit">Add Event</button>
+            <button type="submit" data-testid="submit-button">
+              Add Event
+            </button>
           </div>
         </form>
       </div>
