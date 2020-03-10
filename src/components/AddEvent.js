@@ -268,38 +268,40 @@ const AddEvent = props => {
 
           <div className="form-section">
             <h2>When: </h2>
-            <div className="input-group">
-              <label htmlFor="date">Date: </label>
-              <input
-                type="date"
-                name="date"
-                id="date"
-                onChange={handleInputChange}
-                value={eventData.date}
-                required
-              />
-            </div>
+            <div className="when-inputs">
+              <div className="input-group date">
+                <label htmlFor="date">Date: </label>
+                <input
+                  type="date"
+                  name="date"
+                  id="date"
+                  onChange={handleInputChange}
+                  value={eventData.date}
+                  required
+                />
+              </div>
 
-            <div className="input-group">
-              <label htmlFor="start_time">Start Time: </label>
-              <input
-                type="time"
-                name="start_time"
-                id="start_time"
-                value={eventData.start_time}
-                onChange={handleInputChange}
-              />
-            </div>
+              <div className="input-group">
+                <label htmlFor="start_time">Start Time: </label>
+                <input
+                  type="time"
+                  name="start_time"
+                  id="start_time"
+                  value={eventData.start_time}
+                  onChange={handleInputChange}
+                />
+              </div>
 
-            <div className="input-group">
-              <label htmlFor="end_time">End Time: </label>
-              <input
-                type="time"
-                name="end_time"
-                id="end_time"
-                value={eventData.end_time}
-                onChange={handleInputChange}
-              />
+              <div className="input-group">
+                <label htmlFor="end_time">End Time: </label>
+                <input
+                  type="time"
+                  name="end_time"
+                  id="end_time"
+                  value={eventData.end_time}
+                  onChange={handleInputChange}
+                />
+              </div>
             </div>
 
             {showMoreLocationData && (

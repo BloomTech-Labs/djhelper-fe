@@ -19,6 +19,8 @@
         width: 40%;
         display: flex;
         flex-flow: column;
+        justify-content: space-around;
+        align-items: stretch;
         margin-top: 2rem;
         .venue-info-title {
           margin-top: 1.5rem;
@@ -38,6 +40,21 @@
           img {
             max-width: 100%;
             border-radius: 3px;
+          }
+        }
+        .when-inputs {
+          display: flex;
+          flex-flow: row wrap;
+          justify-content: space-between;
+          align-items: center;
+          .input-group {
+            width: 25%;
+            input {
+              width: 95%;
+            }
+            &.date {
+              width: 48%;
+            }
           }
         }
       }
