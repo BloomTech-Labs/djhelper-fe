@@ -17,6 +17,9 @@
       align-items: stretch;
       .form-section {
         width: 40%;
+        display: flex;
+        flex-flow: column;
+        margin-top: 2rem;
         .img-container {
           width: 80%;
           margin: auto;
@@ -27,10 +30,9 @@
         }
       }
       .input-group {
-        margin: 1rem 0;
         display: flex;
         flex-flow: column wrap;
-
+        margin-top: 0.5rem;
         label {
           margin-right: 1rem;
           margin-left: 0.5rem;
@@ -53,21 +55,22 @@
       .last-line-address {
         display: flex;
         flex-flow: row wrap;
+        justify-content: space-between;
         .city {
-          width: 50%;
+          width: 40%;
           margin-right: 1rem;
         }
         .state {
           width: 15%;
           margin-right: 1rem;
-          .input {
-            max-width: 90%;
+          input {
+            width: 100%;
             margin-right: 1rem;
           }
         }
         .zip {
-          width: 15%;
-          .input {
+          width: 25%;
+          input {
             width: 100%;
           }
         }
@@ -76,6 +79,8 @@
         width: 18rem;
         background: black;
         margin-bottom: 3rem;
+        margin-top: 1rem;
+        align-self: center;
         color: white;
         border-radius: 3px;
         border: none;
@@ -86,6 +91,10 @@
         -webkit-box-shadow: 14px 10px 10px -10px rgba(0, 0, 0, 0.35);
         -moz-box-shadow: 14px 10px 10px -10px rgba(0, 0, 0, 0.35);
         box-shadow: 4px 5px 10px 0px rgba(0, 0, 0, 0.35);
+        &.more {
+          color: white;
+          background: $dark3;
+        }
         &:hover {
           color: black;
           background: white;

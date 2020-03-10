@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import NavigationBar from './NavigationBar';
 
 import djTurntable from '../images/djTurntable-min.jpg';
+import stage from '../images/stage-min.jpg';
 import { validUrl } from '../utils/validUrl';
 import { addEvent } from '../actions/action';
 
@@ -24,8 +25,15 @@ const AddEvent = props => {
     zip: '',
     playlist_id: '',
     request_list_id: '',
-    location_id: ''
+    location_id: '',
+    location_name: '',
+    phone: '',
+    website: '',
+    email: '',
+    location_img_url: ''
   });
+
+  const [showMoreLocationData, setShowMoreLocationData] = useState(false);
 
   const EventPic = useRef();
   const dispatch = useDispatch();
@@ -46,6 +54,10 @@ const AddEvent = props => {
     dispatch(addEvent(eventData, props.history));
   };
 
+  const handleVenueInfo = () => {
+    setShowMoreLocationData(!showMoreLocationData);
+  };
+
   return (
     <div className="add-event">
       <NavigationBar />
@@ -61,7 +73,7 @@ const AddEvent = props => {
             <div className="input-group">
               <label htmlFor="img_url">Link to Event Image: </label>
               <input
-                type="text"
+                type="url"
                 name="img_url"
                 id="img_url"
                 onChange={handleInputChange}
@@ -105,43 +117,6 @@ const AddEvent = props => {
                 onChange={handleInputChange}
                 value={eventData.description}
                 required
-              />
-            </div>
-          </div>
-
-          <div className="form-section">
-            <h2>When: </h2>
-            <div className="input-group">
-              <label htmlFor="date">Date: </label>
-              <input
-                type="date"
-                name="date"
-                id="date"
-                onChange={handleInputChange}
-                value={eventData.date}
-                required
-              />
-            </div>
-
-            <div className="input-group">
-              <label htmlFor="start_time">Start Time: </label>
-              <input
-                type="time"
-                name="start_time"
-                id="start_time"
-                value={eventData.start_time}
-                onChange={handleInputChange}
-              />
-            </div>
-
-            <div className="input-group">
-              <label htmlFor="end_time">End Time: </label>
-              <input
-                type="time"
-                name="end_time"
-                id="end_time"
-                value={eventData.end_time}
-                onChange={handleInputChange}
               />
             </div>
           </div>
@@ -203,6 +178,106 @@ const AddEvent = props => {
                 />
               </div>
             </div>
+
+            {showMoreLocationData && (
+              <div className="input-group">
+                <label htmlFor="location_name">Venue Name: </label>
+                <input
+                  type="text"
+                  name="location_name"
+                  id="location_name"
+                  onChange={handleInputChange}
+                  value={eventData.location_name}
+                />
+              </div>
+            )}
+
+            {showMoreLocationData && (
+              <div className="input-group">
+                <label htmlFor="website">Venue Website: </label>
+                <input
+                  type="url"
+                  name="website"
+                  id="website"
+                  onChange={handleInputChange}
+                  value={eventData.website}
+                />
+              </div>
+            )}
+
+            {showMoreLocationData && (
+              <div className="input-group">
+                <label htmlFor="email">Venue Email: </label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  onChange={handleInputChange}
+                  value={eventData.email}
+                />
+              </div>
+            )}
+
+            {showMoreLocationData && (
+              <div className="input-group">
+                <label htmlFor="location_img_url">Link to Venue Image:</label>
+                <input
+                  type="url"
+                  name="location_img_url"
+                  id="location_img_url"
+                  onChange={handleInputChange}
+                  value={eventData.location_img_url}
+                />
+              </div>
+            )}
+            <button type="button" onClick={handleVenueInfo} className="more">
+              {!showMoreLocationData
+                ? 'Show More Venue Info'
+                : 'Hide More Venue Info'}
+            </button>
+          </div>
+
+          <div className="form-section">
+            <h2>When: </h2>
+            <div className="input-group">
+              <label htmlFor="date">Date: </label>
+              <input
+                type="date"
+                name="date"
+                id="date"
+                onChange={handleInputChange}
+                value={eventData.date}
+                required
+              />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="start_time">Start Time: </label>
+              <input
+                type="time"
+                name="start_time"
+                id="start_time"
+                value={eventData.start_time}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="end_time">End Time: </label>
+              <input
+                type="time"
+                name="end_time"
+                id="end_time"
+                value={eventData.end_time}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            {showMoreLocationData && (
+              <div className="img-container">
+                <img src={stage} alt="sample stage" />
+              </div>
+            )}
             <button type="submit">Add Event</button>
           </div>
         </form>
