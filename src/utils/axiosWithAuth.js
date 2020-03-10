@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 const BACKEND_HOST =
-  process.env.REACT_APP_BACKEND_HOST ||
-  'https://ec2-18-218-74-229.us-east-2.compute.amazonaws.com';
+  process.env.REACT_APP_BACKEND_HOST || 'https://api.dj-helper.com/';
 
 export const axiosWithAuth = () => {
   const token = localStorage.getItem('token');
