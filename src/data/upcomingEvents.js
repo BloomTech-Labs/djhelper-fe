@@ -15,6 +15,7 @@ export const upcomingEvents = {
   },
   event2: {
     event_id: 1,
+    location_id: 1,
     name: 'Ellie and Mona',
     event_type: 'wedding',
     description: 'A more modern, fun wedding.',
@@ -29,6 +30,7 @@ export const upcomingEvents = {
     description: 'A senior wedding.',
     date: '03/30/2020',
     request_list_id: 2,
+    location_id: 2,
     imgUrl:
       'https://images.unsplash.com/photo-1532329683184-6ffd13057d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
   },
