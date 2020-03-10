@@ -20,6 +20,8 @@ export const upcomingEvents = {
     event_type: 'wedding',
     description: 'A more modern, fun wedding.',
     date: '2020-07-14',
+    start_time: '16:00',
+    end_time: '22:00',
     request_list_id: 2,
     img_url:
       'https://images.unsplash.com/photo-1561928070-590b9c48f0bb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
