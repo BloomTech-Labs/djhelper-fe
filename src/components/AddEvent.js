@@ -86,7 +86,11 @@ const AddEvent = props => {
         <form onSubmit={handleSubmit}>
           <div className="form-section">
             <div className="img-container" data-testid="event-img-container">
-              <span className="pencil" onClick={handleEventImageChange}>
+              <span
+                className="pencil"
+                onClick={handleEventImageChange}
+                data-testid="event-pencil"
+              >
                 <FontAwesomeIcon icon="pencil-alt" size="2x" />
               </span>
               <img src={djTurntable} ref={EventPic} alt="event" />
@@ -314,7 +318,11 @@ const AddEvent = props => {
                 className="img-container"
                 data-testid="location-img-container"
               >
-                <span className="pencil" onClick={handleLocationImageChange}>
+                <span
+                  className="pencil"
+                  onClick={handleLocationImageChange}
+                  data-testid="location-pencil"
+                >
                   <FontAwesomeIcon icon="pencil-alt" size="2x" />
                 </span>
                 <img src={stage} alt="sample stage" ref={LocationPic} />

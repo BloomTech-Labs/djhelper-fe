@@ -86,3 +86,59 @@ test('Clicking on show more button on AddEvent page displays additional fields',
   expect(venueEmailLabel).toBeInTheDocument();
   expect(locationImgContainer).toBeInTheDocument();
 });
+
+test("Clicking on pencil on AddEvent page's event image container toggles display of additional field to change url", () => {
+  const history = createMemoryHistory();
+  const { queryByText, getByTestId } = render(
+    <Provider store={store}>
+      <Router history={history}>
+        <AddEvent />
+      </Router>
+    </Provider>
+  );
+
+  let eventImgLabel = queryByText(/Link to Event Image/i);
+  expect(eventImgLabel).not.toBeInTheDocument();
+
+  const eventPencil = getByTestId('event-pencil');
+  expect(eventPencil).toBeInTheDocument();
+  fireEvent.click(eventPencil);
+
+  eventImgLabel = queryByText(/Link to Event Image/i);
+  expect(eventImgLabel).toBeInTheDocument();
+
+  fireEvent.click(eventPencil);
+  eventImgLabel = queryByText(/Link to Event Image/i);
+  expect(eventImgLabel).not.toBeInTheDocument();
+});
+
+test("Clicking on pencil on AddEvent page's location image container toggles display of additional field to change url", () => {
+  const history = createMemoryHistory();
+  const { queryByText, getByTestId } = render(
+    <Provider store={store}>
+      <Router history={history}>
+        <AddEvent />
+      </Router>
+    </Provider>
+  );
+
+  let locationImgLabel = queryByText(/Link to Venue Image/i);
+  expect(locationImgLabel).not.toBeInTheDocument();
+
+  const showMoreButton = getByTestId('showMoreLocationData');
+  fireEvent.click(showMoreButton);
+
+  const locationPencil = getByTestId('location-pencil');
+  expect(locationPencil).toBeInTheDocument();
+  fireEvent.click(locationPencil);
+
+  const locationImgContainer = getByTestId('location-img-container');
+  expect(locationImgContainer).toBeInTheDocument();
+
+  locationImgLabel = queryByText(/Link to Venue Image/i);
+  expect(locationImgLabel).toBeInTheDocument();
+
+  fireEvent.click(locationPencil);
+  locationImgLabel = queryByText(/Link to Venue Image/i);
+  expect(locationImgLabel).not.toBeInTheDocument();
+});
