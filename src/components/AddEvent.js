@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import NavigationBar from './NavigationBar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import djTurntable from '../images/djTurntable-min.jpg';
 import stage from '../images/stage-min.jpg';
@@ -77,6 +78,10 @@ const AddEvent = props => {
             <div className="img-container">
               <img src={djTurntable} ref={EventPic} alt="event" />
             </div>
+            <span className="pencil">
+              <FontAwesomeIcon icon="pencil-alt" size="2x" />
+            </span>
+
             <div className="input-group">
               <label htmlFor="img_url">Link to Event Image: </label>
               <input
