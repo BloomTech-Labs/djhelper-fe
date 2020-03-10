@@ -18,6 +18,9 @@
       align-items: stretch;
       .form-section {
         width: 40%;
+        @media (max-width: 600px) {
+          width: 100%;
+        }
         display: flex;
         flex-flow: column;
         justify-content: space-around;
