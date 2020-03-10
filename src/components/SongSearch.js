@@ -36,7 +36,10 @@ const SongSearch = () => {
               onChange={handleChange}
               required
             />
-            <SongResults />
+        <div>
+                <SongResults />
+
+        </div>
         </div>
     )
 }

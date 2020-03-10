@@ -9,7 +9,7 @@ const SongResults = () => {
 
     let firstTen = [];
     if (items) {
-     firstTen = items.slice(0, 10);
+     firstTen = items.slice(0, 20);
     }
 
     const results = () => {

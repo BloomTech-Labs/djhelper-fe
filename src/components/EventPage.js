@@ -13,7 +13,13 @@ const EventPage = (props) => {
     });
 
     const handleClick = () => {
-        setSearch({...search, buttonText: 'Close Search', searchVisible: !search.searchVisible
+        let text;
+        if (search.buttonText === 'Add Song') {
+            text='Close Search';
+        } else {
+            text='Add Song';
+        }
+        setSearch({...search, buttonText: text, searchVisible: !search.searchVisible
         });
     }
 
