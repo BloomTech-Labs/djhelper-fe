@@ -74,7 +74,7 @@ Mission Statement: To be the easiest way for DJs to collect and display relevant
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-    *  REACT_APP_BACKEND_HOST - this is "http://localhost:8000" if running locally, OR the back end deployed url if using the deployed back end. Currently the url is http://ec2-18-218-74-229.us-east-2.compute.amazonaws.com. This will change once we have a certificate.
+    *  REACT_APP_BACKEND_HOST - this is "http://localhost:8000" if running locally, OR the back end deployed url if using the deployed back end: "https://api.dj-helper.com/"
 
 # Testing
 
