@@ -1,4 +1,5 @@
 import React from 'react';
+import Dotdotdot from 'react-dotdotdot'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Songs = (props) => {
@@ -27,11 +28,19 @@ const Songs = (props) => {
              return (
                 <div className="songs">
                   <button style={{backgroundImage: `url(${songIcon})`}} id='song-type' ></button>
-                  <p> {props.items.name}</p>
+                  <div className='song-element'>
+                    <Dotdotdot clamp={1}>
+                        <p>{props.items.name}</p>
+                    </Dotdotdot>
+                </div>
+
+                <div className='song-element'>
+                    <Dotdotdot clamp={1}>
+                        <p>{props.items.artists[0].name}</p>
+                    </Dotdotdot>
+                </div>
+
                   <br />
-                  <p>{props.items.artists[0].name}</p>
-                  <br />
-                  <button id='vote'><FontAwesomeIcon icon="caret-up" size="2x" /></button> <p>003</p>
                 </div>
           );
         } else {

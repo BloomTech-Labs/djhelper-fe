@@ -68,10 +68,10 @@ const EventPage = (props) => {
         <h3> Playlist </h3>
         <p className='bold' onClick={handleClick}>{search.buttonText}</p>
     </div>
-        {searchVsPlaylist()}
-       </div>
-    </div>
-    </div>
+    {searchVsPlaylist()}
+   </div>
+</div>
+</div>
     )
 }
 
