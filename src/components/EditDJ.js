@@ -89,7 +89,6 @@ const EditDJ = () => {
   };
 
   const handleCancel = () => {
-    console.log('time to cancel edit');
     dispatch(cancelEditUser());
   };
 

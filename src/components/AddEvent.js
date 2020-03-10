@@ -34,6 +34,8 @@ const AddEvent = props => {
     location_img_url: ''
   });
 
+  const [changeEventImage, setChangeEventImage] = useState(false);
+  const [changeLocationImage, setChangeLocationImage] = useState(false);
   const [showMoreLocationData, setShowMoreLocationData] = useState(false);
 
   const EventPic = useRef();
@@ -66,6 +68,14 @@ const AddEvent = props => {
     setShowMoreLocationData(!showMoreLocationData);
   };
 
+  const handleEventImageChange = () => {
+    setChangeEventImage(!changeEventImage);
+  };
+
+  const handleLocationImageChange = () => {
+    setChangeLocationImage(!changeLocationImage);
+  };
+
   return (
     <div className="add-event">
       <NavigationBar />
@@ -76,22 +86,24 @@ const AddEvent = props => {
         <form onSubmit={handleSubmit}>
           <div className="form-section">
             <div className="img-container">
+              <span className="pencil" onClick={handleEventImageChange}>
+                <FontAwesomeIcon icon="pencil-alt" size="2x" />
+              </span>
               <img src={djTurntable} ref={EventPic} alt="event" />
             </div>
-            <span className="pencil">
-              <FontAwesomeIcon icon="pencil-alt" size="2x" />
-            </span>
 
-            <div className="input-group">
-              <label htmlFor="img_url">Link to Event Image: </label>
-              <input
-                type="url"
-                name="img_url"
-                id="img_url"
-                onChange={handleInputChange}
-                value={eventData.img_url}
-              />
-            </div>
+            {changeEventImage && (
+              <div className="input-group">
+                <label htmlFor="img_url">Link to Event Image: </label>
+                <input
+                  type="url"
+                  name="img_url"
+                  id="img_url"
+                  onChange={handleInputChange}
+                  value={eventData.img_url}
+                />
+              </div>
+            )}
           </div>
 
           <div className="form-section">
@@ -235,7 +247,7 @@ const AddEvent = props => {
               </div>
             )}
 
-            {showMoreLocationData && (
+            {showMoreLocationData && changeLocationImage && (
               <div className="input-group">
                 <label htmlFor="location_img_url">Link to Venue Image:</label>
                 <input
@@ -292,6 +304,9 @@ const AddEvent = props => {
 
             {showMoreLocationData && (
               <div className="img-container">
+                <span className="pencil" onClick={handleLocationImageChange}>
+                  <FontAwesomeIcon icon="pencil-alt" size="2x" />
+                </span>
                 <img src={stage} alt="sample stage" ref={LocationPic} />
               </div>
             )}

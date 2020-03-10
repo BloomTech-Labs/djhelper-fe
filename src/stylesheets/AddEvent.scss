@@ -1,5 +1,5 @@
 .add-event {
-  background: $dark1;
+  background: $dark3;
   color: white;
   background-image: url('../images/profile-banner.svg');
   background-repeat: repeat-x;
@@ -24,10 +24,13 @@
           margin-top: 1.5rem;
         }
         .pencil {
-          position: absolute;
+          position: relative;
           font-size: 2rem;
-          top: 70%;
-          left: 28%;
+          top: 10rem;
+          left: 10rem;
+          &:hover {
+            color: $mediumPurple;
+          }
         }
         .img-container {
           width: 80%;
@@ -52,6 +55,8 @@
           border: none;
           color: white;
           border-radius: 3px;
+          line-height: 2rem;
+          padding-left: 1rem;
         }
         textarea {
           background: $dark2;
@@ -85,7 +90,7 @@
         }
       }
       button {
-        width: 18rem;
+        width: 16rem;
         background: black;
         margin-bottom: 3rem;
         margin-top: 1rem;
@@ -102,7 +107,7 @@
         box-shadow: 4px 5px 10px 0px rgba(0, 0, 0, 0.35);
         &.more {
           color: white;
-          background: $dark3;
+          background: $dark1;
         }
         &:hover {
           color: black;
