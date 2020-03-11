@@ -6,6 +6,11 @@
     color: white;
     min-height: 110vh;
     padding-bottom: 5%;
+   /* Phone styling */
+    @include for-phone-only {
+        padding-bottom: 0%;
+
+    }
 
     .welcome {
         height: 47vh;
@@ -23,7 +28,6 @@
             }
         }
     }
-
     .carousel {
         width: 106%;
         margin-left: -3%;
@@ -36,9 +40,7 @@
         svg:hover {
             color: grey;
         }
-
     }
-
     .preview-event-details {
 
         transition: 0.3s;
@@ -52,7 +54,6 @@
             align-items: center;
             text-align: center;
         }
-
         justify-content: space-between;
         font-size: 0.75rem;
         color: #C7C7C7;
@@ -110,10 +111,8 @@
             color: white;
             font-weight: 700;
         }
-
         .event-description {
             width: 23%;
-
             /* Phone styling */
             @include for-phone-only {
                 width: 90%;
@@ -121,7 +120,6 @@
                     height: 50%;
                 }
             }
-
             p {
                 width: 95%;
                 height: 10%;
@@ -137,15 +135,12 @@
                 width: 90%;
                 display: none;
             }
-
-            
             #vote {
                 color: green;
                 background: transparent;
                 box-shadow: none;
                 padding-bottom: 2%;
             }
-
             #song-type {
                 display: flex;
                 flex-flow: column nowrap;
@@ -171,7 +166,6 @@
                 button {
                     width: 10%;
                 }
-                
             }
         }
         .genre-graph {
@@ -179,15 +173,15 @@
             width: 20%;
         }
     }
-
-
     .upcoming-events {
         display: flex;
         flex-flow: column nowrap;
         width: 90%;
         margin-top: 4vh;
         margin-bottom: 4vh;
-
+        @include for-phone-only {
+            margin-bottom: 2vh;
+        }
         button {
             background: transparent;
             border: none;
@@ -199,26 +193,19 @@
             @include for-phone-only {
                 font-size: 0.75rem;
             }
-            
-
         }
         h6 {
             color: #F59EF7;
             @include for-phone-only {
                 font-size: 0.5rem;
             }
-
-            
-
         }
         .labels {
             display: flex;
             flex-flow: row nowrap;
             justify-content: space-between;
             margin-bottom: 2vh;
-
         }
-
         .events {
             background: #2E2E2E;
             border-top: solid 5px rgba(252, 123, 255, 0);
@@ -237,8 +224,6 @@
                 height: 90%;
                 border-top: solid 3px rgba(252, 123, 255, 0);
             }
-
-
             h2 {
                 font-size: 1.5rem;
                 font-weight: 700;
@@ -258,12 +243,8 @@
                 @include for-phone-only {
                     border-top: solid 3px rgba(211, 98, 255, 1);
                 }
-
         }
-
-
     }
-
     .past-events {
         display: flex;
         flex-flow: column nowrap;
@@ -273,10 +254,11 @@
             font-size: 1.2rem;
             font-weight: 700;
             color: rgba(255, 255, 255, 0.3);
+            @include for-phone-only {
+                font-size: 0.75rem;
+            }
         }
-
         .events {
-
             margin-top: 2px;
             background: #2E2E2E;
             text-align: left;
@@ -291,7 +273,6 @@
             height: 100%;
             width: 85%;
             transition: 0.3s;
-
             img {
                 height: 25vh;
                 width: 15vw;
@@ -299,16 +280,18 @@
             h2 {
                 font-size: 1.5rem;
                 font-weight: 700;
-                
+                @include for-phone-only {
+                    font-size: 0.5rem;
+                }
             }
-
             p {
                 font-size: 0.75rem;
+                @include for-phone-only {
+                    font-size: 0.5rem;
+                }
             }
-
         }
     }
-
     .board {
         display: flex;
         flex-flow: row nowrap;
@@ -329,5 +312,4 @@
             }
         }
     }
-
 }
