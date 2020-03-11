@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import SongResults from './SongResults';
 import { Input } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,6 +9,12 @@ const SongSearch = () => {
     const [searchInput, setSearchInput] = useState({
         searchTerm: '',
     });
+
+    useEffect(() => {
+        setSearchInput({...searchInput, searchTerm: ''})
+        let initial = JSON.stringify(searchInput.searchTerm);
+            dispatch(searchForTrack(initial));
+    }, [])
 
     const dispatch = useDispatch();
 

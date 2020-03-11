@@ -4,6 +4,10 @@ import Songs from './Songs';
 import SongSearch from './SongSearch';
 import {Link} from 'react-router-dom';
 
+import {useDispatch } from 'react-redux';
+
+import { searchForTrack } from '../actions/action';
+
 const EventPage = (props) => {
     const { name, event_type, description, id, date } = props.location.state.event;
 
@@ -11,6 +15,7 @@ const EventPage = (props) => {
         buttonText: 'Add Song',
         searchVisible: false
     });
+    const dispatch = useDispatch();
 
     const handleClick = () => {
         let text;
@@ -18,6 +23,7 @@ const EventPage = (props) => {
             text='Close Search';
         } else {
             text='Add Song';
+            dispatch(searchForTrack(''));
         }
         setSearch({...search, buttonText: text, searchVisible: !search.searchVisible
         });
@@ -56,7 +62,7 @@ const EventPage = (props) => {
         <p><b className='bold'>Date: </b>{date}</p>
         <p className='bold'>Description:</p>
             <p>{description}</p>
-        <button> Edit </button>
+        <button className='black-button'> Edit </button>
       <div className='playlist' id='requests'>
         <h3> Requests </h3>
         <Songs />

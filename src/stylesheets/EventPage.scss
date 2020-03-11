@@ -17,7 +17,8 @@
         justify-content: space-between;
         font-size: 0.75rem;
         color: #C7C7C7;
-        button {
+
+        .black-button {
             width: 95%;
             background: black;
             color: white;
@@ -50,6 +51,7 @@
                 color: black;
             }
         }
+        // End of black-button class
 
 
         h3 {
@@ -60,37 +62,44 @@
             color: white;
             font-weight: 700;
         }
-
         .event-description {
             width: 23%;
             height: 45vh;
             margin-bottom: 50vh !important;
             p {
                 width: 95%;
-
             }
         }
+        //Start of playlist class
         .playlist {
             display: flex;
             flex-flow: column nowrap;
-            height: 28vh;
+            height: 90vh;
             width: 50%;
-            
+            overflow-y: scroll;
             #add-song-div {
                 display: flex;
                 flex-flow: row nowrap;
                 justify-content: space-between;
-
-
             }
-
+            #add {
+                color: white;
+                padding: 0;
+                background: transparent;
+                box-shadow: none;
+                border: none;
+                transition: 0.3s;
+                &:hover {
+                    color: grey;
+                }
+            }
             #vote {
                 color: green;
                 background: transparent;
                 box-shadow: none;
                 padding-bottom: 2%;
+                border: none;
             }
-
             #song-type {
                 display: flex;
                 flex-flow: row nowrap;
@@ -101,6 +110,7 @@
                 height: 25px;
                 background-size: cover;
                 box-shadow: none;
+                border: none;
             }
             h3 {
                 color: white;
@@ -112,14 +122,19 @@
                 flex-flow: row nowrap;
                 justify-content: space-between;
                 align-items: flex-start;
-                button {
-                    width: 10%;
-                }
+                margin-top: 2%;
                 
+                .song-element {
+                    margin-right: 5%;
+                    width: 30%;
+                }
             }
         }
+        //End of playlist class
+
         #requests {
             width: 200%;
+            height: 30vh;
             margin-top: 9%;
             overflow-y: scroll;
             margin-right: 3%;
@@ -132,13 +147,11 @@
                     width: 10%;
                     margin-right: 10%;
                 }
-
             }
         }
         .genre-graph {
             height: 28vh;
             width: 20%;
         }
-
     }
 }

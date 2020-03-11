@@ -40,6 +40,10 @@ const Songs = (props) => {
                     </Dotdotdot>
                 </div>
 
+                <div>
+                  <button id='add'><FontAwesomeIcon icon="plus" size="1x" /></button>
+                  </div>
+
                   <br />
                 </div>
           );
