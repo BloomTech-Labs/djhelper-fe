@@ -97,6 +97,7 @@ export const allEvents = {
       'https://images.unsplash.com/photo-1549335223-c89505707f65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
   },
   event12: {
+    event_id: 12,
     name: 'Timpanogas High School Preference Dance',
     event_type: 'dance',
     description: "Semi-formal, girls' choice dance",
@@ -166,6 +167,7 @@ export const allEvents = {
       'https://images.unsplash.com/photo-1459259191495-52eccde892c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
   },
   event18: {
+    event_id: 18,
     name: "Amy's Wedding",
     event_type: 'wedding',
     description: 'Casual event at a senior center',
@@ -176,6 +178,6 @@ export const allEvents = {
     location_id: 17,
     image_url:
       'https://images.unsplash.com/photo-1500900173725-e0978c945e23?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
-  },
-  active: ''
+  } // ,
+  // active: ''
 };

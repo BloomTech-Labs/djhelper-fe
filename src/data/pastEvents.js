@@ -27,6 +27,7 @@ export const pastEvents = {
       'https://images.unsplash.com/photo-1549335223-c89505707f65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
   },
   event12: {
+    event_id: 12,
     name: 'Timpanogas High School Preference Dance',
     event_type: 'dance',
     description: "Semi-formal, girls' choice dance",

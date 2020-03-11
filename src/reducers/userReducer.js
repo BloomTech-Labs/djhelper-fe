@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { upcomingEvents } from '../data/upcomingEvents.js';
+import { allEvents } from '../data/allEvents.js';
 
 //actions
 import {
@@ -39,7 +40,7 @@ const initialState = {
   id: '',
   bio: '',
   profile_img_src: '',
-  events: upcomingEvents,
+  events: { ...allEvents, active: '' },
   registerUserStart: false,
   registerUserError: false,
   loginUserStart: false,

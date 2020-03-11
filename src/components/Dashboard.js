@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Carousel from '@brainhubeu/react-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,12 +8,15 @@ import '@brainhubeu/react-carousel/lib/style.css';
 import PreviewEventDetails from './PreviewEventDetails';
 import { pastEvents } from '../data/pastEvents';
 import NavigationBar from './NavigationBar';
+import { allEvents } from '../data/allEvents';
 
 const Dashboard = props => {
   const events = useSelector(state => state.userReducer.events);
   const [data, setData] = useState(events);
+
+  useEffect(() => {}, [events]);
   const eventIdsUnfiltered = Object.values(data).map(event => event.event_id);
-  const eventIds = eventIdsUnfiltered.filter(x => x !== undefined); //takes out the undefined ('active' prop has no value)
+  const eventIds = eventIdsUnfiltered.filter(x => x !== undefined); // takes out the undefined ('active' prop has no value)
 
   const [pastEventData, setPastEventData] = useState(pastEvents);
   const pastEventIdsUnfiltered = Object.values(pastEventData).map(
@@ -23,6 +26,35 @@ const Dashboard = props => {
 
   const name = useSelector(state => state.userReducer.name);
 
+  const [completeEvents, setCompleteEvents] = useState(allEvents);
+  const completeArray = Object.values(completeEvents);
+  // console.log(completeArray);
+  const dateArray = completeArray.map(event => {
+    return {
+      event_id: event.event_id,
+      formattedDate: new Date(event.date)
+    };
+  });
+  // console.log(dateArray);
+  const sortedDateArray = dateArray.sort(
+    (a, b) => b.formattedDate - a.formattedDate
+  );
+  // console.log(sortedDateArray);
+
+  const today = new Date();
+  // console.log(today);
+
+  const upcomingArray = sortedDateArray.filter(x => x.formattedDate >= today);
+  upcomingArray.sort((a, b) => a.formattedDate - b.formattedDate);
+  //console.log(upcomingArray);
+  const newUpcomingIds = upcomingArray.map(event => event.event_id);
+  // console.log(newUpcomingIds);
+
+  const pastArray = sortedDateArray.filter(x => x.formattedDate < today);
+  //console.log(pastArray);
+  const newPastIds = pastArray.map(event => event.event_id);
+
+  // setCompleteEvents({ ...completeEvents, active: '' });
   const whichComponent = () => {
     if (data.active.length > 1) {
       return (
@@ -65,7 +97,7 @@ const Dashboard = props => {
           addArrowClickHandler
           infinite
         >
-          {eventIds.map(eventId => {
+          {newUpcomingIds.map(eventId => {
             return (
               <Event
                 num={eventId}
@@ -88,7 +120,7 @@ const Dashboard = props => {
           addArrowClickHandler
           infinite
         >
-          {pastEventIds.map(eventId => {
+          {newPastIds.map(eventId => {
             return (
               <Event
                 num={eventId}
