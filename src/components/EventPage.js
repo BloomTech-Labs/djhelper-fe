@@ -32,11 +32,14 @@ const EventPage = (props) => {
     const searchVsPlaylist = () => {
         if (search.searchVisible) {
             return (
+
+              <div className='playlist'>
                 <SongSearch />
+                </div>
             )
         } else {
             return (
-                <div>
+              <div className='playlist'>
                     <Songs />
                     <Songs />
                     <Songs />
@@ -53,38 +56,35 @@ const EventPage = (props) => {
 
 
     return (
-   <div className='event-page'>
-      <NavigationBar tokenPresent={props.location.state.tokenPresent} />
+<div className='event-page'>
+    <NavigationBar tokenPresent={props.location.state.tokenPresent} />
     <div className='event-details'>
-      <div className='event-description'>
-        <h3 className='bold'>{name}</h3>
-        <p><b className='bold'>Event Type:</b> {event_type}</p>
-        <p><b className='bold'>Date: </b>{date}</p>
-        <p className='bold'>Description:</p>
+        <div className='event-description'>
+            <h3 className='bold'>{name}</h3>
+            <p><b className='bold'>Event Type:</b> {event_type}</p>
+            <p><b className='bold'>Date: </b>{date}</p>
+            <p className='bold'>Description:</p>
             <p>{description}</p>
-        <button className='black-button'> Edit </button>
-      <div className='playlist' id='requests'>
-        <h3> Requests </h3>
-        <Songs />
-        <Songs />
-        <Songs />
-        <Songs />
-        <Songs />
-        <Songs />
-
-      </div>
-
-      </div>
-      <div className='playlist'>
-      <div id='add-song-div'>
-        <h3> Playlist </h3>
-        <p className='bold' onClick={handleClick}>{search.buttonText}</p>
+            <button className='black-button'> Edit </button>
+            <div className='playlist' id='requests'>
+                <h3> Requests </h3>
+                <Songs />
+                <Songs />
+                <Songs />
+                <Songs />
+                <Songs />
+                <Songs />
+            </div>
+        </div>
+        <div className='event-playlist-location'>
+            <div className='label'>
+                <h5> Playlist </h5>
+                <p className='bold' onClick={handleClick}>{search.buttonText}</p>
+            </div>
+            {searchVsPlaylist()}
+        </div>
     </div>
-    {searchVsPlaylist()}
-   </div>
-</div>
-</div>
-    )
+</div> )
 }
 
 export default EventPage;

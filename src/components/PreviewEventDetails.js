@@ -17,7 +17,7 @@ const PreviewEventDetails = props => {
           <p className='description'>{currentlyActive.description}</p>
         </Dotdotdot>
         <Link to={{
-            pathname: `/dj/event/${currentlyActive.id}`,
+            pathname: `/dj/event/${currentlyActive.event_id}`,
         state: {
             event: currentlyActive,
             tokenPresent: props.tokenPresent
