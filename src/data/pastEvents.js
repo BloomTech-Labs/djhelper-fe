@@ -96,6 +96,7 @@ export const pastEvents = {
       'https://images.unsplash.com/photo-1459259191495-52eccde892c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
   },
   event18: {
+    event_id: 18,
     name: "Amy's Wedding",
     event_type: 'wedding',
     description: 'Casual event at a senior center',
