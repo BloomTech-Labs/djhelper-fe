@@ -14,6 +14,8 @@ const Dashboard = props => {
   const [data, setData] = useState(events);
   const [pastEventData, setPastEventData] = useState(pastEvents);
   const name = useSelector(state => state.userReducer.name);
+  const eventIdsUnfiltered = Object.values(data).map(event => event.event_id);
+  const eventIds = eventIdsUnfiltered.filter(x => x !== undefined); //takes out the undefined ('active' prop has no value)
 
   const whichComponent = () => {
     if (data.active.length > 1) {
@@ -57,10 +59,16 @@ const Dashboard = props => {
           addArrowClickHandler
           infinite
         >
-          <Event num={1} data={data} setData={setData} />
-          <Event num={2} data={data} setData={setData} />
-          <Event num={3} data={data} setData={setData} />
-          <Event num={4} data={data} setData={setData} />
+          {eventIds.map(eventId => {
+            return (
+              <Event
+                num={eventId}
+                data={data}
+                setData={setData}
+                key={eventId}
+              />
+            );
+          })}
         </Carousel>
       </div>
       <div className="past-events" data-testid="past-carousel">
