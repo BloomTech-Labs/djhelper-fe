@@ -61,6 +61,7 @@ export const upcomingEvents = {
       'https://images.unsplash.com/photo-1567768823253-c4fe2bf7143e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
   },
   event6: {
+    event_id: 6,
     name: "Devin's D&D Event",
     event_type: 'game night',
     description: 'All-Night Extreme Game Night',

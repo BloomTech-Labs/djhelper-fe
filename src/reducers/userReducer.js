@@ -1,3 +1,6 @@
+/* eslint-disable import/prefer-default-export */
+import { upcomingEvents } from '../data/upcomingEvents.js';
+
 //actions
 import {
   SET_NAME,
@@ -36,7 +39,7 @@ const initialState = {
   id: '',
   bio: '',
   profile_img_src: '',
-  events: [],
+  events: upcomingEvents,
   registerUserStart: false,
   registerUserError: false,
   loginUserStart: false,
@@ -174,7 +177,10 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         addEventStart: false,
-        events: [...state.events, action.payload]
+        events: {
+          ...state.events,
+          [`event${action.payload.event_id}`]: action.payload
+        }
       };
 
     case ADD_EVENT_ERROR:

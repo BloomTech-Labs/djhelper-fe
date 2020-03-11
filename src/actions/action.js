@@ -1,5 +1,8 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { axiosWithAuthSpotify, axiosWithAuthSpotifySearch } from '../utils/axiosWithAuthSpotify';
+import {
+  axiosWithAuthSpotify,
+  axiosWithAuthSpotifySearch
+} from '../utils/axiosWithAuthSpotify';
 
 import URLSearchParams from '@ungap/url-search-params';
 
@@ -67,7 +70,6 @@ export const loginUser = (userInfo, history) => dispatch => {
   console.log(userInfo);
   dispatch({ type: LOGIN_USER_START });
 
-
   axiosWithAuth()
     .post('/login/dj/', userInfo)
     .then(response => {
@@ -75,23 +77,26 @@ export const loginUser = (userInfo, history) => dispatch => {
       localStorage.setItem('token', response.data.token);
       dispatch({ type: LOGIN_USER_SUCCESS, payload: response.data });
 
-    // Getting client id, secret, and grant type into correct format
-    let data = new URLSearchParams({
-        client_id: 'OGZlMzYxN2QxMjc0NGY2YmI3YzRmZGFmNWMwMjJlMDI6YzMzYWZkNjY1NTI5NDE4YjgwZTkyZTYyOGM5MTQwMGE=',
-        grant_type: 'client_credentials'}
-    );
+      // Getting client id, secret, and grant type into correct format
+      let data = new URLSearchParams({
+        client_id:
+          'OGZlMzYxN2QxMjc0NGY2YmI3YzRmZGFmNWMwMjJlMDI6YzMzYWZkNjY1NTI5NDE4YjgwZTkyZTYyOGM5MTQwMGE=',
+        grant_type: 'client_credentials'
+      });
 
-
-    // Getting an access token for the spotify API
+      // Getting an access token for the spotify API
       axiosWithAuthSpotify()
-      .post('/api/token', data)
-      .then(response => {
-          localStorage.setItem('spotifyAccessToken', response.data.access_token);
+        .post('/api/token', data)
+        .then(response => {
+          localStorage.setItem(
+            'spotifyAccessToken',
+            response.data.access_token
+          );
           console.log(response.data);
-      })
-      .catch(err => {
+        })
+        .catch(err => {
           console.log(err.response);
-      })
+        });
 
       if (
         response.data.bio.length === 0 &&
@@ -176,28 +181,36 @@ export const updateUser = (history, id, userInfo) => dispatch => {
       dispatch({ type: UPDATE_USER_ERROR, payload: err });
       history.push('/dj');
     });
-}
-
-export const searchForTrack = (searchTerm) => dispatch => {
-    dispatch({ type: SEARCH_FOR_TRACK_START});
-
-    axiosWithAuthSpotifySearch()
-    .get(`?q=<${searchTerm}>&type=track`)
-    .then(response => {
-        console.log(response);
-        dispatch({type: SEARCH_FOR_TRACK_SUCCESS, payload: response.data.tracks.items});
-    })
-    .catch(err => {
-        console.log(err);
-        dispatch({type: SEARCH_FOR_TRACK_ERROR, payload: err});
-    })
 };
 
+export const searchForTrack = searchTerm => dispatch => {
+  dispatch({ type: SEARCH_FOR_TRACK_START });
+
+  axiosWithAuthSpotifySearch()
+    .get(`?q=<${searchTerm}>&type=track`)
+    .then(response => {
+      console.log(response);
+      dispatch({
+        type: SEARCH_FOR_TRACK_SUCCESS,
+        payload: response.data.tracks.items
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: SEARCH_FOR_TRACK_ERROR, payload: err });
+    });
+};
 
 export const addEvent = (eventInfo, history) => dispatch => {
   dispatch({ type: ADD_EVENT_START });
   // TODO: axiosWithAuth goes here -- probably a call to the 'add location' endpoint first, then to the 'add event' endpoint
-  dispatch({ type: ADD_EVENT_SUCCESS, payload: eventInfo });
+  // TODO: replace eventNum belows with event_id that is returned from the back end.
+  const eventNum = Math.floor(Math.random() * 1000000);
+  const eventToSubmit = { ...eventInfo, event_id: eventNum };
+  dispatch({
+    type: ADD_EVENT_SUCCESS,
+    payload: eventToSubmit
+  });
   history.push('/dj');
   // TODO: handle error
 };
