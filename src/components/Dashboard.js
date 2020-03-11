@@ -6,7 +6,6 @@ import DashboardWelcome from './DashboardWelcome';
 import Event from './Event';
 import '@brainhubeu/react-carousel/lib/style.css';
 import PreviewEventDetails from './PreviewEventDetails';
-import { pastEvents } from '../data/pastEvents';
 import NavigationBar from './NavigationBar';
 import { allEvents } from '../data/allEvents';
 
@@ -14,7 +13,6 @@ const Dashboard = props => {
   const name = useSelector(state => state.userReducer.name);
   const events = useSelector(state => state.userReducer.events);
   const [data, setData] = useState(events);
-  const [pastEventData, setPastEventData] = useState(pastEvents);
   const [completeEvents, setCompleteEvents] = useState(allEvents);
   const [upcomingIds, setUpcomingIds] = useState([]);
   const [pastIds, setPastIds] = useState([]);
@@ -115,8 +113,8 @@ const Dashboard = props => {
             return (
               <Event
                 num={eventId}
-                data={pastEventData}
-                setData={setPastEventData}
+                data={data}
+                setData={setData}
                 key={eventId}
               />
             );
