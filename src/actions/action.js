@@ -191,13 +191,8 @@ export const searchForTrack = (searchTerm) => dispatch => {
         console.log(err);
         dispatch({type: SEARCH_FOR_TRACK_ERROR, payload: err});
     })
-}
-
-
-
-;
-
 };
+
 
 export const addEvent = (eventInfo, history) => dispatch => {
   dispatch({ type: ADD_EVENT_START });
