@@ -7,18 +7,16 @@ import Event from './Event';
 import '@brainhubeu/react-carousel/lib/style.css';
 import PreviewEventDetails from './PreviewEventDetails';
 import NavigationBar from './NavigationBar';
-import { allEvents } from '../data/allEvents';
 
 const Dashboard = props => {
   const name = useSelector(state => state.userReducer.name);
   const events = useSelector(state => state.userReducer.events);
   const [data, setData] = useState(events);
-  const [completeEvents, setCompleteEvents] = useState(allEvents);
   const [upcomingIds, setUpcomingIds] = useState([]);
   const [pastIds, setPastIds] = useState([]);
 
   useEffect(() => {
-    const completeArray = Object.values(completeEvents);
+    const completeArray = Object.values(events);
     const dateArray = completeArray.map(event => {
       return {
         event_id: event.event_id,
