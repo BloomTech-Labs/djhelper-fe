@@ -31,7 +31,7 @@ export const allEvents = {
     name: 'Charles and Elizabeth',
     event_type: 'wedding',
     description: 'A senior wedding.',
-    date: '03/30/2020',
+    date: '2020-03-30',
     request_list_id: 3,
     location_id: 3,
     imgUrl:

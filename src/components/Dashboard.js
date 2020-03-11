@@ -11,50 +11,41 @@ import NavigationBar from './NavigationBar';
 import { allEvents } from '../data/allEvents';
 
 const Dashboard = props => {
+  const name = useSelector(state => state.userReducer.name);
   const events = useSelector(state => state.userReducer.events);
   const [data, setData] = useState(events);
-
-  useEffect(() => {}, [events]);
-  const eventIdsUnfiltered = Object.values(data).map(event => event.event_id);
-  const eventIds = eventIdsUnfiltered.filter(x => x !== undefined); // takes out the undefined ('active' prop has no value)
-
   const [pastEventData, setPastEventData] = useState(pastEvents);
-  const pastEventIdsUnfiltered = Object.values(pastEventData).map(
-    event => event.event_id
-  );
-  const pastEventIds = pastEventIdsUnfiltered.filter(x => x !== undefined);
-
-  const name = useSelector(state => state.userReducer.name);
-
   const [completeEvents, setCompleteEvents] = useState(allEvents);
-  const completeArray = Object.values(completeEvents);
-  // console.log(completeArray);
-  const dateArray = completeArray.map(event => {
-    return {
-      event_id: event.event_id,
-      formattedDate: new Date(event.date)
-    };
-  });
-  // console.log(dateArray);
-  const sortedDateArray = dateArray.sort(
-    (a, b) => b.formattedDate - a.formattedDate
-  );
-  // console.log(sortedDateArray);
+  const [upcomingIds, setUpcomingIds] = useState([]);
+  const [pastIds, setPastIds] = useState([]);
 
-  const today = new Date();
-  // console.log(today);
+  useEffect(() => {
+    const completeArray = Object.values(completeEvents);
+    const dateArray = completeArray.map(event => {
+      return {
+        event_id: event.event_id,
+        formattedDate: new Date(event.date)
+      };
+    });
+    const sortedDateArray = dateArray.sort(
+      (a, b) => b.formattedDate - a.formattedDate
+    );
+    const today = new Date();
+    const upcomingArray = sortedDateArray.filter(x => x.formattedDate >= today);
+    upcomingArray.sort((a, b) => a.formattedDate - b.formattedDate);
+    const newUpcomingIds = upcomingArray.map(event => event.event_id);
+    setUpcomingIds(newUpcomingIds);
 
-  const upcomingArray = sortedDateArray.filter(x => x.formattedDate >= today);
-  upcomingArray.sort((a, b) => a.formattedDate - b.formattedDate);
-  //console.log(upcomingArray);
-  const newUpcomingIds = upcomingArray.map(event => event.event_id);
-  // console.log(newUpcomingIds);
-
-  const pastArray = sortedDateArray.filter(x => x.formattedDate < today);
-  //console.log(pastArray);
-  const newPastIds = pastArray.map(event => event.event_id);
-
-  // setCompleteEvents({ ...completeEvents, active: '' });
+    const pastArray = sortedDateArray.filter(x => x.formattedDate < today);
+    const newPastIds = pastArray.map(event => event.event_id);
+    setPastIds(newPastIds);
+  }, [events]);
+  // const eventIdsUnfiltered = Object.values(data).map(event => event.event_id);
+  // const eventIds = eventIdsUnfiltered.filter(x => x !== undefined); // takes out the undefined ('active' prop has no value)
+  // const pastEventIdsUnfiltered = Object.values(pastEventData).map(
+  // event => event.event_id
+  // );
+  // const pastEventIds = pastEventIdsUnfiltered.filter(x => x !== undefined);
   const whichComponent = () => {
     if (data.active.length > 1) {
       return (
@@ -97,7 +88,7 @@ const Dashboard = props => {
           addArrowClickHandler
           infinite
         >
-          {newUpcomingIds.map(eventId => {
+          {upcomingIds.map(eventId => {
             return (
               <Event
                 num={eventId}
@@ -120,7 +111,7 @@ const Dashboard = props => {
           addArrowClickHandler
           infinite
         >
-          {newPastIds.map(eventId => {
+          {pastIds.map(eventId => {
             return (
               <Event
                 num={eventId}
