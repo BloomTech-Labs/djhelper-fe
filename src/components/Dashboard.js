@@ -12,10 +12,16 @@ import NavigationBar from './NavigationBar';
 const Dashboard = props => {
   const events = useSelector(state => state.userReducer.events);
   const [data, setData] = useState(events);
-  const [pastEventData, setPastEventData] = useState(pastEvents);
-  const name = useSelector(state => state.userReducer.name);
   const eventIdsUnfiltered = Object.values(data).map(event => event.event_id);
   const eventIds = eventIdsUnfiltered.filter(x => x !== undefined); //takes out the undefined ('active' prop has no value)
+
+  const [pastEventData, setPastEventData] = useState(pastEvents);
+  const pastEventIdsUnfiltered = Object.values(pastEventData).map(
+    event => event.event_id
+  );
+  const pastEventIds = pastEventIdsUnfiltered.filter(x => x !== undefined);
+
+  const name = useSelector(state => state.userReducer.name);
 
   const whichComponent = () => {
     if (data.active.length > 1) {
@@ -82,10 +88,16 @@ const Dashboard = props => {
           addArrowClickHandler
           infinite
         >
-          <Event num={1} data={pastEventData} setData={setPastEventData} />
-          <Event num={2} data={pastEventData} setData={setPastEventData} />
-          <Event num={3} data={pastEventData} setData={setPastEventData} />
-          <Event num={4} data={pastEventData} setData={setPastEventData} />
+          {pastEventIds.map(eventId => {
+            return (
+              <Event
+                num={eventId}
+                data={pastEventData}
+                setData={setPastEventData}
+                key={eventId}
+              />
+            );
+          })}
         </Carousel>
       </div>
     </div>
