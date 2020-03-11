@@ -4,7 +4,7 @@ import Dotdotdot from 'react-dotdotdot';
 import {Link} from 'react-router-dom';
 
 const PreviewEventDetails = props => {
-  const { data, setData, currentlyActive } = props;
+  const { currentlyActive } = props;
 
   return (
     <div className="preview-event-details">
@@ -14,7 +14,7 @@ const PreviewEventDetails = props => {
         <p><b className="bold">Date: </b>{currentlyActive.date}</p>
         <p className="bold">Description:</p>
         <Dotdotdot clamp={3}>
-            <p>{currentlyActive.description}</p>
+          <p>{currentlyActive.description}</p>
         </Dotdotdot>
         <Link to={{
             pathname: `/dj/event/${currentlyActive.id}`,

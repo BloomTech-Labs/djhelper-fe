@@ -35,6 +35,9 @@ export const UPDATE_USER_ERROR = 'UPDATE_USER_ERROR';
 export const SEARCH_FOR_TRACK_START = 'SEARCH_FOR_TRACK_START';
 export const SEARCH_FOR_TRACK_SUCCESS = 'SEARCH_FOR_TRACK_SUCCESS';
 export const SEARCH_FOR_TRACK_ERROR = 'SEARCH_FOR_TRACK_ERROR';
+export const ADD_EVENT_START = 'ADD_EVENT_START';
+export const ADD_EVENT_SUCCESS = 'ADD_EVENT_SUCCESS';
+export const ADD_EVENT_ERROR = 'ADD_EVENT_ERROR';
 
 // action creators
 
@@ -194,3 +197,12 @@ export const searchForTrack = (searchTerm) => dispatch => {
 
 ;
 
+};
+
+export const addEvent = (eventInfo, history) => dispatch => {
+  dispatch({ type: ADD_EVENT_START });
+  // TODO: axiosWithAuth goes here -- probably a call to the 'add location' endpoint first, then to the 'add event' endpoint
+  dispatch({ type: ADD_EVENT_SUCCESS, payload: eventInfo });
+  history.push('/dj');
+  // TODO: handle error
+};
