@@ -1,0 +1,31 @@
+.event-guest-view-page {
+  background: black;
+  color: white;
+  min-height: 110vh;
+  padding-left: 2rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  .section {
+    width: 31%;
+    padding-top: 2rem;
+
+    .img-container {
+      max-width: 90%;
+      border-radius: 3px;
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+  .left-side {
+    border-right: 2px solid white;
+    .main-title {
+      font-size: 4.5rem;
+      font-weight: bold;
+
+      padding-bottom: 2rem;
+    }
+  }
+}
