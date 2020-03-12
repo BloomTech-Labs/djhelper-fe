@@ -3,9 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getDJ } from '../actions/action';
 
 import { locations } from '../data/locations';
+import formatDate from '../utils/formatDate';
 
 const EventGuestView = props => {
   const dispatch = useDispatch();
+  const [formattedDate, setFormattedDate] = useState(null);
   const { dj_id, event_id } = props.match.params;
 
   const name = useSelector(state => state.userReducer.name);
@@ -35,24 +37,8 @@ const EventGuestView = props => {
     dispatch(getDJ(dj_id));
   }, []);
 
-  const dtf = new Intl.DateTimeFormat('en', {
-    year: 'numeric',
-    month: 'long',
-    day: '2-digit'
-  });
-
-  const [formattedDate, setFormattedDate] = useState(null);
   useEffect(() => {
-    if (currentEvent) {
-      const [
-        { value: mo },
-        ,
-        { value: da },
-        ,
-        { value: ye }
-      ] = dtf.formatToParts(new Date(currentEvent.date));
-      setFormattedDate(`${da} ${mo} ${ye}`);
-    }
+    setFormattedDate(formatDate(currentEvent.date));
   }, []);
 
   const handleAddRequest = () => {
@@ -60,6 +46,7 @@ const EventGuestView = props => {
       'We are excited that you want to add song requests. This feature is coming soon!'
     );
   };
+
   return (
     <div className="event-guest-view-page">
       <div className="section left-side">
