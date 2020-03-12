@@ -4,10 +4,14 @@ import { getDJ } from '../actions/action';
 
 import { locations } from '../data/locations';
 import formatDate from '../utils/formatDate';
+import formatTime from '../utils/formatTime';
 
 const EventGuestView = props => {
   const dispatch = useDispatch();
   const [formattedDate, setFormattedDate] = useState(null);
+  const [formattedStartTime, setFormattedStartTime] = useState(null);
+  const [formattedEndTime, setFormattedEndTime] = useState(null);
+
   const { dj_id, event_id } = props.match.params;
 
   const name = useSelector(state => state.userReducer.name);
@@ -31,15 +35,27 @@ const EventGuestView = props => {
         locations.find(item => item.location_id === currentEvent.location_id)
       );
     }
-  }, []);
+  }, [currentEvent]);
 
   useEffect(() => {
     dispatch(getDJ(dj_id));
-  }, []);
+  }, [dispatch, dj_id]);
 
   useEffect(() => {
     setFormattedDate(formatDate(currentEvent.date));
-  }, []);
+  }, [currentEvent.date]);
+
+  useEffect(() => {
+    if (currentEvent.start_time) {
+      setFormattedStartTime(formatTime(currentEvent.start_time));
+    }
+  }, [currentEvent.start_time]);
+
+  useEffect(() => {
+    if (currentEvent.end_time) {
+      setFormattedEndTime(formatTime(currentEvent.end_time));
+    }
+  }, [currentEvent.end_time]);
 
   const handleAddRequest = () => {
     alert(
@@ -61,9 +77,9 @@ const EventGuestView = props => {
             <h1 className="main-title">{currentEvent.name}</h1>
             {formattedDate && <h2>{formattedDate}</h2>}
             <p>
-              {currentEvent.start_time && currentEvent.start_time}
-              {currentEvent.start_time && ' - '}
-              {currentEvent.end_time && currentEvent.end_time}
+              {formattedStartTime && formattedStartTime}
+              {formattedStartTime && ' - '}
+              {formattedEndTime && formattedEndTime}
             </p>
             <p>{currentEvent.description}</p>
             {currentEvent.img_url && (
