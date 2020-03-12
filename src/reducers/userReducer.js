@@ -1,8 +1,7 @@
 /* eslint-disable import/prefer-default-export */
-import { upcomingEvents } from '../data/upcomingEvents.js';
-import { allEvents } from '../data/allEvents.js';
+import { allEvents } from '../data/allEvents';
 
-//actions
+// actions
 import {
   SET_NAME,
   SET_USERNAME,
@@ -28,7 +27,10 @@ import {
   UPDATE_USER_ERROR,
   ADD_EVENT_START,
   ADD_EVENT_SUCCESS,
-  ADD_EVENT_ERROR
+  ADD_EVENT_ERROR,
+  GET_DJ_START,
+  GET_DJ_SUCCESS,
+  GET_DJ_ERROR
 } from '../actions/action';
 
 const initialState = {
@@ -54,7 +56,9 @@ const initialState = {
   editUserError: false,
   editUserProcessing: false,
   addEventStart: false,
-  addEventError: false
+  addEventError: false,
+  getDJError: false,
+  getDJStart: false
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -191,6 +195,31 @@ export const userReducer = (state = initialState, action) => {
         addEventError: true
       };
 
+    case GET_DJ_START:
+      return {
+        ...state,
+        getDJStart: true
+      };
+
+    case GET_DJ_SUCCESS:
+      return {
+        ...state,
+        getDJStart: false,
+        name: action.payload.name,
+        username: action.payload.username,
+        id: action.payload.id,
+        email: action.payload.email,
+        website: action.payload.website,
+        phone: action.payload.phone,
+        profile_pic_url: action.payload.profile_pic_url,
+        bio: action.payload.bio
+      };
+
+    case GET_DJ_ERROR:
+      return {
+        ...state,
+        getDJError: true
+      };
     default:
       return state;
   }

@@ -42,6 +42,10 @@ export const ADD_EVENT_START = 'ADD_EVENT_START';
 export const ADD_EVENT_SUCCESS = 'ADD_EVENT_SUCCESS';
 export const ADD_EVENT_ERROR = 'ADD_EVENT_ERROR';
 
+export const GET_DJ_START = 'GET_DJ_START';
+export const GET_DJ_SUCCESS = 'GET_DJ_SUCCESS';
+export const GET_DJ_ERROR = 'GET_DJ_ERROR';
+
 // action creators
 
 export const setName = name => {
@@ -218,4 +222,18 @@ export const addEvent = (eventInfo, history) => dispatch => {
   });
   history.push('/dj');
   // TODO: handle error
+};
+
+export const getDJ = id => dispatch => {
+  dispatch({ type: GET_DJ_START });
+  axiosWithAuth()
+    .get(`/dj/${id}`)
+    .then(response => {
+      console.log(response);
+      dispatch({ type: GET_DJ_SUCCESS, payload: response.data[0] });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: GET_DJ_ERROR, payload: err });
+    });
 };
