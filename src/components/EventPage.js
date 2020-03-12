@@ -49,6 +49,16 @@ const EventPage = (props) => {
                     <Songs />
                     <Songs />
                     <Songs />
+                    <Songs />
+                    <Songs />
+                    <Songs />
+                    <Songs />
+                    <Songs />
+                    <Songs />
+                    <Songs />
+                    <Songs />
+                    <Songs />
+
                 </div>
             )
         }

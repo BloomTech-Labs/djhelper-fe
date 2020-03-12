@@ -13,7 +13,6 @@
         @include for-phone-only {
             margin-bottom: 0%;
         }
-
         width: 90%;
         height: 47vh;
         display: flex;
@@ -21,11 +20,9 @@
        @include for-phone-only {
             flex-flow: column nowrap;
         }
-
         justify-content: space-between;
         font-size: 0.75rem;
         color: #C7C7C7;
-
         .black-button {
             width: 95%;
             background: black;
@@ -108,22 +105,16 @@
                 font-weight: 700;
                 font-size: 1.3rem;
             }
-
         .playlist {
-
             display: flex;
             flex-flow: column nowrap;
-            height: 65vh;
- 
-            width: 90%;
+            height: 85vh;
             overflow-y: scroll;
            /* Phone styling */
             @include for-phone-only {
                 height: 10vh;
                 width: 90vw;
              }
-
-
             #add-song-div {
                 display: flex;
                 flex-flow: row nowrap;
@@ -162,20 +153,17 @@
             }
              .songs {
                 display: flex;
+                width: 100%;
                 flex-flow: row nowrap;
                 justify-content: space-between;
                 align-items: flex-start;
                 margin-top: 2%;
                button {
-                    margin-left: 5%;
-                    
                 }
-
                 .song-element {
                     display: flex;
-                    flex-flow: row nowrap;
                     margin-right: 3%;
-                    width: 30%;
+                    width: 20% !important;
                 }
             }
         }
@@ -187,16 +175,8 @@
             @include for-phone-only {
                 width: 90vw;
              }
-
             height: 30vh;
             overflow-y: scroll;
-            margin-right: 10%;
-            .songs {
-                display: flex;
-                flex-flow: row nowrap;
-                justify-content: space-between;
-                align-items: flex-start;
-             }
         }
         .genre-graph {
             height: 28vh;

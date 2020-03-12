@@ -1,5 +1,5 @@
 import React from 'react';
-import Dotdotdot from 'react-dotdotdot'
+import Truncate from 'react-truncate';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Songs = (props) => {
@@ -27,24 +27,22 @@ const Songs = (props) => {
             console.log(props.items)
              return (
                 <div className="songs">
-                <div className='song-element'>
                   <button style={{backgroundImage: `url(${songIcon})`}} id='song-type' ></button>
-                </div>
                   <div className='song-element'>
-                    <Dotdotdot clamp={1}>
+                    <Truncate lines={1}>
                         <p>{props.items.name}</p>
-                    </Dotdotdot>
+                    </Truncate>
                 </div>
 
                 <div className='song-element'>
-                    <Dotdotdot clamp={1}>
+                    <Truncate clamp={1}>
                         <p>{props.items.artists[0].name}</p>
-                    </Dotdotdot>
+                    </Truncate>
                 </div>
                 <div className='song-element'>
-                    <Dotdotdot clamp={1}>
+                    <Truncate clamp={1}>
                         <p>{props.items.artists[0].name}</p>
-                    </Dotdotdot>
+                    </Truncate>
                 </div>
 
 
@@ -58,13 +56,11 @@ const Songs = (props) => {
         } else {
              return (
                 <div className="songs">
+                    <button style={{backgroundImage: `url(${songIcon})`}} id='song-type' ></button>
                     <div className='song-element'>
-                      <button style={{backgroundImage: `url(${songIcon})`}} id='song-type' ></button>
-                    </div>
-                    <div className='song-element'>
-                        <Dotdotdot clamp={1}>
+                        <Truncate clamp={1}>
                             <p> Song name title</p>
-                        </Dotdotdot>
+                        </Truncate>
                     </div>
                   <div className='song-element'>
                       <p> Artist Name</p>
