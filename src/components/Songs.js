@@ -27,7 +27,9 @@ const Songs = (props) => {
             console.log(props.items)
              return (
                 <div className="songs">
+                <div className='song-element'>
                   <button style={{backgroundImage: `url(${songIcon})`}} id='song-type' ></button>
+                </div>
                   <div className='song-element'>
                     <Dotdotdot clamp={1}>
                         <p>{props.items.name}</p>
@@ -39,6 +41,12 @@ const Songs = (props) => {
                         <p>{props.items.artists[0].name}</p>
                     </Dotdotdot>
                 </div>
+                <div className='song-element'>
+                    <Dotdotdot clamp={1}>
+                        <p>{props.items.artists[0].name}</p>
+                    </Dotdotdot>
+                </div>
+
 
                 <div>
                   <button id='add'><FontAwesomeIcon icon="plus" size="1x" /></button>
@@ -50,12 +58,21 @@ const Songs = (props) => {
         } else {
              return (
                 <div className="songs">
-                  <button style={{backgroundImage: `url(${songIcon})`}} id='song-type' ></button>
-                  <p> Song name title</p>
-                  <br />
-                  <p> Artist Name</p>
-                  <br />
-                  <button id='vote'><FontAwesomeIcon icon="caret-up" size="2x" /></button> <p>003</p>
+                    <div className='song-element'>
+                      <button style={{backgroundImage: `url(${songIcon})`}} id='song-type' ></button>
+                    </div>
+                    <div className='song-element'>
+                        <Dotdotdot clamp={1}>
+                            <p> Song name title</p>
+                        </Dotdotdot>
+                    </div>
+                  <div className='song-element'>
+                      <p> Artist Name</p>
+                  </div>
+                  <div className='song-element'>
+                      <button id='vote'><FontAwesomeIcon icon="caret-up" size="2x" /></button>
+                        <p>003</p>
+                  </div>
                 </div>
               );
 

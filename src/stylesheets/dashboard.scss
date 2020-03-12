@@ -9,15 +9,12 @@
    /* Phone styling */
     @include for-phone-only {
         padding-bottom: 0%;
-
     }
-
     .welcome {
         height: 47vh;
         margin-bottom: 5%;
         padding-top: 20vh;
         transition: 0.3s;
-
         /* Phone styling */
         @include for-phone-only {
             margin-bottom: 2%;
@@ -36,7 +33,6 @@
             background: none;
             border: none;
         }
-
         svg:hover {
             color: grey;
         }

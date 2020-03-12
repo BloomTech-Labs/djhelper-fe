@@ -66,8 +66,8 @@ const EventPage = (props) => {
             <p className='bold'>Description:</p>
             <p>{description}</p>
             <button className='black-button'> Edit </button>
+            <h3 id='request-header-text-styling'> Requests </h3>
             <div className='playlist' id='requests'>
-                <h3> Requests </h3>
                 <Songs />
                 <Songs />
                 <Songs />
