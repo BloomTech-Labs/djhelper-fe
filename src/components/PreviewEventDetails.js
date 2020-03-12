@@ -1,7 +1,12 @@
 import React from 'react';
 import Songs from './Songs';
+<<<<<<< HEAD
 import Dotdotdot from 'react-dotdotdot';
 import { Link } from 'react-router-dom';
+=======
+import Truncate from 'react-truncate';
+import {Link} from 'react-router-dom';
+>>>>>>> 834950b6f20002ab24936249224908fe528449f1
 
 const PreviewEventDetails = props => {
   const { currentlyActive } = props;
@@ -18,11 +23,10 @@ const PreviewEventDetails = props => {
           {currentlyActive.date}
         </p>
         <p className="bold">Description:</p>
-        <Dotdotdot clamp={3}>
-          <p className="description">{currentlyActive.description}</p>
-        </Dotdotdot>
-        <Link
-          to={{
+        <Truncate lines={3}>
+          <p className='description'>{currentlyActive.description}</p>
+        </Truncate>
+        <Link to={{
             pathname: `/dj/event/${currentlyActive.event_id}`,
             state: {
               event: currentlyActive,

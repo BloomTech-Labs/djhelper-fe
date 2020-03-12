@@ -29,6 +29,13 @@ const EventPage = (props) => {
         });
     }
 
+
+    /*
+     * IN PROGRESS
+    const handleMobileSwitchButtons => () {
+        let
+    }*/
+
     const searchVsPlaylist = () => {
         if (search.searchVisible) {
             return (
@@ -77,6 +84,14 @@ const EventPage = (props) => {
             <p>{description}</p>
             <button className='black-button'> Edit </button>
             <h3 id='request-header-text-styling'> Requests </h3>
+            <div className='mobile-switch-buttons'>
+                <button className='playlist-buttons' >
+                    Requests
+                </button>
+                <button className='playlist-buttons'>
+                    Playlist
+                </button>
+            </div>
             <div className='playlist' id='requests'>
                 <Songs />
                 <Songs />
