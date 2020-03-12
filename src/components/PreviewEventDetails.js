@@ -19,7 +19,7 @@ const PreviewEventDetails = props => {
         </p>
         <p className="bold">Description:</p>
         <Dotdotdot clamp={3}>
-          <p>{currentlyActive.description}</p>
+          <p className="description">{currentlyActive.description}</p>
         </Dotdotdot>
         <Link
           to={{

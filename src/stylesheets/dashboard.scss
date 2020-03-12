@@ -6,13 +6,25 @@
     color: white;
     min-height: 110vh;
     padding-bottom: 5%;
-
-
+   /* Phone styling */
+    @include for-phone-only {
+        padding-bottom: 0%;
+    }
     .welcome {
         height: 47vh;
         margin-bottom: 5%;
+        padding-top: 20vh;
+        transition: 0.3s;
+        /* Phone styling */
+        @include for-phone-only {
+            margin-bottom: 2%;
+            padding-top: 15vh;
+            height: 27vh;
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
     }
-
     .carousel {
         width: 106%;
         margin-left: -3%;
@@ -21,22 +33,27 @@
             background: none;
             border: none;
         }
-
         svg:hover {
             color: grey;
         }
     }
-
     .preview-event-details {
+
+        transition: 0.3s;
         padding-top: 5%;
-        margin-bottom: 5%;
         width: 90%;
-        height: 47vh;
         display: flex;
         flex-flow: row nowrap;
+        /* Phone styling */
+        @include for-phone-only {
+            flex-flow: column nowrap;
+            align-items: center;
+            text-align: center;
+        }
         justify-content: space-between;
         font-size: 0.75rem;
         color: #C7C7C7;
+        margin-bottom: 2%;
         button {
             width: 95%;
             background: black;
@@ -52,6 +69,12 @@
             -webkit-box-shadow: 14px 10px 10px -10px rgba(0,0,0,0.35);
             -moz-box-shadow: 14px 10px 10px -10px rgba(0,0,0,0.35);
             box-shadow: 4px 5px 10px 0px rgba(0,0,0,0.35);
+            /* Phone styling */
+            @include for-phone-only {
+                width: 40%;
+                margin-top: 1%;
+            }
+
             &:hover {
                 color: black;
                 background: white;
@@ -70,24 +93,32 @@
                 color: black;
             }
         }
-
+        /*End of button class, continuing preview-event-details class*/
 
         h3 {
             font-size: 2.2rem;
             margin-bottom: 7%;
+            /* Phone styling */
+            @include for-phone-only {
+                font-size: 1.1rem;
+            }
         }
         .bold {
             color: white;
             font-weight: 700;
         }
-
         .event-description {
             width: 23%;
-            height: 45vh;
-            margin-bottom: 50vh !important;
+            /* Phone styling */
+            @include for-phone-only {
+                width: 90%;
+                .description {
+                    height: 50%;
+                }
+            }
             p {
                 width: 95%;
-
+                height: 10%;
             }
         }
         .newest-song-requests {
@@ -96,14 +127,16 @@
             height: 28vh;
             width: 68%;
             padding-left: 3%;
-            
+            @include for-phone-only {
+                width: 90%;
+                display: none;
+            }
             #vote {
                 color: green;
                 background: transparent;
                 box-shadow: none;
                 padding-bottom: 2%;
             }
-
             #song-type {
                 display: flex;
                 flex-flow: column nowrap;
@@ -129,7 +162,6 @@
                 button {
                     width: 10%;
                 }
-                
             }
         }
         .genre-graph {
@@ -137,9 +169,15 @@
             width: 20%;
         }
     }
-
-
     .upcoming-events {
+        display: flex;
+        flex-flow: column nowrap;
+        width: 90%;
+        margin-top: 4vh;
+        margin-bottom: 4vh;
+        @include for-phone-only {
+            margin-bottom: 2vh;
+        }
         button {
             background: transparent;
             border: none;
@@ -148,9 +186,15 @@
             font-size: 1.2rem;
             font-weight: 700;
             color: rgba(255, 255, 255, 0.3);
+            @include for-phone-only {
+                font-size: 0.75rem;
+            }
         }
         h6 {
             color: #F59EF7;
+            @include for-phone-only {
+                font-size: 0.5rem;
+            }
         }
         .labels {
             display: flex;
@@ -158,11 +202,6 @@
             justify-content: space-between;
             margin-bottom: 2vh;
         }
-        display: flex;
-        flex-flow: column nowrap;
-        width: 90%;
-        height: 27.5vh;
-        margin-top: 4vh;
         .events {
             background: #2E2E2E;
             border-top: solid 5px rgba(252, 123, 255, 0);
@@ -177,38 +216,45 @@
             width: 85%;
             color: white;
             transition: 0.3s;
+            @include for-phone-only {
+                height: 90%;
+                border-top: solid 3px rgba(252, 123, 255, 0);
+            }
             h2 {
                 font-size: 1.5rem;
                 font-weight: 700;
-                
+                @include for-phone-only {
+                    font-size: 0.75rem;
+                }
             }
-
             p {
                 font-size: 0.75rem;
+                @include for-phone-only {
+                    font-size: 0.5rem;
+                }
             }
-
         }
         .selected {
             border-top: solid 5px rgba(211, 98, 255, 1);
+                @include for-phone-only {
+                    border-top: solid 3px rgba(211, 98, 255, 1);
+                }
         }
-
-
     }
-
     .past-events {
         display: flex;
         flex-flow: column nowrap;
         width: 90%;
-        height: 40vh;
         margin-top: 4vh;
         h5 {
             font-size: 1.2rem;
             font-weight: 700;
             color: rgba(255, 255, 255, 0.3);
+            @include for-phone-only {
+                font-size: 0.75rem;
+            }
         }
-
         .events {
-
             margin-top: 2px;
             background: #2E2E2E;
             text-align: left;
@@ -223,7 +269,6 @@
             height: 100%;
             width: 85%;
             transition: 0.3s;
-
             img {
                 height: 25vh;
                 width: 15vw;
@@ -231,20 +276,18 @@
             h2 {
                 font-size: 1.5rem;
                 font-weight: 700;
-                
+                @include for-phone-only {
+                    font-size: 0.5rem;
+                }
             }
-
             p {
                 font-size: 0.75rem;
+                @include for-phone-only {
+                    font-size: 0.5rem;
+                }
             }
-
         }
     }
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    min-height: 110vh;
-
     .board {
         display: flex;
         flex-flow: row nowrap;
@@ -265,8 +308,4 @@
             }
         }
     }
-    .welcome {
-        padding-top: 20vh;
-    }
-
 }
