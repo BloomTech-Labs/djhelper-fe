@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Carousel from '@brainhubeu/react-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,16 +6,41 @@ import DashboardWelcome from './DashboardWelcome';
 import Event from './Event';
 import '@brainhubeu/react-carousel/lib/style.css';
 import PreviewEventDetails from './PreviewEventDetails';
-import { pastEvents } from '../data/pastEvents';
 import NavigationBar from './NavigationBar';
 
 const Dashboard = props => {
+  const name = useSelector(state => state.userReducer.name);
   const events = useSelector(state => state.userReducer.events);
   const [data, setData] = useState(events);
-  const [pastEventData, setPastEventData] = useState(pastEvents);
-  const name = useSelector(state => state.userReducer.name);
-  const eventIdsUnfiltered = Object.values(data).map(event => event.event_id);
-  const eventIds = eventIdsUnfiltered.filter(x => x !== undefined); //takes out the undefined ('active' prop has no value)
+  const [upcomingIds, setUpcomingIds] = useState([]);
+  const [pastIds, setPastIds] = useState([]);
+
+  useEffect(() => {
+    // Creates an array with the 2 important properties: id and date
+    const dateArray = Object.values(events).map(event => {
+      const eventDate = new Date(event.date);
+      eventDate.setDate(eventDate.getDate() + 1);
+      return {
+        event_id: event.event_id,
+        formattedDate: eventDate
+      };
+    });
+
+    // Divides the array into 2 sorted arrays: upcomingArray and pastArray, and sets the corresponding ids in state
+    const today = new Date();
+    today.setHours(0);
+    today.setMinutes(0);
+
+    const upcomingArray = dateArray
+      .filter(x => x.formattedDate >= today)
+      .sort((a, b) => a.formattedDate - b.formattedDate);
+    setUpcomingIds(upcomingArray.map(event => event.event_id));
+
+    const pastArray = dateArray
+      .filter(x => x.formattedDate < today)
+      .sort((a, b) => b.formattedDate - a.formattedDate);
+    setPastIds(pastArray.map(event => event.event_id));
+  }, [events]);
 
   const whichComponent = () => {
     if (data.active.length > 1) {
@@ -59,7 +84,7 @@ const Dashboard = props => {
           addArrowClickHandler
           infinite
         >
-          {eventIds.map(eventId => {
+          {upcomingIds.map(eventId => {
             return (
               <Event
                 num={eventId}
@@ -82,10 +107,16 @@ const Dashboard = props => {
           addArrowClickHandler
           infinite
         >
-          <Event num={1} data={pastEventData} setData={setPastEventData} />
-          <Event num={2} data={pastEventData} setData={setPastEventData} />
-          <Event num={3} data={pastEventData} setData={setPastEventData} />
-          <Event num={4} data={pastEventData} setData={setPastEventData} />
+          {pastIds.map(eventId => {
+            return (
+              <Event
+                num={eventId}
+                data={data}
+                setData={setData}
+                key={eventId}
+              />
+            );
+          })}
         </Carousel>
       </div>
     </div>

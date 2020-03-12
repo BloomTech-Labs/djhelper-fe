@@ -47,5 +47,80 @@ export const requestLists = [
       { title: 'The Fair Maiden', artist: 'David Imhof' },
       { title: 'All Hail the King', artist: 'Haim Coton' }
     ]
+  },
+  {
+    request_list_id: 10,
+    songs: [
+      { title: 'A Thousand Years', artist: 'Christina Perri' },
+      { title: 'Amazed', artist: 'Lone Star' },
+      { title: 'Cha Cha Slide', artist: 'DJ Caspar' }
+    ]
+  },
+  {
+    request_list_id: 11,
+    songs: [
+      { title: "Can't Stop the Feeling!", artist: 'Justin Timberlake' },
+      { title: 'I Wanna Dance with Somebody', artist: 'Whitney Houston' },
+      { title: 'You Are the Best Thing', artist: 'Ray LaMontagne' }
+    ]
+  },
+  {
+    request_list_id: 12,
+    songs: [
+      { title: 'Party in the U.S.A.', artist: 'Miley Cyrus' },
+      { title: 'I Will Remember You', artist: 'Sarah McLachlan' },
+      { title: 'Just Dance', artist: 'Lady Gaga' }
+    ]
+  },
+  {
+    request_list_id: 13,
+    songs: [
+      { title: 'Tiempo de Vals', artist: 'Chayanne' },
+      { title: 'The Greatest Show', artist: 'Hugh Jackman' },
+      { title: 'No Crezcas Mas', artist: 'Tercer Cielo' }
+    ]
+  },
+  {
+    request_list_id: 14,
+    songs: [
+      { title: "It's Raining Tacos", artist: 'Parry Gripp & BooneBum' },
+      { title: 'Hailing Taquitos', artist: 'Parry Gripp & BooneBum' },
+      { title: 'Spice Up Your Life', artist: 'The Spice Girls' }
+    ]
+  },
+  {
+    request_list_id: 15,
+    songs: [
+      { title: 'Moonage Daydream', artist: 'David Bowie' },
+      { title: 'C Moon Cry Like A Baby', artist: 'Simple Minds' },
+      { title: 'Moon Two', artist: 'Chris Carter' }
+    ]
+  },
+  {
+    request_list_id: 16,
+    songs: [
+      {
+        title: 'Rock Lobster',
+        artist: "The B-52's"
+      },
+      { title: 'Ocean Drive', artist: 'Duke Dumont' },
+      { title: "The Pirates Who Don't Do Anything", artist: 'Relient K' }
+    ]
+  },
+  {
+    request_list_id: 17,
+    songs: [
+      { title: 'Marry Me', artist: 'Train' },
+      { title: 'You Are the Best Thing', artist: 'Ray LaMontagne' },
+      { title: 'At Last', artist: 'Etta James' }
+    ]
+  },
+  {
+    request_list_id: 18,
+    songs: [
+      { title: 'Forever And Ever Amen', artist: 'Randy Travis' },
+      { title: 'In the Mood', artist: 'Benny Goodman' },
+      { title: 'Dancing in the Street', artist: 'Mick Jagger' }
+    ]
   }
 ];
