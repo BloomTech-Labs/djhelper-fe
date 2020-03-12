@@ -35,12 +35,12 @@ const Songs = (props) => {
                 </div>
 
                 <div className='song-element'>
-                    <Truncate clamp={1}>
+                    <Truncate lines={1}>
                         <p>{props.items.artists[0].name}</p>
                     </Truncate>
                 </div>
                 <div className='song-element'>
-                    <Truncate clamp={1}>
+                    <Truncate lines={1}>
                         <p>{props.items.artists[0].name}</p>
                     </Truncate>
                 </div>
@@ -58,7 +58,7 @@ const Songs = (props) => {
                 <div className="songs">
                     <button style={{backgroundImage: `url(${songIcon})`}} id='song-type' ></button>
                     <div className='song-element'>
-                        <Truncate clamp={1}>
+                        <Truncate lines={1}>
                             <p> Song name title</p>
                         </Truncate>
                     </div>
