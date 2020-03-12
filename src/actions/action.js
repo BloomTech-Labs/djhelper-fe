@@ -206,7 +206,12 @@ export const addEvent = (eventInfo, history) => dispatch => {
   // TODO: axiosWithAuth goes here -- probably a call to the 'add location' endpoint first, then to the 'add event' endpoint
   // TODO: replace eventNum belows with event_id that is returned from the back end.
   const eventNum = Math.floor(Math.random() * 1000000);
-  const eventToSubmit = { ...eventInfo, event_id: eventNum };
+  const eventToSubmit = {
+    ...eventInfo,
+    event_id: eventNum,
+    playlist_id: eventNum,
+    request_list_id: eventNum
+  };
   dispatch({
     type: ADD_EVENT_SUCCESS,
     payload: eventToSubmit
