@@ -16,32 +16,32 @@ const Dashboard = props => {
   const [pastIds, setPastIds] = useState([]);
 
   useEffect(() => {
-    const completeArray = Object.values(events);
-    const dateArray = completeArray.map(event => {
+    // Creates an array with the 2 important properties: id and date
+    const dateArray = Object.values(events).map(event => {
+      const eventDate = new Date(event.date);
+      eventDate.setDate(eventDate.getDate() + 1);
       return {
         event_id: event.event_id,
-        formattedDate: new Date(event.date)
+        formattedDate: eventDate
       };
     });
-    const sortedDateArray = dateArray.sort(
-      (a, b) => b.formattedDate - a.formattedDate
-    );
-    const today = new Date();
-    const upcomingArray = sortedDateArray.filter(x => x.formattedDate >= today);
-    upcomingArray.sort((a, b) => a.formattedDate - b.formattedDate);
-    const newUpcomingIds = upcomingArray.map(event => event.event_id);
-    setUpcomingIds(newUpcomingIds);
 
-    const pastArray = sortedDateArray.filter(x => x.formattedDate < today);
-    const newPastIds = pastArray.map(event => event.event_id);
-    setPastIds(newPastIds);
+    // Divides the array into 2 sorted arrays: upcomingArray and pastArray, and sets the corresponding ids in state
+    const today = new Date();
+    today.setHours(0);
+    today.setMinutes(0);
+
+    const upcomingArray = dateArray
+      .filter(x => x.formattedDate >= today)
+      .sort((a, b) => a.formattedDate - b.formattedDate);
+    setUpcomingIds(upcomingArray.map(event => event.event_id));
+
+    const pastArray = dateArray
+      .filter(x => x.formattedDate < today)
+      .sort((a, b) => b.formattedDate - a.formattedDate);
+    setPastIds(pastArray.map(event => event.event_id));
   }, [events]);
-  // const eventIdsUnfiltered = Object.values(data).map(event => event.event_id);
-  // const eventIds = eventIdsUnfiltered.filter(x => x !== undefined); // takes out the undefined ('active' prop has no value)
-  // const pastEventIdsUnfiltered = Object.values(pastEventData).map(
-  // event => event.event_id
-  // );
-  // const pastEventIds = pastEventIdsUnfiltered.filter(x => x !== undefined);
+
   const whichComponent = () => {
     if (data.active.length > 1) {
       return (
