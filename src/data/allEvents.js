@@ -66,7 +66,8 @@ export const allEvents = {
     event_type: 'game night',
     description: 'All-Night Extreme Game Night',
     date: '2020-05-20',
-    request_list_id: 5,
+    request_list_id: 6,
+    location_id: 6,
     img_url:
       'https://images.unsplash.com/photo-1570303345338-e1f0eddf4946?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
   },

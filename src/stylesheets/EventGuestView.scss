@@ -6,14 +6,18 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: stretch;
+  a {
+    color: $mediumPurple;
+  }
   .section {
-    width: 31%;
+    width: 32%;
     padding-top: 2rem;
 
     .img-container {
       max-width: 90%;
       border-radius: 3px;
+      padding-bottom: 3rem;
       img {
         max-width: 100%;
       }
@@ -24,8 +28,39 @@
     .main-title {
       font-size: 4.5rem;
       font-weight: bold;
-
       padding-bottom: 2rem;
+    }
+  }
+  .middle {
+    border-right: 2px solid white;
+    padding-top: 9rem;
+    display: flex;
+    align-items: center;
+    flex-flow: column nowrap;
+    h2 {
+      text-align: center;
+    }
+    button {
+      width: 40%;
+      font-size: 1vw;
+      font-weight: 700;
+      margin-top: 2rem;
+      color: white;
+      background: $darkPurple;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        font-style: italic;
+        transform: scale(1.1);
+      }
+    }
+  }
+  .right-side {
+    padding-top: 9rem;
+    h2 {
+      text-align: center;
     }
   }
 }
