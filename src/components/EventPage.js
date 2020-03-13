@@ -195,6 +195,7 @@ return (
                 <Songs />
 
             </div>
+        </div>
         <div className={`event-playlist-location ${playlistView}`}>
             <div className='label'>
                 <h5> Playlist </h5>
@@ -203,7 +204,7 @@ return (
             {searchVsPlaylist()}
         </div>
 
-        </div>
+
     </div>
 </div> )
 }
