@@ -18,7 +18,6 @@ const SongSearch = () => {
 
     const dispatch = useDispatch();
 
-
     const handleChange = e => {
         setSearchInput({ ...searchInput, [e.target.name]: e.target.value });
         let query = JSON.stringify(searchInput.searchTerm);
@@ -26,10 +25,7 @@ const SongSearch = () => {
         if (searchInput.searchTerm.length > 0) {
             dispatch(searchForTrack(query));
         }
-
     };
-
-
 
     return (
         <div>
@@ -42,10 +38,9 @@ const SongSearch = () => {
               onChange={handleChange}
               required
             />
-        <div>
+            <div>
                 <SongResults />
-
-        </div>
+            </div>
         </div>
     )
 }

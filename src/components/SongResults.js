@@ -21,7 +21,7 @@ const SongResults = () => {
             )
         } else {
             return (
-                <h1> "Whoops! No results."</h1>
+                <p> "Whoops! No results."</p>
             )
         }
     }

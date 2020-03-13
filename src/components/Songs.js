@@ -20,11 +20,9 @@ const Songs = (props) => {
     let randomNum = getRandomIntInclusive(1,5)
     let key = 'image' + randomNum;
     let songIcon = imageList[key];
-    console.log(console.log(props));
 
     const placeholderVsResults = () => {
         if (props.items) {
-            console.log(props.items)
              return (
                 <div className="songs">
                   <button style={{backgroundImage: `url(${songIcon})`}} id='song-type' ></button>
