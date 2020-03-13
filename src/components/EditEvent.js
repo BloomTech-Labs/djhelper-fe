@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
-import { editEvent } from '../actions/action';
+import { editEvent, deleteEvent } from '../actions/action';
 
 const EditEvent = props => {
   // TODO: Get event data from back end, once it is available (instead of redux store)
@@ -25,6 +25,11 @@ const EditEvent = props => {
 
   const handleDeleteToggle = () => {
     setToggleDelete(!toggleDelete);
+  };
+
+  const handleDelete = () => {
+    console.log('time to delete event ', props.event_id);
+    dispatch(deleteEvent(currentEvent));
   };
 
   return (
@@ -86,7 +91,11 @@ const EditEvent = props => {
           {toggleDelete && (
             <>
               <p>Are you 100% sure that you want to delete this event?</p>
-              <button type="button" className="toggle-delete">
+              <button
+                type="button"
+                className="toggle-delete"
+                onClick={handleDelete}
+              >
                 Yes, delete this event.
               </button>
               <button

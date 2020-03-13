@@ -31,6 +31,9 @@ import {
   EDIT_EVENT_START,
   EDIT_EVENT_SUCCESS,
   EDIT_EVENT_ERROR,
+  DELETE_EVENT_START,
+  DELETE_EVENT_SUCCESS,
+  DELETE_EVENT_ERROR,
   GET_DJ_START,
   GET_DJ_SUCCESS,
   GET_DJ_ERROR
@@ -62,6 +65,8 @@ const initialState = {
   addEventError: false,
   editEventStart: false,
   editEventError: false,
+  deleteEventStart: true,
+  deleteEventError: false,
   getDJError: false,
   getDJStart: false
 };
@@ -221,6 +226,27 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         editEventStart: false,
         editEventError: true
+      };
+
+    case DELETE_EVENT_START:
+      return {
+        ...state,
+        deleteEventStart: true
+      };
+
+    case DELETE_EVENT_SUCCESS:
+      const parentKey = 'events';
+      const childKey = `event${action.payload.event_id}`;
+      const { [parentKey]: parentValue, ...noChild } = state;
+      const { [childKey]: removedValue, ...childWithout } = parentValue;
+      const stateCopyWithoutEvent = { ...noChild, [parentKey]: childWithout };
+      return { ...stateCopyWithoutEvent, deleteEventStart: false };
+
+    case DELETE_EVENT_ERROR:
+      return {
+        ...state,
+        deleteEventStart: false,
+        deleteEventError: true
       };
 
     case GET_DJ_START:

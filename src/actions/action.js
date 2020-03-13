@@ -47,6 +47,10 @@ export const EDIT_EVENT_START = 'EDIT_EVENT_START';
 export const EDIT_EVENT_SUCCESS = 'EDIT_EVENT_SUCCESS';
 export const EDIT_EVENT_ERROR = 'EDIT_EVENT_ERROR';
 
+export const DELETE_EVENT_START = 'DELETE_EVENT_START';
+export const DELETE_EVENT_SUCCESS = 'DELETE_EVENT_SUCCESS';
+export const DELETE_EVENT_ERROR = 'DELETE_EVENT_ERROR';
+
 export const GET_DJ_START = 'GET_DJ_START';
 export const GET_DJ_SUCCESS = 'GET_DJ_SUCCESS';
 export const GET_DJ_ERROR = 'GET_DJ_ERROR';
@@ -238,6 +242,13 @@ export const editEvent = eventInfo => dispatch => {
   dispatch({ type: EDIT_EVENT_START });
   // TODO: Add PUT to edit event endpoint here
   dispatch({ type: EDIT_EVENT_SUCCESS, payload: eventInfo });
+  // TODO: Add handle error
+};
+
+export const deleteEvent = event_id => dispatch => {
+  dispatch({ type: DELETE_EVENT_START });
+  // TODO: Add DELETE to back end endpoint here
+  dispatch({ type: DELETE_EVENT_SUCCESS, payload: event_id });
   // TODO: Add handle error
 };
 
