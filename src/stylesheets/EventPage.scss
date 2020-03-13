@@ -14,9 +14,6 @@
        }
     @include for-phone-only {
         margin-bottom: 0%;
-        .hide {
-            display: none;
-        }
 
     }
     .event-details {
@@ -39,9 +36,9 @@
             display: none;
             @include for-phone-only {
                 margin-top: 10%;
-                margin-bottom: 8%;
+                margin-bottom: 5%;
                 display: flex;
-                flex-flow: column wrap;
+                 flex-flow: column wrap;
                 align-items: center;
                 .mobile-add-button {
                     width: 35%;
@@ -73,15 +70,6 @@
                     }
                 }
             }
-
-
-
-
-
-
-
-
-
         }
         .black-button {
             width: 95%;
@@ -136,6 +124,7 @@
             /* Phone styling */
             @include for-phone-only {
                 width: 90%;
+                height: 20vh;
              }
             p {
                 width: 95%;
@@ -148,9 +137,8 @@
             /* Phone styling */
             @include for-phone-only {
                 margin: 0;
-                margin-top: 10%;
+                margin-top: 3%;
                 width: 80vw;
-                display: none;
              }
              .label {
                  color: white;
@@ -177,6 +165,10 @@
              }
 
             }
+        .hide {
+            display: none !important;
+        }
+
         .playlist {
             display: flex;
             flex-flow: column nowrap;
@@ -184,7 +176,7 @@
             overflow-y: scroll;
            /* Phone styling */
             @include for-phone-only {
-                height: 25vh;
+                height: 35vh;
                 width: 90vw;
              }
             #add-song-div {
@@ -192,6 +184,10 @@
                 flex-flow: row nowrap;
                 justify-content: space-between;
                 width: 100%;
+                @include for-phone-only {
+                    width: 90%;
+                 }
+
             }
             #add {
                 color: white;
@@ -225,10 +221,10 @@
              .songs {
                 display: flex;
                 width: 100%;
+                margin-top: 2%;
                 flex-flow: row nowrap;
                 justify-content: space-between;
                 align-items: flex-start;
-                margin-top: 2%;
                button {
                 }
                 .song-element {
@@ -242,17 +238,31 @@
 
         #requests {
             width: 200%;
+            height: 40vh;
          /* Phone styling */
             @include for-phone-only {
                 width: 90vw;
                 margin-top: 9%;
+                .hide {
+                    display: none;
+                }
+               .show {
+                    display: flex;
+                }
+
+
              }
-            height: 40vh;
             overflow-y: scroll;
         }
         .genre-graph {
             height: 28vh;
             width: 20%;
         }
+    }
+    @include for-phone-only {
+        .hide {
+            display: none;
+        }
+
     }
 }

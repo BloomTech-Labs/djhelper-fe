@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import NavigationBar from './NavigationBar';
 import Songs from './Songs';
 import SongSearch from './SongSearch';
@@ -9,11 +9,6 @@ import {useDispatch } from 'react-redux';
 import { searchForTrack } from '../actions/action';
 
 
-let requestButtonStyle = 'active';
-let playlistButtonStyle = '';
-let addSongsButtonStyle = 'hide';
-let mobilePlaylistView = 'hide';
-let mobileRequestView = '';
 
 const EventPage = (props) => {
     const { name, event_type, description, id, date } = props.location.state.event;
@@ -21,9 +16,33 @@ const EventPage = (props) => {
     const [switches, setSwitches] = useState({
         buttonText: 'Add Songs',
         searchVisible: false,
-        requestButtonActive: true,
-        playlistButtonActive: false,
+        requestButtonStyle: 'active',
+        playlistButtonStyle: 'show',
+        addSongsButtonStyle: 'hide',
+        playlistView: 'show',
+        requestView: 'show',
     });
+    const {
+        requestButtonStyle,
+        playlistButtonStyle,
+        addSongsButtonStyle,
+        playlistView,
+        requestView,
+        playlistClass
+    } = switches;
+
+    const setAppSize = () => {
+        if (window.innerWidth < 500) {
+            setSwitches({...switches, playlistView: 'hide'})
+        } else {
+            setSwitches({...switches, playlistView: 'show'})
+        }
+    }
+
+    useEffect(() => {
+        setAppSize();
+    }, [])
+
     const dispatch = useDispatch();
 
     const handleClick = () => {
@@ -38,23 +57,24 @@ const EventPage = (props) => {
         });
     }
 
-
     const switchToRequests = () => {
-        requestButtonStyle = 'active';
-        playlistButtonStyle = '';
-        addSongsButtonStyle = 'hide';
-        mobilePlaylistView = 'hide';
-        mobileRequestView = '';
-        setSwitches({...switches, requestButtonActive: true, playlistButtonActive: false})
+        setSwitches({...switches,
+                    requestButtonStyle: 'active',
+                    playlistButtonStyle: 'show',
+                    addSongsButtonStyle: 'hide',
+                    playlistView: 'hide',
+                    requestView: 'show',
+        })
     }
 
     const switchToPlaylist = () => {
-        requestButtonStyle = '';
-        playlistButtonStyle = 'active';
-        addSongsButtonStyle = '';
-        mobilePlaylistView = '';
-        mobileRequestView = 'hide';
-        setSwitches({...switches, requestButtonActive: false, playlistButtonActive: true})
+        setSwitches({...switches,
+                    requestButtonStyle: 'show',
+                    playlistButtonStyle: 'active',
+                    addSongsButtonStyle: 'show',
+                    playlistView: 'show',
+                    requestView: 'hide'
+        })
     }
 
     const searchVsPlaylist = () => {
@@ -62,11 +82,11 @@ const EventPage = (props) => {
             return (
               <div className={`playlist`}>
                 <SongSearch />
-                </div>
+              </div>
             )
         } else {
             return (
-              <div className={`playlist ${mobilePlaylistView}`}>
+                <div className={`playlist`}>
                     <Songs />
                     <Songs />
                     <Songs />
@@ -85,13 +105,10 @@ const EventPage = (props) => {
                     <Songs />
                     <Songs />
                     <Songs />
-
                 </div>
             )
         }
     }
-
-
     return (
 <div className='event-page'>
     <NavigationBar tokenPresent={props.location.state.tokenPresent} />
@@ -104,27 +121,41 @@ const EventPage = (props) => {
             <p>{description}</p>
             <button className='black-button'> Edit </button>
             <h3 id='request-header-text-styling'> Requests </h3>
+
             <div className='mobile'>
                 <div className='mobile-switch-buttons'>
-                    <button className={` playlist-buttons ${requestButtonStyle}`}  onClick={() => switchToRequests()}>
+                    <button className={`playlist-buttons ${requestButtonStyle}`}  onClick={() => switchToRequests()}>
                         Requests
                     </button>
                     <button className={`playlist-buttons ${playlistButtonStyle}`}  onClick={() => switchToPlaylist()}>
                         Playlist
                     </button>
                 </div>
-                <button className={`bold mobile-add-button ${addSongsButtonStyle}`} onClick={handleClick}>{switches.buttonText}</button>
+                <button className={`bold mobile-add-button ${addSongsButtonStyle}`} onClick={() => handleClick()}>{switches.buttonText}</button>
             </div>
-            <div className={`playlist ${mobileRequestView}' id='requests`}>
+            <div id='requests' className={`playlist ${requestView}`}>
                 <Songs />
                 <Songs />
                 <Songs />
                 <Songs />
                 <Songs />
                 <Songs />
+                <Songs />
+                <Songs />
+                <Songs />
+                <Songs />
+                <Songs />
+                <Songs />
+                <Songs />
+                <Songs />
+                <Songs />
+                <Songs />
+                <Songs />
+                <Songs />
+
             </div>
         </div>
-        <div className='event-playlist-location'>
+        <div className={`event-playlist-location ${playlistView}`}>
             <div className='label'>
                 <h5> Playlist </h5>
                 <p className='bold' onClick={handleClick}>{switches.buttonText}</p>
