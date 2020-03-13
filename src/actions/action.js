@@ -38,9 +38,14 @@ export const UPDATE_USER_ERROR = 'UPDATE_USER_ERROR';
 export const SEARCH_FOR_TRACK_START = 'SEARCH_FOR_TRACK_START';
 export const SEARCH_FOR_TRACK_SUCCESS = 'SEARCH_FOR_TRACK_SUCCESS';
 export const SEARCH_FOR_TRACK_ERROR = 'SEARCH_FOR_TRACK_ERROR';
+
 export const ADD_EVENT_START = 'ADD_EVENT_START';
 export const ADD_EVENT_SUCCESS = 'ADD_EVENT_SUCCESS';
 export const ADD_EVENT_ERROR = 'ADD_EVENT_ERROR';
+
+export const EDIT_EVENT_START = 'EDIT_EVENT_START';
+export const EDIT_EVENT_SUCCESS = 'EDIT_EVENT_SUCCESS';
+export const EDIT_EVENT_ERROR = 'EDIT_EVENT_ERROR';
 
 export const GET_DJ_START = 'GET_DJ_START';
 export const GET_DJ_SUCCESS = 'GET_DJ_SUCCESS';
@@ -48,6 +53,7 @@ export const GET_DJ_ERROR = 'GET_DJ_ERROR';
 
 // action creators
 
+// dj users
 export const setName = name => {
   return { type: SET_NAME, payload: name };
 };
@@ -187,6 +193,8 @@ export const updateUser = (history, id, userInfo) => dispatch => {
     });
 };
 
+// songs
+
 export const searchForTrack = searchTerm => dispatch => {
   dispatch({ type: SEARCH_FOR_TRACK_START });
 
@@ -205,10 +213,12 @@ export const searchForTrack = searchTerm => dispatch => {
     });
 };
 
+// events
+
 export const addEvent = (eventInfo, history) => dispatch => {
   dispatch({ type: ADD_EVENT_START });
   // TODO: axiosWithAuth goes here -- probably a call to the 'add location' endpoint first, then to the 'add event' endpoint
-  // TODO: replace eventNum belows with event_id that is returned from the back end.
+  // TODO: replace eventNum below with event_id that is returned from the back end.
   const eventNum = Math.floor(Math.random() * 1000000);
   const eventToSubmit = {
     ...eventInfo,
@@ -223,6 +233,15 @@ export const addEvent = (eventInfo, history) => dispatch => {
   history.push('/dj');
   // TODO: handle error
 };
+
+export const editEvent = eventInfo => dispatch => {
+  dispatch({ type: EDIT_EVENT_START });
+  // TODO: Add PUT to edit event endpoint here
+  dispatch({ type: EDIT_EVENT_SUCCESS, payload: eventInfo });
+  // TODO: Add handle error
+};
+
+// get dj
 
 export const getDJ = id => dispatch => {
   dispatch({ type: GET_DJ_START });

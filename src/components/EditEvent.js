@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { editEvent } from '../actions/action';
 
 const EditEvent = props => {
   // TODO: Get event data from back end, once it is available (instead of redux store)
@@ -7,10 +8,12 @@ const EditEvent = props => {
   const [currentEvent, setCurrentEvent] = useState(
     events[`event${props.event_id}`]
   );
+  const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
     props.setIsEditing(!props.isEditing);
+    dispatch(editEvent(currentEvent));
   };
 
   const handleChanges = e => {
@@ -18,7 +21,7 @@ const EditEvent = props => {
   };
 
   return (
-    <div>
+    <div className="edit-event-form">
       <form onSubmit={handleSubmit}>
         <input
           className="name"
@@ -28,15 +31,35 @@ const EditEvent = props => {
           onChange={handleChanges}
           value={currentEvent.name}
         />
-        <p>
-          <b className="bold">Event Type:</b> {currentEvent.event_type}
-        </p>
-        <p>
-          <b className="bold">Date: </b>
-          {currentEvent.date}
-        </p>
-        <p className="bold">Description:</p>
-        <p>{currentEvent.description}</p>
+        <div className="input-group">
+          <label htmlFor="event_type">Event Type:</label>
+          <input
+            type="text"
+            id="event_type"
+            name="event_type"
+            onChange={handleChanges}
+            value={currentEvent.event_type}
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="date">Date:</label>
+          <input
+            type="date"
+            id="date"
+            name="date"
+            onChange={handleChanges}
+            value={currentEvent.date}
+          />
+        </div>
+        <div className="input-group description">
+          <label htmlFor="description">Description:</label>
+          <textarea
+            id="description"
+            name="description"
+            onChange={handleChanges}
+            value={currentEvent.description}
+          />
+        </div>
         <button type="submit">Submit Changes</button>
       </form>
     </div>

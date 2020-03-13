@@ -28,6 +28,9 @@ import {
   ADD_EVENT_START,
   ADD_EVENT_SUCCESS,
   ADD_EVENT_ERROR,
+  EDIT_EVENT_START,
+  EDIT_EVENT_SUCCESS,
+  EDIT_EVENT_ERROR,
   GET_DJ_START,
   GET_DJ_SUCCESS,
   GET_DJ_ERROR
@@ -57,6 +60,8 @@ const initialState = {
   editUserProcessing: false,
   addEventStart: false,
   addEventError: false,
+  editEventStart: false,
+  editEventError: false,
   getDJError: false,
   getDJStart: false
 };
@@ -193,6 +198,29 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         addEventStart: false,
         addEventError: true
+      };
+
+    case EDIT_EVENT_START:
+      return {
+        ...state,
+        editEventStart: true
+      };
+
+    case EDIT_EVENT_SUCCESS:
+      return {
+        ...state,
+        editEventStart: false,
+        events: {
+          ...state.events,
+          [`event${action.payload.event_id}`]: action.payload
+        }
+      };
+
+    case EDIT_EVENT_ERROR:
+      return {
+        ...state,
+        editEventStart: false,
+        editEventError: true
       };
 
     case GET_DJ_START:
