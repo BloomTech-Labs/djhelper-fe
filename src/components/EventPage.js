@@ -149,6 +149,7 @@ const EventPage = props => {
               event_id={event_id}
               isEditing={isEditing}
               setIsEditing={setIsEditing}
+              history={props.history}
             />
           )}
           {!isEditing && (

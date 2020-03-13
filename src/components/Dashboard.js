@@ -50,6 +50,7 @@ const Dashboard = props => {
           setData={setData}
           currentlyActive={currentlyActive}
           tokenPresent={props.tokenPresent}
+          history={props.history}
         />
       );
     } else {

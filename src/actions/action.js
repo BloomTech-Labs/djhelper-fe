@@ -245,10 +245,11 @@ export const editEvent = eventInfo => dispatch => {
   // TODO: Add handle error
 };
 
-export const deleteEvent = event_id => dispatch => {
+export const deleteEvent = (event_id, history) => dispatch => {
   dispatch({ type: DELETE_EVENT_START });
   // TODO: Add DELETE to back end endpoint here
   dispatch({ type: DELETE_EVENT_SUCCESS, payload: event_id });
+  history.push('/dj');
   // TODO: Add handle error
 };
 
