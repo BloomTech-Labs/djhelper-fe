@@ -3,6 +3,10 @@
   flex-flow: column no-wrap;
   justify-content: center;
   align-items: center;
+  p {
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
   label {
     font-weight: bolder;
   }
@@ -47,6 +51,17 @@
     }
     &:active {
       background: grey;
+    }
+    &.toggle-delete {
+      background: white;
+      color: black;
+      border: 2px solid black;
+      &:hover {
+        background: $mediumPurple;
+      }
+    }
+    &.cancel-delete:hover {
+      background: $brightGreen;
     }
   }
   .input-group {

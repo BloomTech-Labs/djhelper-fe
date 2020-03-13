@@ -10,6 +10,7 @@ const EditEvent = props => {
   const [currentEvent, setCurrentEvent] = useState(
     events[`event${props.event_id}`]
   );
+  const [toggleDelete, setToggleDelete] = useState(false);
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
@@ -20,6 +21,10 @@ const EditEvent = props => {
 
   const handleChanges = e => {
     setCurrentEvent({ ...currentEvent, [e.target.name]: e.target.value });
+  };
+
+  const handleDeleteToggle = () => {
+    setToggleDelete(!toggleDelete);
   };
 
   return (
@@ -69,6 +74,30 @@ const EditEvent = props => {
             />
           </div>
           <button type="submit">Submit Changes</button>
+          {!toggleDelete && (
+            <button
+              type="button"
+              onClick={handleDeleteToggle}
+              className="toggle-delete"
+            >
+              Delete Event
+            </button>
+          )}
+          {toggleDelete && (
+            <>
+              <p>Are you 100% sure that you want to delete this event?</p>
+              <button type="button" className="toggle-delete">
+                Yes, delete this event.
+              </button>
+              <button
+                type="button"
+                className="cancel-delete"
+                onClick={handleDeleteToggle}
+              >
+                No, go ahead and keep this event.
+              </button>
+            </>
+          )}
         </form>
       )}
     </div>
