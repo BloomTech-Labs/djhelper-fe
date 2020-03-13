@@ -18,13 +18,13 @@ const EventPage = props => {
 
   const [isEditing, setIsEditing] = useState(false);
 
-  const {
-    name,
-    event_type,
-    description,
-    event_id,
-    date
-  } = props.location.state.event;
+  const { event_id } = props.location.state.event;
+  const events = useSelector(state => state.userReducer.events);
+  const [currentEvent, setCurrentEvent] = useState(events[`event${event_id}`]);
+
+  useEffect(() => {
+    setCurrentEvent(events[`event${event_id}`]);
+  }, [events]);
 
   const [switches, setSwitches] = useState({
     buttonText: 'Add Songs',
@@ -153,16 +153,16 @@ const EventPage = props => {
           )}
           {!isEditing && (
             <>
-              <h3 className="bold">{name}</h3>
+              <h3 className="bold">{currentEvent.name}</h3>
               <p>
-                <b className="bold">Event Type:</b> {event_type}
+                <b className="bold">Event Type:</b> {currentEvent.event_type}
               </p>
               <p>
                 <b className="bold">Date: </b>
-                {date}
+                {currentEvent.date}
               </p>
               <p className="bold">Description:</p>
-              <p>{description}</p>
+              <p>{currentEvent.description}</p>
               <p>
                 <b className="bold">Sharable Event Page:</b>{' '}
                 <Link to={`/dj/${dj_id}/event/${event_id}`}>
