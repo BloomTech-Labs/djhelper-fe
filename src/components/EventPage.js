@@ -13,6 +13,9 @@ const EventPage = props => {
   const FRONTEND_HOST =
     process.env.REACT_APP_FRONTEND_HOST || 'https://dj-helper.com/';
 
+  const [qrCode, setQrCode] = useState('');
+  const [showQrCode, setShowQrCode] = useState(false);
+
   const {
     name,
     event_type,
@@ -81,6 +84,16 @@ const EventPage = props => {
     }
   };
 
+  const handleQRDisplay = () => {
+    if (!qrCode) {
+      const eventPage = `${FRONTEND_HOST}dj/${dj_id}/event/${event_id}`;
+      const qrLink = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${eventPage}`;
+      console.log(qrLink);
+      setQrCode(qrLink);
+    }
+    setShowQrCode(!showQrCode);
+  };
+
   return (
     <div className="event-page">
       <NavigationBar tokenPresent={props.location.state.tokenPresent} />
@@ -94,17 +107,32 @@ const EventPage = props => {
             <b className="bold">Date: </b>
             {date}
           </p>
-          <p className="bold">Description:</p>
-          <p>{description}</p>
-          <button className="black-button"> Edit </button>
           <p>
-            <a
-              href={`${FRONTEND_HOST}dj/${dj_id}/event/${event_id}`}
-            >{`${FRONTEND_HOST}dj/${dj_id}/event/${event_id}`}</a>
+            <b className="bold">Description: </b>
+            {description}
           </p>
-          <button type="button" className="black-button">
-            Go to Sharable Event Page
+          <p>
+            <b className="bold">Sharable Event Page:</b>{' '}
+            <Link to={`/dj/${dj_id}/event/${event_id}`}>
+              {`${FRONTEND_HOST}dj/${dj_id}/event/${event_id}`}
+            </Link>
+          </p>
+
+          <button className="black-button"> Edit </button>
+
+          <button
+            type="button"
+            className="black-button to-sharable"
+            onClick={handleQRDisplay}
+          >
+            {!showQrCode ? 'Display QR Code' : 'Hide QR Code'}
           </button>
+
+          {qrCode && showQrCode && (
+            <div className="qr-code">
+              <img src={qrCode} alt="qr code" />
+            </div>
+          )}
           <h3 id="request-header-text-styling"> Requests </h3>
           <div className="mobile-switch-buttons">
             <button className="playlist-buttons">Requests</button>

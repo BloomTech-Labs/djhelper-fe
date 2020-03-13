@@ -76,6 +76,8 @@ In order for the app to function correctly, the user must set up their own envir
 
     *  REACT_APP_BACKEND_HOST - this is "http://localhost:8000" if running locally, OR the back end deployed url if using the deployed back end: "https://api.dj-helper.com/"
 
+    * REACT_APP_FRONTEND_HOST = 'http://localhost:3000/'  - if running locally, with whichever port you are using for the front end.
+
 # Testing
 
 Testing is done using the @testing-library/jest-dom, @testing-library/react, and @testing-library/user-event packages. Tests are located in the [src/tests directory](https://github.com/Lambda-School-Labs/djhelper-fe/tree/master/src/tests). Tests are groups into files by component.
