@@ -1,150 +1,35 @@
 .event-page {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  background: $dark3;
-  color: white;
-  min-height: 115vh;
-  padding-bottom: 5%;
-
-  .event-details {
-    padding-top: 5%;
-    margin-bottom: 5%;
-    @include for-phone-only {
-      margin-bottom: 0%;
-    }
-    width: 90%;
-    height: 47vh;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
+    align-items: center;
+    background: $dark3;
+    color: white;
+    min-height: 115vh;
+    padding-bottom: 5%;
+    .fade {
+       opacity: 1;
+       transition: opacity .25s ease-in-out;
+       -moz-transition: opacity .25s ease-in-out;
+       -webkit-transition: opacity .25s ease-in-out;
+       }
     @include for-phone-only {
-      flex-flow: column nowrap;
+        margin-bottom: 0%;
+
     }
-    justify-content: space-between;
-    font-size: 0.75rem;
-    color: #c7c7c7;
-    .black-button {
-      width: 95%;
-      background: black;
-      color: white;
-      border-radius: 3px;
-      border: none;
-      outline: none;
-      transition: 0.3s;
-      padding: 0.4rem;
-      padding-bottom: 0.6rem;
-      padding-top: 0.6rem;
-      font-size: 0.75rem;
-      -webkit-box-shadow: 14px 10px 10px -10px rgba(0, 0, 0, 0.35);
-      -moz-box-shadow: 14px 10px 10px -10px rgba(0, 0, 0, 0.35);
-      box-shadow: 4px 5px 10px 0px rgba(0, 0, 0, 0.35);
-      &:hover {
-        color: black;
-        background: white;
-      }
-      &:active {
-        background: grey;
-      }
-      &.cancel {
-        background: black;
-        color: white;
-        border: 2px solid white;
-        margin-top: 1rem;
-      }
-      &.save {
-        background: white;
-        color: black;
-      }
-      &.to-sharable {
-        margin-top: 1rem;
-        a {
-          color: white;
-          &:hover {
-            color: black;
-            text-decoration: none;
-          }
-          &:active {
-            color: black;
-          }
-        }
-      }
-    }
-    // End of black-button class
-    h3 {
-      font-size: 2.2rem;
-      margin-bottom: 7%;
-      /* Phone styling */
-      @include for-phone-only {
-        font-size: 1.1rem;
-      }
-    }
-    .bold {
-      color: white;
-      font-weight: 700;
-    }
-    .event-description {
-      width: 23%;
-      height: 45vh;
-      margin-bottom: 20vh;
-      /* Phone styling */
-      @include for-phone-only {
-        width: 90%;
-      }
-      p {
-        width: 95%;
-      }
-    }
-    //Start of playlist class
-    .event-playlist-location {
-      width: 50%;
-      margin-left: 25%;
-      /* Phone styling */
-      @include for-phone-only {
-        margin: 0;
-        width: 80vw;
-      }
-      .label {
-        color: white;
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-<<<<<<< HEAD
-        width: 100%;
+    .event-details {
+        padding-top: 5%;
         margin-bottom: 5%;
-      }
-    }
-    #request-header-text-styling {
-      margin-top: 5%;
-      color: white;
-      font-weight: 700;
-      font-size: 1.3rem;
-    }
-    .playlist {
-      display: flex;
-      flex-flow: column nowrap;
-      height: 85vh;
-      overflow-y: scroll;
-      /* Phone styling */
-      @include for-phone-only {
-        height: 10vh;
-        width: 90vw;
-      }
-      #add-song-div {
+        @include for-phone-only {
+            margin-bottom: 0%;
+        }
+        width: 90%;
+        height: 47vh;
         display: flex;
-        flex-flow: row nowrap;
+        flex-flow: column wrap;
+       @include for-phone-only {
+            flex-flow: column nowrap;
+        }
         justify-content: space-between;
-        width: 100%;
-      }
-      #add {
-        color: white;
-        padding: 0;
-        background: transparent;
-        box-shadow: none;
-        border: none;
-        transition: 0.3s;
-        &:hover {
-          color: grey;
-=======
         font-size: 0.75rem;
         color: #C7C7C7;
         .mobile {
@@ -252,7 +137,6 @@
             /* Phone styling */
             @include for-phone-only {
                 margin: 0;
-                margin-top: 3%;
                 width: 80vw;
              }
              .label {
@@ -293,6 +177,7 @@
             @include for-phone-only {
                 height: 35vh;
                 width: 90vw;
+
              }
             #add-song-div {
                 display: flex;
@@ -348,38 +233,9 @@
                     width: 20% !important;
                 }
             }
->>>>>>> bc0051b45801eab63aad42ff8809242b2a9bc00c
         }
-      }
-      #vote {
-        color: green;
-        background: transparent;
-        box-shadow: none;
-        border: none;
-      }
-      #song-type {
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
-        background-repeat: no-repeat;
-        border-radius: 0%;
-        width: 25px;
-        height: 25px;
+        //End of playlist class
 
-<<<<<<< HEAD
-        background-size: cover;
-        box-shadow: none;
-        border: none;
-      }
-      .songs {
-        display: flex;
-        width: 100%;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-top: 2%;
-        button {
-=======
         #requests {
             width: 200%;
             height: 40vh;
@@ -397,51 +253,17 @@
 
              }
             overflow-y: scroll;
->>>>>>> bc0051b45801eab63aad42ff8809242b2a9bc00c
         }
-        .song-element {
-          display: flex;
-          margin-right: 3%;
-          width: 20% !important;
+        .genre-graph {
+            height: 28vh;
+            width: 20%;
         }
-      }
     }
-    //End of playlist class
-
-    #requests {
-      width: 200%;
-      /* Phone styling */
-      @include for-phone-only {
-        width: 90vw;
-      }
-      height: 30vh;
-      overflow-y: scroll;
-    }
-    .genre-graph {
-      height: 28vh;
-      width: 20%;
-    }
-  }
-  a {
-    color: $mediumPurple;
-  }
-  .qr-code {
-    width: 95%;
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img {
-      max-width: 100%;
-    }
-<<<<<<< HEAD
-  }
-=======
     @include for-phone-only {
         .hide {
             display: none;
         }
 
     }
->>>>>>> bc0051b45801eab63aad42ff8809242b2a9bc00c
 }
+
