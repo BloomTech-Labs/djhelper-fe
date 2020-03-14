@@ -56,6 +56,8 @@ const EditDJ = () => {
     id
   });
 
+  const [toggleDelete, setToggleDelete] = useState(false);
+
   const handleSubmit = e => {
     e.preventDefault();
     console.log(userInfo);
@@ -92,6 +94,10 @@ const EditDJ = () => {
     dispatch(cancelEditUser());
   };
 
+  const handleDeleteToggle = () => {
+    setToggleDelete(!toggleDelete);
+  };
+
   const handleDelete = () => {
     dispatch(deleteUser(id));
   };
@@ -119,9 +125,32 @@ const EditDJ = () => {
         <button onClick={handleCancel} className="cancel" type="button">
           Cancel
         </button>
-        <button onClick={handleDelete} className="delete" type="button">
-          Delete Profile
-        </button>
+        {!toggleDelete && (
+          <button onClick={handleDeleteToggle} className="delete" type="button">
+            Delete Profile
+          </button>
+        )}
+        {toggleDelete && (
+          <>
+            <p className="confirm-delete">
+              Are you 100% sure that you want to delete your account?
+            </p>
+            <button
+              type="button"
+              className="confirm-delete"
+              onClick={handleDelete}
+            >
+              Yes, delete my account.
+            </button>
+            <button
+              type="button"
+              className="cancel-delete"
+              onClick={handleDeleteToggle}
+            >
+              No, go ahead and keep my account.
+            </button>
+          </>
+        )}
       </div>
 
       <div className="text-side form-width">

@@ -99,6 +99,24 @@
             border: $lightPurple;
           }
         }
+        &.confirm-delete {
+          margin-top: 1rem;
+          background: black;
+          color: $mediumPurple;
+          border: 2px solid $mediumPurple;
+          &:hover {
+            background: white;
+          }
+        }
+        &.cancel-delete {
+          margin-top: 1rem;
+          background: black;
+          color: $brightGreen;
+          border: 2px solid $brightGreen;
+          &:hover {
+            background: white;
+          }
+        }
       }
       .edit-icon {
         border: solid pink 2px;
@@ -195,6 +213,11 @@
           margin-top: 1rem;
         }
       }
+    }
+  }
+  p {
+    &.confirm-delete {
+      padding-top: 1rem;
     }
   }
 }

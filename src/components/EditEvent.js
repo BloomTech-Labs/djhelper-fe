@@ -28,7 +28,6 @@ const EditEvent = props => {
   };
 
   const handleDelete = () => {
-    console.log('time to delete event ', props.event_id);
     dispatch(deleteEvent(currentEvent, props.history));
   };
 
