@@ -60,30 +60,7 @@ const EditDJ = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(userInfo);
-    const infoNeeded = {};
-
-    if (userInfo.name.length > 0) {
-      infoNeeded.name = userInfo.name;
-    }
-    if (userInfo.email.length > 0) {
-      infoNeeded.email = userInfo.email;
-    }
-    if (userInfo.phone.length > 0) {
-      infoNeeded.phone = userInfo.phone;
-    }
-    if (userInfo.profile_pic_url.length > 0) {
-      infoNeeded.profile_pic_url = userInfo.profile_pic_url;
-    }
-    if (userInfo.bio.length > 0) {
-      infoNeeded.bio = userInfo.bio;
-    }
-
-    if (userInfo.website.length > 0) {
-      infoNeeded.website = userInfo.website;
-    }
-
-    dispatch(editUser(id, infoNeeded));
+    dispatch(editUser(id, userInfo));
   };
 
   const handleChange = e => {
