@@ -9,6 +9,10 @@
   .side {
     width: 40%;
     margin: 2px 1px;
+    @include for-phone-only {
+      width: 80%;
+      margin-top: 1rem;
+    }
   }
   .left-side {
     display: flex;
@@ -26,92 +30,45 @@
       font-size: 5rem;
       color: black;
       margin-bottom: 1rem;
+      @include for-phone-only {
+        width: 5rem;
+        height: 5rem;
+        margin-top: 2rem;
+        font-size: 3rem;
+      }
     }
     h2 {
       font-size: 2.5rem;
+      @include for-phone-only {
+        font-size: 1.5rem;
+      }
     }
     p {
       font-size: 1.25rem;
+      @include for-phone-only {
+        font-size: 0.8rem;
+      }
     }
   }
   .right-side {
-    .loader {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    form {
-      width: 90%;
-    }
     background: $dark2;
     padding: 3rem;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    div {
+    @include for-phone-only {
       padding: 1rem;
-    }
-    .input-group {
-      display: flex;
-      flex-flow: column nowrap;
-      justify-content: center;
-      align-items: flex-start;
-      input {
-        background: $dark1;
-        border: none;
-        line-height: 2rem;
-        border-radius: 3px;
-        width: 100%;
-        color: $mediumPurple;
-        &:focus {
-          background: rgb(65, 65, 65);
-          color: white;
-          border-top: 3px solid $lightPurple;
-          border-radius: 0px 0px 3px 3px;
-          outline: none;
-          padding-left: 0.5rem;
-        }
-      }
-      textarea {
-        background: $dark1;
-        border: none;
-        line-height: 2rem;
-        width: 100%;
-        border-radius: 3px;
-        color: $mediumPurple;
-        &:focus {
-          background: rgb(65, 65, 65);
-          color: white;
-        }
-      }
-    }
-    .button-area {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-between;
-    }
-    button {
-      background: black;
-      outline: none;
-      border-radius: 3px;
-      border: none;
-      color: white;
-      padding: 0.75rem;
-      transition: all 0.2s ease-in-out;
-      width: 40%;
-      &:hover {
-        transform: scale(1.2);
-      }
-      &.skip {
-        background: $dark3;
-      }
     }
     .img-area {
       width: 18rem;
       height: 18rem;
       border-radius: 50%;
       background: $dark1;
+      @include for-phone-only {
+        width: 8rem;
+        height: 8rem;
+      }
       .plus-area {
         background: white;
         color: black;
@@ -124,6 +81,89 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        @include for-phone-only {
+          left: 5rem;
+          top: 5rem;
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+    }
+    .loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    form {
+      width: 90%;
+      @include for-phone-only {
+        width: 100%;
+      }
+      div {
+        padding: 1rem;
+        &.input-group {
+          display: flex;
+          flex-flow: column nowrap;
+          justify-content: center;
+          align-items: flex-start;
+          @include for-phone-only {
+            padding: 0.5rem;
+          }
+          input {
+            background: $dark1;
+            border: none;
+            line-height: 2rem;
+            border-radius: 3px;
+            width: 100%;
+            color: $mediumPurple;
+            &:focus {
+              background: rgb(65, 65, 65);
+              color: white;
+              border-top: 3px solid $lightPurple;
+              border-radius: 0px 0px 3px 3px;
+              outline: none;
+              padding-left: 0.5rem;
+            }
+          }
+          textarea {
+            background: $dark1;
+            border: none;
+            line-height: 2rem;
+            width: 100%;
+            border-radius: 3px;
+            color: $mediumPurple;
+            &:focus {
+              background: rgb(65, 65, 65);
+              color: white;
+              border-top: 3px solid $lightPurple;
+              border-radius: 0px 0px 3px 3px;
+              outline: none;
+              padding-left: 0.5rem;
+            }
+          }
+        }
+      }
+      .button-area {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+      }
+      button {
+        background: black;
+        outline: none;
+        border-radius: 3px;
+        border: none;
+        color: white;
+        padding: 0.75rem;
+        transition: all 0.2s ease-in-out;
+        width: 40%;
+        &:hover {
+          transform: scale(1.2);
+        }
+        &.skip {
+          background: $dark3;
+        }
       }
     }
   }
