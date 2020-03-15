@@ -52,8 +52,7 @@ const EditDJ = () => {
     website,
     phone,
     bio,
-    profile_pic_url,
-    id
+    profile_pic_url
   });
 
   const [toggleDelete, setToggleDelete] = useState(false);
