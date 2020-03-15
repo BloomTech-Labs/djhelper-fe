@@ -59,7 +59,7 @@ const EventGuestView = props => {
   }, [currentEvent.end_time]);
 
   const [mobileView, setMobileView] = useState(false);
-  const [width, height] = useWindowSize();
+  const [width] = useWindowSize();
 
   const toggleMobileView = () => {
     if (width < 500) {
