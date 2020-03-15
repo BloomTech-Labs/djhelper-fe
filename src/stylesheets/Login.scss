@@ -22,6 +22,8 @@
     @include for-phone-only {
       font-size: 1rem;
       width: 70%;
+      padding: 1.5rem 1rem;
+      margin-top: 4rem;
     }
     p {
       width: 90%;
@@ -44,6 +46,9 @@
       font-size: 4vw;
       font-weight: normal;
       text-align: center;
+      @include for-phone-only {
+        font-size: 2rem;
+      }
     }
     label {
       width: 90%;
