@@ -9,10 +9,17 @@
       text-align: center;
       padding-bottom: 1rem;
       padding-top: 1rem;
+      @include for-phone-only {
+        font-size: 3.5rem;
+      }
     }
     h2 {
       color: $lightPurple;
       text-align: center;
+      @include for-phone-only {
+        font-size: 1.25rem;
+        padding: 0.25rem 1rem;
+      }
     }
   }
   .main-content {
@@ -24,14 +31,23 @@
     padding: 2rem;
     border-radius: 3px;
     transition: all 0.2 ease-in-out;
+    @include for-phone-only {
+      width: 80%;
+    }
     &:hover {
       transform: scale(1.1);
     }
     h2 {
       font-size: 3.5rem;
+      @include for-phone-only {
+        font-size: 2rem;
+      }
     }
     h3 {
       font-size: 2.5rem;
+      @include for-phone-only {
+        font-size: 1.5rem;
+      }
     }
     a {
       color: $darkPurple;
