@@ -77,7 +77,9 @@ const EditEvent = props => {
               value={currentEvent.description}
             />
           </div>
-          <button type="submit">Submit Changes</button>
+          <button type="submit" data-testid="submit-button">
+            Submit Changes
+          </button>
           {!toggleDelete && (
             <button
               type="button"
