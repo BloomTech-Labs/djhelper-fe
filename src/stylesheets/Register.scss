@@ -91,6 +91,9 @@
     font-size: 5rem;
     color: white;
     font-weight: bold;
+    @include for-phone-only {
+      font-size: 1rem;
+    }
   }
   .bold-text {
     font-weight: bold;

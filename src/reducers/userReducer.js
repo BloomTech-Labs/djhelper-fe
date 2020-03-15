@@ -88,11 +88,7 @@ export const userReducer = (state = initialState, action) => {
         name: action.payload.name,
         username: action.payload.username,
         id: action.payload.id,
-        email: action.payload.email,
-        website: action.payload.website,
-        phone: action.payload.phone,
-        profile_pic_url: action.payload.profile_pic_url,
-        bio: action.payload.bio
+        email: action.payload.email
       };
 
     case REGISTER_USER_ERROR:

@@ -12,11 +12,7 @@ const Register = props => {
     password: '',
     repassword: '',
     name: '',
-    email: '',
-    website: '',
-    phone: '',
-    bio: '',
-    profile_pic_url: ''
+    email: ''
   });
 
   const isRegistering = useSelector(
@@ -32,11 +28,7 @@ const Register = props => {
       password: '',
       repassword: '',
       name: '',
-      email: '',
-      website: '',
-      phone: '',
-      bio: '',
-      profile_pic_url: ''
+      email: ''
     });
   };
 

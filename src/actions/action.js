@@ -113,10 +113,10 @@ export const loginUser = (userInfo, history) => dispatch => {
         });
 
       if (
-        response.data.bio.length === 0 &&
-        response.data.phone.length === 0 &&
-        response.data.website.length === 0 &&
-        response.data.profile_pic_url.length === 0
+        !response.data.bio &&
+        !response.data.phone &&
+        !response.data.website &&
+        !response.data.profile_pic_url
       ) {
         history.push('/dj/setup');
       } else {
