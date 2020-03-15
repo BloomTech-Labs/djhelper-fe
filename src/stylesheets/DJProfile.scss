@@ -12,9 +12,10 @@
     align-items: flex-start;
     margin-top: 5rem;
     margin-left: 10vw;
-    @media (max-width: 600px) {
+    @include for-phone-only {
       flex-flow: column nowrap;
       align-items: center;
+      justify-content: center;
     }
     div {
       .image-container {
@@ -24,6 +25,10 @@
         overflow: hidden;
         border-radius: 50%;
         margin: 1rem;
+        @include for-phone-only {
+          width: 14rem;
+          height: 14rem;
+        }
         span {
           border-radius: 50%;
           border: solid pink 2px;
@@ -54,10 +59,9 @@
       @media (max-width: 900px) {
         width: 50%;
       }
-      @media (max-width: 600px) {
+      @include for-phone-only {
         width: 90%;
       }
-
       button {
         width: 18rem;
         background: black;
