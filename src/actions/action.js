@@ -296,9 +296,15 @@ export const addEvent = (eventInfo, history) => dispatch => {
                   const winnerEvent = response4.data.filter(
                     event => event.name === eventInfo.name
                   )[0];
+                  // TODO: Modify what is returned for playlist_id and request_list_id once functionality is built for that
                   dispatch({
                     type: ADD_EVENT_SUCCESS,
-                    payload: { ...winnerEvent, event_id: winnerEvent.id }
+                    payload: {
+                      ...winnerEvent,
+                      event_id: winnerEvent.id,
+                      playlist_id: winnerEvent.id,
+                      request_list_id: winnerEvent.id
+                    }
                   });
                   history.push('/dj');
                 })
