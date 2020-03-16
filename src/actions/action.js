@@ -43,6 +43,14 @@ export const ADD_EVENT_START = 'ADD_EVENT_START';
 export const ADD_EVENT_SUCCESS = 'ADD_EVENT_SUCCESS';
 export const ADD_EVENT_ERROR = 'ADD_EVENT_ERROR';
 
+export const EDIT_EVENT_START = 'EDIT_EVENT_START';
+export const EDIT_EVENT_SUCCESS = 'EDIT_EVENT_SUCCESS';
+export const EDIT_EVENT_ERROR = 'EDIT_EVENT_ERROR';
+
+export const DELETE_EVENT_START = 'DELETE_EVENT_START';
+export const DELETE_EVENT_SUCCESS = 'DELETE_EVENT_SUCCESS';
+export const DELETE_EVENT_ERROR = 'DELETE_EVENT_ERROR';
+
 export const GET_DJ_START = 'GET_DJ_START';
 export const GET_DJ_SUCCESS = 'GET_DJ_SUCCESS';
 export const GET_DJ_ERROR = 'GET_DJ_ERROR';
@@ -123,10 +131,10 @@ export const loginUser = (userInfo, history) => dispatch => {
         });
 
       if (
-        response.data.bio.length === 0 &&
-        response.data.phone.length === 0 &&
-        response.data.website.length === 0 &&
-        response.data.profile_pic_url.length === 0
+        !response.data.bio &&
+        !response.data.phone &&
+        !response.data.website &&
+        !response.data.profile_pic_url
       ) {
         history.push('/dj/setup');
       } else {
@@ -207,6 +215,8 @@ export const updateUser = (history, id, userInfo) => dispatch => {
     });
 };
 
+// songs
+
 export const searchForTrack = searchTerm => dispatch => {
   dispatch({ type: SEARCH_FOR_TRACK_START });
 
@@ -225,10 +235,12 @@ export const searchForTrack = searchTerm => dispatch => {
     });
 };
 
+// events
+
 export const addEvent = (eventInfo, history) => dispatch => {
   dispatch({ type: ADD_EVENT_START });
   // TODO: axiosWithAuth goes here -- probably a call to the 'add location' endpoint first, then to the 'add event' endpoint
-  // TODO: replace eventNum belows with event_id that is returned from the back end.
+  // TODO: replace eventNum below with event_id that is returned from the back end.
   const eventNum = Math.floor(Math.random() * 1000000);
   const eventToSubmit = {
     ...eventInfo,
@@ -243,6 +255,23 @@ export const addEvent = (eventInfo, history) => dispatch => {
   history.push('/dj');
   // TODO: handle error
 };
+
+export const editEvent = eventInfo => dispatch => {
+  dispatch({ type: EDIT_EVENT_START });
+  // TODO: Add PUT to edit event endpoint here
+  dispatch({ type: EDIT_EVENT_SUCCESS, payload: eventInfo });
+  // TODO: Add handle error
+};
+
+export const deleteEvent = (event_id, history) => dispatch => {
+  dispatch({ type: DELETE_EVENT_START });
+  // TODO: Add DELETE to back end endpoint here
+  dispatch({ type: DELETE_EVENT_SUCCESS, payload: event_id });
+  history.push('/dj');
+  // TODO: Add handle error
+};
+
+// get dj
 
 export const getDJ = id => dispatch => {
   dispatch({ type: GET_DJ_START });

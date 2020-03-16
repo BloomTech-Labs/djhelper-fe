@@ -5,6 +5,7 @@ import { getDJ } from '../actions/action';
 import { locations } from '../data/locations';
 import formatDate from '../utils/formatDate';
 import formatTime from '../utils/formatTime';
+import useWindowSize from '../utils/useWindowSize';
 
 const EventGuestView = props => {
   const dispatch = useDispatch();
@@ -57,6 +58,21 @@ const EventGuestView = props => {
     }
   }, [currentEvent.end_time]);
 
+  const [mobileView, setMobileView] = useState(false);
+  const [width] = useWindowSize();
+
+  const toggleMobileView = () => {
+    if (width < 500) {
+      setMobileView(true);
+    } else {
+      setMobileView(false);
+    }
+  };
+
+  useEffect(() => {
+    toggleMobileView();
+  }, [width]);
+
   const handleAddRequest = () => {
     alert(
       'We are excited that you want to add song requests. This feature is coming soon!'
@@ -65,7 +81,7 @@ const EventGuestView = props => {
 
   return (
     <div className="event-guest-view-page">
-      <div className="section left-side">
+      <div className="section left-side" id="info">
         {!currentEvent && (
           <h2>
             Sorry, this event page is not for a valid event. Please check to see
@@ -75,6 +91,12 @@ const EventGuestView = props => {
         {currentEvent && (
           <div>
             <h1 className="main-title">{currentEvent.name}</h1>
+            {mobileView && (
+              <nav>
+                <a href="#request-list">Requests</a>
+                <a href="#playlist">Playlist</a>
+              </nav>
+            )}
             {formattedDate && <h2>{formattedDate}</h2>}
             <p>
               {formattedStartTime && formattedStartTime}
@@ -146,13 +168,13 @@ const EventGuestView = props => {
         )}
       </div>
 
-      <div className="section middle">
+      <div className="section middle" id="request-list">
         <h2>Request List</h2>
         <button type="button" onClick={handleAddRequest}>
           Add a Song Request
         </button>
       </div>
-      <div className="section right-side">
+      <div className="section right-side" id="playlist">
         <h2>Playlist</h2>
       </div>
     </div>

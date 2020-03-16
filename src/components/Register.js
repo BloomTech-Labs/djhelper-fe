@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
 import { Form, Input } from 'reactstrap';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavigationBar from './NavigationBar';
+import { registerUserAction } from '../actions/action';
 
 const Register = props => {
+  const dispatch = useDispatch();
   const [userInfo, setUserInfo] = useState({
     username: '',
     password: '',
     repassword: '',
     name: '',
-    email: '',
-    website: '',
-    phone: '',
-    bio: '',
-    profile_pic_url: ''
+    email: ''
   });
 
   const isRegistering = useSelector(
@@ -25,19 +23,13 @@ const Register = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(userInfo);
-    props.registerUser(userInfo, props.history);
-    setUserInfo({
-      username: '',
-      password: '',
-      repassword: '',
-      name: '',
-      email: '',
-      website: '',
-      phone: '',
-      bio: '',
-      profile_pic_url: ''
-    });
+    const infoNeeded = {
+      username: userInfo.username,
+      password: userInfo.password,
+      name: userInfo.name,
+      email: userInfo.email
+    };
+    dispatch(registerUserAction(infoNeeded, props.history));
   };
 
   const handleChange = e => {

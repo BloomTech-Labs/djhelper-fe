@@ -80,7 +80,7 @@ In order for the app to function correctly, the user must set up their own envir
 
 # Testing
 
-Testing is done using the @testing-library/jest-dom, @testing-library/react, and @testing-library/user-event packages. Tests are located in the [src/tests directory](https://github.com/Lambda-School-Labs/djhelper-fe/tree/master/src/tests). Tests are groups into files by component.
+Testing is done using the @testing-library/jest-dom, @testing-library/react, and @testing-library/user-event packages. Tests are located in the [src/tests directory](https://github.com/Lambda-School-Labs/djhelper-fe/tree/master/src/tests). Tests are grouped into files by component.
 
 Our UX team member also runs surveys and user tests. Her results can be found [here](https://www.notion.so/User-Research-b5b3512626624497bd973628842a8b2a).
 

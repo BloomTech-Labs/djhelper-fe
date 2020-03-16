@@ -1,6 +1,11 @@
 import React from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+
+// import the library
+import { library } from '@fortawesome/fontawesome-svg-core';
+
+// import your icons
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
 import Home from './components/Home';
 import Register from './components/Register';
@@ -14,52 +19,19 @@ import SetUpProfile from './components/SetUpProfile';
 import AddEvent from './components/AddEvent';
 import EventGuestView from './components/EventGuestView';
 
-import { registerUserAction } from './actions/action';
-
 import './stylesheets/index.scss';
-
-// import the library
-import { library } from '@fortawesome/fontawesome-svg-core';
-
-// import your icons
-import { fas } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
   fas
   // more icons go here
 );
 function App() {
-  const dispatch = useDispatch();
-  //TODO: Hook the register submit button directly to registerUserAction since now the upcoming data is already formatted correctly.
-  //This middle step is now not needed.
-  const registerUser = (userInfo, history) => {
-    console.log(userInfo);
-
-    const infoNeeded = {
-      username: userInfo.username,
-      password: userInfo.password,
-      name: userInfo.name,
-      email: userInfo.email,
-      phone: userInfo.phone,
-      profile_pic_url: userInfo.profile_pic_url,
-      bio: userInfo.bio,
-      website: userInfo.website
-    };
-
-    dispatch(registerUserAction(infoNeeded, history));
-  };
-
   return (
     <div className="App">
       <div className="overlay">
         <BrowserRouter>
           <Route exact path="/" component={Home} />
-          <Route
-            path="/register"
-            render={props => (
-              <Register {...props} registerUser={registerUser} />
-            )}
-          />
+          <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <PrivateRoute exact path="/dj" component={DjInterface} />
           <PrivateRoute exact path="/dj/event/:id" component={EventPage} />

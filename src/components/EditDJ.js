@@ -52,36 +52,14 @@ const EditDJ = () => {
     website,
     phone,
     bio,
-    profile_pic_url,
-    id
+    profile_pic_url
   });
+
+  const [toggleDelete, setToggleDelete] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(userInfo);
-    const infoNeeded = {};
-
-    if (userInfo.name.length > 0) {
-      infoNeeded.name = userInfo.name;
-    }
-    if (userInfo.email.length > 0) {
-      infoNeeded.email = userInfo.email;
-    }
-    if (userInfo.phone.length > 0) {
-      infoNeeded.phone = userInfo.phone;
-    }
-    if (userInfo.profile_pic_url.length > 0) {
-      infoNeeded.profile_pic_url = userInfo.profile_pic_url;
-    }
-    if (userInfo.bio.length > 0) {
-      infoNeeded.bio = userInfo.bio;
-    }
-
-    if (userInfo.website.length > 0) {
-      infoNeeded.website = userInfo.website;
-    }
-
-    dispatch(editUser(id, infoNeeded));
+    dispatch(editUser(id, userInfo));
   };
 
   const handleChange = e => {
@@ -90,6 +68,10 @@ const EditDJ = () => {
 
   const handleCancel = () => {
     dispatch(cancelEditUser());
+  };
+
+  const handleDeleteToggle = () => {
+    setToggleDelete(!toggleDelete);
   };
 
   const handleDelete = () => {
@@ -119,9 +101,32 @@ const EditDJ = () => {
         <button onClick={handleCancel} className="cancel" type="button">
           Cancel
         </button>
-        <button onClick={handleDelete} className="delete" type="button">
-          Delete Profile
-        </button>
+        {!toggleDelete && (
+          <button onClick={handleDeleteToggle} className="delete" type="button">
+            Delete Profile
+          </button>
+        )}
+        {toggleDelete && (
+          <>
+            <p className="confirm-delete">
+              Are you 100% sure that you want to delete your account?
+            </p>
+            <button
+              type="button"
+              className="confirm-delete"
+              onClick={handleDelete}
+            >
+              Yes, delete my account.
+            </button>
+            <button
+              type="button"
+              className="cancel-delete"
+              onClick={handleDeleteToggle}
+            >
+              No, go ahead and keep my account.
+            </button>
+          </>
+        )}
       </div>
 
       <div className="text-side form-width">

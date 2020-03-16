@@ -28,6 +28,12 @@ import {
   ADD_EVENT_START,
   ADD_EVENT_SUCCESS,
   ADD_EVENT_ERROR,
+  EDIT_EVENT_START,
+  EDIT_EVENT_SUCCESS,
+  EDIT_EVENT_ERROR,
+  DELETE_EVENT_START,
+  DELETE_EVENT_SUCCESS,
+  DELETE_EVENT_ERROR,
   GET_DJ_START,
   GET_DJ_SUCCESS,
   GET_DJ_ERROR
@@ -57,6 +63,10 @@ const initialState = {
   editUserProcessing: false,
   addEventStart: false,
   addEventError: false,
+  editEventStart: false,
+  editEventError: false,
+  deleteEventStart: true,
+  deleteEventError: false,
   getDJError: false,
   getDJStart: false
 };
@@ -78,11 +88,7 @@ export const userReducer = (state = initialState, action) => {
         name: action.payload.name,
         username: action.payload.username,
         id: action.payload.id,
-        email: action.payload.email,
-        website: action.payload.website,
-        phone: action.payload.phone,
-        profile_pic_url: action.payload.profile_pic_url,
-        bio: action.payload.bio
+        email: action.payload.email
       };
 
     case REGISTER_USER_ERROR:
@@ -193,6 +199,51 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         addEventStart: false,
         addEventError: true
+      };
+
+    case EDIT_EVENT_START:
+      return {
+        ...state,
+        editEventStart: true
+      };
+
+    case EDIT_EVENT_SUCCESS:
+      return {
+        ...state,
+        editEventStart: false,
+        events: {
+          ...state.events,
+          [`event${action.payload.event_id}`]: action.payload
+        }
+      };
+
+    case EDIT_EVENT_ERROR:
+      return {
+        ...state,
+        editEventStart: false,
+        editEventError: true
+      };
+
+    case DELETE_EVENT_START:
+      return {
+        ...state,
+        deleteEventStart: true
+      };
+
+    case DELETE_EVENT_SUCCESS:
+      // TODO: Modify this once the app uses the back end for dealing with deleting events
+      const parentKey = 'events';
+      const childKey = `event${action.payload.event_id}`;
+      const { [parentKey]: parentValue, ...noChild } = state;
+      const { [childKey]: removedValue, ...childWithout } = parentValue;
+      const stateCopyWithoutEvent = { ...noChild, [parentKey]: childWithout };
+      return { ...stateCopyWithoutEvent, deleteEventStart: false };
+
+    case DELETE_EVENT_ERROR:
+      return {
+        ...state,
+        deleteEventStart: false,
+        deleteEventError: true
       };
 
     case GET_DJ_START:
