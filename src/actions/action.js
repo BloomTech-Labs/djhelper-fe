@@ -63,6 +63,10 @@ export const ADD_SONG_TO_PLAYLIST_START = 'ADD_SONG_TO_PLAYLIST_START';
 export const ADD_SONG_TO_PLAYLIST_SUCCESS = 'ADD_SONG_TO_PLAYLIST_SUCCESS';
 export const ADD_SONG_TO_PLAYLIST_ERROR = 'ADD_SONG_TO_PLAYLIST_ERROR';
 
+export const GET_EVENTS_START = 'GET_EVENTS_START';
+export const GET_EVENTS_SUCCESS = 'GET_EVENTS_SUCCESS';
+export const GET_EVENTS_ERROR = 'GET_EVENTS_ERROR';
+
 // action creators
 
 export const addSongToPlaylistDJ = (songInfo, add_to_event_id) => dispatch => {
@@ -356,5 +360,22 @@ export const getDJ = id => dispatch => {
     .catch(err => {
       console.log(err);
       dispatch({ type: GET_DJ_ERROR, payload: err });
+    });
+};
+
+// getting events
+
+export const getEvents = dj_id => dispatch => {
+  // GET https://api.dj-helper.com/api/events
+  dispatch({ type: GET_EVENTS_START });
+  axiosWithAuth()
+    .get('/events')
+    .then(response => {
+      console.log(response);
+      dispatch({ type: GET_EVENTS_SUCCESS });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: GET_EVENTS_ERROR });
     });
 };

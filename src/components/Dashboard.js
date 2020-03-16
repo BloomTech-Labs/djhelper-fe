@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Carousel from '@brainhubeu/react-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import DashboardWelcome from './DashboardWelcome';
@@ -8,12 +8,20 @@ import '@brainhubeu/react-carousel/lib/style.css';
 import PreviewEventDetails from './PreviewEventDetails';
 import NavigationBar from './NavigationBar';
 
+import { getEvents } from '../actions/action';
+
 const Dashboard = props => {
+  const dispatch = useDispatch();
   const name = useSelector(state => state.userReducer.name);
   const events = useSelector(state => state.userReducer.events);
+  const id = useSelector(state => state.userReducer.id);
   const [data, setData] = useState(events);
   const [upcomingIds, setUpcomingIds] = useState([]);
   const [pastIds, setPastIds] = useState([]);
+
+  useEffect(() => {
+    dispatch(getEvents(id));
+  }, []);
 
   useEffect(() => {
     // Creates an array with the 2 important properties: id and date
