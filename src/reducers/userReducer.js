@@ -34,6 +34,9 @@ import {
   DELETE_EVENT_START,
   DELETE_EVENT_SUCCESS,
   DELETE_EVENT_ERROR,
+  ADD_LOCATION_START,
+  ADD_LOCATION_SUCCESS,
+  ADD_LOCATION_ERROR,
   GET_DJ_START,
   GET_DJ_SUCCESS,
   GET_DJ_ERROR
@@ -49,6 +52,7 @@ const initialState = {
   bio: '',
   profile_img_src: '',
   events: { ...allEvents, active: '' },
+  locations: [],
   registerUserStart: false,
   registerUserError: false,
   loginUserStart: false,
@@ -67,6 +71,8 @@ const initialState = {
   editEventError: false,
   deleteEventStart: true,
   deleteEventError: false,
+  addLocationStart: false,
+  addLocationError: false,
   getDJError: false,
   getDJStart: false
 };
@@ -190,7 +196,7 @@ export const userReducer = (state = initialState, action) => {
         addEventStart: false,
         events: {
           ...state.events,
-          [`event${action.payload.event_id}`]: action.payload
+          [`event${action.payload.id}`]: action.payload
         }
       };
 
@@ -199,6 +205,23 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         addEventStart: false,
         addEventError: true
+      };
+
+    case ADD_LOCATION_START:
+      return { ...state, addLocationStart: true };
+
+    case ADD_LOCATION_SUCCESS:
+      return {
+        ...state,
+        addLocationStart: false,
+        locations: [...state.locations, action.payload]
+      };
+
+    case ADD_LOCATION_ERROR:
+      return {
+        ...state,
+        addLocationStart: false,
+        addLocationError: true
       };
 
     case EDIT_EVENT_START:
@@ -213,7 +236,7 @@ export const userReducer = (state = initialState, action) => {
         editEventStart: false,
         events: {
           ...state.events,
-          [`event${action.payload.event_id}`]: action.payload
+          [`event${action.payload.id}`]: action.payload
         }
       };
 

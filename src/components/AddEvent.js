@@ -26,7 +26,6 @@ const AddEvent = props => {
     zip: '',
     playlist_id: '',
     request_list_id: '',
-    location_id: '',
     location_name: '',
     phone: '',
     website: '',
@@ -60,7 +59,7 @@ const AddEvent = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(eventData);
+    // console.log(eventData);
     dispatch(addEvent(eventData, props.history));
   };
 

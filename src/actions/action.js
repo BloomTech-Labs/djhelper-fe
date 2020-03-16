@@ -51,10 +51,13 @@ export const DELETE_EVENT_START = 'DELETE_EVENT_START';
 export const DELETE_EVENT_SUCCESS = 'DELETE_EVENT_SUCCESS';
 export const DELETE_EVENT_ERROR = 'DELETE_EVENT_ERROR';
 
+export const ADD_LOCATION_START = 'ADD_LOCATION_START';
+export const ADD_LOCATION_SUCCESS = 'ADD_LOCATION_SUCCESS';
+export const ADD_LOCATION_ERROR = 'ADD_LOCATION_ERROR';
+
 export const GET_DJ_START = 'GET_DJ_START';
 export const GET_DJ_SUCCESS = 'GET_DJ_SUCCESS';
 export const GET_DJ_ERROR = 'GET_DJ_ERROR';
-
 
 export const ADD_SONG_TO_PLAYLIST_START = 'ADD_SONG_TO_PLAYLIST_START';
 export const ADD_SONG_TO_PLAYLIST_SUCCESS = 'ADD_SONG_TO_PLAYLIST_SUCCESS';
@@ -62,20 +65,18 @@ export const ADD_SONG_TO_PLAYLIST_ERROR = 'ADD_SONG_TO_PLAYLIST_ERROR';
 
 // action creators
 
-
-
 export const addSongToPlaylistDJ = (songInfo, add_to_event_id) => dispatch => {
-    dispatch({type: ADD_SONG_TO_PLAYLIST_START});
+  dispatch({ type: ADD_SONG_TO_PLAYLIST_START });
 
-    const songToAdd = {
-        songInfo: songInfo,
-        event_id: add_to_event_id
-    };
-    dispatch({
-      type: ADD_SONG_TO_PLAYLIST_SUCCESS,
-      payload: songToAdd
-    });
-}
+  const songToAdd = {
+    songInfo: songInfo,
+    event_id: add_to_event_id
+  };
+  dispatch({
+    type: ADD_SONG_TO_PLAYLIST_SUCCESS,
+    payload: songToAdd
+  });
+};
 export const setName = name => {
   return { type: SET_NAME, payload: name };
 };
@@ -239,21 +240,86 @@ export const searchForTrack = searchTerm => dispatch => {
 
 export const addEvent = (eventInfo, history) => dispatch => {
   dispatch({ type: ADD_EVENT_START });
-  // TODO: axiosWithAuth goes here -- probably a call to the 'add location' endpoint first, then to the 'add event' endpoint
-  // TODO: replace eventNum below with event_id that is returned from the back end.
-  const eventNum = Math.floor(Math.random() * 1000000);
-  const eventToSubmit = {
-    ...eventInfo,
-    event_id: eventNum,
-    playlist_id: eventNum,
-    request_list_id: eventNum
+
+  // First, add location to locations table. POST https://api.dj-helper.com/api/location/
+  // TODO: Change endpoint to auth/location/ if BE changes to that.
+  dispatch({ type: ADD_LOCATION_START });
+  const locationInfo = {
+    address_line_1: eventInfo.address_line_1,
+    address_line_2: eventInfo.address_line_2 || '',
+    city: eventInfo.city,
+    state: eventInfo.state,
+    zip: eventInfo.zip,
+    phone: eventInfo.phone,
+    website: eventInfo.website,
+    email: eventInfo.email,
+    img_url: eventInfo.img_url,
+    name: eventInfo.location_name
   };
-  dispatch({
-    type: ADD_EVENT_SUCCESS,
-    payload: eventToSubmit
-  });
-  history.push('/dj');
-  // TODO: handle error
+  axiosWithAuth()
+    .post('/location/', locationInfo)
+    .then(response => {
+      // console.log("Here's the response from POST location: ", response);
+
+      // TODO: Modify this once BE is changed to return location info.
+      // While it returns nothing, keep this GET locations and filter to get location info.
+      axiosWithAuth()
+        .get('/locations')
+        .then(response2 => {
+          // console.log("Here's the response from GET locations: ", response2);
+          const winnerLocation = response2.data.filter(
+            location => location.address_line_1 === eventInfo.address_line_1
+          )[0];
+          dispatch({ type: ADD_LOCATION_SUCCESS, payload: winnerLocation });
+          // console.log('Winner Location: ', winnerLocation);
+
+          // Next, POST to https://api.dj-helper.com/api/event/
+
+          const eventToSubmit = {
+            name: eventInfo.name,
+            event_type: eventInfo.event_type,
+            description: eventInfo.description,
+            location_id: winnerLocation.id,
+            date: eventInfo.date,
+            dj_id: eventInfo.dj_id
+          };
+          axiosWithAuth()
+            .post('/event/', eventToSubmit)
+            .then(response3 => {
+              // While POST event BE returns nothing, do additional call to GET events and filter to get the event back
+              // TODO: Modify this once BE is changed to return event info.
+
+              // GET https://api.dj-helper.com/api/events
+              axiosWithAuth()
+                .get('/events')
+                .then(response4 => {
+                  const winnerEvent = response4.data.filter(
+                    event => event.name === eventInfo.name
+                  )[0];
+                  dispatch({
+                    type: ADD_EVENT_SUCCESS,
+                    payload: { ...winnerEvent, event_id: winnerEvent.id }
+                  });
+                  history.push('/dj');
+                })
+                .catch(err4 => console.log(err4));
+            })
+            .catch(err3 => {
+              console.log(err3);
+              dispatch({
+                type: ADD_EVENT_ERROR,
+                payload: err3
+              });
+            });
+        })
+        .catch(err2 => {
+          console.log(err2);
+          dispatch({ type: ADD_LOCATION_ERROR, payload: err2 });
+        });
+    })
+    .catch(err1 => {
+      console.log(err1);
+    });
 };
 
 export const editEvent = eventInfo => dispatch => {
