@@ -16,6 +16,7 @@ const EventPage = props => {
   const [qrCode, setQrCode] = useState('');
   const [showQrCode, setShowQrCode] = useState(false);
 
+
   const {
     name,
     event_type,
@@ -24,6 +25,7 @@ const EventPage = props => {
     date
   } = props.location.state.event;
 
+  const eventPlaylist = useSelector(state => state.songReducer.eventPlaylists[`event${event_id}`].playlist);
     const [switches, setSwitches] = useState({
         buttonText: 'Add Songs',
         searchVisible: false,
@@ -97,24 +99,9 @@ const EventPage = props => {
         } else {
             return (
                 <div className={`playlist`}>
-                    <Songs />
-                    <Songs />
-                    <Songs />
-                    <Songs />
-                    <Songs />
-                    <Songs />
-                    <Songs />
-                    <Songs />
-                    <Songs />
-                    <Songs />
-                    <Songs />
-                    <Songs />
-                    <Songs />
-                    <Songs />
-                    <Songs />
-                    <Songs />
-                    <Songs />
-                    <Songs />
+                {eventPlaylist.map((element) => (
+                    <Songs items={element} playlist={true} />
+                ))}
                 </div>
             )
         }

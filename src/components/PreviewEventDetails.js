@@ -35,9 +35,11 @@ const PreviewEventDetails = props => {
       </div>
       <div className="newest-song-requests">
         <h3> Newest Requests</h3>
-        <Songs />
-        <Songs />
-        <Songs />
+        <div id='requests'>
+            <Songs />
+            <Songs />
+            <Songs />
+        </div>
       </div>
     </div>
   );

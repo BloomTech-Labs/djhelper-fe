@@ -4,8 +4,8 @@
     align-items: center;
     background: $dark3;
     color: white;
+    overflow: auto;
     min-height: 115vh;
-    padding-bottom: 5%;
     .fade {
        opacity: 1;
        transition: opacity .25s ease-in-out;
@@ -228,6 +228,7 @@
                 display: flex;
                 flex-flow: row nowrap;
                 align-items: center;
+                margin-right: 5%;
                 background-repeat: no-repeat;
                 border-radius: 0%;
                 width: 25px;
@@ -247,8 +248,8 @@
                 }
                 .song-element {
                     display: flex;
-                    margin-right: 3%;
-                    width: 20% !important;
+                    margin-right: 5%;
+                    width: 17% !important;
                 }
             }
         }

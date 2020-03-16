@@ -1,8 +1,14 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Truncate from 'react-truncate';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { addSongToPlaylistDJ } from '../actions/action';
+
 const Songs = (props) => {
+    const dispatch = useDispatch();
+    const url = window.location.pathname;
+    const event_id = url.substring(url.lastIndexOf('/') + 1);
 
     function getRandomIntInclusive(min, max) {
       min = Math.ceil(min);
@@ -23,30 +29,44 @@ const Songs = (props) => {
 
     const placeholderVsResults = () => {
         if (props.items) {
+            const {album, artists, name} = props.items;
+            console.log(props.items);
+            let songInfo = props.items;
              return (
                 <div className="songs">
-                  <button style={{backgroundImage: `url(${songIcon})`}} id='song-type' ></button>
+                  <button style={{backgroundImage: `url(${album.images[2].url})`}} id='song-type' ></button>
                   <div className='song-element'>
                     <Truncate lines={1}>
-                        <p>{props.items.name}</p>
+                        <p>{name}</p>
                     </Truncate>
                 </div>
 
                 <div className='song-element'>
                     <Truncate lines={1}>
-                        <p>{props.items.artists[0].name}</p>
+
+                        <p>{album.name}</p>
                     </Truncate>
                 </div>
                 <div className='song-element'>
                     <Truncate lines={1}>
-                        <p>{props.items.artists[0].name}</p>
+                        <p>{artists[0].name}</p>
                     </Truncate>
                 </div>
 
 
-                <div>
-                  <button id='add'><FontAwesomeIcon icon="plus" size="1x" /></button>
+                { props.playlist ? (
+                  <div className='song-element'>
+                      <button id='vote'><FontAwesomeIcon icon="caret-up" size="2x" /></button>
+                        <p>003</p>
                   </div>
+                ) : (
+                    <div>
+                      <button id='add' onClick={() => {
+                        dispatch(addSongToPlaylistDJ(songInfo, event_id))
+
+                      }}><FontAwesomeIcon icon="plus" size="1x" /></button>
+                    </div>
+                )}
 
                   <br />
                 </div>
@@ -60,6 +80,12 @@ const Songs = (props) => {
                             <p> Song name title</p>
                         </Truncate>
                     </div>
+                    <div className='song-element'>
+                        <Truncate lines={1}>
+                            <p> Album title </p>
+                        </Truncate>
+                    </div>
+
                   <div className='song-element'>
                       <p> Artist Name</p>
                   </div>
@@ -74,9 +100,9 @@ const Songs = (props) => {
     }
 
   return (
-      <div>
+      <>
           {placeholderVsResults()}
-        </div>
+        </>
   );
 };
 

@@ -38,6 +38,7 @@ export const UPDATE_USER_ERROR = 'UPDATE_USER_ERROR';
 export const SEARCH_FOR_TRACK_START = 'SEARCH_FOR_TRACK_START';
 export const SEARCH_FOR_TRACK_SUCCESS = 'SEARCH_FOR_TRACK_SUCCESS';
 export const SEARCH_FOR_TRACK_ERROR = 'SEARCH_FOR_TRACK_ERROR';
+
 export const ADD_EVENT_START = 'ADD_EVENT_START';
 export const ADD_EVENT_SUCCESS = 'ADD_EVENT_SUCCESS';
 export const ADD_EVENT_ERROR = 'ADD_EVENT_ERROR';
@@ -46,8 +47,27 @@ export const GET_DJ_START = 'GET_DJ_START';
 export const GET_DJ_SUCCESS = 'GET_DJ_SUCCESS';
 export const GET_DJ_ERROR = 'GET_DJ_ERROR';
 
+
+export const ADD_SONG_TO_PLAYLIST_START = 'ADD_SONG_TO_PLAYLIST_START';
+export const ADD_SONG_TO_PLAYLIST_SUCCESS = 'ADD_SONG_TO_PLAYLIST_SUCCESS';
+export const ADD_SONG_TO_PLAYLIST_ERROR = 'ADD_SONG_TO_PLAYLIST_ERROR';
+
 // action creators
 
+
+
+export const addSongToPlaylistDJ = (songInfo, add_to_event_id) => dispatch => {
+    dispatch({type: ADD_SONG_TO_PLAYLIST_START});
+
+    const songToAdd = {
+        songInfo: songInfo,
+        event_id: add_to_event_id
+    };
+    dispatch({
+      type: ADD_SONG_TO_PLAYLIST_SUCCESS,
+      payload: songToAdd
+    });
+}
 export const setName = name => {
   return { type: SET_NAME, payload: name };
 };
