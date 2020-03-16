@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Songs from './Songs';
 import { useSelector, useDispatch } from 'react-redux';
 import { getDJ } from '../actions/action';
 
@@ -14,6 +15,8 @@ const EventGuestView = props => {
   const [formattedEndTime, setFormattedEndTime] = useState(null);
 
   const { dj_id, event_id } = props.match.params;
+
+  const eventPlaylist = useSelector(state => state.songReducer.eventPlaylists[`event${event_id}`].playlist);
 
   const name = useSelector(state => state.userReducer.name);
   const email = useSelector(state => state.userReducer.email);
@@ -176,6 +179,12 @@ const EventGuestView = props => {
       </div>
       <div className="section right-side" id="playlist">
         <h2>Playlist</h2>
+            <div className={`playlist`}>
+            {eventPlaylist.map((element) => (
+                <Songs items={element} playlist={true} />
+            ))}
+            </div>
+
       </div>
     </div>
   );

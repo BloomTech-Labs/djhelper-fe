@@ -7,6 +7,53 @@
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: stretch;
+        .playlist {
+            display: flex;
+            flex-flow: column nowrap;
+            height: 100vh;
+            font-size: 0.75rem;
+            overflow-y: scroll;
+           /* Phone styling */
+            @include for-phone-only {
+                height: 35vh;
+                width: 90vw;
+
+             }
+            #vote {
+                color: green;
+                background: transparent;
+                box-shadow: none;
+                border: none;
+            }
+            #song-type {
+                display: flex;
+                flex-flow: row nowrap;
+                align-items: center;
+                margin-right: 5%;
+                background-repeat: no-repeat;
+                border-radius: 0%;
+                width: 35px;
+                height: 35px;
+                background-size: cover;
+                box-shadow: none;
+                border: none !important;
+            }
+             .songs {
+                display: flex;
+                width: 100%;
+                margin-top: 5%;
+                flex-flow: row nowrap;
+                justify-content: space-between;
+                align-items: flex-start;
+               button {
+                }
+                .song-element {
+                    display: flex;
+                    width: 17% !important;
+                }
+            }
+        }
+
   a {
     color: $mediumPurple;
   }

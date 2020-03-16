@@ -59,8 +59,7 @@ const EventPage = props => {
         } else {
             setSwitches({...switches, playlistView: 'show'})
         }
-    }
-  };
+    };
   useEffect(() => {
     setAppSize();
   }, []);
@@ -119,7 +118,7 @@ const EventPage = props => {
                 </div>
             )
         }
-  };
+    };
   const handleQRDisplay = () => {
     if (!qrCode) {
       const eventPage = `${FRONTEND_HOST}dj/${dj_id}/event/${event_id}`;
