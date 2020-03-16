@@ -299,6 +299,27 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         getDJError: true
       };
+
+    case GET_EVENTS_START:
+      return {
+        ...state,
+        getEventsStart: true
+      };
+
+    case GET_EVENTS_SUCCESS:
+      return {
+        ...state,
+        getEventsStart: false,
+        events: { ...state.events, ...action.payload }
+      };
+
+    case GET_EVENTS_ERROR:
+      return {
+        ...state,
+        getEventsError: true,
+        getEventsStart: false
+      };
+
     default:
       return state;
   }

@@ -375,7 +375,7 @@ export const getEvents = dj_id => dispatch => {
       // TODO: format the response to match what is needed for events in store, and pass it as payload
       // TODO: Modify what is returned for playlist_id and request_list_id once functionality is built for that
 
-      const formattedObjects = response.data.map(event => {
+      const events = response.data.map(event => {
         return {
           [`event${event.id}`]: {
             event_id: event.id,
@@ -392,26 +392,7 @@ export const getEvents = dj_id => dispatch => {
           }
         };
       });
-      //console.log('Formatted objects: ', formattedObjects);
-      // convert formattedObjects array into an object
-      const events = {};
-      response.data.forEach(event => {
-        events[`event${event.id}`] = {
-          event_id: event.id,
-          name: event.name,
-          event_type: event.event_type,
-          description: event.description,
-          date: event.date,
-          start_time: event.start_time,
-          end_time: event.end_time,
-          location_id: event.location_id,
-          request_list_id: event.id,
-          playlist_id: event.id,
-          img_url: event.img_url
-        };
-      });
-      console.log("Here's the formatted object: ", events);
-      dispatch({ type: GET_EVENTS_SUCCESS });
+      dispatch({ type: GET_EVENTS_SUCCESS, payload: events });
     })
     .catch(err => {
       console.log(err);
