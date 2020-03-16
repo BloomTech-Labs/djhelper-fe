@@ -6,6 +6,29 @@
     color: white;
     overflow: auto;
     min-height: 115vh;
+    .speech-bubble {
+        position: relative;
+        background: #00aabb;
+        border-radius: .4em;
+        width: 10%;
+        right: 2%;
+    }
+
+    .speech-bubble:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-left-color: #00aabb;
+        border-right: 0;
+        border-bottom: 0;
+        margin-top: -10px;
+        margin-right: -20px;
+    }
+
     .fade {
        opacity: 1;
        transition: opacity .25s ease-in-out;
@@ -229,6 +252,7 @@
                 flex-flow: row nowrap;
                 align-items: center;
                 margin-right: 5%;
+                margin-left: 1%;
                 background-repeat: no-repeat;
                 border-radius: 0%;
                 width: 25px;
@@ -236,6 +260,12 @@
                 background-size: cover;
                 box-shadow: none;
                 border: none !important;
+                .play-icon {
+                    color: rgba(255,255,255,0.5);
+                    &:hover {
+                        color: rgba(255,255,255,0.75);
+                    }
+                }
             }
              .songs {
                 display: flex;
@@ -244,8 +274,6 @@
                 flex-flow: row nowrap;
                 justify-content: space-between;
                 align-items: flex-start;
-               button {
-                }
                 .song-element {
                     display: flex;
                     margin-right: 5%;

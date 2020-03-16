@@ -55,10 +55,18 @@ export const GET_DJ_START = 'GET_DJ_START';
 export const GET_DJ_SUCCESS = 'GET_DJ_SUCCESS';
 export const GET_DJ_ERROR = 'GET_DJ_ERROR';
 
+export const GET_TRACK_PREVIEW_START = 'GET_TRACK_PREVIEW_START';
+export const GET_TRACK_PREVIEW_SUCCESS = 'GET_TRACK_PREVIEW_SUCCESS';
+export const GET_TRACK_PREVIEW_ERROR = 'GET_TRACK_PREVIEW_ERROR';
+
 
 export const ADD_SONG_TO_PLAYLIST_START = 'ADD_SONG_TO_PLAYLIST_START';
 export const ADD_SONG_TO_PLAYLIST_SUCCESS = 'ADD_SONG_TO_PLAYLIST_SUCCESS';
 export const ADD_SONG_TO_PLAYLIST_ERROR = 'ADD_SONG_TO_PLAYLIST_ERROR';
+
+export const ADD_TO_SONG_REDUCER_START = 'ADD_TO_SONG_REDUCER_START';
+export const ADD_TO_SONG_REDUCER_SUCCESS = 'ADD_TO_SONG_REDUCER_SUCCESS';
+export const ADD_TO_SONG_REDUCER_ERROR = 'ADD_TO_SONG_REDUCER_ERROR';
 
 // action creators
 
@@ -221,7 +229,7 @@ export const searchForTrack = searchTerm => dispatch => {
   dispatch({ type: SEARCH_FOR_TRACK_START });
 
   axiosWithAuthSpotifySearch()
-    .get(`?q=<${searchTerm}>&type=track`)
+    .get(`/search?q=<${searchTerm}>&type=track&market=US`)
     .then(response => {
       console.log(response);
       dispatch({
@@ -235,10 +243,32 @@ export const searchForTrack = searchTerm => dispatch => {
     });
 };
 
+
+export const getTrackPreview = trackId => dispatch => {
+    dispatch({ type: GET_TRACK_PREVIEW_START});
+
+    axiosWithAuthSpotifySearch()
+    .get(`/tracks/${trackId}`)
+    .then(response => {
+        console.log(response.data);
+        dispatch({
+            type: GET_TRACK_PREVIEW_SUCCESS,
+            payload: response.data
+        })
+    })
+    .catch(err => {
+        console.log(err);
+        dispatch({ type: GET_TRACK_PREVIEW_ERROR, payload: err});
+    })
+
+
+}
+
 // events
 
 export const addEvent = (eventInfo, history) => dispatch => {
   dispatch({ type: ADD_EVENT_START });
+  dispatch({type: ADD_TO_SONG_REDUCER_START});
   // TODO: axiosWithAuth goes here -- probably a call to the 'add location' endpoint first, then to the 'add event' endpoint
   // TODO: replace eventNum below with event_id that is returned from the back end.
   const eventNum = Math.floor(Math.random() * 1000000);
@@ -252,6 +282,7 @@ export const addEvent = (eventInfo, history) => dispatch => {
     type: ADD_EVENT_SUCCESS,
     payload: eventToSubmit
   });
+  dispatch({type: ADD_TO_SONG_REDUCER_SUCCESS, payload: eventNum});
   history.push('/dj');
   // TODO: handle error
 };

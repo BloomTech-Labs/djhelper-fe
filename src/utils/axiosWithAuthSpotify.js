@@ -17,7 +17,7 @@ export const axiosWithAuthSpotify = () => {
 
 export const axiosWithAuthSpotifySearch = () => {
   return axios.create({
-    baseURL: `https://api.spotify.com/v1/search`,
+    baseURL: `https://api.spotify.com/v1/`,
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('spotifyAccessToken')
     }

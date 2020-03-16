@@ -1,15 +1,20 @@
-import React from 'react';
+import React, {useState, useEffect}from 'react';
+import {axiosWithAuthSpotifySearch} from '../utils/axiosWithAuthSpotify';
 import { useDispatch, useSelector } from 'react-redux';
 import Truncate from 'react-truncate';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { addSongToPlaylistDJ } from '../actions/action';
+import { addSongToPlaylistDJ, getTrackPreview } from '../actions/action';
 
 const Songs = (props) => {
     const dispatch = useDispatch();
     const url = window.location.pathname;
     const event_id = url.substring(url.lastIndexOf('/') + 1);
 
+    Audio.prototype.stop = function() {
+        this.pause();
+        this.currentTime = 0;
+    };
     function getRandomIntInclusive(min, max) {
       min = Math.ceil(min);
       max = Math.floor(max);
@@ -22,19 +27,74 @@ const Songs = (props) => {
         image4: require("../images/Pink.svg"),
         image5: require("../images/Yellow.svg"),
     }
+    const [songState, setSongState] = useState({
+        readyToPlay: true,
+        audioObject: '',
+        noPreview: false,
+    })
+
 
     let randomNum = getRandomIntInclusive(1,5)
     let key = 'image' + randomNum;
     let songIcon = imageList[key];
 
+    const getPreviewLink = (id) => {
+        let preview_link;
+        axiosWithAuthSpotifySearch()
+        .get(`/tracks/${id}?market=US`)
+        .then(response => {
+                return response.data;
+            })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
+    const playPreviewLink = (id) => {
+        let preview_link = getPreviewLink(id);
+        console.log(preview_link);
+        if (preview_link === null) {
+            setSongState({...songState, noPreview: true})
+        } else {
+            let audio = new Audio(preview_link);
+            audio.stop();
+            setSongState({...songState, readyToPlay: !songState.readyToPlay, audioObject: audio})
+            return audio.play();
+        }
+    }
+
+    const stopPreview = () => {
+            songState.audioObject.stop()
+            setSongState({...songState, readyToPlay: !songState.readyToPlay, audioObject: ''})
+    }
+
+    const whichIcon = (id) => {
+        if (songState.readyToPlay && !songState.noPreview) {
+            return (
+                <FontAwesomeIcon onClick={() => {
+                  playPreviewLink(id)
+                  }}icon='play' className='play-icon' size="1x"/>
+            )
+        } else if (!songState.readyToPlay) {
+            return (
+                <FontAwesomeIcon onClick={() => {
+                    stopPreview()
+                  }}icon='pause' className='play-icon' size="1x"/>
+            )
+        } else {
+            console.log('no preview available');
+        }
+    }
+
     const placeholderVsResults = () => {
         if (props.items) {
-            const {album, artists, name} = props.items;
-            console.log(props.items);
+            const {album, artists, name, id} = props.items;
             let songInfo = props.items;
              return (
                 <div className="songs">
-                  <button style={{backgroundImage: `url(${album.images[2].url})`}} id='song-type' ></button>
+                  <button style={{backgroundImage: `url(${album.images[2].url})`}} id='song-type' >
+                  {whichIcon(id)}
+                  </button>
                   <div className='song-element'>
                     <Truncate lines={1}>
                         <p>{name}</p>
@@ -56,7 +116,7 @@ const Songs = (props) => {
 
                 { props.playlist ? (
                   <div className='song-element'>
-                      <button id='vote'><FontAwesomeIcon icon="caret-up" size="2x" /></button>
+                      <button id='vote' ><FontAwesomeIcon icon="caret-up" size="2x" /></button>
                         <p>003</p>
                   </div>
                 ) : (
