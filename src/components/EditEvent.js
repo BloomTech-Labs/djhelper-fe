@@ -16,7 +16,16 @@ const EditEvent = props => {
   const handleSubmit = e => {
     e.preventDefault();
     props.setIsEditing(!props.isEditing);
-    dispatch(editEvent(currentEvent));
+    const eventToSend = {
+      name: currentEvent.name,
+      event_type: currentEvent.event_type,
+      description: currentEvent.description,
+      date: currentEvent.date,
+      start_time: currentEvent.start_time,
+      end_time: currentEvent.end_time
+    };
+    console.log('currentEvent ready to send: ', eventToSend);
+    dispatch(editEvent(eventToSend, props.event_id));
   };
 
   const handleChanges = e => {

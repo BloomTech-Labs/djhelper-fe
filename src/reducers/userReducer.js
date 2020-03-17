@@ -241,9 +241,10 @@ export const userReducer = (state = initialState, action) => {
         editEventStart: false,
         events: {
           ...state.events,
-          [`event${action.payload.id}`]: action.payload
+          [`event${action.payload[1]}`]: action.payload[0]
         }
       };
+    // [`event${action.payload.id}`]: action.payload
 
     case EDIT_EVENT_ERROR:
       return {

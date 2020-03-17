@@ -341,11 +341,45 @@ export const addEvent = (eventInfo, history) => dispatch => {
     });
 };
 
-export const editEvent = eventInfo => dispatch => {
+export const editEvent = (eventInfo, event_id) => dispatch => {
   dispatch({ type: EDIT_EVENT_START });
-  // TODO: Add PUT to edit event endpoint here
-  dispatch({ type: EDIT_EVENT_SUCCESS, payload: eventInfo });
-  // TODO: Add handle error
+  // PUT https://api.dj-helper.com/api/event/:event_id
+  // TODO: Change endpoint to auth/event etc if BE changes it
+  axiosWithAuth()
+    .put(`/event/${event_id}`, eventInfo)
+    .then(response => {
+      console.log(response);
+      // Next, GET https://api.dj-helper.com/api/event/:event_id
+      // TODO: this endpoint call can probably be taken out in the future, once POST returns the event.
+      axiosWithAuth()
+        .get(`/event/${event_id}`)
+        .then(response2 => {
+          const formattedResponse = {
+            event_id: response2.data[0].id,
+            dj_id: response2.data[0].dj_id,
+            name: response2.data[0].name,
+            date: response2.data[0].date,
+            start_time: response2.data[0].start_time,
+            end_time: response2.data[0].end_time,
+            event_type: response2.data[0].event_type,
+            location_id: response2.data[0].location_id,
+            img_url: response2.data[0].img_urls,
+            description: response2.data[0].description
+          };
+          dispatch({
+            type: EDIT_EVENT_SUCCESS,
+            payload: [formattedResponse, event_id]
+          });
+        })
+        .catch(err2 => {
+          console.log(err2);
+          dispatch({ type: EDIT_EVENT_ERROR, payload: err2 });
+        });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: EDIT_EVENT_ERROR, payload: err });
+    });
 };
 
 export const deleteEvent = (event, history) => dispatch => {
@@ -355,7 +389,6 @@ export const deleteEvent = (event, history) => dispatch => {
   axiosWithAuth()
     .delete(`/event/${event.event_id}`)
     .then(response => {
-      console.log(response);
       dispatch({ type: DELETE_EVENT_SUCCESS, payload: event });
       history.push('/dj');
     })
@@ -410,7 +443,8 @@ export const getEvents = dj_id => dispatch => {
           location_id: event.location_id,
           request_list_id: event.id,
           playlist_id: event.id,
-          img_url: event.img_url
+          img_url: event.img_url,
+          dj_id: event.dj_id
         };
         dispatch({
           type: ADD_TO_SONG_REDUCER_SUCCESS,
