@@ -67,6 +67,10 @@ export const ADD_TO_SONG_REDUCER_START = 'ADD_TO_SONG_REDUCER_START';
 export const ADD_TO_SONG_REDUCER_SUCCESS = 'ADD_TO_SONG_REDUCER_SUCCESS';
 export const ADD_TO_SONG_REDUCER_ERROR = 'ADD_TO_SONG_REDUCER_ERROR';
 
+export const GET_EVENTS_START = 'GET_EVENTS_START';
+export const GET_EVENTS_SUCCESS = 'GET_EVENTS_SUCCESS';
+export const GET_EVENTS_ERROR = 'GET_EVENTS_ERROR';
+
 // action creators
 
 export const addSongToPlaylistDJ = (songInfo, add_to_event_id) => dispatch => {
@@ -371,5 +375,67 @@ export const getDJ = id => dispatch => {
     .catch(err => {
       console.log(err);
       dispatch({ type: GET_DJ_ERROR, payload: err });
+    });
+};
+
+// getting events
+
+export const getEvents = dj_id => dispatch => {
+  // GET https://api.dj-helper.com/api/events
+  dispatch({ type: GET_EVENTS_START });
+  axiosWithAuth()
+    .get('/events')
+    .then(response => {
+      // console.log(response);
+      // TODO: format the response to match what is needed for events in store, and pass it as payload
+      // TODO: Modify what is returned for playlist_id and request_list_id once functionality is built for that
+
+      // Filter events to return only the events of the logged in DJ:
+      /*
+      const filteredEvents = response.data.filter(
+        event => event.dj_id === dj_id
+      );
+      */
+      const events = response.data.map(event => {
+        return {
+          [`event${event.id}`]: {
+            event_id: event.id,
+            name: event.name,
+            event_type: event.event_type,
+            description: event.description,
+            date: event.date,
+            start_time: event.start_time,
+            end_time: event.end_time,
+            location_id: event.location_id,
+            request_list_id: event.id,
+            playlist_id: event.id,
+            img_url: event.img_url
+          }
+        };
+      });
+      const eventsObject = {};
+      response.data.forEach(event => {
+        eventsObject[`event${event.id}`] = {
+          event_id: event.id,
+          name: event.name,
+          event_type: event.event_type,
+          description: event.description,
+          date: event.date,
+          start_time: event.start_time,
+          end_time: event.end_time,
+          location_id: event.location_id,
+          request_list_id: event.id,
+          playlist_id: event.id,
+          img_url: event.img_url
+        };
+      });
+      // eventsObject.active = '';
+      console.log('eventsObject: ', eventsObject);
+      console.log('eventsObject spread: ', { ...eventsObject });
+      dispatch({ type: GET_EVENTS_SUCCESS, payload: eventsObject });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: GET_EVENTS_ERROR });
     });
 };
