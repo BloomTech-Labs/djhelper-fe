@@ -86,6 +86,10 @@ export const GET_LOCATION_START = 'GET_LOCATION_START';
 export const GET_LOCATION_SUCCESS = 'GET_LOCATION_SUCCESS';
 export const GET_LOCATION_ERROR = 'GET_LOCATION_ERROR';
 
+export const EDIT_LOCATION_START = 'EDIT_LOCATION_START';
+export const EDIT_LOCATION_SUCCESS = 'EDIT_LOCATION_SUCCESS';
+export const EDIT_LOCATION_ERROR = 'EDIT_LOCATION_ERROR';
+
 // action creators
 
 export const addSongToPlaylistDJ = (songInfo, add_to_event_id) => dispatch => {
@@ -511,5 +515,32 @@ export const getLocation = location_id => dispatch => {
     .catch(err => {
       console.log(err);
       dispatch({ type: GET_LOCATION_ERROR, payload: err });
+    });
+};
+
+export const editLocation = (location_id, locationInfo) => dispatch => {
+  dispatch({ type: EDIT_LOCATION_START });
+  // PUT https://api.dj-helper.com/api/location/:id
+  // TODO: change route to auth/location etc if needed for BE
+  axiosWithAuth()
+    .put(`/location/${location_id}`, locationInfo)
+    .then(response => {
+      console.log(response);
+      // GET location by id and send to redux store https://api.dj-helper.com/api/location/:location_id
+      // TODO: Change this if BE is changed to return the edited location info back.
+      axiosWithAuth()
+        .get(`/location/${location_id}`)
+        .then(response2 => {
+          console.log(response2.data[0]);
+          dispatch({ type: EDIT_LOCATION_SUCCESS, payload: response2.data[0] });
+        })
+        .catch(err2 => {
+          console.log(err2);
+          dispatch({ type: EDIT_LOCATION_ERROR, payload: err2 });
+        });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: EDIT_LOCATION_ERROR, payload: err });
     });
 };

@@ -45,7 +45,10 @@ import {
   GET_EVENTS_ERROR,
   GET_LOCATION_START,
   GET_LOCATION_SUCCESS,
-  GET_LOCATION_ERROR
+  GET_LOCATION_ERROR,
+  EDIT_LOCATION_START,
+  EDIT_LOCATION_SUCCESS,
+  EDIT_LOCATION_ERROR
 } from '../actions/action';
 
 const initialState = {
@@ -84,7 +87,9 @@ const initialState = {
   getEventsStart: false,
   getEventsError: false,
   getLocationStart: false,
-  getLocationError: false
+  getLocationError: false,
+  editLocationStart: false,
+  editLocationError: false
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -344,6 +349,25 @@ export const userReducer = (state = initialState, action) => {
       };
 
     case GET_LOCATION_ERROR:
+      return {
+        ...state,
+        getLocationError: true
+      };
+
+    case EDIT_LOCATION_START:
+      return {
+        ...state,
+        getLocationStart: true
+      };
+
+    case EDIT_LOCATION_SUCCESS:
+      return {
+        ...state,
+        locations: [...state.locations, action.payload],
+        getLocationStart: false
+      };
+
+    case EDIT_LOCATION_ERROR:
       return {
         ...state,
         getLocationError: true

@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
-import { editEvent, deleteEvent, getLocation } from '../actions/action';
+import {
+  editEvent,
+  deleteEvent,
+  getLocation,
+  editLocation
+} from '../actions/action';
 
 const EditEvent = props => {
   // TODO: Get event data from back end, once it is available (instead of redux store)
@@ -63,7 +68,9 @@ const EditEvent = props => {
   };
   const handleLocationEdit = e => {
     e.preventDefault();
-    console.log(currentLocation);
+    console.log('currentLocation to submit: ', currentLocation);
+    dispatch(editLocation(currentEvent.location_id, currentLocation));
+    toggleLocationDisplay();
   };
 
   return (
