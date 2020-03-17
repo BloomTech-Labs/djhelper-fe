@@ -244,17 +244,12 @@ export const searchForTrack = searchTerm => dispatch => {
     });
 };
 
-
 // events
 
 export const addEvent = (eventInfo, history) => dispatch => {
   dispatch({ type: ADD_EVENT_START });
 
-  dispatch({type: ADD_TO_SONG_REDUCER_START});
-  // TODO: axiosWithAuth goes here -- probably a call to the 'add location' endpoint first, then to the 'add event' endpoint
-  // TODO: replace eventNum below with event_id that is returned from the back end.
-
-  // TODO: handle error
+  dispatch({ type: ADD_TO_SONG_REDUCER_START });
 
   // First, add location to locations table. POST https://api.dj-helper.com/api/location/
   // TODO: Change endpoint to auth/location/ if BE changes to that.
@@ -274,8 +269,6 @@ export const addEvent = (eventInfo, history) => dispatch => {
   axiosWithAuth()
     .post('/location/', locationInfo)
     .then(response => {
-      // console.log("Here's the response from POST location: ", response);
-
       // TODO: Modify this once BE is changed to return location info.
       // While it returns nothing, keep this GET locations and filter to get location info.
       axiosWithAuth()
@@ -289,6 +282,7 @@ export const addEvent = (eventInfo, history) => dispatch => {
           // console.log('Winner Location: ', winnerLocation);
 
           // Next, POST to https://api.dj-helper.com/api/event/
+          // TODO: Change endpoint to auth/event/ if BE changes to that.
 
           const eventToSubmit = {
             name: eventInfo.name,
@@ -323,7 +317,7 @@ export const addEvent = (eventInfo, history) => dispatch => {
                   });
                   dispatch({
                     type: ADD_TO_SONG_REDUCER_SUCCESS,
-                     payload: winnerEvent.id
+                    payload: winnerEvent.id
                   });
                   history.push('/dj');
                 })
@@ -386,33 +380,14 @@ export const getEvents = dj_id => dispatch => {
   axiosWithAuth()
     .get('/events')
     .then(response => {
-      // console.log(response);
-      // TODO: format the response to match what is needed for events in store, and pass it as payload
       // TODO: Modify what is returned for playlist_id and request_list_id once functionality is built for that
 
-      // Filter events to return only the events of the logged in DJ:
+      // Uncomment below to filter events to return only the events of the logged-in DJ:
       /*
       const filteredEvents = response.data.filter(
         event => event.dj_id === dj_id
       );
       */
-      const events = response.data.map(event => {
-        return {
-          [`event${event.id}`]: {
-            event_id: event.id,
-            name: event.name,
-            event_type: event.event_type,
-            description: event.description,
-            date: event.date,
-            start_time: event.start_time,
-            end_time: event.end_time,
-            location_id: event.location_id,
-            request_list_id: event.id,
-            playlist_id: event.id,
-            img_url: event.img_url
-          }
-        };
-      });
       const eventsObject = {};
       response.data.forEach(event => {
         eventsObject[`event${event.id}`] = {
@@ -430,12 +405,9 @@ export const getEvents = dj_id => dispatch => {
         };
         dispatch({
           type: ADD_TO_SONG_REDUCER_SUCCESS,
-           payload: event.id
+          payload: event.id
         });
       });
-      // eventsObject.active = '';
-      console.log('eventsObject: ', eventsObject);
-      console.log('eventsObject spread: ', { ...eventsObject });
       dispatch({ type: GET_EVENTS_SUCCESS, payload: eventsObject });
     })
     .catch(err => {

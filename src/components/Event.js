@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 const Event = props => {
-  //const [event, setEvent] = useState();
-  console.log('Event props: ', props);
   let eventClass;
   if (props.data.active === `event${props.num}`) {
     eventClass = 'selected';
