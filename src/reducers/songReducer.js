@@ -12,6 +12,10 @@ import {
     ADD_TO_SONG_REDUCER_SUCCESS,
     ADD_TO_SONG_REDUCER_ERROR,
 
+    REMOVE_SONG_FROM_PLAYLIST_START,
+    REMOVE_SONG_FROM_PLAYLIST_SUCCESS,
+    REMOVE_SONG_FROM_PLAYLIST_ERROR,
+
     ADD_VOTE_START,
     ADD_VOTE_SUCCESS,
     ADD_VOTE_ERROR,
@@ -54,11 +58,19 @@ const initialState = {
     getPreviewError: false,
     addSongStarted: false,
     addSongError: false,
+    editModeOn: false,
+    removeSongStarted: false,
+    removeSongError: false,
     addVoteStarted: false,
     addVoteError: false,
     currentPreview: '',
 
 }
+
+let id;
+let song;
+let songArr;
+let newSongArr;
 
 export const songReducer = (state = initialState, action) => {
     switch(action.type) {
@@ -82,10 +94,10 @@ export const songReducer = (state = initialState, action) => {
                 return {...state, addSongStarted: true};
 
         case ADD_SONG_TO_PLAYLIST_SUCCESS:
-            let id = action.payload.event_id;
-            let song = action.payload.songInfo;
-            let songArr = state.eventPlaylists[`event${id}`].playlist;
-            let newSongArr = songArr.concat(song);
+            id = action.payload.event_id;
+            song = action.payload.songInfo;
+            songArr = state.eventPlaylists[`event${id}`].playlist;
+            newSongArr = songArr.concat(song);
 
             if (songArr.length > 0) {
                 for (var i = 0; i < songArr.length; i++ ) {
@@ -103,6 +115,28 @@ export const songReducer = (state = initialState, action) => {
                             playlist: newSongArr
                     }
             }}
+
+        case REMOVE_SONG_FROM_PLAYLIST_START:
+                return {...state, removeSongStarted: true};
+
+
+        case REMOVE_SONG_FROM_PLAYLIST_SUCCESS:
+            id = action.payload.event_id;
+            song = action.payload.songId;
+            songArr = state.eventPlaylists[`event${id}`].playlist;
+            newSongArr = songArr.filter(element => {
+                return element.id !== song
+            })
+
+            return {...state, addSongStarted: false, eventPlaylists:
+                {...state.eventPlaylists,
+                    [`event${id}`]: {
+                        ...state.eventPlaylists[`event${id}`],
+                            playlist: newSongArr
+                    }
+            }}
+
+
         case ADD_VOTE_START:
             return {...state, addVoteStarted: true};
 

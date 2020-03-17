@@ -63,6 +63,10 @@ export const ADD_SONG_TO_PLAYLIST_START = 'ADD_SONG_TO_PLAYLIST_START';
 export const ADD_SONG_TO_PLAYLIST_SUCCESS = 'ADD_SONG_TO_PLAYLIST_SUCCESS';
 export const ADD_SONG_TO_PLAYLIST_ERROR = 'ADD_SONG_TO_PLAYLIST_ERROR';
 
+export const REMOVE_SONG_FROM_PLAYLIST_START = 'REMOVE_SONG_FROM_PLAYLIST_START';
+export const REMOVE_SONG_FROM_PLAYLIST_SUCCESS = 'REMOVE_SONG_FROM_PLAYLIST_SUCCESS';
+export const REMOVE_SONG_FROM_PLAYLIST_ERROR = 'REMOVE_SONG_FROM_PLAYLIST_ERROR';
+
 export const ADD_TO_SONG_REDUCER_START = 'ADD_TO_SONG_REDUCER_START';
 export const ADD_TO_SONG_REDUCER_SUCCESS = 'ADD_TO_SONG_REDUCER_SUCCESS';
 export const ADD_TO_SONG_REDUCER_ERROR = 'ADD_TO_SONG_REDUCER_ERROR';
@@ -89,6 +93,20 @@ export const addSongToPlaylistDJ = (songInfo, add_to_event_id) => dispatch => {
     payload: songToAdd
   });
 };
+
+export const removeSongFromPlaylistDJ = (songId, event_id) => dispatch => {
+  dispatch({ type: REMOVE_SONG_FROM_PLAYLIST_START });
+
+  const info = {
+    songId: songId,
+    event_id: event_id
+  };
+  dispatch({
+    type: REMOVE_SONG_FROM_PLAYLIST_SUCCESS,
+    payload: info
+  });
+};
+
 export const setName = name => {
   return { type: SET_NAME, payload: name };
 };

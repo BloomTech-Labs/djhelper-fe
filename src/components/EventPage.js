@@ -37,7 +37,9 @@ const EventPage = props => {
     playlistButtonStyle: 'show',
     addSongsButtonStyle: 'hide',
     playlistView: 'show',
-    requestView: 'show'
+    requestView: 'show',
+    editModeOn: false,
+    editButtonText: 'Edit Playlist'
   });
   const {
     requestButtonStyle,
@@ -45,7 +47,9 @@ const EventPage = props => {
     addSongsButtonStyle,
     playlistView,
     requestView,
-    playlistClass
+    playlistClass,
+    editModeOn,
+    editButtonText,
   } = switches;
 
   const setAppSize = () => {
@@ -74,6 +78,21 @@ const EventPage = props => {
       searchVisible: !switches.searchVisible
     });
   };
+  const handleEditClick = () => {
+    let text;
+    if (switches.editButtonText === 'Edit Playlist') {
+      text = 'Exit Edit Mode';
+    } else {
+      text = 'Edit Playlist';
+    }
+    setSwitches({
+      ...switches,
+      editButtonText: text,
+      editModeOn: !switches.editModeOn
+    });
+  };
+
+
 
   const switchToRequests = () => {
     setSwitches({
@@ -108,7 +127,7 @@ const EventPage = props => {
     return (
       <div className="playlist">
         {eventPlaylist.map(element => (
-          <Songs items={element} playlist />
+          <Songs items={element} playlist editModeOn={editModeOn} />
         ))}
       </div>
     );
@@ -230,7 +249,8 @@ const EventPage = props => {
         <div className={`event-playlist-location ${playlistView}`}>
           <div className="label">
             <h5> Playlist </h5>
-            <p className="bold" onClick={handleClick}>
+            <p className='bold' onClick={() => handleEditClick()}>{editButtonText} </p>
+            <p className='bold' onClick={handleClick}>
               {switches.buttonText}
             </p>
           </div>

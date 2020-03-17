@@ -6,6 +6,7 @@ import { axiosWithAuthSpotifySearch } from '../utils/axiosWithAuthSpotify';
 
 import {
   addSongToPlaylistDJ,
+  removeSongFromPlaylistDJ,
   addVoteToSong
 } from '../actions/action';
 
@@ -33,8 +34,9 @@ const Songs = props => {
   const [songState, setSongState] = useState({
     readyToPlay: true,
     audioObject: '',
-    noPreview: false
+    noPreview: false,
   });
+
 
   const randomNum = getRandomIntInclusive(1, 5);
   const key = `image${randomNum}`;
@@ -103,6 +105,23 @@ const Songs = props => {
     console.log('no preview available');
   };
 
+  const isEditModeOn = (id) => {
+    if (props.editModeOn) {
+        return (
+        <div className="song-element">
+          <button
+            id='remove'
+            onClick={() => {
+              dispatch(removeSongFromPlaylistDJ(id, eventId));
+            }}
+          >
+            <FontAwesomeIcon icon='minus' size="1x" />
+          </button>
+        </div>
+        )
+    }
+  }
+
   const placeholderVsResults = () => {
     if (props.items) {
       const { album, artists, name, id } = props.items;
@@ -144,6 +163,7 @@ const Songs = props => {
               </button>
               <p>{props.items.votes}</p>
             </div>
+
           ) : (
             <div>
               <button
@@ -156,6 +176,7 @@ const Songs = props => {
               </button>
             </div>
           )}
+        {isEditModeOn(id)}
 
           <br />
         </div>
