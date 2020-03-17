@@ -21,7 +21,12 @@ const Dashboard = props => {
 
   useEffect(() => {
     dispatch(getEvents(id));
+    //setData(events);
   }, []);
+
+  useEffect(() => {
+    setData(events);
+  }, [events]);
 
   useEffect(() => {
     // Creates an array with the 2 important properties: id and date

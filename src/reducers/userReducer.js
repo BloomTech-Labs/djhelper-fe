@@ -314,7 +314,7 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         getEventsStart: false,
-        events: { ...state.events, newEvents: { ...action.payload } } // { ...state.events, ...action.payload }
+        events: { ...state.events, ...action.payload } // { ...state.events, ...action.payload }
       };
     // { ...state.events, newEvents: { ...action.payload } }
     case GET_EVENTS_ERROR:
