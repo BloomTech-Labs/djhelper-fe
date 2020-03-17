@@ -5,6 +5,8 @@ import NavigationBar from './NavigationBar';
 import Songs from './Songs';
 import SongSearch from './SongSearch';
 
+import formatDate from '../utils/formatDate';
+
 import EditEvent from './EditEvent';
 import { searchForTrack } from '../actions/action';
 
@@ -22,6 +24,9 @@ const EventPage = props => {
 
   const events = useSelector(state => state.userReducer.events);
   const [currentEvent, setCurrentEvent] = useState(events[`event${event_id}`]);
+
+  const formattedDate = formatDate(currentEvent.date);
+
 
   useEffect(() => {
     setCurrentEvent(events[`event${event_id}`]);
@@ -93,7 +98,6 @@ const EventPage = props => {
   };
 
 
-
   const switchToRequests = () => {
     setSwitches({
       ...switches,
@@ -146,6 +150,8 @@ const EventPage = props => {
     setIsEditing(!isEditing);
   };
 
+
+
   return (
     <div className="event-page">
       <NavigationBar tokenPresent={props.location.state.tokenPresent} />
@@ -167,7 +173,7 @@ const EventPage = props => {
               </p>
               <p>
                 <b className="bold">Date: </b>
-                {currentEvent.date}
+                {formattedDate}
               </p>
               <p className="bold">Description:</p>
               <p>{currentEvent.description}</p>

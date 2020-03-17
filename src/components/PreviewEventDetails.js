@@ -3,8 +3,12 @@ import Songs from './Songs';
 import Truncate from 'react-truncate';
 import { Link } from 'react-router-dom';
 
+import formatDate from '../utils/formatDate';
+
 const PreviewEventDetails = props => {
   const { currentlyActive } = props;
+
+  const formattedDate = formatDate(currentlyActive.date);
 
   return (
     <div className="preview-event-details">
@@ -15,7 +19,7 @@ const PreviewEventDetails = props => {
         </p>
         <p>
           <b className="bold">Date: </b>
-          {currentlyActive.date}
+          {formattedDate}
         </p>
         <p className="bold">Description:</p>
         <Truncate lines={3}>
