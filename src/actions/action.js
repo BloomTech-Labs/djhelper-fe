@@ -428,6 +428,10 @@ export const getEvents = dj_id => dispatch => {
           playlist_id: event.id,
           img_url: event.img_url
         };
+        dispatch({
+          type: ADD_TO_SONG_REDUCER_SUCCESS,
+           payload: event.id
+        });
       });
       // eventsObject.active = '';
       console.log('eventsObject: ', eventsObject);
