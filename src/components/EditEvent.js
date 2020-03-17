@@ -5,20 +5,26 @@ import { editEvent, deleteEvent, getLocation } from '../actions/action';
 
 const EditEvent = props => {
   // TODO: Get event data from back end, once it is available (instead of redux store)
+  const dispatch = useDispatch();
   const events = useSelector(state => state.userReducer.events);
   const locations = useSelector(state => state.userReducer.locations);
   const editEventStart = useSelector(state => state.userReducer.editEventStart);
   const [currentEvent, setCurrentEvent] = useState(
     events[`event${props.event_id}`]
   );
-  console.log("CurrentEvent's location id: ", currentEvent.location_id);
+  const [currentLocation, setCurrentLocation] = useState();
 
   useEffect(() => {
     dispatch(getLocation(currentEvent.location_id));
   }, []);
 
+  useEffect(() => {
+    setCurrentLocation(
+      locations.filter(location => location.id === currentEvent.location_id)[0]
+    );
+  }, [locations]);
+
   const [toggleDelete, setToggleDelete] = useState(false);
-  const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -31,7 +37,7 @@ const EditEvent = props => {
       start_time: currentEvent.start_time,
       end_time: currentEvent.end_time
     };
-    console.log('currentEvent ready to send: ', eventToSend);
+    //console.log('currentEvent ready to send: ', eventToSend);
     dispatch(editEvent(eventToSend, props.event_id));
   };
 
@@ -45,6 +51,19 @@ const EditEvent = props => {
 
   const handleDelete = () => {
     dispatch(deleteEvent(currentEvent, props.history));
+  };
+
+  const [showLocation, setShowLocation] = useState(false);
+  const toggleLocationDisplay = () => {
+    setShowLocation(!showLocation);
+    console.log('currentLocation: ', currentLocation);
+  };
+  const handleLocationChanges = e => {
+    setCurrentLocation({ ...currentLocation, [e.target.name]: e.target.value });
+  };
+  const handleLocationEdit = e => {
+    e.preventDefault();
+    console.log(currentLocation);
   };
 
   return (
@@ -124,7 +143,61 @@ const EditEvent = props => {
               </button>
             </>
           )}
-          <button type="button">Edit Location Info</button>
+          <button type="button" onClick={toggleLocationDisplay}>
+            {!showLocation ? 'Edit Location Info' : 'Hide Location Info'}
+          </button>
+          {showLocation && (
+            <>
+              <div className="input-group">
+                <label htmlFor="address_line_1">Address Line 1:</label>
+                <input
+                  name="address_line_1"
+                  id="address_line_1"
+                  value={currentLocation.address_line_1}
+                  onChange={handleLocationChanges}
+                />
+              </div>
+              <div className="input-group">
+                <label htmlFor="address_line_2">Address Line 2:</label>
+                <input
+                  name="address_line_2"
+                  id="address_line_2"
+                  value={currentLocation.address_line_2}
+                  onChange={handleLocationChanges}
+                />
+              </div>
+              <div className="input-group">
+                <label htmlFor="city">City:</label>
+                <input
+                  name="city"
+                  id="city"
+                  value={currentLocation.city}
+                  onChange={handleLocationChanges}
+                />
+              </div>
+              <div className="input-group">
+                <label htmlFor="state">State:</label>
+                <input
+                  name="state"
+                  id="state"
+                  value={currentLocation.state}
+                  onChange={handleLocationChanges}
+                />
+              </div>
+              <div className="input-group">
+                <label htmlFor="zip">Zip:</label>
+                <input
+                  name="zip"
+                  id="zip"
+                  value={currentLocation.zip}
+                  onChange={handleLocationChanges}
+                />
+              </div>
+              <button type="button" onClick={handleLocationEdit}>
+                Submit Location Changes
+              </button>
+            </>
+          )}
         </form>
       )}
     </div>
