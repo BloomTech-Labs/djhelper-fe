@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
-import { editEvent, deleteEvent } from '../actions/action';
+import { editEvent, deleteEvent, getLocation } from '../actions/action';
 
 const EditEvent = props => {
   // TODO: Get event data from back end, once it is available (instead of redux store)
@@ -12,6 +12,11 @@ const EditEvent = props => {
     events[`event${props.event_id}`]
   );
   console.log("CurrentEvent's location id: ", currentEvent.location_id);
+
+  useEffect(() => {
+    dispatch(getLocation(currentEvent.location_id));
+  }, []);
+
   const [toggleDelete, setToggleDelete] = useState(false);
   const dispatch = useDispatch();
 

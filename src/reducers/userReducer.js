@@ -42,7 +42,10 @@ import {
   GET_DJ_ERROR,
   GET_EVENTS_START,
   GET_EVENTS_SUCCESS,
-  GET_EVENTS_ERROR
+  GET_EVENTS_ERROR,
+  GET_LOCATION_START,
+  GET_LOCATION_SUCCESS,
+  GET_LOCATION_ERROR
 } from '../actions/action';
 
 const initialState = {
@@ -79,7 +82,9 @@ const initialState = {
   getDJError: false,
   getDJStart: false,
   getEventsStart: false,
-  getEventsError: false
+  getEventsError: false,
+  getLocationStart: false,
+  getLocationError: false
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -323,6 +328,25 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         getEventsError: true,
         getEventsStart: false
+      };
+
+    case GET_LOCATION_START:
+      return {
+        ...state,
+        getLocationStart: true
+      };
+
+    case GET_LOCATION_SUCCESS:
+      return {
+        ...state,
+        getLocationStart: false,
+        locations: [...state.locations, action.payload]
+      };
+
+    case GET_LOCATION_ERROR:
+      return {
+        ...state,
+        getLocationError: true
       };
 
     default:

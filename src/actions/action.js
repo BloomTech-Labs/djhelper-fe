@@ -63,9 +63,12 @@ export const ADD_SONG_TO_PLAYLIST_START = 'ADD_SONG_TO_PLAYLIST_START';
 export const ADD_SONG_TO_PLAYLIST_SUCCESS = 'ADD_SONG_TO_PLAYLIST_SUCCESS';
 export const ADD_SONG_TO_PLAYLIST_ERROR = 'ADD_SONG_TO_PLAYLIST_ERROR';
 
-export const REMOVE_SONG_FROM_PLAYLIST_START = 'REMOVE_SONG_FROM_PLAYLIST_START';
-export const REMOVE_SONG_FROM_PLAYLIST_SUCCESS = 'REMOVE_SONG_FROM_PLAYLIST_SUCCESS';
-export const REMOVE_SONG_FROM_PLAYLIST_ERROR = 'REMOVE_SONG_FROM_PLAYLIST_ERROR';
+export const REMOVE_SONG_FROM_PLAYLIST_START =
+  'REMOVE_SONG_FROM_PLAYLIST_START';
+export const REMOVE_SONG_FROM_PLAYLIST_SUCCESS =
+  'REMOVE_SONG_FROM_PLAYLIST_SUCCESS';
+export const REMOVE_SONG_FROM_PLAYLIST_ERROR =
+  'REMOVE_SONG_FROM_PLAYLIST_ERROR';
 
 export const ADD_TO_SONG_REDUCER_START = 'ADD_TO_SONG_REDUCER_START';
 export const ADD_TO_SONG_REDUCER_SUCCESS = 'ADD_TO_SONG_REDUCER_SUCCESS';
@@ -79,13 +82,17 @@ export const ADD_VOTE_START = 'ADD_VOTE_START';
 export const ADD_VOTE_SUCCESS = 'ADD_VOTE_SUCCESS';
 export const ADD_VOTE_ERROR = 'ADD_VOTE_ERROR';
 
+export const GET_LOCATION_START = 'GET_LOCATION_START';
+export const GET_LOCATION_SUCCESS = 'GET_LOCATION_SUCCESS';
+export const GET_LOCATION_ERROR = 'GET_LOCATION_ERROR';
+
 // action creators
 
 export const addSongToPlaylistDJ = (songInfo, add_to_event_id) => dispatch => {
   dispatch({ type: ADD_SONG_TO_PLAYLIST_START });
 
   const songToAdd = {
-    songInfo: {...songInfo, votes: 0},
+    songInfo: { ...songInfo, votes: 0 },
     event_id: add_to_event_id
   };
   dispatch({
@@ -116,17 +123,14 @@ export const setUsername = username => {
 };
 
 export const addVoteToSong = (event_id, song_id) => dispatch => {
-    dispatch({type: ADD_VOTE_START});
+  dispatch({ type: ADD_VOTE_START });
 
-    const info = {
-        event_id: event_id,
-        song_id: song_id
-    }
-    dispatch({type: ADD_VOTE_SUCCESS, payload: info});
-
-}
-
-
+  const info = {
+    event_id: event_id,
+    song_id: song_id
+  };
+  dispatch({ type: ADD_VOTE_SUCCESS, payload: info });
+};
 
 export const registerUserAction = (infoNeeded, history) => dispatch => {
   dispatch({ type: REGISTER_USER_START });
@@ -489,5 +493,23 @@ export const getEvents = dj_id => dispatch => {
     .catch(err => {
       console.log(err);
       dispatch({ type: GET_EVENTS_ERROR });
+    });
+};
+
+// locations
+
+export const getLocation = location_id => dispatch => {
+  // GET https://api.dj-helper.com/api/location/:location_id
+  // TODO: change endpoing to auth/location etc if BE changes
+  dispatch({ type: GET_LOCATION_START });
+  axiosWithAuth()
+    .get(`/location/${location_id}`)
+    .then(response => {
+      console.log(response);
+      dispatch({ type: GET_LOCATION_SUCCESS, payload: response.data[0] });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: GET_LOCATION_ERROR, payload: err });
     });
 };
