@@ -9,27 +9,15 @@ import {
 } from '../actions/action';
 
 const EditEvent = props => {
-  // TODO: Get event data from back end, once it is available (instead of redux store)
   const dispatch = useDispatch();
   const events = useSelector(state => state.userReducer.events);
-  const locations = useSelector(state => state.userReducer.locations);
-  const editEventStart = useSelector(state => state.userReducer.editEventStart);
   const [currentEvent, setCurrentEvent] = useState(
     events[`event${props.event_id}`]
   );
-  const [currentLocation, setCurrentLocation] = useState();
 
-  useEffect(() => {
-    dispatch(getLocation(currentEvent.location_id));
-  }, []);
+  // Event Editing
 
-  useEffect(() => {
-    setCurrentLocation(
-      locations.filter(location => location.id === currentEvent.location_id)[0]
-    );
-  }, [locations]);
-
-  const [toggleDelete, setToggleDelete] = useState(false);
+  const editEventStart = useSelector(state => state.userReducer.editEventStart);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -42,13 +30,16 @@ const EditEvent = props => {
       start_time: currentEvent.start_time,
       end_time: currentEvent.end_time
     };
-    //console.log('currentEvent ready to send: ', eventToSend);
     dispatch(editEvent(eventToSend, props.event_id));
   };
 
   const handleChanges = e => {
     setCurrentEvent({ ...currentEvent, [e.target.name]: e.target.value });
   };
+
+  // Event Deletion
+
+  const [toggleDelete, setToggleDelete] = useState(false);
 
   const handleDeleteToggle = () => {
     setToggleDelete(!toggleDelete);
@@ -58,7 +49,22 @@ const EditEvent = props => {
     dispatch(deleteEvent(currentEvent, props.history));
   };
 
+  // Location Editing
+
+  const locations = useSelector(state => state.userReducer.locations);
+  const [currentLocation, setCurrentLocation] = useState();
   const [showLocation, setShowLocation] = useState(false);
+
+  useEffect(() => {
+    dispatch(getLocation(currentEvent.location_id));
+  }, []);
+
+  useEffect(() => {
+    setCurrentLocation(
+      locations.filter(location => location.id === currentEvent.location_id)[0]
+    );
+  }, [locations]);
+
   const toggleLocationDisplay = () => {
     setShowLocation(!showLocation);
     console.log('currentLocation: ', currentLocation);
