@@ -375,6 +375,12 @@ export const getEvents = dj_id => dispatch => {
       // TODO: format the response to match what is needed for events in store, and pass it as payload
       // TODO: Modify what is returned for playlist_id and request_list_id once functionality is built for that
 
+      // Filter events to return only the events of the logged in DJ:
+      /*
+      const filteredEvents = response.data.filter(
+        event => event.dj_id === dj_id
+      );
+      */
       const events = response.data.map(event => {
         return {
           [`event${event.id}`]: {
@@ -392,7 +398,26 @@ export const getEvents = dj_id => dispatch => {
           }
         };
       });
-      dispatch({ type: GET_EVENTS_SUCCESS, payload: events });
+      const eventsObject = {};
+      response.data.forEach(event => {
+        eventsObject[`event${event.id}`] = {
+          event_id: event.id,
+          name: event.name,
+          event_type: event.event_type,
+          description: event.description,
+          date: event.date,
+          start_time: event.start_time,
+          end_time: event.end_time,
+          location_id: event.location_id,
+          request_list_id: event.id,
+          playlist_id: event.id,
+          img_url: event.img_url
+        };
+      });
+      // eventsObject.active = '';
+      console.log('eventsObject: ', eventsObject);
+      console.log('eventsObject spread: ', { ...eventsObject });
+      dispatch({ type: GET_EVENTS_SUCCESS, payload: eventsObject });
     })
     .catch(err => {
       console.log(err);

@@ -93,16 +93,17 @@ const Dashboard = props => {
           addArrowClickHandler
           infinite
         >
-          {upcomingIds.map(eventId => {
-            return (
-              <Event
-                num={eventId}
-                data={data}
-                setData={setData}
-                key={eventId}
-              />
-            );
-          })}
+          {events &&
+            upcomingIds.map(eventId => {
+              return (
+                <Event
+                  num={eventId}
+                  data={data}
+                  setData={setData}
+                  key={eventId}
+                />
+              );
+            })}
         </Carousel>
       </div>
       <div className="past-events" data-testid="past-carousel">
@@ -116,16 +117,17 @@ const Dashboard = props => {
           addArrowClickHandler
           infinite
         >
-          {pastIds.map(eventId => {
-            return (
-              <Event
-                num={eventId}
-                data={data}
-                setData={setData}
-                key={eventId}
-              />
-            );
-          })}
+          {events &&
+            pastIds.map(eventId => {
+              return (
+                <Event
+                  num={eventId}
+                  data={data}
+                  setData={setData}
+                  key={eventId}
+                />
+              );
+            })}
         </Carousel>
       </div>
     </div>
