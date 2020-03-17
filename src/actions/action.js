@@ -71,13 +71,17 @@ export const GET_EVENTS_START = 'GET_EVENTS_START';
 export const GET_EVENTS_SUCCESS = 'GET_EVENTS_SUCCESS';
 export const GET_EVENTS_ERROR = 'GET_EVENTS_ERROR';
 
+export const ADD_VOTE_START = 'ADD_VOTE_START';
+export const ADD_VOTE_SUCCESS = 'ADD_VOTE_SUCCESS';
+export const ADD_VOTE_ERROR = 'ADD_VOTE_ERROR';
+
 // action creators
 
 export const addSongToPlaylistDJ = (songInfo, add_to_event_id) => dispatch => {
   dispatch({ type: ADD_SONG_TO_PLAYLIST_START });
 
   const songToAdd = {
-    songInfo: songInfo,
+    songInfo: {...songInfo, votes: 0},
     event_id: add_to_event_id
   };
   dispatch({
@@ -92,6 +96,19 @@ export const setName = name => {
 export const setUsername = username => {
   return { type: SET_USERNAME, payload: username };
 };
+
+export const addVoteToSong = (event_id, song_id) => dispatch => {
+    dispatch({type: ADD_VOTE_START});
+
+    const info = {
+        event_id: event_id,
+        song_id: song_id
+    }
+    dispatch({type: ADD_VOTE_SUCCESS, payload: info});
+
+}
+
+
 
 export const registerUserAction = (infoNeeded, history) => dispatch => {
   dispatch({ type: REGISTER_USER_START });

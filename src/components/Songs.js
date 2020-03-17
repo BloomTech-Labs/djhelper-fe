@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Truncate from 'react-truncate';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { addSongToPlaylistDJ, getTrackPreview } from '../actions/action';
+import { addSongToPlaylistDJ, getTrackPreview, addVoteToSong } from '../actions/action';
 
 const Songs = (props) => {
     const dispatch = useDispatch();
@@ -112,8 +112,10 @@ const Songs = (props) => {
 
                 { props.playlist ? (
                   <div className='song-element'>
-                      <button id='vote' ><FontAwesomeIcon icon="caret-up" size="2x" /></button>
-                        <p>003</p>
+                      <button id='vote' onClick={() => {
+                          dispatch(addVoteToSong(event_id, id))
+                      }}><FontAwesomeIcon icon="caret-up" size="2x" /></button>
+                        <p>{props.items.votes}</p>
                   </div>
                 ) : (
                     <div>
