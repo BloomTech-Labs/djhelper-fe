@@ -460,13 +460,11 @@ export const getEvents = dj_id => dispatch => {
       // TODO: Modify what is returned for playlist_id and request_list_id once functionality is built for that
 
       // Uncomment below to filter events to return only the events of the logged-in DJ:
-      /*
       const filteredEvents = response.data.filter(
         event => event.dj_id === dj_id
       );
-      */
       const eventsObject = {};
-      response.data.forEach(event => {
+      filteredEvents.forEach(event => {
         eventsObject[`event${event.id}`] = {
           event_id: event.id,
           name: event.name,
