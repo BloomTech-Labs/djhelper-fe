@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import NavigationBar from './NavigationBar';
 import Songs from './Songs';
 import SongSearch from './SongSearch';
-import { Link } from 'react-router-dom';
 
-import { useDispatch, useSelector } from 'react-redux';
 import EditEvent from './EditEvent';
 import { searchForTrack } from '../actions/action';
 
@@ -16,15 +16,8 @@ const EventPage = props => {
   const [qrCode, setQrCode] = useState('');
   const [showQrCode, setShowQrCode] = useState(false);
 
+  const { event_id } = props.location.state.event;
 
-  const {
-    name,
-    event_type,
-    description,
-    event_id,
-    date
-  } = props.location.state.event;
-  
   const [isEditing, setIsEditing] = useState(false);
 
   const events = useSelector(state => state.userReducer.events);
@@ -34,32 +27,38 @@ const EventPage = props => {
     setCurrentEvent(events[`event${event_id}`]);
   }, [events]);
 
-  const eventPlaylist = useSelector(state => state.songReducer.eventPlaylists[`event${event_id}`].playlist);
-    const [switches, setSwitches] = useState({
-        buttonText: 'Add Songs',
-        searchVisible: false,
-        requestButtonStyle: 'active',
-        playlistButtonStyle: 'show',
-        addSongsButtonStyle: 'hide',
-        playlistView: 'show',
-        requestView: 'show',
-    });
-    const {
-        requestButtonStyle,
-        playlistButtonStyle,
-        addSongsButtonStyle,
-        playlistView,
-        requestView,
-        playlistClass
-    } = switches;
+  const eventPlaylist = useSelector(
+    state => state.songReducer.eventPlaylists[`event${event_id}`].playlist
+  );
+  const [switches, setSwitches] = useState({
+    buttonText: 'Add Songs',
+    searchVisible: false,
+    requestButtonStyle: 'active',
+    playlistButtonStyle: 'show',
+    addSongsButtonStyle: 'hide',
+    playlistView: 'show',
+    requestView: 'show',
+    editModeOn: false,
+    editButtonText: 'Edit Playlist'
+  });
+  const {
+    requestButtonStyle,
+    playlistButtonStyle,
+    addSongsButtonStyle,
+    playlistView,
+    requestView,
+    playlistClass,
+    editModeOn,
+    editButtonText,
+  } = switches;
 
-    const setAppSize = () => {
-        if (window.innerWidth < 500) {
-            setSwitches({...switches, playlistView: 'hide'})
-        } else {
-            setSwitches({...switches, playlistView: 'show'})
-        }
-    };
+  const setAppSize = () => {
+    if (window.innerWidth < 500) {
+      setSwitches({ ...switches, playlistView: 'hide' });
+    } else {
+      setSwitches({ ...switches, playlistView: 'show' });
+    }
+  };
   useEffect(() => {
     setAppSize();
   }, []);
@@ -79,6 +78,21 @@ const EventPage = props => {
       searchVisible: !switches.searchVisible
     });
   };
+  const handleEditClick = () => {
+    let text;
+    if (switches.editButtonText === 'Edit Playlist') {
+      text = 'Exit Edit Mode';
+    } else {
+      text = 'Edit Playlist';
+    }
+    setSwitches({
+      ...switches,
+      editButtonText: text,
+      editModeOn: !switches.editModeOn
+    });
+  };
+
+
 
   const switchToRequests = () => {
     setSwitches({
@@ -102,23 +116,22 @@ const EventPage = props => {
     });
   };
 
-    const searchVsPlaylist = () => {
-        if (switches.searchVisible) {
-            return (
-              <div className={`playlist`}>
-                <SongSearch />
-              </div>
-            )
-        } else {
-            return (
-                <div className={`playlist`}>
-                {eventPlaylist.map((element) => (
-                    <Songs items={element} playlist={true} />
-                ))}
-                </div>
-            )
-        }
-    };
+  const searchVsPlaylist = () => {
+    if (switches.searchVisible) {
+      return (
+        <div className="playlist">
+          <SongSearch />
+        </div>
+      );
+    }
+    return (
+      <div className="playlist">
+        {eventPlaylist.map(element => (
+          <Songs items={element} playlist editModeOn={editModeOn} />
+        ))}
+      </div>
+    );
+  };
   const handleQRDisplay = () => {
     if (!qrCode) {
       const eventPage = `${FRONTEND_HOST}dj/${dj_id}/event/${event_id}`;
@@ -236,7 +249,8 @@ const EventPage = props => {
         <div className={`event-playlist-location ${playlistView}`}>
           <div className="label">
             <h5> Playlist </h5>
-            <p className="bold" onClick={handleClick}>
+            <p className='bold' onClick={() => handleEditClick()}>{editButtonText} </p>
+            <p className='bold' onClick={handleClick}>
               {switches.buttonText}
             </p>
           </div>

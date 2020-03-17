@@ -19,9 +19,12 @@ const Dashboard = props => {
   const [upcomingIds, setUpcomingIds] = useState([]);
   const [pastIds, setPastIds] = useState([]);
 
+  const thing = data.active;
+  const currentlyActive = data[thing];
+
   useEffect(() => {
     dispatch(getEvents(id));
-    //setData(events);
+    // setData(events);
   }, []);
 
   useEffect(() => {
@@ -66,13 +69,10 @@ const Dashboard = props => {
           history={props.history}
         />
       );
-    } else {
-      return <DashboardWelcome name={name} />;
     }
+    return <DashboardWelcome name={name} />;
   };
 
-  let thing = data.active;
-  let currentlyActive = data[thing];
   const handleNewEvent = () => {
     props.history.push('/dj/addEvent');
   };

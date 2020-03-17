@@ -7,11 +7,11 @@ const EditEvent = props => {
   // TODO: Get event data from back end, once it is available (instead of redux store)
   const events = useSelector(state => state.userReducer.events);
   const locations = useSelector(state => state.userReducer.locations);
-  const [hasLocation, setHasLocation] = useState(locations.length > 0);
   const editEventStart = useSelector(state => state.userReducer.editEventStart);
   const [currentEvent, setCurrentEvent] = useState(
     events[`event${props.event_id}`]
   );
+  console.log("CurrentEvent's location id: ", currentEvent.location_id);
   const [toggleDelete, setToggleDelete] = useState(false);
   const dispatch = useDispatch();
 

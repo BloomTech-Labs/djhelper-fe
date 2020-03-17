@@ -241,6 +241,19 @@
                     color: grey;
                 }
             }
+            #remove {
+                color: white;
+                padding: 0;
+                background: transparent;
+                box-shadow: none;
+                border: none;
+                transition: 0.3s;
+                &:hover {
+                    color: grey;
+                }
+
+
+            }
             #vote {
                 color: green;
                 background: transparent;

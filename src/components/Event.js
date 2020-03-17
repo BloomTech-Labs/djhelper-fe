@@ -8,8 +8,8 @@ const Event = props => {
     eventClass = '';
   }
 
-  let eventNum = `event${props.num}`;
-  let event = props.data[eventNum];
+  const eventNum = `event${props.num}`;
+  const event = props.data[eventNum];
   return (
     <button
       type="button"
@@ -19,7 +19,7 @@ const Event = props => {
       }
     >
       {event && <h2>{event.name}</h2>}
-      {event && <p> Date: {event.date}</p>}
+      {event && <p> Date:{event.date}</p>}
     </button>
   );
 };
