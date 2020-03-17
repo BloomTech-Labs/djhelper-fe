@@ -1,4 +1,4 @@
-import React, {useState, useEffect}from 'react';
+import React, {useState}from 'react';
 import {axiosWithAuthSpotifySearch} from '../utils/axiosWithAuthSpotify';
 import { useDispatch, useSelector } from 'react-redux';
 import Truncate from 'react-truncate';
@@ -38,29 +38,25 @@ const Songs = (props) => {
     let key = 'image' + randomNum;
     let songIcon = imageList[key];
 
-    const getPreviewLink = (id) => {
+    const playPreviewLink = (id) => {
         let preview_link;
         axiosWithAuthSpotifySearch()
         .get(`/tracks/${id}?market=US`)
         .then(response => {
-                return response.data;
-            })
-        .catch(err => {
+            console.log(response.data)
+            preview_link =  response.data.preview_url;
+            if (preview_link === null) {
+                setSongState({...songState, noPreview: true})
+            } else {
+                let audio = new Audio(preview_link);
+                console.log(audio);
+                audio.stop();
+                setSongState({...songState, readyToPlay: !songState.readyToPlay, audioObject: audio})
+                return audio.play();
+            }
+        }).catch(err => {
             console.log(err);
         })
-    }
-
-    const playPreviewLink = (id) => {
-        let preview_link = getPreviewLink(id);
-        console.log(preview_link);
-        if (preview_link === null) {
-            setSongState({...songState, noPreview: true})
-        } else {
-            let audio = new Audio(preview_link);
-            audio.stop();
-            setSongState({...songState, readyToPlay: !songState.readyToPlay, audioObject: audio})
-            return audio.play();
-        }
     }
 
     const stopPreview = () => {

@@ -241,26 +241,6 @@ export const searchForTrack = searchTerm => dispatch => {
 };
 
 
-export const getTrackPreview = trackId => dispatch => {
-    dispatch({ type: GET_TRACK_PREVIEW_START});
-
-    axiosWithAuthSpotifySearch()
-    .get(`/tracks/${trackId}`)
-    .then(response => {
-        console.log(response.data);
-        dispatch({
-            type: GET_TRACK_PREVIEW_SUCCESS,
-            payload: response.data
-        })
-    })
-    .catch(err => {
-        console.log(err);
-        dispatch({ type: GET_TRACK_PREVIEW_ERROR, payload: err});
-    })
-
-
-}
-
 // events
 
 export const addEvent = (eventInfo, history) => dispatch => {
@@ -339,7 +319,7 @@ export const addEvent = (eventInfo, history) => dispatch => {
                   });
                   dispatch({
                     type: ADD_TO_SONG_REDUCER_SUCCESS,
-                     payload: eventNum
+                     payload: winnerEvent.id
                   });
                   history.push('/dj');
                 })
