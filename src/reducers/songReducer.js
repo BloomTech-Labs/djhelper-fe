@@ -20,33 +20,33 @@ import {
 } from '../actions/action'
 
 const initialState = {
-    results: [],
-    eventPlaylists: {
-        event1: {
-            playlist: [],
-            requests:[]
-        },
-        event2: {
-            playlist: [],
-            requests:[]
-        },
-        event3: {
-            playlist: [],
-            requests:[]
-        },
-        event4: {
-            playlist: [],
-            requests:[]
-        },
-        event5: {
-            playlist: [],
-            requests:[]
-        },
-        event6: {
-            playlist: [],
-            requests:[]
-        },
+  results: [],
+  eventPlaylists: {
+    event1: {
+      playlist: [],
+      requests: []
     },
+    event2: {
+      playlist: [],
+      requests: []
+    },
+    event3: {
+      playlist: [],
+      requests: []
+    },
+    event4: {
+      playlist: [],
+      requests: []
+    },
+    event5: {
+      playlist: [],
+      requests: []
+    },
+    event6: {
+      playlist: [],
+      requests: []
+    }
+  },
     addToSongReducerStarted: false,
     searchStarted: false,
     searchError: false,
@@ -74,8 +74,8 @@ export const songReducer = (state = initialState, action) => {
         case SEARCH_FOR_TRACK_SUCCESS:
             return {...state, results: action.payload}
 
-        case SEARCH_FOR_TRACK_ERROR:
-            return {...state, searchError: true}
+    case SEARCH_FOR_TRACK_ERROR:
+      return { ...state, searchError: true };
 
         case GET_TRACK_PREVIEW_START:
             return {...state, getPreviewStarted: true }
