@@ -361,9 +361,12 @@ export const userReducer = (state = initialState, action) => {
       };
 
     case EDIT_LOCATION_SUCCESS:
+      const filteredLocations = state.locations.filter(
+        location => location.id !== action.payload.id
+      );
       return {
         ...state,
-        locations: [...state.locations, action.payload],
+        locations: [...filteredLocations, action.payload],
         getLocationStart: false
       };
 
