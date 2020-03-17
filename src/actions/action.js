@@ -348,12 +348,21 @@ export const editEvent = eventInfo => dispatch => {
   // TODO: Add handle error
 };
 
-export const deleteEvent = (event_id, history) => dispatch => {
+export const deleteEvent = (event, history) => dispatch => {
   dispatch({ type: DELETE_EVENT_START });
-  // TODO: Add DELETE to back end endpoint here
-  dispatch({ type: DELETE_EVENT_SUCCESS, payload: event_id });
-  history.push('/dj');
-  // TODO: Add handle error
+  // TODO: Update endpoint to auth/event if the BE changes to that
+  // DELETE https://api.dj-helper.com/api/event/:event_id
+  axiosWithAuth()
+    .delete(`/event/${event.event_id}`)
+    .then(response => {
+      console.log(response);
+      dispatch({ type: DELETE_EVENT_SUCCESS, payload: event });
+      history.push('/dj');
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: DELETE_EVENT_ERROR, payload: err });
+    });
 };
 
 // get dj
