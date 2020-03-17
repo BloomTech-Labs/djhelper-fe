@@ -6,6 +6,8 @@ import { editEvent, deleteEvent } from '../actions/action';
 const EditEvent = props => {
   // TODO: Get event data from back end, once it is available (instead of redux store)
   const events = useSelector(state => state.userReducer.events);
+  const locations = useSelector(state => state.userReducer.locations);
+  const [hasLocation, setHasLocation] = useState(locations.length > 0);
   const editEventStart = useSelector(state => state.userReducer.editEventStart);
   const [currentEvent, setCurrentEvent] = useState(
     events[`event${props.event_id}`]
@@ -117,6 +119,7 @@ const EditEvent = props => {
               </button>
             </>
           )}
+          <button type="button">Edit Location Info</button>
         </form>
       )}
     </div>

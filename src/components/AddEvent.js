@@ -158,6 +158,7 @@ const AddEvent = props => {
                 id="address_line_1"
                 onChange={handleInputChange}
                 value={eventData.address_line_1}
+                required
               />
             </div>
 
@@ -180,6 +181,7 @@ const AddEvent = props => {
                   id="city"
                   onChange={handleInputChange}
                   value={eventData.city}
+                  required
                 />
               </div>
 
@@ -191,6 +193,7 @@ const AddEvent = props => {
                   id="state"
                   onChange={handleInputChange}
                   value={eventData.state}
+                  required
                 />
               </div>
 
@@ -202,6 +205,7 @@ const AddEvent = props => {
                   id="zip"
                   onChange={handleInputChange}
                   value={eventData.zip}
+                  required
                 />
               </div>
             </div>
