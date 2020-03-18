@@ -318,10 +318,6 @@ export const userReducer = (state = initialState, action) => {
       };
 
     case GET_EVENTS_SUCCESS:
-      console.log("Here's what I want to put into state: ", {
-        ...state.events,
-        ...action.payload
-      });
       return {
         ...state,
         getEventsStart: false,
