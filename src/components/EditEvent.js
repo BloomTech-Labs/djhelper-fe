@@ -76,8 +76,20 @@ const EditEvent = props => {
   };
   const handleLocationEdit = e => {
     e.preventDefault();
-    console.log('currentLocation to submit: ', currentLocation);
-    dispatch(editLocation(currentEvent.location_id, currentLocation));
+    const locationToSubmit = {
+      address_line_1: currentLocation.address_line_1,
+      address_line_2: currentLocation.address_line_2,
+      city: currentLocation.city,
+      state: currentLocation.state,
+      zip: currentLocation.zip,
+      name: currentLocation.venue_name,
+      phone: currentLocation.phone,
+      website: currentLocation.website,
+      email: currentLocation.email,
+      img_url: currentLocation.venue_img_url
+    };
+    console.log('currentLocation to submit: ', locationToSubmit);
+    dispatch(editLocation(currentEvent.location_id, locationToSubmit));
     setShowLocation(false);
     setShowVenue(false);
   };
@@ -86,6 +98,16 @@ const EditEvent = props => {
 
   const toggleVenueDisplay = () => {
     setShowVenue(!showVenue);
+    console.log('currentLocation.img_url: ', currentLocation.img_url);
+    setCurrentLocation({
+      ...currentLocation,
+      venue_name: currentLocation.name,
+      venue_img_url: currentLocation.img_url
+    });
+    console.log(
+      'currentLocation.venue_img_url: ',
+      currentLocation.venue_img_url
+    );
   };
 
   return (
@@ -244,6 +266,16 @@ const EditEvent = props => {
           {showVenue && (
             <>
               <div className="input-group">
+                <label htmlFor="venue_name">Name:</label>
+                <input
+                  name="venue_name"
+                  id="venue_name"
+                  type="text"
+                  value={currentLocation.venue_name}
+                  onChange={handleLocationChanges}
+                />
+              </div>
+              <div className="input-group">
                 <label htmlFor="phone">Phone:</label>
                 <input
                   name="phone"
@@ -271,6 +303,16 @@ const EditEvent = props => {
                   type="url"
                   value={currentLocation.website}
                   onChange={handleLocationChanges}
+                />
+              </div>
+              <div className="input-group">
+                <label htmlFor="venue_img_url">Venue Image Url: </label>
+                <input
+                  type="url"
+                  name="venue_img_url"
+                  id="venue_img_url"
+                  onChange={handleLocationChanges}
+                  value={currentEvent.venue_img_url}
                 />
               </div>
 
