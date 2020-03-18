@@ -254,7 +254,6 @@ export const userReducer = (state = initialState, action) => {
           [`event${action.payload[1]}`]: action.payload[0]
         }
       };
-    // [`event${action.payload.id}`]: action.payload
 
     case EDIT_EVENT_ERROR:
       return {
@@ -338,10 +337,13 @@ export const userReducer = (state = initialState, action) => {
       };
 
     case GET_LOCATION_SUCCESS:
+      const filteredLocations2 = state.locations.filter(
+        location => location.id !== action.payload.id
+      );
       return {
         ...state,
         getLocationStart: false,
-        locations: [...state.locations, action.payload]
+        locations: [...filteredLocations2, action.payload] // [...state.locations, action.payload]
       };
 
     case GET_LOCATION_ERROR:

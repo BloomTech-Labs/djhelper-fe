@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { getDJ, getEvents } from '../actions/action';
+import { getDJ, getEvents, getLocation } from '../actions/action';
 
 import { locations } from '../data/locations';
 import Songs from './Songs';
@@ -38,12 +38,12 @@ const EventGuestView = props => {
   const events = useSelector(state => state.userReducer.events);
   const [currentEvent] = useState(events[`event${event_id}`]);
 
-  // TODO: Get location data from back end, once it is available (instead of dummy data)
   const [location, setLocation] = useState(null);
   useEffect(() => {
-    if (currentEvent) {
-      setLocation(locations.find(item => item.id === currentEvent.location_id));
-    }
+    //if (currentEvent) {
+    dispatch(getLocation(currentEvent.location_id));
+    setLocation(locations.find(item => item.id === currentEvent.location_id));
+    //}
   }, [currentEvent]);
 
   useEffect(() => {
