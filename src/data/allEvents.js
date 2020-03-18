@@ -6,8 +6,8 @@ export const allEvents = {
     event_type: 'wedding',
     description: 'A traditional, peaceful wedding.',
     date: '2020-04-10',
-    start_time: '14:00',
-    end_time: '20:00',
+    start_time: '14:00:00',
+    end_time: '20:00:00',
     location_id: 1,
     request_list_id: 1,
     img_url:
@@ -20,8 +20,8 @@ export const allEvents = {
     event_type: 'wedding',
     description: 'A more modern, fun wedding.',
     date: '2020-07-14',
-    start_time: '16:00',
-    end_time: '22:00',
+    start_time: '16:00:00',
+    end_time: '22:00:00',
     request_list_id: 2,
     img_url:
       'https://images.unsplash.com/photo-1561928070-590b9c48f0bb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
@@ -77,8 +77,8 @@ export const allEvents = {
     event_type: 'wedding',
     description: 'A festive wedding celebration with dancing',
     date: '2019-12-10',
-    start_time: '19:00',
-    end_time: '23:59',
+    start_time: '19:00:00',
+    end_time: '23:59:00',
     request_list_id: 10,
     location_id: 10,
     image_url:
@@ -91,8 +91,8 @@ export const allEvents = {
     description: 'Come and celebrate with family, friends, and festivities.',
     date: '2019-01-10',
     request_list_id: 11,
-    start_time: '11:00',
-    end_time: '16:00',
+    start_time: '11:00:00',
+    end_time: '16:00:00',
     location_id: 11,
     image_url:
       'https://images.unsplash.com/photo-1549335223-c89505707f65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
@@ -173,12 +173,11 @@ export const allEvents = {
     event_type: 'wedding',
     description: 'Casual event at a senior center',
     date: '2020-01-24',
-    start_time: '13:00',
-    end_time: '18:00',
+    start_time: '13:00:00',
+    end_time: '18:00:00',
     request_list_id: 18,
     location_id: 17,
     image_url:
       'https://images.unsplash.com/photo-1500900173725-e0978c945e23?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
-  } // ,
-  // active: ''
+  }
 };
