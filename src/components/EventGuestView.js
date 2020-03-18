@@ -36,6 +36,8 @@ const EventGuestView = props => {
 
   const events = useSelector(state => state.userReducer.events);
   const [currentEvent] = useState(events[`event${event_id}`]);
+  // console.log('Start time: ', currentEvent.start_time);
+  // console.log('End time', currentEvent.end_time);
 
   const locations = useSelector(state => state.userReducer.locations);
   const [location, setLocation] = useState(null);

@@ -333,7 +333,9 @@ export const addEvent = (eventInfo, history) => dispatch => {
             description: eventInfo.description,
             location_id: winnerLocation.id,
             date: eventInfo.date,
-            dj_id: eventInfo.dj_id
+            dj_id: eventInfo.dj_id,
+            start_time: eventInfo.start_time,
+            end_time: eventInfo.end_time
           };
           axiosWithAuth()
             .post('/event/', eventToSubmit)

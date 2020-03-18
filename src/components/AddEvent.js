@@ -59,7 +59,7 @@ const AddEvent = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // console.log(eventData);
+    console.log('event to submit: ', eventData);
     dispatch(addEvent(eventData, props.history));
   };
 
