@@ -77,7 +77,7 @@ const NavigationBar = props => {
 
   return (
     <Navbar className="navBar" data-testid="navBar" dark expand="md">
-      <NavbarBrand className="navElements" href="/">
+      <NavbarBrand  href="/">
         DJ Helper
       </NavbarBrand>
       {navState()}

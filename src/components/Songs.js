@@ -148,7 +148,7 @@ const Songs = props => {
           >
             {whichIcon(id)}
           </button>
-          <div className="song-element" onClick={() => handleClickSongVisible()}>
+          <div className="song-element name" onClick={() => handleClickSongVisible()}>
             <Truncate lines={1}>
               <p>{name}</p>
             </Truncate>

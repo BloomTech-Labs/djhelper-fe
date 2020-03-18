@@ -47,6 +47,13 @@
     flex-flow: row nowrap;
     justify-content: space-between;
     width: 20%;
+    @include for-phone-only {
+        width: 65%;
+        margin-left: 25%;
+    }
+
+
+
   }
 
   .navElementsIcons {

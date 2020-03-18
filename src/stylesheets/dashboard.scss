@@ -223,7 +223,8 @@
                 font-size: 1.5rem;
                 font-weight: 700;
                 @include for-phone-only {
-                    font-size: 0.75rem;
+                    font-size: 0.5rem;
+                    margin-top: 9%;
                 }
             }
             p {

@@ -295,6 +295,16 @@
                 flex-flow: row nowrap;
                 justify-content: space-between;
                 align-items: flex-start;
+                .name {
+                    &:hover {
+                        cursor: pointer;
+                        font-weight: 700;
+                    }
+                    &:active {
+                        font-weight: 700;
+                    }
+                }
+
                 .song-element {
                     display: flex;
                     margin-right: 5%;
