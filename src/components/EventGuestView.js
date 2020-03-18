@@ -16,7 +16,9 @@ const EventGuestView = props => {
 
   const { dj_id, event_id } = props.match.params;
 
-  const eventPlaylist = useSelector(state => state.songReducer.eventPlaylists[`event${event_id}`].playlist);
+  const eventPlaylist = useSelector(
+    state => state.songReducer.eventPlaylists[`event${event_id}`].playlist
+  );
 
   const name = useSelector(state => state.userReducer.name);
   const email = useSelector(state => state.userReducer.email);
@@ -35,9 +37,7 @@ const EventGuestView = props => {
   const [location, setLocation] = useState(null);
   useEffect(() => {
     if (currentEvent) {
-      setLocation(
-        locations.find(item => item.location_id === currentEvent.location_id)
-      );
+      setLocation(locations.find(item => item.id === currentEvent.location_id));
     }
   }, [currentEvent]);
 
@@ -179,12 +179,11 @@ const EventGuestView = props => {
       </div>
       <div className="section right-side" id="playlist">
         <h2>Playlist</h2>
-            <div className={`playlist`}>
-            {eventPlaylist.map((element) => (
-                <Songs items={element} playlist={true} />
-            ))}
-            </div>
-
+        <div className={`playlist`}>
+          {eventPlaylist.map(element => (
+            <Songs items={element} playlist={true} />
+          ))}
+        </div>
       </div>
     </div>
   );
