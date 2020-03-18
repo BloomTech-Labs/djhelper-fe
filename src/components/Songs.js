@@ -35,12 +35,17 @@ const Songs = props => {
     readyToPlay: true,
     audioObject: '',
     noPreview: false,
+    songPlayVisible: false,
   });
 
 
   const randomNum = getRandomIntInclusive(1, 5);
   const key = `image${randomNum}`;
   const songIcon = imageList[key];
+
+  const handleClickSongVisible = () => {
+      setSongState({...songState, songPlayVisible: !songState.songPlayVisible});
+  }
 
   const playPreviewLink = id => {
     let preview_link;
@@ -122,19 +127,28 @@ const Songs = props => {
     }
   }
 
+  const isSongPlayVisible = (id) => {
+      if (songState.songPlayVisible) {
+          return (
+            <iframe className='playSong' src={`https://open.spotify.com/embed/track/${id}`} width="300" height="80" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          )
+      }
+  }
+
   const placeholderVsResults = () => {
     if (props.items) {
       const { album, artists, name, id } = props.items;
       const songInfo = props.items;
       return (
-        <div className="songs">
+          <div>
+        <div className="songs"  >
           <button
             style={{ backgroundImage: `url(${album.images[2].url})` }}
             id="song-type"
           >
             {whichIcon(id)}
           </button>
-          <div className="song-element">
+          <div className="song-element" onClick={() => handleClickSongVisible()}>
             <Truncate lines={1}>
               <p>{name}</p>
             </Truncate>
@@ -179,7 +193,11 @@ const Songs = props => {
         {isEditModeOn(id)}
 
           <br />
+
         </div>
+            {isSongPlayVisible(id)}
+    </div>
+
       );
     }
     return (

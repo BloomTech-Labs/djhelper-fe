@@ -25,6 +25,7 @@ const EventPage = props => {
   const events = useSelector(state => state.userReducer.events);
   const [currentEvent, setCurrentEvent] = useState(events[`event${event_id}`]);
 
+  console.log(currentEvent);
   const formattedDate = formatDate(currentEvent.date);
 
 
@@ -35,6 +36,9 @@ const EventPage = props => {
   const eventPlaylist = useSelector(
     state => state.songReducer.eventPlaylists[`event${event_id}`].playlist
   );
+  console.log(eventPlaylist)
+
+  eventPlaylist.sort((a, b) => b.votes - a.votes);
   const [switches, setSwitches] = useState({
     buttonText: 'Add Songs',
     searchVisible: false,
@@ -130,6 +134,7 @@ const EventPage = props => {
     }
     return (
       <div className="playlist">
+
         {eventPlaylist.map(element => (
           <Songs items={element} playlist editModeOn={editModeOn} />
         ))}

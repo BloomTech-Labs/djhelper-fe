@@ -214,6 +214,12 @@
             flex-flow: column nowrap;
             height: 85vh;
             overflow-y: scroll;
+            .playSong {
+
+                margin-left: 1%;
+                width: 90%;
+                padding-right: 6%;
+            }
            /* Phone styling */
             @include for-phone-only {
                 height: 35vh;
