@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getDJ, getEvents, getLocation } from '../actions/action';
 
-import { locations } from '../data/locations';
 import Songs from './Songs';
 import formatDate from '../utils/formatDate';
 import formatTime from '../utils/formatTime';
@@ -38,13 +37,16 @@ const EventGuestView = props => {
   const events = useSelector(state => state.userReducer.events);
   const [currentEvent] = useState(events[`event${event_id}`]);
 
+  const locations = useSelector(state => state.userReducer.locations);
   const [location, setLocation] = useState(null);
   useEffect(() => {
-    //if (currentEvent) {
     dispatch(getLocation(currentEvent.location_id));
     setLocation(locations.find(item => item.id === currentEvent.location_id));
-    //}
   }, [currentEvent]);
+
+  useEffect(() => {
+    setLocation(locations.find(item => item.id === currentEvent.location_id));
+  }, [locations]);
 
   useEffect(() => {
     setFormattedDate(formatDate(currentEvent.date));
@@ -116,7 +118,7 @@ const EventGuestView = props => {
           </div>
         )}
 
-        {currentEvent && location && (
+        {location && (
           <div>
             <h2>Venue:</h2>
             <h3>{location.name}</h3>
