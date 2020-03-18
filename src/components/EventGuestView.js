@@ -1,20 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import Songs from './Songs';
+
 import { useSelector, useDispatch } from 'react-redux';
-import { getDJ } from '../actions/action';
+import { getDJ, getEvents, getLocation } from '../actions/action';
 
 import { locations } from '../data/locations';
+import Songs from './Songs';
 import formatDate from '../utils/formatDate';
 import formatTime from '../utils/formatTime';
 import useWindowSize from '../utils/useWindowSize';
 
 const EventGuestView = props => {
   const dispatch = useDispatch();
+  const { dj_id, event_id } = props.match.params;
+
+  useEffect(() => {
+    dispatch(getDJ(dj_id));
+    dispatch(getEvents(dj_id));
+  }, [dispatch, dj_id]);
+
   const [formattedDate, setFormattedDate] = useState(null);
   const [formattedStartTime, setFormattedStartTime] = useState(null);
   const [formattedEndTime, setFormattedEndTime] = useState(null);
-
-  const { dj_id, event_id } = props.match.params;
 
   const eventPlaylist = useSelector(
     state => state.songReducer.eventPlaylists[`event${event_id}`].playlist
@@ -29,21 +35,16 @@ const EventGuestView = props => {
     state => state.userReducer.profile_pic_url
   );
 
-  // TODO: Get event data from back end, once it is available (instead of redux store)
   const events = useSelector(state => state.userReducer.events);
   const [currentEvent] = useState(events[`event${event_id}`]);
 
-  // TODO: Get location data from back end, once it is available (instead of dummy data)
   const [location, setLocation] = useState(null);
   useEffect(() => {
-    if (currentEvent) {
-      setLocation(locations.find(item => item.id === currentEvent.location_id));
-    }
+    //if (currentEvent) {
+    dispatch(getLocation(currentEvent.location_id));
+    setLocation(locations.find(item => item.id === currentEvent.location_id));
+    //}
   }, [currentEvent]);
-
-  useEffect(() => {
-    dispatch(getDJ(dj_id));
-  }, [dispatch, dj_id]);
 
   useEffect(() => {
     setFormattedDate(formatDate(currentEvent.date));

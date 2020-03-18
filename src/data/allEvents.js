@@ -50,7 +50,7 @@ export const allEvents = {
   },
   event5: {
     event_id: 5,
-    location_id: 5,
+    location_id: 84,
     name: "Elsa's 50th Birthday Gala",
     event_type: 'birthday',
     description:

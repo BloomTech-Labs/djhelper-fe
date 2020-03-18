@@ -243,6 +243,19 @@ const AddEvent = props => {
 
             {showMoreLocationData && (
               <div className="input-group">
+                <label htmlFor="phone">Venue Phone: </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  id="phone"
+                  onChange={handleInputChange}
+                  value={eventData.phone}
+                />
+              </div>
+            )}
+
+            {showMoreLocationData && (
+              <div className="input-group">
                 <label htmlFor="email">Venue Email: </label>
                 <input
                   type="email"
