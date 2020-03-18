@@ -216,8 +216,9 @@
             overflow-y: scroll;
             .playSong {
 
+                margin-top: 0.5%;
                 margin-left: 1%;
-                width: 90%;
+                width: 100%;
                 padding-right: 6%;
             }
            /* Phone styling */
@@ -265,6 +266,7 @@
                 background: transparent;
                 box-shadow: none;
                 border: none;
+                margin-left: 50%;
             }
             #song-type {
                 display: flex;
