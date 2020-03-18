@@ -64,6 +64,18 @@
       background: $brightGreen;
     }
   }
+  .time-group {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    .input-group {
+      width: 45%;
+      flex-flow: row wrap;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
   .input-group {
     display: flex;
     flex-flow: row wrap;

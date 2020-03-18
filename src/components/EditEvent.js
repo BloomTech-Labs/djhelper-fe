@@ -147,25 +147,27 @@ const EditEvent = props => {
               value={currentEvent.date}
             />
           </div>
-          <div className="input-group">
-            <label htmlFor="start_time">Start Time:</label>
-            <input
-              type="time"
-              id="start_time"
-              name="start_time"
-              onChange={handleChanges}
-              value={currentEvent.start_time}
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="end_time">End Time:</label>
-            <input
-              type="time"
-              id="end_time"
-              name="end_time"
-              onChange={handleChanges}
-              value={currentEvent.end_time}
-            />
+          <div className="time-group">
+            <div className="input-group">
+              <label htmlFor="start_time">Start Time:</label>
+              <input
+                type="time"
+                id="start_time"
+                name="start_time"
+                onChange={handleChanges}
+                value={currentEvent.start_time}
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="end_time">End Time:</label>
+              <input
+                type="time"
+                id="end_time"
+                name="end_time"
+                onChange={handleChanges}
+                value={currentEvent.end_time}
+              />
+            </div>
           </div>
           <div className="input-group description">
             <label htmlFor="description">Description:</label>
@@ -257,25 +259,27 @@ const EditEvent = props => {
                   onChange={handleLocationChanges}
                 />
               </div>
-              <div className="input-group">
-                <label htmlFor="state">State:</label>
-                <input
-                  name="state"
-                  id="state"
-                  type="text"
-                  value={currentLocation.state}
-                  onChange={handleLocationChanges}
-                />
-              </div>
-              <div className="input-group">
-                <label htmlFor="zip">Zip:</label>
-                <input
-                  name="zip"
-                  type="text"
-                  id="zip"
-                  value={currentLocation.zip}
-                  onChange={handleLocationChanges}
-                />
+              <div className="time-group">
+                <div className="input-group">
+                  <label htmlFor="state">State:</label>
+                  <input
+                    name="state"
+                    id="state"
+                    type="text"
+                    value={currentLocation.state}
+                    onChange={handleLocationChanges}
+                  />
+                </div>
+                <div className="input-group">
+                  <label htmlFor="zip">Zip:</label>
+                  <input
+                    name="zip"
+                    type="text"
+                    id="zip"
+                    value={currentLocation.zip}
+                    onChange={handleLocationChanges}
+                  />
+                </div>
               </div>
               <button type="button" onClick={handleLocationEdit}>
                 Submit Location Changes
