@@ -147,6 +147,26 @@ const EditEvent = props => {
               value={currentEvent.date}
             />
           </div>
+          <div className="input-group">
+            <label htmlFor="start_time">Start Time:</label>
+            <input
+              type="time"
+              id="start_time"
+              name="start_time"
+              onChange={handleChanges}
+              value={currentEvent.start_time}
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="end_time">End Time:</label>
+            <input
+              type="time"
+              id="end_time"
+              name="end_time"
+              onChange={handleChanges}
+              value={currentEvent.end_time}
+            />
+          </div>
           <div className="input-group description">
             <label htmlFor="description">Description:</label>
             <textarea
