@@ -406,7 +406,7 @@ export const editEvent = (eventInfo, event_id) => dispatch => {
             end_time: response2.data[0].end_time,
             event_type: response2.data[0].event_type,
             location_id: response2.data[0].location_id,
-            img_url: response2.data[0].img_urls,
+            img_url: response2.data[0].img_url,
             description: response2.data[0].description
           };
           dispatch({

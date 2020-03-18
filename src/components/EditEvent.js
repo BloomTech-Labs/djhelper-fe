@@ -28,7 +28,8 @@ const EditEvent = props => {
       description: currentEvent.description,
       date: currentEvent.date,
       start_time: currentEvent.start_time,
-      end_time: currentEvent.end_time
+      end_time: currentEvent.end_time,
+      img_url: currentEvent.img_url
     };
     dispatch(editEvent(eventToSend, props.event_id));
   };
@@ -54,6 +55,7 @@ const EditEvent = props => {
   const locations = useSelector(state => state.userReducer.locations);
   const [currentLocation, setCurrentLocation] = useState();
   const [showLocation, setShowLocation] = useState(false);
+  const [showVenue, setShowVenue] = useState(false);
 
   useEffect(() => {
     dispatch(getLocation(currentEvent.location_id));
@@ -76,7 +78,14 @@ const EditEvent = props => {
     e.preventDefault();
     console.log('currentLocation to submit: ', currentLocation);
     dispatch(editLocation(currentEvent.location_id, currentLocation));
-    toggleLocationDisplay();
+    setShowLocation(false);
+    setShowVenue(false);
+  };
+
+  // Venue Editing
+
+  const toggleVenueDisplay = () => {
+    setShowVenue(!showVenue);
   };
 
   return (
@@ -125,6 +134,16 @@ const EditEvent = props => {
               value={currentEvent.description}
             />
           </div>
+          <div className="input-group">
+            <label htmlFor="img_url">Image Url: </label>
+            <input
+              type="url"
+              name="img_url"
+              id="img_url"
+              onChange={handleChanges}
+              value={currentEvent.img_url}
+            />
+          </div>
           <button type="submit" data-testid="submit-button">
             Submit Changes
           </button>
@@ -159,6 +178,11 @@ const EditEvent = props => {
           <button type="button" onClick={toggleLocationDisplay}>
             {!showLocation ? 'Edit Location Info' : 'Hide Location Info'}
           </button>
+
+          <button type="button" onClick={toggleVenueDisplay}>
+            {!showVenue ? 'Edit Venue Info' : 'Hide Venue Info'}
+          </button>
+
           {showLocation && (
             <>
               <div className="input-group">
@@ -166,6 +190,7 @@ const EditEvent = props => {
                 <input
                   name="address_line_1"
                   id="address_line_1"
+                  type="text"
                   value={currentLocation.address_line_1}
                   onChange={handleLocationChanges}
                 />
@@ -175,6 +200,7 @@ const EditEvent = props => {
                 <input
                   name="address_line_2"
                   id="address_line_2"
+                  type="text"
                   value={currentLocation.address_line_2}
                   onChange={handleLocationChanges}
                 />
@@ -184,6 +210,7 @@ const EditEvent = props => {
                 <input
                   name="city"
                   id="city"
+                  type="text"
                   value={currentLocation.city}
                   onChange={handleLocationChanges}
                 />
@@ -193,6 +220,7 @@ const EditEvent = props => {
                 <input
                   name="state"
                   id="state"
+                  type="text"
                   value={currentLocation.state}
                   onChange={handleLocationChanges}
                 />
@@ -201,6 +229,7 @@ const EditEvent = props => {
                 <label htmlFor="zip">Zip:</label>
                 <input
                   name="zip"
+                  type="text"
                   id="zip"
                   value={currentLocation.zip}
                   onChange={handleLocationChanges}
@@ -208,6 +237,45 @@ const EditEvent = props => {
               </div>
               <button type="button" onClick={handleLocationEdit}>
                 Submit Location Changes
+              </button>
+            </>
+          )}
+
+          {showVenue && (
+            <>
+              <div className="input-group">
+                <label htmlFor="phone">Phone:</label>
+                <input
+                  name="phone"
+                  id="phone"
+                  type="tel"
+                  value={currentLocation.phone}
+                  onChange={handleLocationChanges}
+                />
+              </div>
+              <div>
+                <label htmlFor="email">Email:</label>
+                <input
+                  name="email"
+                  id="email"
+                  type="email"
+                  value={currentLocation.email}
+                  onChange={handleLocationChanges}
+                />
+              </div>
+              <div>
+                <label htmlFor="website">Website:</label>
+                <input
+                  name="website"
+                  id="website"
+                  type="url"
+                  value={currentLocation.website}
+                  onChange={handleLocationChanges}
+                />
+              </div>
+
+              <button type="button" onClick={handleLocationEdit}>
+                Submit Venue Info Changes
               </button>
             </>
           )}
