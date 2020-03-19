@@ -80,6 +80,8 @@ In order for the app to function correctly, the user must set up their own envir
 
     * REACT_APP_FRONTEND_HOST = 'http://localhost:3000/'  - if running locally, with whichever port you are using for the front end.
 
+    * CI=true - this is needed to run the test coverage reports for Code Climate
+
 # Testing
 
 Testing is done using the @testing-library/jest-dom, @testing-library/react, and @testing-library/user-event packages. Tests are located in the [src/tests directory](https://github.com/Lambda-School-Labs/djhelper-fe/tree/master/src/tests). Tests are grouped into files by component.
