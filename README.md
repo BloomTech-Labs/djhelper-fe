@@ -1,5 +1,9 @@
 # DJ Helper
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/68f4b3a73f4aab561e09/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/djhelper-fe/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/68f4b3a73f4aab561e09/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/djhelper-fe/test_coverage)
+
 You can find the deployed project [here](https://www.dj-helper.com/register).
 
 ## Contributors
