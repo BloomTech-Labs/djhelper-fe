@@ -16,6 +16,7 @@ const Event = props => {
   return (
     <button
       type="button"
+      data-testid='event-component'
       className={`events ${eventClass}`}
       onClick={() =>
         props.setData({ ...props.data, active: `event${props.num}` })
