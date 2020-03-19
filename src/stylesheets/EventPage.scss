@@ -6,6 +6,15 @@
     color: white;
     overflow: auto;
     min-height: 115vh;
+    transition: 0.3s;
+     .text-buttons {
+         transition: 0.3s;
+        &:hover {
+            cursor: pointer;
+            color: rgba(252, 123, 255, 1)
+        }
+     }
+
     .speech-bubble {
         position: relative;
         background: #00aabb;
@@ -187,6 +196,15 @@
                  justify-content: space-between;
                  width: 100%;
                  margin-bottom: 5%;
+                 .text-buttons {
+                     transition: 0.3s;
+                    &:hover {
+                        cursor: pointer;
+                        color: rgba(252, 123, 255, 1)
+                    }
+                 }
+
+
                 @include for-phone-only {
                     display: none;
                  }
@@ -212,10 +230,15 @@
         .playlist {
             display: flex;
             flex-flow: column nowrap;
-            height: 85vh;
             overflow-y: scroll;
-            .playSong {
+            .page-change-buttons {
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: space-between;
+                margin-top: 3%;
 
+            }
+            .playSong {
                 margin-top: 0.5%;
                 margin-left: 1%;
                 width: 100%;
@@ -303,13 +326,20 @@
                     &:active {
                         font-weight: 700;
                     }
+                    
                 }
 
                 .song-element {
                     display: flex;
+                    align-items: flex-end;
                     margin-right: 5%;
-                    width: 17% !important;
+                    width: 20% !important;
                 }
+
+                .last-two {
+                    margin-right: 0%;
+                }
+
             }
         }
         //End of playlist class

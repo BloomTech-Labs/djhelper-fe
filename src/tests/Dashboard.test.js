@@ -1,13 +1,13 @@
 import React from 'react';
 import { debug, render, fireEvent, cleanup } from '@testing-library/react';
-import Dashboard from '../components/Dashboard';
-import App from '../App.js';
 import { Provider, useSelector } from 'react-redux';
 import { Router, BrowserRouter, MemoryRouter } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { store } from './store';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import App from '../App.js';
+import Dashboard from '../components/Dashboard';
 
 test('Dashboard page renders correctly', () => {
   const history = createMemoryHistory();
@@ -53,7 +53,7 @@ test('Dashboard page navbar profile icon leads to DJProfile component', () => {
   } = render(
     <Provider store={store}>
       <Router history={history}>
-        <Dashboard tokenPresent={true} />
+        <Dashboard tokenPresent />
       </Router>
     </Provider>
   );
@@ -76,7 +76,7 @@ test('Dashboard page navbar home icon leads to Dashboard component', () => {
   } = render(
     <Provider store={store}>
       <Router history={history}>
-        <Dashboard tokenPresent={true} />
+        <Dashboard tokenPresent />
       </Router>
     </Provider>
   );
