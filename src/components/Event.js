@@ -10,7 +10,6 @@ const Event = props => {
     eventClass = '';
   }
 
-
   const eventNum = `event${props.num}`;
   const event = props.data[eventNum];
   const formattedDate = formatDate(event.date);
@@ -23,7 +22,9 @@ const Event = props => {
       }
     >
       {event && <h2>{event.name}</h2>}
-      {event && <p> Date: {formattedDate} </p>}
+      {event && <p>
+{' '}
+Date:{formattedDate} </p>}
     </button>
   );
 };

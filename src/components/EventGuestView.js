@@ -127,7 +127,10 @@ const EventGuestView = props => {
             <p>{location.address_line_1}</p>
             <p>{location.address_line_2}</p>
             <p>
-              {location.city}, {location.state} {location.zip}
+              {location.city}
+,{location.state} 
+{' '}
+{location.zip}
             </p>
             <p>
               <a href={`tel:${location.phone}`}>{location.phone}</a>
@@ -184,9 +187,9 @@ const EventGuestView = props => {
       </div>
       <div className="section right-side" id="playlist">
         <h2>Playlist</h2>
-        <div className={`playlist`}>
+        <div className="playlist">
           {eventPlaylist.map(element => (
-            <Songs items={element} playlist={true} />
+            <Songs items={element} playlist />
           ))}
         </div>
       </div>

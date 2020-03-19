@@ -188,37 +188,6 @@ const EditEvent = props => {
               value={currentEvent.img_url}
             />
           </div>
-          <button type="submit" data-testid="submit-button">
-            Submit Changes
-          </button>
-          {!toggleDelete && (
-            <button
-              type="button"
-              onClick={handleDeleteToggle}
-              className="toggle-delete"
-            >
-              Delete Event
-            </button>
-          )}
-          {toggleDelete && (
-            <>
-              <p>Are you 100% sure that you want to delete this event?</p>
-              <button
-                type="button"
-                className="toggle-delete"
-                onClick={handleDelete}
-              >
-                Yes, delete this event.
-              </button>
-              <button
-                type="button"
-                className="cancel-delete"
-                onClick={handleDeleteToggle}
-              >
-                No, go ahead and keep this event.
-              </button>
-            </>
-          )}
           <button type="button" onClick={toggleLocationDisplay}>
             {!showLocation ? 'Edit Location Info' : 'Hide Location Info'}
           </button>
@@ -342,6 +311,37 @@ const EditEvent = props => {
 
               <button type="button" onClick={handleLocationEdit}>
                 Submit Venue Info Changes
+              </button>
+            </>
+          )}
+          <button type="submit" data-testid="submit-button">
+            Submit Changes
+          </button>
+          {!toggleDelete && (
+            <button
+              type="button"
+              onClick={handleDeleteToggle}
+              className="toggle-delete"
+            >
+              Delete Event
+            </button>
+          )}
+          {toggleDelete && (
+            <>
+              <p>Are you 100% sure that you want to delete this event?</p>
+              <button
+                type="button"
+                className="toggle-delete"
+                onClick={handleDelete}
+              >
+                Yes, delete this event.
+              </button>
+              <button
+                type="button"
+                className="cancel-delete"
+                onClick={handleDeleteToggle}
+              >
+                No, go ahead and keep this event.
               </button>
             </>
           )}

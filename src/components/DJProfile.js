@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Draggable, { DraggableCore } from 'react-draggable';
 import { startEditUser } from '../actions/action';
 
 import EditDJ from './EditDJ';
 import NavigationBar from './NavigationBar';
 
-import Draggable, { DraggableCore } from 'react-draggable';
 import DJMixer from '../images/DJMixer.jpg';
 
 const DJProfile = props => {
@@ -32,9 +32,9 @@ const DJProfile = props => {
   }, [profile_pic_url]);
 
   const handleOrientation = () => {
-    let height = profile.current.naturalHeight;
-    let width = profile.current.naturalWidth;
-    let orientation = height > width ? 'portrait' : 'landscape';
+    const height = profile.current.naturalHeight;
+    const width = profile.current.naturalWidth;
+    const orientation = height > width ? 'portrait' : 'landscape';
     if (orientation === 'landscape') {
       profile.current.classList.add('landscape');
     } else {

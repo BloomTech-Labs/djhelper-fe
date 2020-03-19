@@ -28,7 +28,6 @@ const EventPage = props => {
   console.log(currentEvent);
   const formattedDate = formatDate(currentEvent.date);
 
-
   useEffect(() => {
     setCurrentEvent(events[`event${event_id}`]);
   }, [events]);
@@ -36,7 +35,7 @@ const EventPage = props => {
   const eventPlaylist = useSelector(
     state => state.songReducer.eventPlaylists[`event${event_id}`].playlist
   );
-  console.log(eventPlaylist)
+  console.log(eventPlaylist);
 
   eventPlaylist.sort((a, b) => b.votes - a.votes);
   const [switches, setSwitches] = useState({
@@ -58,7 +57,7 @@ const EventPage = props => {
     requestView,
     playlistClass,
     editModeOn,
-    editButtonText,
+    editButtonText
   } = switches;
 
   const setAppSize = () => {
@@ -101,7 +100,6 @@ const EventPage = props => {
     });
   };
 
-
   const switchToRequests = () => {
     setSwitches({
       ...switches,
@@ -132,14 +130,6 @@ const EventPage = props => {
         </div>
       );
     }
-    return (
-      <div className="playlist">
-
-        {eventPlaylist.map(element => (
-          <Songs items={element} playlist editModeOn={editModeOn} />
-        ))}
-      </div>
-    );
   };
   const handleQRDisplay = () => {
     if (!qrCode) {
@@ -154,8 +144,6 @@ const EventPage = props => {
   const handleEdit = () => {
     setIsEditing(!isEditing);
   };
-
-
 
   return (
     <div className="event-page">
@@ -259,13 +247,23 @@ const EventPage = props => {
         </div>
         <div className={`event-playlist-location ${playlistView}`}>
           <div className="label">
-            <h5> Playlist </h5>
-            <p className='bold' onClick={() => handleEditClick()}>{editButtonText} </p>
-            <p className='bold' onClick={handleClick}>
+            <p className="bold" onClick={() => handleEditClick()}>
+              {editButtonText}
+{' '}
+            </p>
+            <p className="bold" onClick={handleClick}>
               {switches.buttonText}
             </p>
           </div>
           {searchVsPlaylist()}
+
+        <h5> Playlist </h5>
+          <div className="playlist">
+            {eventPlaylist.map(element => (
+              <Songs items={element} playlist editModeOn={editModeOn} />
+            ))}
+          </div>
+
         </div>
       </div>
     </div>

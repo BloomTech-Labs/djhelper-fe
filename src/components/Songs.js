@@ -35,17 +35,16 @@ const Songs = props => {
     readyToPlay: true,
     audioObject: '',
     noPreview: false,
-    songPlayVisible: false,
+    songPlayVisible: false
   });
-
 
   const randomNum = getRandomIntInclusive(1, 5);
   const key = `image${randomNum}`;
   const songIcon = imageList[key];
 
   const handleClickSongVisible = () => {
-      setSongState({...songState, songPlayVisible: !songState.songPlayVisible});
-  }
+    setSongState({ ...songState, songPlayVisible: !songState.songPlayVisible });
+  };
 
   const playPreviewLink = id => {
     let preview_link;
@@ -110,94 +109,102 @@ const Songs = props => {
     console.log('no preview available');
   };
 
-  const isEditModeOn = (id) => {
+  const isEditModeOn = id => {
     if (props.editModeOn) {
-        return (
+      return (
         <div className="song-element">
           <button
-            id='remove'
+            id="remove"
             onClick={() => {
               dispatch(removeSongFromPlaylistDJ(id, eventId));
             }}
           >
-            <FontAwesomeIcon icon='minus' size="1x" />
+            <FontAwesomeIcon icon="minus" size="1x" />
           </button>
         </div>
-        )
+      );
     }
-  }
+  };
 
-  const isSongPlayVisible = (id) => {
-      if (songState.songPlayVisible) {
-          return (
-            <iframe className='playSong' src={`https://open.spotify.com/embed/track/${id}`} width="300" height="80" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-          )
-      }
-  }
+  const isSongPlayVisible = id => {
+    if (songState.songPlayVisible) {
+      return (
+        <iframe
+          className="playSong"
+          src={`https://open.spotify.com/embed/track/${id}`}
+          width="300"
+          height="80"
+          frameBorder="0"
+          allowtransparency="true"
+          allow="encrypted-media"
+        />
+      );
+    }
+  };
 
   const placeholderVsResults = () => {
     if (props.items) {
       const { album, artists, name, id } = props.items;
       const songInfo = props.items;
       return (
-          <div>
-        <div className="songs"  >
-          <button
-            style={{ backgroundImage: `url(${album.images[2].url})` }}
-            id="song-type"
-          >
-            {whichIcon(id)}
-          </button>
-          <div className="song-element name" onClick={() => handleClickSongVisible()}>
-            <Truncate lines={1}>
-              <p>{name}</p>
-            </Truncate>
-          </div>
+        <div>
+          <div className="songs">
+            <button
+              style={{ backgroundImage: `url(${album.images[2].url})` }}
+              id="song-type"
+            >
+              {whichIcon(id)}
+            </button>
+            <div
+              className="song-element name"
+              onClick={() => handleClickSongVisible()}
+            >
+              <Truncate lines={1}>
+                <p>{name}</p>
+              </Truncate>
+            </div>
 
-          <div className="song-element">
-            <Truncate lines={1}>
-              <p>{album.name}</p>
-            </Truncate>
-          </div>
-          <div className="song-element">
-            <Truncate lines={1}>
-              <p>{artists[0].name}</p>
-            </Truncate>
-          </div>
-
-          {props.playlist ? (
             <div className="song-element">
-              <button
-                id="vote"
-                onClick={() => {
-                  dispatch(addVoteToSong(eventId, id));
-                }}
-              >
-                <FontAwesomeIcon icon="caret-up" size="2x" />
-              </button>
-              <p>{props.items.votes}</p>
+              <Truncate lines={1}>
+                <p>{album.name}</p>
+              </Truncate>
+            </div>
+            <div className="song-element">
+              <Truncate lines={1}>
+                <p>{artists[0].name}</p>
+              </Truncate>
             </div>
 
-          ) : (
-            <div>
-              <button
-                id="add"
-                onClick={() => {
-                  dispatch(addSongToPlaylistDJ(songInfo, eventId));
-                }}
-              >
-                <FontAwesomeIcon icon="plus" size="1x" />
-              </button>
-            </div>
-          )}
-        {isEditModeOn(id)}
+            {props.playlist ? (
+              <div className="song-element">
+                <button
+                  id="vote"
+                  onClick={() => {
+                    dispatch(addVoteToSong(eventId, id));
+                  }}
+                >
+                  <FontAwesomeIcon icon="caret-up" size="2x" />
+                </button>
+                <p>{props.items.votes}</p>
+              </div>
+            ) : (
+              <div>
+                <button
+                  id="add"
+                  onClick={() => {
+                    dispatch(addSongToPlaylistDJ(songInfo, eventId));
+                  }}
+                >
+                  <FontAwesomeIcon icon="plus" size="1x" />
+                </button>
+              </div>
+            )}
+            {isEditModeOn(id)}
 
-          <br />
-
+            <br />
+          </div>
+          {isSongPlayVisible(id)}
         </div>
-            {isSongPlayVisible(id)}
-    </div>
-
       );
     }
     return (
