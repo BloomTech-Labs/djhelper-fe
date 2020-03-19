@@ -1,10 +1,10 @@
 import React from 'react';
 import { debug, render, fireEvent, cleanup } from '@testing-library/react';
+import App from '../components/Home';
 import { Provider, useSelector } from 'react-redux';
 import { compose, applyMiddleware } from 'redux';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
-import App from '../components/Home';
 import { store } from './store';
 
 test('App component renders to Homepage', () => {
@@ -46,11 +46,4 @@ test('Register link sends user to the register page', () => {
       </Router>
     </Provider>
   );
-  // TODO: Find way to get this specific instance of 'register'. Line 53 also causes an error.
-  // TODO: Then uncomment lines 56-57 to run this test.
-  // fireEvent.click(getByText(/register/i));
-  // fireEvent.click(getByTestId('register-nav'));
-
-  // const currentUrl = history.entries[1].pathname;
-  // expect(currentUrl).toMatch('/register');
 });
