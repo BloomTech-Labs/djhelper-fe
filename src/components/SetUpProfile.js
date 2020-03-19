@@ -72,7 +72,10 @@ const SetUpProfile = props => {
         <div className="check-container">
           <FontAwesomeIcon icon={faCheck} />
         </div>
-        <h2>Welcome, {name}!</h2>
+        <h2>
+Welcome,{name}
+!
+</h2>
         <p>Let&rsquo;s get your profile set up.</p>
       </div>
       <div className="side right-side">

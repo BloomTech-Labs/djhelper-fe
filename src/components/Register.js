@@ -49,18 +49,17 @@ const Register = props => {
             onChange={handleChange}
           />
         );
-      } else {
-        return (
-          <Input
-            invalid
-            name="password"
-            type="password"
-            id="password"
-            required
-            onChange={handleChange}
-          />
-        );
       }
+      return (
+        <Input
+          invalid
+          name="password"
+          type="password"
+          id="password"
+          required
+          onChange={handleChange}
+        />
+      );
     }
     return (
       <Input
@@ -86,18 +85,17 @@ const Register = props => {
             onChange={handleChange}
           />
         );
-      } else {
-        return (
-          <Input
-            invalid
-            name="repassword"
-            type="password"
-            id="repassword"
-            required
-            onChange={handleChange}
-          />
-        );
       }
+      return (
+        <Input
+          invalid
+          name="repassword"
+          type="password"
+          id="repassword"
+          required
+          onChange={handleChange}
+        />
+      );
     }
     return (
       <Input

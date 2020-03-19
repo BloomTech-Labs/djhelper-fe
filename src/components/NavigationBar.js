@@ -56,30 +56,27 @@ const NavigationBar = props => {
           </NavItem>
         </Nav>
       );
-    } else {
-      return (
-        <Nav className="navElements" navbar>
-          <NavItem>
-            <NavLink data-testid="register-nav" to="/register">
-              Register
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/about">About</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/login">Login</NavLink>
-          </NavItem>
-        </Nav>
-      );
     }
+    return (
+      <Nav className="navElements" navbar>
+        <NavItem>
+          <NavLink data-testid="register-nav" to="/register">
+            Register
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/about">About</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/login">Login</NavLink>
+        </NavItem>
+      </Nav>
+    );
   };
 
   return (
     <Navbar className="navBar" data-testid="navBar" dark expand="md">
-      <NavbarBrand  href="/">
-        DJ Helper
-      </NavbarBrand>
+      <NavbarBrand href="/">DJ Helper</NavbarBrand>
       {navState()}
     </Navbar>
   );

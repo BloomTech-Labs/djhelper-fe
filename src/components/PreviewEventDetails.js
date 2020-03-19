@@ -1,7 +1,7 @@
 import React from 'react';
-import Songs from './Songs';
 import Truncate from 'react-truncate';
 import { Link } from 'react-router-dom';
+import Songs from './Songs';
 
 import formatDate from '../utils/formatDate';
 
@@ -39,10 +39,10 @@ const PreviewEventDetails = props => {
       </div>
       <div className="newest-song-requests">
         <h3> Newest Requests</h3>
-        <div id='requests'>
-            <Songs />
-            <Songs />
-            <Songs />
+        <div id="requests">
+          <Songs />
+          <Songs />
+          <Songs />
         </div>
       </div>
     </div>
