@@ -145,19 +145,16 @@ export const registerUserAction = (infoNeeded, history) => dispatch => {
       dispatch({ type: REGISTER_USER_SUCCESS, payload: response.data });
     })
     .catch(err => {
-      console.log(err);
       dispatch({ type: REGISTER_USER_ERROR, payload: err });
     });
 };
 
 export const loginUser = (userInfo, history) => dispatch => {
-  console.log(userInfo);
   dispatch({ type: LOGIN_USER_START });
 
   axiosWithAuth()
     .post('/login/dj/', userInfo)
     .then(response => {
-      console.log(response);
       localStorage.setItem('token', response.data.token);
       dispatch({ type: LOGIN_USER_SUCCESS, payload: response.data });
 
@@ -176,10 +173,9 @@ export const loginUser = (userInfo, history) => dispatch => {
             'spotifyAccessToken',
             response.data.access_token
           );
-          console.log(response.data);
         })
         .catch(err => {
-          console.log(err.response);
+          // handle error
         });
 
       if (
@@ -195,14 +191,12 @@ export const loginUser = (userInfo, history) => dispatch => {
     })
     .catch(err => {
       dispatch({ type: LOGIN_USER_ERROR, payload: err });
-      console.log(err);
     });
 };
 
 export const logoutUser = () => dispatch => {
   dispatch({ type: LOGOUT_USER_START });
   if (localStorage.getItem('token')) {
-    console.log(localStorage.getItem('token'));
     localStorage.removeItem('token');
     dispatch({ type: LOGOUT_USER_SUCCESS });
   } else {
@@ -211,20 +205,16 @@ export const logoutUser = () => dispatch => {
 };
 
 export const deleteUser = id => dispatch => {
-  console.log('in deleteUser action');
   dispatch({ type: DELETE_USER_START });
   axiosWithAuth()
     .delete(`/auth/dj/${id}`)
     .then(response => {
-      console.log(response);
       if (localStorage.getItem('token')) {
-        console.log(localStorage.getItem('token'));
         localStorage.removeItem('token');
       }
       dispatch({ type: DELETE_USER_SUCCESS });
     })
     .catch(err => {
-      console.log(err);
       dispatch({ type: DELETE_USER_ERROR, payload: err });
     });
 };
@@ -238,11 +228,9 @@ export const editUser = (id, userInfo) => dispatch => {
   axiosWithAuth()
     .put(`/auth/dj/${id}`, userInfo)
     .then(response => {
-      console.log(response);
       dispatch({ type: EDIT_USER_SUCCESS, payload: response.data });
     })
     .catch(err => {
-      console.log(err);
       dispatch({ type: EDIT_USER_ERROR, payload: err });
     });
 };
@@ -256,12 +244,10 @@ export const updateUser = (history, id, userInfo) => dispatch => {
   axiosWithAuth()
     .put(`/auth/dj/${id}`, userInfo)
     .then(response => {
-      console.log(response);
       dispatch({ type: UPDATE_USER_SUCCESS, payload: response.data });
       history.push('/dj');
     })
     .catch(err => {
-      console.log(err);
       dispatch({ type: UPDATE_USER_ERROR, payload: err });
       history.push('/dj');
     });
@@ -275,14 +261,12 @@ export const searchForTrack = searchTerm => dispatch => {
   axiosWithAuthSpotifySearch()
     .get(`/search?q=<${searchTerm}>&type=track&market=US`)
     .then(response => {
-      console.log(response);
       dispatch({
         type: SEARCH_FOR_TRACK_SUCCESS,
         payload: response.data.tracks.items
       });
     })
     .catch(err => {
-      console.log(err);
       dispatch({ type: SEARCH_FOR_TRACK_ERROR, payload: err });
     });
 };
@@ -317,12 +301,10 @@ export const addEvent = (eventInfo, history) => dispatch => {
       axiosWithAuth()
         .get('/locations')
         .then(response2 => {
-          // console.log("Here's the response from GET locations: ", response2);
           const winnerLocation = response2.data.filter(
             location => location.address_line_1 === eventInfo.address_line_1
           )[0];
           dispatch({ type: ADD_LOCATION_SUCCESS, payload: winnerLocation });
-          // console.log('Winner Location: ', winnerLocation);
 
           // Next, POST to https://api.dj-helper.com/api/event/
           // TODO: Change endpoint to auth/event/ if BE changes to that.
@@ -375,10 +357,11 @@ export const addEvent = (eventInfo, history) => dispatch => {
                   });
                   history.push('/dj');
                 })
-                .catch(err4 => console.log(err4));
+                .catch(err4 => {
+                  // handle error
+                });
             })
             .catch(err3 => {
-              console.log(err3);
               dispatch({
                 type: ADD_EVENT_ERROR,
                 payload: err3
@@ -386,13 +369,10 @@ export const addEvent = (eventInfo, history) => dispatch => {
             });
         })
         .catch(err2 => {
-          console.log(err2);
           dispatch({ type: ADD_LOCATION_ERROR, payload: err2 });
         });
     })
-    .catch(err1 => {
-      console.log(err1);
-    });
+    .catch(err1 => {});
 };
 
 export const editEvent = (eventInfo, event_id) => dispatch => {
@@ -402,7 +382,6 @@ export const editEvent = (eventInfo, event_id) => dispatch => {
   axiosWithAuth()
     .put(`/event/${event_id}`, eventInfo)
     .then(response => {
-      console.log(response);
       // Next, GET https://api.dj-helper.com/api/event/:event_id
       // TODO: this endpoint call can probably be taken out in the future, once POST returns the event.
       axiosWithAuth()
@@ -426,12 +405,10 @@ export const editEvent = (eventInfo, event_id) => dispatch => {
           });
         })
         .catch(err2 => {
-          console.log(err2);
           dispatch({ type: EDIT_EVENT_ERROR, payload: err2 });
         });
     })
     .catch(err => {
-      console.log(err);
       dispatch({ type: EDIT_EVENT_ERROR, payload: err });
     });
 };
@@ -447,7 +424,6 @@ export const deleteEvent = (event, history) => dispatch => {
       dispatch({ type: DELETE_EVENT_SUCCESS, payload: event });
     })
     .catch(err => {
-      console.log(err);
       dispatch({ type: DELETE_EVENT_ERROR, payload: err });
     });
 };
@@ -459,11 +435,9 @@ export const getDJ = id => dispatch => {
   axiosWithAuth()
     .get(`/dj/${id}`)
     .then(response => {
-      console.log(response);
       dispatch({ type: GET_DJ_SUCCESS, payload: response.data[0] });
     })
     .catch(err => {
-      console.log(err);
       dispatch({ type: GET_DJ_ERROR, payload: err });
     });
 };
@@ -506,7 +480,6 @@ export const getEvents = dj_id => dispatch => {
       dispatch({ type: GET_EVENTS_SUCCESS, payload: eventsObject });
     })
     .catch(err => {
-      console.log(err);
       dispatch({ type: GET_EVENTS_ERROR });
     });
 };
@@ -520,11 +493,9 @@ export const getLocation = location_id => dispatch => {
   axiosWithAuth()
     .get(`/location/${location_id}`)
     .then(response => {
-      console.log(response);
       dispatch({ type: GET_LOCATION_SUCCESS, payload: response.data[0] });
     })
     .catch(err => {
-      console.log(err);
       dispatch({ type: GET_LOCATION_ERROR, payload: err });
     });
 };
@@ -536,22 +507,18 @@ export const editLocation = (location_id, locationInfo) => dispatch => {
   axiosWithAuth()
     .put(`/location/${location_id}`, locationInfo)
     .then(response => {
-      console.log(response);
       // GET location by id and send to redux store https://api.dj-helper.com/api/location/:location_id
       // TODO: Change this if BE is changed to return the edited location info back.
       axiosWithAuth()
         .get(`/location/${location_id}`)
         .then(response2 => {
-          console.log(response2.data[0]);
           dispatch({ type: EDIT_LOCATION_SUCCESS, payload: response2.data[0] });
         })
         .catch(err2 => {
-          console.log(err2);
           dispatch({ type: EDIT_LOCATION_ERROR, payload: err2 });
         });
     })
     .catch(err => {
-      console.log(err);
       dispatch({ type: EDIT_LOCATION_ERROR, payload: err });
     });
 };
