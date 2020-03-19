@@ -1,7 +1,10 @@
 # DJ Helper
 
+![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
+![React](https://img.shields.io/badge/react-v16.12.0--alpha.2-blue.svg)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![code style: eslint](https://img.shields.io/badge/code_style-eslint-ff69b4.svg?style=flat-square)](https://github.com/eslint/eslint)
 [![Maintainability](https://api.codeclimate.com/v1/badges/68f4b3a73f4aab561e09/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/djhelper-fe/maintainability)
-
 [![Test Coverage](https://api.codeclimate.com/v1/badges/68f4b3a73f4aab561e09/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/djhelper-fe/test_coverage)
 
 You can find the deployed project [here](https://www.dj-helper.com/register).
@@ -25,11 +28,6 @@ You can find the deployed project [here](https://www.dj-helper.com/register).
 
 <br>
 <br>
-
-![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![React](https://img.shields.io/badge/react-v16.12.0--alpha.2-blue.svg)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![code style: eslint](https://img.shields.io/badge/code_style-eslint-ff69b4.svg?style=flat-square)](https://github.com/eslint/eslint)
 
 ## Project Overview
 
