@@ -112,7 +112,7 @@ const Songs = props => {
   const isEditModeOn = id => {
     if (props.editModeOn) {
       return (
-        <div className="song-element">
+        <div className="song-element last-two">
           <button
             id="remove"
             onClick={() => {

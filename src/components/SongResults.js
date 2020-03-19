@@ -36,8 +36,8 @@ const SongResults = () => {
           <>
               {currentResults.map(element => <Songs items={element} />)}
               <div className='page-change-buttons'>
-                  <p onClick={handlePageChangePrevious}>Previous</p>
-                  <p onClick={handlePageChangeNext}>Next</p>
+                  <p className='text-buttons' onClick={handlePageChangePrevious}>Previous</p>
+                  <p className='text-buttons' onClick={handlePageChangeNext}>Next</p>
               </div>
           </>
       )
