@@ -333,10 +333,19 @@ export const addEvent = (eventInfo, history) => dispatch => {
             description: eventInfo.description,
             location_id: winnerLocation.id,
             date: eventInfo.date,
-            dj_id: eventInfo.dj_id,
-            start_time: eventInfo.start_time,
-            end_time: eventInfo.end_time
+            dj_id: eventInfo.dj_id
           };
+
+          // Only adds start_time and end_time if the user has put values in those fields
+          // (Without these lines, app crashes if the start_time and end_time are left blank)
+          if (eventInfo.start_time !== '') {
+            eventToSubmit.start_time = eventInfo.start_time;
+          }
+
+          if (eventInfo.end_time !== '') {
+            eventToSubmit.end_time = eventInfo.end_time;
+          }
+
           axiosWithAuth()
             .post('/event/', eventToSubmit)
             .then(response3 => {
@@ -436,7 +445,6 @@ export const deleteEvent = (event, history) => dispatch => {
     .delete(`/event/${event.event_id}`)
     .then(response => {
       dispatch({ type: DELETE_EVENT_SUCCESS, payload: event });
-      // history.push('/dj');
     })
     .catch(err => {
       console.log(err);
