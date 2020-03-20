@@ -456,7 +456,7 @@ export const getLocation = location_id => dispatch => {
   axiosWithAuth()
     .get(`/location/${location_id}`)
     .then(response => {
-      dispatch({ type: GET_LOCATION_SUCCESS, payload: response.data[0] });
+      dispatch({ type: GET_LOCATION_SUCCESS, payload: response.data });
     })
     .catch(err => {
       dispatch({ type: GET_LOCATION_ERROR, payload: err });
@@ -469,16 +469,7 @@ export const editLocation = (location_id, locationInfo) => dispatch => {
   axiosWithAuth()
     .put(`/auth/location/${location_id}`, locationInfo)
     .then(response => {
-      // GET location by id and send to redux store https://api.dj-helper.com/api/location/:location_id
-      // TODO: Change this if BE is changed to return the edited location info back.
-      axiosWithAuth()
-        .get(`/location/${location_id}`)
-        .then(response2 => {
-          dispatch({ type: EDIT_LOCATION_SUCCESS, payload: response2.data[0] });
-        })
-        .catch(err2 => {
-          dispatch({ type: EDIT_LOCATION_ERROR, payload: err2 });
-        });
+      dispatch({ type: EDIT_LOCATION_SUCCESS, payload: response.data });
     })
     .catch(err => {
       dispatch({ type: EDIT_LOCATION_ERROR, payload: err });
