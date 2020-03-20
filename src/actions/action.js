@@ -417,7 +417,6 @@ export const getEvents = dj_id => dispatch => {
     .then(response => {
       // TODO: Modify what is returned for playlist_id and request_list_id once functionality is built for that
 
-      // Uncomment below to filter events to return only the events of the logged-in DJ:
       const filteredEvents = response.data.filter(
         event => event.dj_id === dj_id
       );
@@ -453,7 +452,6 @@ export const getEvents = dj_id => dispatch => {
 
 export const getLocation = location_id => dispatch => {
   // GET https://api.dj-helper.com/api/location/:location_id
-  // TODO: change endpoing to auth/location etc if BE changes
   dispatch({ type: GET_LOCATION_START });
   axiosWithAuth()
     .get(`/location/${location_id}`)
@@ -467,10 +465,9 @@ export const getLocation = location_id => dispatch => {
 
 export const editLocation = (location_id, locationInfo) => dispatch => {
   dispatch({ type: EDIT_LOCATION_START });
-  // PUT https://api.dj-helper.com/api/location/:id
-  // TODO: change route to auth/location etc if needed for BE
+  // PUT https://api.dj-helper.com/api/auth/location/:id
   axiosWithAuth()
-    .put(`/location/${location_id}`, locationInfo)
+    .put(`/auth/location/${location_id}`, locationInfo)
     .then(response => {
       // GET location by id and send to redux store https://api.dj-helper.com/api/location/:location_id
       // TODO: Change this if BE is changed to return the edited location info back.
