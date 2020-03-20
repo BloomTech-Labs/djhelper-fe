@@ -381,11 +381,10 @@ export const editEvent = (eventInfo, event_id) => dispatch => {
 
 export const deleteEvent = (event, history) => dispatch => {
   dispatch({ type: DELETE_EVENT_START });
-  // TODO: Update endpoint to auth/event if the BE changes to that
-  // DELETE https://api.dj-helper.com/api/event/:event_id
+  // DELETE https://api.dj-helper.com/api/auth/event/:event_id
   history.push('/dj');
   axiosWithAuth()
-    .delete(`/event/${event.event_id}`)
+    .delete(`/auth/event/${event.event_id}`)
     .then(response => {
       dispatch({ type: DELETE_EVENT_SUCCESS, payload: event });
     })
