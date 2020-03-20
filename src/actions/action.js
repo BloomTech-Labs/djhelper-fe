@@ -278,8 +278,8 @@ export const addEvent = (eventInfo, history) => dispatch => {
 
   dispatch({ type: ADD_TO_SONG_REDUCER_START });
 
-  // First, add location to locations table. POST https://api.dj-helper.com/api/location/
-  // TODO: Change endpoint to auth/location/ if BE changes to that.
+  // First, add location to locations table. POST https://api.dj-helper.com/api/auth/location/
+
   dispatch({ type: ADD_LOCATION_START });
   const locationInfo = {
     address_line_1: eventInfo.address_line_1,
@@ -294,85 +294,60 @@ export const addEvent = (eventInfo, history) => dispatch => {
     name: eventInfo.location_name
   };
   axiosWithAuth()
-    .post('/location/', locationInfo)
+    .post('/auth/location/', locationInfo)
     .then(response => {
-      // TODO: Modify this once BE is changed to return location info.
-      // While it returns nothing, keep this GET locations and filter to get location info.
+      dispatch({ type: ADD_LOCATION_SUCCESS, payload: response.data });
+
+      // Next, POST to https://api.dj-helper.com/api/auth/event/
+
+      const eventToSubmit = {
+        name: eventInfo.name,
+        event_type: eventInfo.event_type,
+        description: eventInfo.description,
+        location_id: response.data.id,
+        date: eventInfo.date,
+        dj_id: eventInfo.dj_id
+      };
+
+      // Only adds start_time and end_time if the user has put values in those fields
+      // (Without these lines, app crashes if the start_time and end_time are left blank)
+      if (eventInfo.start_time !== '') {
+        eventToSubmit.start_time = eventInfo.start_time;
+      }
+
+      if (eventInfo.end_time !== '') {
+        eventToSubmit.end_time = eventInfo.end_time;
+      }
+
       axiosWithAuth()
-        .get('/locations')
+        .post('/auth/event/', eventToSubmit)
         .then(response2 => {
-          const winnerLocation = response2.data.filter(
-            location => location.address_line_1 === eventInfo.address_line_1
-          )[0];
-          dispatch({ type: ADD_LOCATION_SUCCESS, payload: winnerLocation });
-
-          // Next, POST to https://api.dj-helper.com/api/event/
-          // TODO: Change endpoint to auth/event/ if BE changes to that.
-
-          const eventToSubmit = {
-            name: eventInfo.name,
-            event_type: eventInfo.event_type,
-            description: eventInfo.description,
-            location_id: winnerLocation.id,
-            date: eventInfo.date,
-            dj_id: eventInfo.dj_id
-          };
-
-          // Only adds start_time and end_time if the user has put values in those fields
-          // (Without these lines, app crashes if the start_time and end_time are left blank)
-          if (eventInfo.start_time !== '') {
-            eventToSubmit.start_time = eventInfo.start_time;
-          }
-
-          if (eventInfo.end_time !== '') {
-            eventToSubmit.end_time = eventInfo.end_time;
-          }
-
-          axiosWithAuth()
-            .post('/event/', eventToSubmit)
-            .then(response3 => {
-              // While POST event BE returns nothing, do additional call to GET events and filter to get the event back
-              // TODO: Modify this once BE is changed to return event info.
-
-              // GET https://api.dj-helper.com/api/events
-              axiosWithAuth()
-                .get('/events')
-                .then(response4 => {
-                  const winnerEvent = response4.data.filter(
-                    event => event.name === eventInfo.name
-                  )[0];
-                  // TODO: Modify what is returned for playlist_id and request_list_id once functionality is built for that
-                  dispatch({
-                    type: ADD_EVENT_SUCCESS,
-                    payload: {
-                      ...winnerEvent,
-                      event_id: winnerEvent.id,
-                      playlist_id: winnerEvent.id,
-                      request_list_id: winnerEvent.id
-                    }
-                  });
-                  dispatch({
-                    type: ADD_TO_SONG_REDUCER_SUCCESS,
-                    payload: winnerEvent.id
-                  });
-                  history.push('/dj');
-                })
-                .catch(err4 => {
-                  // handle error
-                });
-            })
-            .catch(err3 => {
-              dispatch({
-                type: ADD_EVENT_ERROR,
-                payload: err3
-              });
-            });
+          // TODO: Modify what is returned for playlist_id and request_list_id once functionality is built for that
+          dispatch({
+            type: ADD_EVENT_SUCCESS,
+            payload: {
+              ...response2.data,
+              event_id: response2.data.id,
+              playlist_id: response2.data.id,
+              request_list_id: response2.data.id
+            }
+          });
+          dispatch({
+            type: ADD_TO_SONG_REDUCER_SUCCESS,
+            payload: response2.data.id
+          });
+          history.push('/dj');
         })
         .catch(err2 => {
-          dispatch({ type: ADD_LOCATION_ERROR, payload: err2 });
+          dispatch({
+            type: ADD_EVENT_ERROR,
+            payload: err2
+          });
+        })
+        .catch(err => {
+          dispatch({ type: ADD_LOCATION_ERROR, payload: err });
         });
-    })
-    .catch(err1 => {});
+    });
 };
 
 export const editEvent = (eventInfo, event_id) => dispatch => {
