@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import {
   axiosWithAuthSpotify,
@@ -352,36 +353,26 @@ export const addEvent = (eventInfo, history) => dispatch => {
 
 export const editEvent = (eventInfo, event_id) => dispatch => {
   dispatch({ type: EDIT_EVENT_START });
-  // PUT https://api.dj-helper.com/api/event/:event_id
-  // TODO: Change endpoint to auth/event etc if BE changes it
+  // PUT https://api.dj-helper.com/api/auth/event/:event_id
   axiosWithAuth()
-    .put(`/event/${event_id}`, eventInfo)
+    .put(`/auth/event/${event_id}`, eventInfo)
     .then(response => {
-      // Next, GET https://api.dj-helper.com/api/event/:event_id
-      // TODO: this endpoint call can probably be taken out in the future, once POST returns the event.
-      axiosWithAuth()
-        .get(`/event/${event_id}`)
-        .then(response2 => {
-          const formattedResponse = {
-            event_id: response2.data[0].id,
-            dj_id: response2.data[0].dj_id,
-            name: response2.data[0].name,
-            date: response2.data[0].date,
-            start_time: response2.data[0].start_time,
-            end_time: response2.data[0].end_time,
-            event_type: response2.data[0].event_type,
-            location_id: response2.data[0].location_id,
-            img_url: response2.data[0].img_url,
-            description: response2.data[0].description
-          };
-          dispatch({
-            type: EDIT_EVENT_SUCCESS,
-            payload: [formattedResponse, event_id]
-          });
-        })
-        .catch(err2 => {
-          dispatch({ type: EDIT_EVENT_ERROR, payload: err2 });
-        });
+      const formattedResponse = {
+        event_id: response.data.id,
+        dj_id: response.data.dj_id,
+        name: response.data.name,
+        date: response.data.date,
+        start_time: response.data.start_time,
+        end_time: response.data.end_time,
+        event_type: response.data.event_type,
+        location_id: response.data.location_id,
+        img_url: response.data.img_url,
+        description: response.data.description
+      };
+      dispatch({
+        type: EDIT_EVENT_SUCCESS,
+        payload: [formattedResponse, event_id]
+      });
     })
     .catch(err => {
       dispatch({ type: EDIT_EVENT_ERROR, payload: err });
