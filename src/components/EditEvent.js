@@ -7,6 +7,7 @@ import {
   getLocation,
   editLocation
 } from '../actions/action';
+import formatDateForInput from '../utils/formatDateForInput';
 
 const EditEvent = props => {
   const dispatch = useDispatch();
@@ -14,6 +15,11 @@ const EditEvent = props => {
   const [currentEvent, setCurrentEvent] = useState(
     events[`event${props.event_id}`]
   );
+
+  useEffect(() => {
+    const formattedDate = formatDateForInput(currentEvent.date);
+    setCurrentEvent({ ...currentEvent, date: formattedDate });
+  }, [events]);
 
   // Event Editing
 

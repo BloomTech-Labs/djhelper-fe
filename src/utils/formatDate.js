@@ -6,8 +6,11 @@ const dtf = new Intl.DateTimeFormat('en', {
 
 export default function formatDate(dateString) {
   // dateString is in the format 'YYYY-MM-DD'
+  const originalDate = new Date(dateString);
+  const adjustedDate = new Date(originalDate);
+  adjustedDate.setDate(adjustedDate.getDate() + 1);
   const [{ value: mo }, , { value: da }, , { value: ye }] = dtf.formatToParts(
-    new Date(dateString)
+    adjustedDate
   );
   return `${da} ${mo} ${ye}`;
 }
