@@ -119,82 +119,82 @@ const EditEvent = props => {
       )}
       {!editEventStart && (
         <form onSubmit={handleSubmit}>
-          <input
-            className="name"
-            type="text"
-            id="name"
-            name="name"
-            onChange={handleChanges}
-            value={currentEvent.name}
-          />
-          <div className="input-group">
-            <label htmlFor="event_type">Event Type:</label>
-            <input
-              type="text"
-              id="event_type"
-              name="event_type"
-              onChange={handleChanges}
-              value={currentEvent.event_type}
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="date">Date:</label>
-            <input
-              type="date"
-              id="date"
-              name="date"
-              onChange={handleChanges}
-              value={currentEvent.date}
-            />
-          </div>
-          <div className="time-group">
-            <div className="input-group">
-              <label htmlFor="start_time">Start Time:</label>
+          {!showLocation && !showVenue && (
+            <>
               <input
-                type="time"
-                id="start_time"
-                name="start_time"
+                className="name"
+                type="text"
+                id="name"
+                name="name"
                 onChange={handleChanges}
-                value={currentEvent.start_time}
+                value={currentEvent.name}
               />
-            </div>
-            <div className="input-group">
-              <label htmlFor="end_time">End Time:</label>
-              <input
-                type="time"
-                id="end_time"
-                name="end_time"
-                onChange={handleChanges}
-                value={currentEvent.end_time}
-              />
-            </div>
-          </div>
-          <div className="input-group description">
-            <label htmlFor="description">Description:</label>
-            <textarea
-              id="description"
-              name="description"
-              onChange={handleChanges}
-              value={currentEvent.description}
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="img_url">Image Url: </label>
-            <input
-              type="url"
-              name="img_url"
-              id="img_url"
-              onChange={handleChanges}
-              value={currentEvent.img_url}
-            />
-          </div>
-          <button type="button" onClick={toggleLocationDisplay}>
-            {!showLocation ? 'Edit Location Info' : 'Hide Location Info'}
-          </button>
-
-          <button type="button" onClick={toggleVenueDisplay}>
-            {!showVenue ? 'Edit Venue Info' : 'Hide Venue Info'}
-          </button>
+              <div className="input-group">
+                <label htmlFor="event_type">Event Type:</label>
+                <input
+                  type="text"
+                  id="event_type"
+                  name="event_type"
+                  onChange={handleChanges}
+                  value={currentEvent.event_type}
+                />
+              </div>
+              <div className="input-group">
+                <label htmlFor="date">Date:</label>
+                <input
+                  type="date"
+                  id="date"
+                  name="date"
+                  onChange={handleChanges}
+                  value={currentEvent.date}
+                />
+              </div>
+              <div className="time-group">
+                <div className="input-group">
+                  <label htmlFor="start_time">Start Time:</label>
+                  <input
+                    type="time"
+                    id="start_time"
+                    name="start_time"
+                    onChange={handleChanges}
+                    value={currentEvent.start_time}
+                  />
+                </div>
+                <div className="input-group">
+                  <label htmlFor="end_time">End Time:</label>
+                  <input
+                    type="time"
+                    id="end_time"
+                    name="end_time"
+                    onChange={handleChanges}
+                    value={currentEvent.end_time}
+                  />
+                </div>
+              </div>
+              <div className="input-group description">
+                <label htmlFor="description">Description:</label>
+                <textarea
+                  id="description"
+                  name="description"
+                  onChange={handleChanges}
+                  value={currentEvent.description}
+                />
+              </div>
+              <div className="input-group">
+                <label htmlFor="img_url">Image Url: </label>
+                <input
+                  type="url"
+                  name="img_url"
+                  id="img_url"
+                  onChange={handleChanges}
+                  value={currentEvent.img_url}
+                />
+              </div>
+              <button type="submit" data-testid="submit-button">
+                Submit Changes
+              </button>
+            </>
+          )}
 
           {showLocation && (
             <>
@@ -256,10 +256,16 @@ const EditEvent = props => {
             </>
           )}
 
+          {!showVenue && (
+            <button type="button" onClick={toggleLocationDisplay}>
+              {!showLocation ? 'Edit Location Info' : 'Cancel Edit Location'}
+            </button>
+          )}
+
           {showVenue && (
             <>
               <div className="input-group">
-                <label htmlFor="venue_name">Name:</label>
+                <label htmlFor="venue_name">Venue Name:</label>
                 <input
                   name="venue_name"
                   id="venue_name"
@@ -314,10 +320,14 @@ const EditEvent = props => {
               </button>
             </>
           )}
-          <button type="submit" data-testid="submit-button">
-            Submit Changes
-          </button>
-          {!toggleDelete && (
+
+          {!showLocation && (
+            <button type="button" onClick={toggleVenueDisplay}>
+              {!showVenue ? 'Edit Venue Info' : 'Cancel Edit Venue'}
+            </button>
+          )}
+
+          {!toggleDelete && !showLocation && !showVenue && (
             <button
               type="button"
               onClick={handleDeleteToggle}
