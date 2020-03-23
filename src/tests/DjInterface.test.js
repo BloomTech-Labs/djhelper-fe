@@ -9,7 +9,7 @@ import DjInterface from '../components/DjInterface';
 
 test('DjInterface renders top navbar', () => {
   const history = createMemoryHistory();
-  const { queryAllByText, queryByText } = render(
+  const { queryAllByText } = render(
     <Router history={history}>
       <Provider store={store}>
         <DjInterface />
