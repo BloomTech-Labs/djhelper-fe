@@ -7,9 +7,9 @@ import { store } from './store';
 
 import EditDJ from '../components/DJProfile';
 
-test('EditDJ renders inputs', () => {
+test('EditDJ renders inputs and profile image area', () => {
   const history = createMemoryHistory();
-  const { getByLabelText, queryByText } = render(
+  const { getByLabelText, queryByText, getByTestId } = render(
     <Router history={history}>
       <Provider store={store}>
         <EditDJ />
@@ -30,6 +30,9 @@ test('EditDJ renders inputs', () => {
 
   const cancelButton = queryByText(/Cancel/i);
   const deleteButton = queryByText(/Delete Profile/i);
+  const saveButton = queryByText(/Save/i);
+
+  const imgArea = getByTestId('profile-img');
 
   expect(nameInput).toBeInTheDocument();
   expect(bioInput).toBeInTheDocument();
@@ -39,4 +42,7 @@ test('EditDJ renders inputs', () => {
 
   expect(cancelButton).toBeInTheDocument();
   expect(deleteButton).toBeInTheDocument();
+  expect(saveButton).toBeInTheDocument();
+
+  expect(imgArea).toBeInTheDocument();
 });

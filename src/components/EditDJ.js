@@ -87,6 +87,7 @@ const EditDJ = () => {
             alt="dj profile"
             ref={profile}
             onLoad={handleOrientation}
+            data-testid="profile-img"
           />
           <span
             data-testid="trigger-img-edit"
