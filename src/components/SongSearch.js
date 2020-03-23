@@ -28,7 +28,7 @@ const SongSearch = () => {
   };
 
   return (
-    <div>
+    <div className='search'>
       <Input
         data-testid="songSearch"
         placeholder="Search artists, tracks..."
