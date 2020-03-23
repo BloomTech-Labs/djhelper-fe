@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/register": "^7.8.6",
     "@brainhubeu/react-carousel": "^1.12.9-alpha",
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-brands-svg-icons": "^5.12.1",
@@ -14,6 +15,7 @@
     "@testing-library/user-event": "^7.1.2",
     "@ungap/url-search-params": "^0.1.4",
     "axios": "^0.19.2",
+    "babel": "^6.23.0",
     "bootstrap": "^4.4.1",
     "dotenv": "^8.2.0",
     "jquery": "^3.4.1",
