@@ -21,3 +21,23 @@ test('Home page renders links for register and login', async () => {
   expect(register).toBeInTheDocument();
   expect(login).toBeInTheDocument();
 });
+
+test('Home page contains header content', async () => {
+  const history = createMemoryHistory();
+  const { queryByText } = render(
+    <Router history={history}>
+      <Provider store={store}>
+        <Home />
+      </Provider>
+    </Router>
+  );
+  expect(queryAllByText(/DJ Helper/i).toBeInTheDocument());
+  expect(
+    queryByText(/How DJs easily collect song requests/i).toBeInTheDocument()
+  );
+  expect(
+    queryByText(
+      /And everyone upvotes the songs they also want to hear!/i
+    ).toBeInTheDocument()
+  );
+});
