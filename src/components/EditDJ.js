@@ -89,6 +89,7 @@ const EditDJ = () => {
             onLoad={handleOrientation}
           />
           <span
+            data-testid="trigger-img-edit"
             className="edit-icon"
             onClick={() => setWantsToChangeImg(!wantsToChangeImg)}
           >
