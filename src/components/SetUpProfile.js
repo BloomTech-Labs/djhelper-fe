@@ -34,7 +34,6 @@ const SetUpProfile = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(userInput);
     const infoNeeded = {};
 
     if (userInput.phone.length > 0) {
@@ -51,8 +50,6 @@ const SetUpProfile = props => {
       infoNeeded.website = userInput.website;
     }
 
-    console.log('id: ', id);
-    console.log('infoNeeded: ', infoNeeded);
     dispatch(updateUser(props.history, id, infoNeeded));
   };
 
@@ -72,10 +69,7 @@ const SetUpProfile = props => {
         <div className="check-container">
           <FontAwesomeIcon icon={faCheck} />
         </div>
-        <h2>
-Welcome,{name}
-!
-</h2>
+        <h2>Welcome,{name}!</h2>
         <p>Let&rsquo;s get your profile set up.</p>
       </div>
       <div className="side right-side">

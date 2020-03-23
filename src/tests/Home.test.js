@@ -22,22 +22,25 @@ test('Home page renders links for register and login', async () => {
   expect(login).toBeInTheDocument();
 });
 
-test('Home page contains header content', async () => {
+test('Home page contains header content', () => {
   const history = createMemoryHistory();
-  const { queryByText } = render(
+  const { queryAllByText, queryByText } = render(
     <Router history={history}>
       <Provider store={store}>
         <Home />
       </Provider>
     </Router>
   );
-  expect(queryAllByText(/DJ Helper/i).toBeInTheDocument());
-  expect(
-    queryByText(/How DJs easily collect song requests/i).toBeInTheDocument()
+
+  const NavHeader = queryAllByText(/DJ Helper/i)[0];
+  const mainHeader = queryAllByText(/DJ Helper/i)[1];
+  const subHeader1 = queryByText(/How DJs easily collect song requests/i);
+  const subHeader2 = queryByText(
+    /And everyone upvotes the songs they also want to hear!/i
   );
-  expect(
-    queryByText(
-      /And everyone upvotes the songs they also want to hear!/i
-    ).toBeInTheDocument()
-  );
+
+  expect(NavHeader).toBeInTheDocument();
+  expect(mainHeader).toBeInTheDocument();
+  expect(subHeader1).toBeInTheDocument();
+  expect(subHeader2).toBeInTheDocument();
 });
