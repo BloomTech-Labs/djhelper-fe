@@ -1,5 +1,12 @@
 # DJ Helper
 
+![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
+![React](https://img.shields.io/badge/react-v16.12.0--alpha.2-blue.svg)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![code style: eslint](https://img.shields.io/badge/code_style-eslint-ff69b4.svg?style=flat-square)](https://github.com/eslint/eslint)
+[![Maintainability](https://api.codeclimate.com/v1/badges/68f4b3a73f4aab561e09/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/djhelper-fe/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/68f4b3a73f4aab561e09/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/djhelper-fe/test_coverage)
+
 You can find the deployed project [here](https://www.dj-helper.com/register).
 
 ## Contributors
@@ -21,11 +28,6 @@ You can find the deployed project [here](https://www.dj-helper.com/register).
 
 <br>
 <br>
-
-![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![React](https://img.shields.io/badge/react-v16.12.0--alpha.2-blue.svg)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![code style: eslint](https://img.shields.io/badge/code_style-eslint-ff69b4.svg?style=flat-square)](https://github.com/eslint/eslint)
 
 ## Project Overview
 
@@ -76,9 +78,13 @@ In order for the app to function correctly, the user must set up their own envir
 
     *  REACT_APP_BACKEND_HOST - this is "http://localhost:8000" if running locally, OR the back end deployed url if using the deployed back end: "https://api.dj-helper.com/"
 
+    * REACT_APP_FRONTEND_HOST = 'http://localhost:3000/'  - if running locally, with whichever port you are using for the front end.
+
+    * CI=true - this is needed to run the test coverage reports for Code Climate
+
 # Testing
 
-Testing is done using the @testing-library/jest-dom, @testing-library/react, and @testing-library/user-event packages. Tests are located in the [src/tests directory](https://github.com/Lambda-School-Labs/djhelper-fe/tree/master/src/tests). Tests are groups into files by component.
+Testing is done using the @testing-library/jest-dom, @testing-library/react, and @testing-library/user-event packages. Tests are located in the [src/tests directory](https://github.com/Lambda-School-Labs/djhelper-fe/tree/master/src/tests). Tests are grouped into files by component.
 
 Our UX team member also runs surveys and user tests. Her results can be found [here](https://www.notion.so/User-Research-b5b3512626624497bd973628842a8b2a).
 

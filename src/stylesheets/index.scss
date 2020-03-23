@@ -1,7 +1,8 @@
 // The cascade matters!
 
 // Vars and Mixins
-@import './variables';
+@import './variables.scss';
+@import './Mixins.scss';
 
 // General Styles Here
 
@@ -11,7 +12,11 @@
 @import './Register.scss';
 @import './Login.scss';
 @import './dashboard.scss';
+@import './EventPage.scss';
 @import './About.scss';
 @import './DJProfile.scss';
 @import './SetUpProfile.scss';
 @import './Home.scss';
+@import './AddEvent.scss';
+@import './EventGuestView.scss';
+@import './EditEvent.scss';

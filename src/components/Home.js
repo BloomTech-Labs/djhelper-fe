@@ -27,7 +27,10 @@ const Home = props => {
             </h3>
           </>
         )}
-        {name && <h2>Welcome, {name}!</h2>}
+        {name && <h2>
+Welcome,{name}
+!
+</h2>}
       </div>
     </div>
   );

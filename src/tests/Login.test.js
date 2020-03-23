@@ -1,19 +1,25 @@
 import React from 'react';
-import {debug, render, fireEvent, cleanup} from '@testing-library/react';
+import { debug, render, fireEvent, cleanup } from '@testing-library/react';
+import { Provider, useSelector } from 'react-redux';
+import { Router, BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
 import Login from '../components/Login';
-import {Provider, useSelector} from "react-redux";
-import { Router, BrowserRouter, MemoryRouter } from 'react-router-dom'
-import { createMemoryHistory } from 'history'
-import {store} from "./store";
+import { store } from './store';
 
 test('Login page renders correctly', () => {
-  const history = createMemoryHistory()
-  const {container,queryByText, getByText, getByLabelText, getByTestId} = render(
-        <Provider store={store} >
-            <Router history={history}>
-                <Login />
-            </Router>
-        </Provider>
+  const history = createMemoryHistory();
+  const {
+    container,
+    queryByText,
+    getByText,
+    getByLabelText,
+    getByTestId
+  } = render(
+    <Provider store={store}>
+      <Router history={history}>
+        <Login />
+      </Router>
+    </Provider>
   );
 
   const header = queryByText('Welcome back!');
@@ -28,7 +34,7 @@ test('Login page renders correctly', () => {
   expect(submit).toBeInTheDocument();
   expect(toRegistration).toBeInTheDocument();
 
-  //Finding inputs on Login page
+  // Finding inputs on Login page
   const usernameInput = getByTestId('usernameInput');
   const passwordInput = getByTestId('passwordInput');
 
@@ -37,15 +43,21 @@ test('Login page renders correctly', () => {
 });
 
 test('here link on Login page takes user to registration page', () => {
-  const history = createMemoryHistory()
-  const {container,queryByText, getByText, getByLabelText, getByTestId} = render(
-        <Provider store={store} >
-            <Router history={history}>
-                <Login />
-            </Router>
-        </Provider>
+  const history = createMemoryHistory();
+  const {
+    container,
+    queryByText,
+    getByText,
+    getByLabelText,
+    getByTestId
+  } = render(
+    <Provider store={store}>
+      <Router history={history}>
+        <Login />
+      </Router>
+    </Provider>
   );
-  const tokenPresent=true;
+  const tokenPresent = true;
 
   const toRegistration = getByTestId('toRegistration');
   fireEvent.click(toRegistration);

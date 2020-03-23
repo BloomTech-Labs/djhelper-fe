@@ -4,7 +4,7 @@ import Dashboard from './Dashboard';
 const DjInterface = props => {
   return (
     <>
-      <Dashboard />
+      <Dashboard history={props.history} />
     </>
   );
 };

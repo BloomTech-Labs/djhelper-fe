@@ -1,66 +1,62 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import NavigationBar from './NavigationBar';
-import PreviewEventDetails from './PreviewEventDetails';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Carousel from '@brainhubeu/react-carousel';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import DashboardWelcome from './DashboardWelcome';
 import Event from './Event';
-import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { pastEvents } from '../data/pastEvents.js';
+import PreviewEventDetails from './PreviewEventDetails';
+import NavigationBar from './NavigationBar';
+
+import { getEvents } from '../actions/action';
 
 const Dashboard = props => {
-  const [data, setData] = useState({
-    event1: {
-      name: 'Bill and Grace',
-      eventType: 'A traditional, peaceful wedding.',
-      description: "Couple is fairly young so audience may consist of primarily young friends and older family members. Other things I may want to know include this and that and maybe some of Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      newRequests: {
-        'Mr Blue Sky': 'The Electric Light Orchestra',
-        Eyes: 'Rogue Waves',
-        "Don't Stop Me Now": 'Queen'
-      },
-      date: '02/28/2020'
-    },
-    event2: {
-      name: 'Ellie and Mona',
-      eventType: 'A more modern, fun wedding.',
-      description: "Couple is fairly young so audience may consist of primarily young friends and older family members. Other things I may want to know include this and that and maybe some of Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      newRequests: {
-        'Mr Blue Sky': 'The Electric Light Orchestra',
-        Eyes: 'Rogue Waves',
-        "Don't Stop Me Now": 'Queen'
-      },
-      date: '07/12/2020'
-    },
-    event3: {
-      name: 'Charles and Elizabeth',
-      eventType: 'A senior wedding.',
-      description: "Couple is fairly young so audience may consist of primarily young friends and older family members. Other things I may want to know include this and that and maybe some of Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      newRequests: {
-        'Mr Blue Sky': 'The Electric Light Orchestra',
-        Eyes: 'Rogue Waves',
-        "Don't Stop Me Now": 'Queen'
-      },
-      date: '10/19/2020'
-    },
-    event4: {
-      name: 'Chris and Kat',
-      eventType: 'Very atmospheric and sentimental wedding.',
-      description: "Couple is fairly young so audience may consist of primarily young friends and older family members. Other things I may want to know include this and that and maybe some of Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      newRequests: {
-        'Mr Blue Sky': 'The Electric Light Orchestra',
-        Eyes: 'Rogue Waves',
-        "Don't Stop Me Now": 'Queen'
-      },
-      date: '09/03/2020'
-    },
-    active: ''
-  });
-
-  const [pastEventData, setPastEventData] = useState(pastEvents);
-
+  const dispatch = useDispatch();
   const name = useSelector(state => state.userReducer.name);
+  const events = useSelector(state => state.userReducer.events);
+  const id = useSelector(state => state.userReducer.id);
+  const [data, setData] = useState(events);
+  const [upcomingIds, setUpcomingIds] = useState([]);
+  const [pastIds, setPastIds] = useState([]);
+
+  const thing = data.active;
+  const currentlyActive = data[thing];
+
+  useEffect(() => {
+    dispatch(getEvents(id));
+    // setData(events);
+  }, []);
+
+  useEffect(() => {
+    setData(events);
+  }, [events]);
+
+  useEffect(() => {
+    // Creates an array with the 2 important properties: id and date
+    const dateArray = Object.values(events).map(event => {
+      const eventDate = new Date(event.date);
+      eventDate.setDate(eventDate.getDate() + 1);
+      return {
+        event_id: event.event_id,
+        formattedDate: eventDate
+      };
+    });
+
+    // Divides the array into 2 sorted arrays: upcomingArray and pastArray, and sets the corresponding ids in state
+    const today = new Date();
+    today.setHours(0);
+    today.setMinutes(0);
+
+    const upcomingArray = dateArray
+      .filter(x => x.formattedDate >= today)
+      .sort((a, b) => a.formattedDate - b.formattedDate);
+    setUpcomingIds(upcomingArray.map(event => event.event_id));
+
+    const pastArray = dateArray
+      .filter(x => x.formattedDate < today)
+      .sort((a, b) => b.formattedDate - a.formattedDate);
+    setPastIds(pastArray.map(event => event.event_id));
+  }, [events]);
 
   const whichComponent = () => {
     if (data.active.length > 1) {
@@ -69,15 +65,18 @@ const Dashboard = props => {
           data={data}
           setData={setData}
           currentlyActive={currentlyActive}
+          tokenPresent={props.tokenPresent}
+          history={props.history}
         />
       );
-    } else {
-      return <DashboardWelcome name={name} />;
     }
+    return <DashboardWelcome name={name} />;
   };
 
-  let thing = data.active;
-  let currentlyActive = data[thing];
+  const handleNewEvent = () => {
+    props.history.push('/dj/addEvent');
+  };
+
   return (
     <div className="dashboard">
       <NavigationBar tokenPresent={props.tokenPresent} />
@@ -86,7 +85,9 @@ const Dashboard = props => {
       <div className="upcoming-events" data-testid="upcoming-carousel">
         <div className="labels">
           <h5>Upcoming</h5>
-          <button id='new-event'><h6>Add new event</h6></button>
+          <button id="new-event" onClick={handleNewEvent}>
+            <h6>Add new event</h6>
+          </button>
         </div>
         <Carousel
           className="carousel"
@@ -97,10 +98,17 @@ const Dashboard = props => {
           addArrowClickHandler
           infinite
         >
-          <Event num={1} data={data} setData={setData} />
-          <Event num={2} data={data} setData={setData} />
-          <Event num={3} data={data} setData={setData} />
-          <Event num={4} data={data} setData={setData} />
+          {events &&
+            upcomingIds.map(eventId => {
+              return (
+                <Event
+                  num={eventId}
+                  data={data}
+                  setData={setData}
+                  key={eventId}
+                />
+              );
+            })}
         </Carousel>
       </div>
       <div className="past-events" data-testid="past-carousel">
@@ -114,10 +122,17 @@ const Dashboard = props => {
           addArrowClickHandler
           infinite
         >
-          <Event num={1} data={pastEventData} setData={setPastEventData} />
-          <Event num={2} data={pastEventData} setData={setPastEventData} />
-          <Event num={3} data={pastEventData} setData={setPastEventData} />
-          <Event num={4} data={pastEventData} setData={setPastEventData} />
+          {events &&
+            pastIds.map(eventId => {
+              return (
+                <Event
+                  num={eventId}
+                  data={data}
+                  setData={setData}
+                  key={eventId}
+                />
+              );
+            })}
         </Carousel>
       </div>
     </div>

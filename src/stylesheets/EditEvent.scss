@@ -1,0 +1,114 @@
+.edit-event-form {
+  display: flex;
+  flex-flow: column no-wrap;
+  justify-content: center;
+  align-items: center;
+  p {
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  label {
+    font-weight: bolder;
+  }
+  input {
+    border: none;
+    border-radius: 3px;
+    width: 100%;
+    border-top: 3px solid white;
+    transition: all 0.2s ease-in-out;
+    &.name {
+      font-size: 2.25rem;
+      font-weight: bold;
+      padding-left: 0.25rem;
+      margin-bottom: 0.25rem;
+    }
+    &:hover {
+      border-top: 3px solid $mediumPurple;
+      border-radius: 0px 0px 3px 3px;
+      outline: none;
+      transform: scale(1.1);
+    }
+  }
+  button {
+    width: 95%;
+    background: black;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    transition: 0.3s;
+    padding: 0.4rem;
+    padding-bottom: 0.6rem;
+    padding-top: 0.6rem;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    -webkit-box-shadow: 14px 10px 10px -10px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 14px 10px 10px -10px rgba(0, 0, 0, 0.35);
+    box-shadow: 4px 5px 10px 0px rgba(0, 0, 0, 0.35);
+    &:hover {
+      color: black;
+      background: white;
+    }
+    &:active {
+      background: grey;
+    }
+    &.toggle-delete {
+      background: white;
+      color: black;
+      border: 2px solid black;
+      &:hover {
+        background: $mediumPurple;
+      }
+    }
+    &.cancel-delete:hover {
+      background: $brightGreen;
+    }
+  }
+  .time-group {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    .input-group {
+      width: 45%;
+      flex-flow: row wrap;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
+  .input-group {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    padding-top: 0.5em;
+    label {
+      width: 30%;
+      font-weight: boldest;
+      color: white;
+    }
+    input {
+      width: 70%;
+      padding-left: 0.25rem;
+    }
+    &.description {
+      label {
+        width: 100%;
+      }
+      textarea {
+        width: 100%;
+        border: none;
+        border-radius: 3px;
+        padding-left: 0.25rem;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          border-top: 3px solid $mediumPurple;
+          border-radius: 0px 0px 3px 3px;
+          outline: none;
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,17 @@
 .navBar {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  font-weight: 700;
 
-    padding-left: 2%;
-    padding-right: 2%;
-    background: #121212;
 
+  padding-left: 2%;
+  padding-right: 5%;
+  background: #121212;
+    @include for-phone-only {
+        font-size: 10px;
+    }
 
   .logout-item {
     cursor: pointer;
@@ -22,25 +30,30 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    width: 20%;
-    margin-left: 53%;
+    width: 100%;
+    margin-left: 43%;
+    @include for-phone-only {
+        margin-left: 18%;
+    }
   }
   #profile {
     margin-left: 10%;
     margin-right: 13%;
   }
 
-  width: 100%;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  font-weight: 700;
 
   .navElements {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     width: 20%;
+    @include for-phone-only {
+        width: 65%;
+        margin-left: 25%;
+    }
+
+
+
   }
 
   .navElementsIcons {
