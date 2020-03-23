@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Draggable, { DraggableCore } from 'react-draggable';
 import { startEditUser } from '../actions/action';
 
 import EditDJ from './EditDJ';
