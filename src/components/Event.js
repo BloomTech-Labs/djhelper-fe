@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import formatDate from '../utils/formatDate';
 
@@ -16,16 +16,14 @@ const Event = props => {
   return (
     <button
       type="button"
-      data-testid='event-component'
+      data-testid="event-component"
       className={`events ${eventClass}`}
       onClick={() =>
         props.setData({ ...props.data, active: `event${props.num}` })
       }
     >
       {event && <h2>{event.name}</h2>}
-      {event && <p>
-{' '}
-Date:{formattedDate} </p>}
+      {event && <p> Date:{formattedDate} </p>}
     </button>
   );
 };
