@@ -57,6 +57,8 @@ test('DJProfile displays functional edit button', () => {
   expect(editButton).toBeInTheDocument();
   fireEvent.click(editButton);
 
+  // When editButton is clicked, inputs are displayed
+
   expect(editButton).not.toBeInTheDocument();
   const nameInput = getByLabelText(/Name/i);
   const bioInput = getByLabelText(/Bio/i);
