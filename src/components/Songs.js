@@ -137,6 +137,7 @@ const Songs = props => {
           frameBorder="0"
           allowtransparency="true"
           allow="encrypted-media"
+          title={`play song with spotify id #${id}`}
         />
       );
     }
