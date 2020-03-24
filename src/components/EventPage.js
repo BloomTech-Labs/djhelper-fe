@@ -256,12 +256,12 @@ const EventPage = props => {
 
           <h5> Playlist </h5>
           <div className="playlist">
-            {eventPlaylist.map((element, index) => (
+            {eventPlaylist.map(element => (
               <Songs
                 items={element}
                 playlist
                 editModeOn={editModeOn}
-                key={`song${index}`}
+                key={`songID${element.id}`}
               />
             ))}
           </div>
