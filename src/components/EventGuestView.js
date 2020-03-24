@@ -36,8 +36,6 @@ const EventGuestView = props => {
 
   const events = useSelector(state => state.userReducer.events);
   const [currentEvent] = useState(events[`event${event_id}`]);
-  // console.log('Start time: ', currentEvent.start_time);
-  // console.log('End time', currentEvent.end_time);
 
   const locations = useSelector(state => state.userReducer.locations);
   const [location, setLocation] = useState(null);
@@ -127,10 +125,7 @@ const EventGuestView = props => {
             <p>{location.address_line_1}</p>
             <p>{location.address_line_2}</p>
             <p>
-              {location.city}
-,{location.state} 
-{' '}
-{location.zip}
+              {location.city},{location.state} {location.zip}
             </p>
             <p>
               <a href={`tel:${location.phone}`}>{location.phone}</a>
@@ -188,8 +183,8 @@ const EventGuestView = props => {
       <div className="section right-side" id="playlist">
         <h2>Playlist</h2>
         <div className="playlist">
-          {eventPlaylist.map(element => (
-            <Songs items={element} playlist />
+          {eventPlaylist.map((element, index) => (
+            <Songs items={element} playlist key={`PlaylistSong${index}`} />
           ))}
         </div>
       </div>

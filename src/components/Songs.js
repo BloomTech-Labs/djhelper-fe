@@ -179,6 +179,7 @@ const Songs = props => {
             {props.playlist ? (
               <div className="song-element">
                 <button
+                  type="button"
                   id="vote"
                   onClick={() => {
                     dispatch(addVoteToSong(eventId, id));
@@ -191,6 +192,7 @@ const Songs = props => {
             ) : (
               <div>
                 <button
+                  type="button"
                   id="add"
                   onClick={() => {
                     dispatch(addSongToPlaylistDJ(songInfo, eventId));
@@ -211,6 +213,7 @@ const Songs = props => {
     return (
       <div className="songs">
         <button
+          type="button"
           style={{ backgroundImage: `url(${songIcon})` }}
           id="song-type"
         />
@@ -229,7 +232,7 @@ const Songs = props => {
           <p> Artist Name</p>
         </div>
         <div className="song-element">
-          <button id="vote">
+          <button id="vote" type="button">
             <FontAwesomeIcon icon="caret-up" size="2x" />
           </button>
           <p>003</p>

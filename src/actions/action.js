@@ -400,7 +400,7 @@ export const getDJ = id => dispatch => {
   axiosWithAuth()
     .get(`/dj/${id}`)
     .then(response => {
-      dispatch({ type: GET_DJ_SUCCESS, payload: response.data[0] });
+      dispatch({ type: GET_DJ_SUCCESS, payload: response.data });
     })
     .catch(err => {
       dispatch({ type: GET_DJ_ERROR, payload: err });
