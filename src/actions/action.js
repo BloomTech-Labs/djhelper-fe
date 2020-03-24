@@ -7,6 +7,30 @@ import {
 
 import URLSearchParams from '@ungap/url-search-params';
 
+import {
+  ADD_EVENT_START,
+  ADD_EVENT_SUCCESS,
+  ADD_EVENT_ERROR,
+  EDIT_EVENT_START,
+  EDIT_EVENT_SUCCESS,
+  EDIT_EVENT_ERROR,
+  DELETE_EVENT_START,
+  DELETE_EVENT_SUCCESS,
+  DELETE_EVENT_ERROR,
+  ADD_LOCATION_START,
+  ADD_LOCATION_SUCCESS,
+  ADD_LOCATION_ERROR,
+  GET_EVENTS_START,
+  GET_EVENTS_SUCCESS,
+  GET_EVENTS_ERROR,
+  GET_LOCATION_START,
+  GET_LOCATION_SUCCESS,
+  GET_LOCATION_ERROR,
+  EDIT_LOCATION_START,
+  EDIT_LOCATION_SUCCESS,
+  EDIT_LOCATION_ERROR
+} from './eventActions';
+
 export const SET_NAME = 'SET_NAME';
 export const SET_USERNAME = 'SET_USERNAME';
 
@@ -40,22 +64,6 @@ export const SEARCH_FOR_TRACK_START = 'SEARCH_FOR_TRACK_START';
 export const SEARCH_FOR_TRACK_SUCCESS = 'SEARCH_FOR_TRACK_SUCCESS';
 export const SEARCH_FOR_TRACK_ERROR = 'SEARCH_FOR_TRACK_ERROR';
 
-export const ADD_EVENT_START = 'ADD_EVENT_START';
-export const ADD_EVENT_SUCCESS = 'ADD_EVENT_SUCCESS';
-export const ADD_EVENT_ERROR = 'ADD_EVENT_ERROR';
-
-export const EDIT_EVENT_START = 'EDIT_EVENT_START';
-export const EDIT_EVENT_SUCCESS = 'EDIT_EVENT_SUCCESS';
-export const EDIT_EVENT_ERROR = 'EDIT_EVENT_ERROR';
-
-export const DELETE_EVENT_START = 'DELETE_EVENT_START';
-export const DELETE_EVENT_SUCCESS = 'DELETE_EVENT_SUCCESS';
-export const DELETE_EVENT_ERROR = 'DELETE_EVENT_ERROR';
-
-export const ADD_LOCATION_START = 'ADD_LOCATION_START';
-export const ADD_LOCATION_SUCCESS = 'ADD_LOCATION_SUCCESS';
-export const ADD_LOCATION_ERROR = 'ADD_LOCATION_ERROR';
-
 export const GET_DJ_START = 'GET_DJ_START';
 export const GET_DJ_SUCCESS = 'GET_DJ_SUCCESS';
 export const GET_DJ_ERROR = 'GET_DJ_ERROR';
@@ -83,21 +91,9 @@ export const GET_SONG_BY_ID_START = 'GET_SONG_BY_ID_START';
 export const GET_SONG_BY_ID_SUCCESS = 'GET_SONG_BY_ID_SUCCESS';
 export const GET_SONG_BY_ID_ERROR = 'GET_SONG_BY_ID_ERROR';
 
-export const GET_EVENTS_START = 'GET_EVENTS_START';
-export const GET_EVENTS_SUCCESS = 'GET_EVENTS_SUCCESS';
-export const GET_EVENTS_ERROR = 'GET_EVENTS_ERROR';
-
 export const ADD_VOTE_START = 'ADD_VOTE_START';
 export const ADD_VOTE_SUCCESS = 'ADD_VOTE_SUCCESS';
 export const ADD_VOTE_ERROR = 'ADD_VOTE_ERROR';
-
-export const GET_LOCATION_START = 'GET_LOCATION_START';
-export const GET_LOCATION_SUCCESS = 'GET_LOCATION_SUCCESS';
-export const GET_LOCATION_ERROR = 'GET_LOCATION_ERROR';
-
-export const EDIT_LOCATION_START = 'EDIT_LOCATION_START';
-export const EDIT_LOCATION_SUCCESS = 'EDIT_LOCATION_SUCCESS';
-export const EDIT_LOCATION_ERROR = 'EDIT_LOCATION_ERROR';
 
 // action creators
 
@@ -337,83 +333,6 @@ export const getSongInfoBySpotifyId = spotify_id => dispatch => {
 };
 
 // events
-
-export const addEvent = (eventInfo, history) => dispatch => {
-  dispatch({ type: ADD_EVENT_START });
-
-  dispatch({ type: ADD_TO_SONG_REDUCER_START });
-
-  // First, add location to locations table. POST https://api.dj-helper.com/api/auth/location/
-
-  dispatch({ type: ADD_LOCATION_START });
-  const locationInfo = {
-    address_line_1: eventInfo.address_line_1,
-    address_line_2: eventInfo.address_line_2 || '',
-    city: eventInfo.city,
-    state: eventInfo.state,
-    zip: eventInfo.zip,
-    phone: eventInfo.phone,
-    website: eventInfo.website,
-    email: eventInfo.email,
-    img_url: eventInfo.img_url,
-    name: eventInfo.location_name
-  };
-  axiosWithAuth()
-    .post('/auth/location/', locationInfo)
-    .then(response => {
-      dispatch({ type: ADD_LOCATION_SUCCESS, payload: response.data });
-
-      // Next, POST to https://api.dj-helper.com/api/auth/event/
-
-      const eventToSubmit = {
-        name: eventInfo.name,
-        event_type: eventInfo.event_type,
-        description: eventInfo.description,
-        location_id: response.data.id,
-        date: eventInfo.date,
-        dj_id: eventInfo.dj_id
-      };
-
-      // Only adds start_time and end_time if the user has put values in those fields
-      // (Without these lines, app crashes if the start_time and end_time are left blank)
-      if (eventInfo.start_time !== '') {
-        eventToSubmit.start_time = eventInfo.start_time;
-      }
-
-      if (eventInfo.end_time !== '') {
-        eventToSubmit.end_time = eventInfo.end_time;
-      }
-
-      axiosWithAuth()
-        .post('/auth/event/', eventToSubmit)
-        .then(response2 => {
-          // TODO: Modify what is returned for playlist_id and request_list_id once functionality is built for that
-          dispatch({
-            type: ADD_EVENT_SUCCESS,
-            payload: {
-              ...response2.data,
-              event_id: response2.data.id,
-              playlist_id: response2.data.id,
-              request_list_id: response2.data.id
-            }
-          });
-          dispatch({
-            type: ADD_TO_SONG_REDUCER_SUCCESS,
-            payload: response2.data.id
-          });
-          history.push('/dj');
-        })
-        .catch(err2 => {
-          dispatch({
-            type: ADD_EVENT_ERROR,
-            payload: err2
-          });
-        })
-        .catch(err => {
-          dispatch({ type: ADD_LOCATION_ERROR, payload: err });
-        });
-    });
-};
 
 export const editEvent = (eventInfo, event_id) => dispatch => {
   dispatch({ type: EDIT_EVENT_START });

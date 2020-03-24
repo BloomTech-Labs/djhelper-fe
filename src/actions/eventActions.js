@@ -1,5 +1,8 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { ADD_TO_SONG_REDUCER_SUCCESS } from './action';
+import {
+  ADD_TO_SONG_REDUCER_START,
+  ADD_TO_SONG_REDUCER_SUCCESS
+} from './action';
 
 // events actions
 
