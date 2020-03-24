@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 //actions
 import {
   SEARCH_FOR_TRACK_START,

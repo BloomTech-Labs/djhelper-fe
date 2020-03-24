@@ -23,7 +23,7 @@ const Event = props => {
       }
     >
       {event && <h2>{event.name}</h2>}
-      {event && <p> Date:{formattedDate} </p>}
+      {event && <p> Date: {formattedDate} </p>}
     </button>
   );
 };
