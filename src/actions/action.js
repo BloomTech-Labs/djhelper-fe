@@ -75,6 +75,10 @@ export const ADD_TO_SONG_REDUCER_START = 'ADD_TO_SONG_REDUCER_START';
 export const ADD_TO_SONG_REDUCER_SUCCESS = 'ADD_TO_SONG_REDUCER_SUCCESS';
 export const ADD_TO_SONG_REDUCER_ERROR = 'ADD_TO_SONG_REDUCER_ERROR';
 
+export const GET_SONG_BY_ID_START = 'GET_SONG_BY_ID_START';
+export const GET_SONG_BY_ID_SUCCESS = 'GET_SONG_BY_ID_SUCCESS';
+export const GET_SONG_BY_ID_ERROR = 'GET_SONG_BY_ID_ERROR';
+
 export const GET_EVENTS_START = 'GET_EVENTS_START';
 export const GET_EVENTS_SUCCESS = 'GET_EVENTS_SUCCESS';
 export const GET_EVENTS_ERROR = 'GET_EVENTS_ERROR';
@@ -269,6 +273,21 @@ export const searchForTrack = searchTerm => dispatch => {
     })
     .catch(err => {
       dispatch({ type: SEARCH_FOR_TRACK_ERROR, payload: err });
+    });
+};
+
+export const getSongInfoBySpotifyId = spotify_id => dispatch => {
+  dispatch({ type: GET_SONG_BY_ID_START });
+  axiosWithAuthSpotifySearch()
+    .get(`/tracks${spotify_id}`)
+    .then(response => {
+      dispatch({
+        type: GET_SONG_BY_ID_SUCCESS,
+        payload: response.data
+      });
+    })
+    .catch(err => {
+      dispatch({ type: GET_SONG_BY_ID_ERROR });
     });
 };
 
