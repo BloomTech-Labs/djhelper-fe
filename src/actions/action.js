@@ -71,6 +71,10 @@ export const REMOVE_SONG_FROM_PLAYLIST_SUCCESS =
 export const REMOVE_SONG_FROM_PLAYLIST_ERROR =
   'REMOVE_SONG_FROM_PLAYLIST_ERROR';
 
+export const GET_PLAYLIST_START = 'GET_PLAYLIST_START';
+export const GET_PLAYLIST_SUCCESS = 'GET_PLAYLIST_SUCCESS';
+export const GET_PLAYLIST_END = 'GET_PLAYLIST_END';
+
 export const ADD_TO_SONG_REDUCER_START = 'ADD_TO_SONG_REDUCER_START';
 export const ADD_TO_SONG_REDUCER_SUCCESS = 'ADD_TO_SONG_REDUCER_SUCCESS';
 export const ADD_TO_SONG_REDUCER_ERROR = 'ADD_TO_SONG_REDUCER_ERROR';
@@ -282,6 +286,14 @@ export const removeSongFromPlaylistDJ = (songId, event_id) => dispatch => {
   });
 };
 
+export const getPlaylist = event_id => dispatch => {
+  dispatch({ type: GET_PLAYLIST_START });
+  // TODO: GET endpoint once BE is set up for that.
+  // Probably will be something like /event/:event_id/playlist
+};
+
+// songs
+
 export const addVoteToSong = (event_id, song_id) => dispatch => {
   dispatch({ type: ADD_VOTE_START });
 
@@ -291,8 +303,6 @@ export const addVoteToSong = (event_id, song_id) => dispatch => {
   };
   dispatch({ type: ADD_VOTE_SUCCESS, payload: info });
 };
-
-// songs
 
 export const searchForTrack = searchTerm => dispatch => {
   dispatch({ type: SEARCH_FOR_TRACK_START });
@@ -311,6 +321,7 @@ export const searchForTrack = searchTerm => dispatch => {
 };
 
 export const getSongInfoBySpotifyId = spotify_id => dispatch => {
+  // TODO: Add cases in reducer to take care of GET_SONG_BY_ID_START, SUCCESS and ERROR
   dispatch({ type: GET_SONG_BY_ID_START });
   axiosWithAuthSpotifySearch()
     .get(`/tracks${spotify_id}`)
