@@ -25,7 +25,6 @@ const EventPage = props => {
   const events = useSelector(state => state.userReducer.events);
   const [currentEvent, setCurrentEvent] = useState(events[`event${event_id}`]);
 
-  console.log(currentEvent);
   const formattedDate = formatDate(currentEvent.date);
 
   useEffect(() => {
@@ -35,7 +34,6 @@ const EventPage = props => {
   const eventPlaylist = useSelector(
     state => state.songReducer.eventPlaylists[`event${event_id}`].playlist
   );
-  console.log(eventPlaylist);
 
   eventPlaylist.sort((a, b) => b.votes - a.votes);
   const [switches, setSwitches] = useState({
@@ -125,7 +123,7 @@ const EventPage = props => {
   const searchVsPlaylist = () => {
     if (switches.searchVisible) {
       return (
-        <div className='playlist'>
+        <div className="playlist">
           <SongSearch />
         </div>
       );
@@ -146,10 +144,10 @@ const EventPage = props => {
   };
 
   return (
-    <div className='event-page'>
+    <div className="event-page">
       <NavigationBar tokenPresent={props.location.state.tokenPresent} />
-      <div className='event-details'>
-        <div className='event-description'>
+      <div className="event-details">
+        <div className="event-description">
           {isEditing && (
             <EditEvent
               event_id={event_id}
@@ -160,25 +158,25 @@ const EventPage = props => {
           )}
           {!isEditing && (
             <>
-              <h3 className='bold'>{currentEvent.name}</h3>
+              <h3 className="bold">{currentEvent.name}</h3>
               <p>
-                <b className='bold'>Event Type:</b> {currentEvent.event_type}
+                <b className="bold">Event Type:</b> {currentEvent.event_type}
               </p>
               <p>
-                <b className='bold'>Date: </b>
+                <b className="bold">Date: </b>
                 {formattedDate}
               </p>
-              <p className='bold'>Description:</p>
+              <p className="bold">Description:</p>
               <p>{currentEvent.description}</p>
               <p>
-                <b className='bold'>Sharable Event Page:</b>{' '}
+                <b className="bold">Sharable Event Page:</b>{' '}
                 <Link to={`/dj/${dj_id}/event/${event_id}`}>
                   {`${FRONTEND_HOST}dj/${dj_id}/event/${event_id}`}
                 </Link>
               </p>
               <button
-                className='black-button'
-                type='button'
+                className="black-button"
+                type="button"
                 onClick={handleEdit}
               >
                 {' '}
@@ -186,24 +184,24 @@ const EventPage = props => {
               </button>
 
               <button
-                type='button'
-                className='black-button to-sharable'
+                type="button"
+                className="black-button to-sharable"
                 onClick={handleQRDisplay}
               >
                 {!showQrCode ? 'Display QR Code' : 'Hide QR Code'}
               </button>
 
               {qrCode && showQrCode && (
-                <div className='qr-code'>
-                  <img src={qrCode} alt='qr code' />
+                <div className="qr-code">
+                  <img src={qrCode} alt="qr code" />
                 </div>
               )}
             </>
           )}
-          <h3 id='request-header-text-styling'> Requests </h3>
+          <h3 id="request-header-text-styling"> Requests </h3>
 
-          <div className='mobile'>
-            <div className='mobile-switch-buttons'>
+          <div className="mobile">
+            <div className="mobile-switch-buttons">
               <button
                 className={`playlist-buttons ${requestButtonStyle}`}
                 onClick={() => switchToRequests()}
@@ -224,7 +222,7 @@ const EventPage = props => {
               {switches.buttonText}
             </button>
           </div>
-          <div id='requests' className={`playlist ${requestView}`}>
+          <div id="requests" className={`playlist ${requestView}`}>
             <Songs />
             <Songs />
             <Songs />
@@ -246,24 +244,27 @@ const EventPage = props => {
           </div>
         </div>
         <div className={`event-playlist-location ${playlistView}`}>
-          <div className='label'>
-            <p className='bold text-buttons' onClick={() => handleEditClick()}>
-              {editButtonText}
-{' '}
+          <div className="label">
+            <p className="bold text-buttons" onClick={() => handleEditClick()}>
+              {editButtonText}{' '}
             </p>
-            <p className='bold text-buttons' onClick={handleClick}>
+            <p className="bold text-buttons" onClick={handleClick}>
               {switches.buttonText}
             </p>
           </div>
           {searchVsPlaylist()}
 
-        <h5> Playlist </h5>
-          <div className='playlist'>
-            {eventPlaylist.map(element => (
-              <Songs items={element} playlist editModeOn={editModeOn} />
+          <h5> Playlist </h5>
+          <div className="playlist">
+            {eventPlaylist.map((element, index) => (
+              <Songs
+                items={element}
+                playlist
+                editModeOn={editModeOn}
+                key={`song${index}`}
+              />
             ))}
           </div>
-
         </div>
       </div>
     </div>
