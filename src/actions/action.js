@@ -97,8 +97,34 @@ export const EDIT_LOCATION_ERROR = 'EDIT_LOCATION_ERROR';
 
 // action creators
 
-export const addSongToPlaylistDJ = (songInfo, add_to_event_id) => dispatch => {
+export const addSongToPlaylistDJ = (
+  songInfo,
+  add_to_event_id,
+  que_num = ''
+) => dispatch => {
   dispatch({ type: ADD_SONG_TO_PLAYLIST_START });
+  // TODO: 1. Add song to songs table in BE by POST to BE
+  // TODO: 2. Attach song to event playlist by POST to BE
+
+  const songForBE = {
+    name: songInfo.name,
+    spotify_id: songInfo.id
+  };
+
+  // Now, POST songForBE when endpoint is available.
+  // Endpoint will be something like /auth/song
+  // BE will return a song object with song id.
+  /*
+  const songToConnectToEvent = {
+    song_id: response.id
+  }
+
+  if (que_num !== '') {
+    songToConnectToEvent.que_num = que_num;
+  }
+  */
+  // Now, POST songToConnectToEvent -- endpoint will be something like
+  // /auth/event/:event_id/playlist/add_song
 
   const songToAdd = {
     songInfo: { ...songInfo, votes: 0 },
