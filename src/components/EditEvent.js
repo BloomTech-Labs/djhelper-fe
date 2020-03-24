@@ -6,7 +6,7 @@ import {
   deleteEvent,
   getLocation,
   editLocation
-} from '../actions/action';
+} from '../actions/eventActions';
 import formatDateForInput from '../utils/formatDateForInput';
 
 const EditEvent = props => {

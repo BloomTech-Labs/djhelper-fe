@@ -332,50 +332,6 @@ export const getSongInfoBySpotifyId = spotify_id => dispatch => {
     });
 };
 
-// events
-
-export const editEvent = (eventInfo, event_id) => dispatch => {
-  dispatch({ type: EDIT_EVENT_START });
-  // PUT https://api.dj-helper.com/api/auth/event/:event_id
-  axiosWithAuth()
-    .put(`/auth/event/${event_id}`, eventInfo)
-    .then(response => {
-      const formattedResponse = {
-        event_id: response.data.id,
-        dj_id: response.data.dj_id,
-        name: response.data.name,
-        date: response.data.date,
-        start_time: response.data.start_time,
-        end_time: response.data.end_time,
-        event_type: response.data.event_type,
-        location_id: response.data.location_id,
-        img_url: response.data.img_url,
-        description: response.data.description
-      };
-      dispatch({
-        type: EDIT_EVENT_SUCCESS,
-        payload: [formattedResponse, event_id]
-      });
-    })
-    .catch(err => {
-      dispatch({ type: EDIT_EVENT_ERROR, payload: err });
-    });
-};
-
-export const deleteEvent = (event, history) => dispatch => {
-  dispatch({ type: DELETE_EVENT_START });
-  // DELETE https://api.dj-helper.com/api/auth/event/:event_id
-  history.push('/dj');
-  axiosWithAuth()
-    .delete(`/auth/event/${event.event_id}`)
-    .then(response => {
-      dispatch({ type: DELETE_EVENT_SUCCESS, payload: event });
-    })
-    .catch(err => {
-      dispatch({ type: DELETE_EVENT_ERROR, payload: err });
-    });
-};
-
 // get dj
 
 export const getDJ = id => dispatch => {
@@ -443,18 +399,5 @@ export const getLocation = location_id => dispatch => {
     })
     .catch(err => {
       dispatch({ type: GET_LOCATION_ERROR, payload: err });
-    });
-};
-
-export const editLocation = (location_id, locationInfo) => dispatch => {
-  dispatch({ type: EDIT_LOCATION_START });
-  // PUT https://api.dj-helper.com/api/auth/location/:id
-  axiosWithAuth()
-    .put(`/auth/location/${location_id}`, locationInfo)
-    .then(response => {
-      dispatch({ type: EDIT_LOCATION_SUCCESS, payload: response.data });
-    })
-    .catch(err => {
-      dispatch({ type: EDIT_LOCATION_ERROR, payload: err });
     });
 };
