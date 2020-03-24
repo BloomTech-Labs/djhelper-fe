@@ -97,57 +97,7 @@ export const EDIT_LOCATION_ERROR = 'EDIT_LOCATION_ERROR';
 
 // action creators
 
-export const addSongToPlaylistDJ = (
-  songInfo,
-  add_to_event_id,
-  que_num = ''
-) => dispatch => {
-  dispatch({ type: ADD_SONG_TO_PLAYLIST_START });
-  // TODO: 1. Add song to songs table in BE by POST to BE
-  // TODO: 2. Attach song to event playlist by POST to BE
-
-  const songForBE = {
-    name: songInfo.name,
-    spotify_id: songInfo.id
-  };
-
-  // Now, POST songForBE when endpoint is available.
-  // Endpoint will be something like /auth/song
-  // BE will return a song object with song id.
-  /*
-  const songToConnectToEvent = {
-    song_id: response.id
-  }
-
-  if (que_num !== '') {
-    songToConnectToEvent.que_num = que_num;
-  }
-  */
-  // Now, POST songToConnectToEvent -- endpoint will be something like
-  // /auth/event/:event_id/playlist/add_song
-
-  const songToAdd = {
-    songInfo: { ...songInfo, votes: 0 },
-    event_id: add_to_event_id
-  };
-  dispatch({
-    type: ADD_SONG_TO_PLAYLIST_SUCCESS,
-    payload: songToAdd
-  });
-};
-
-export const removeSongFromPlaylistDJ = (songId, event_id) => dispatch => {
-  dispatch({ type: REMOVE_SONG_FROM_PLAYLIST_START });
-
-  const info = {
-    songId: songId,
-    event_id: event_id
-  };
-  dispatch({
-    type: REMOVE_SONG_FROM_PLAYLIST_SUCCESS,
-    payload: info
-  });
-};
+// basic action creator examples
 
 export const setName = name => {
   return { type: SET_NAME, payload: name };
@@ -157,15 +107,7 @@ export const setUsername = username => {
   return { type: SET_USERNAME, payload: username };
 };
 
-export const addVoteToSong = (event_id, song_id) => dispatch => {
-  dispatch({ type: ADD_VOTE_START });
-
-  const info = {
-    event_id: event_id,
-    song_id: song_id
-  };
-  dispatch({ type: ADD_VOTE_SUCCESS, payload: info });
-};
+// onboarding
 
 export const registerUserAction = (infoNeeded, history) => dispatch => {
   dispatch({ type: REGISTER_USER_START });
@@ -235,6 +177,8 @@ export const logoutUser = () => dispatch => {
   }
 };
 
+// CRUD for DJs
+
 export const deleteUser = id => dispatch => {
   dispatch({ type: DELETE_USER_START });
   axiosWithAuth()
@@ -282,6 +226,70 @@ export const updateUser = (history, id, userInfo) => dispatch => {
       dispatch({ type: UPDATE_USER_ERROR, payload: err });
       history.push('/dj');
     });
+};
+
+// playlist action creators
+
+export const addSongToPlaylistDJ = (
+  songInfo,
+  add_to_event_id,
+  que_num = ''
+) => dispatch => {
+  dispatch({ type: ADD_SONG_TO_PLAYLIST_START });
+  // TODO: 1. Add song to songs table in BE by POST to BE
+  // TODO: 2. Attach song to event playlist by POST to BE
+
+  const songForBE = {
+    name: songInfo.name,
+    spotify_id: songInfo.id
+  };
+
+  // Now, POST songForBE when endpoint is available.
+  // Endpoint will be something like /auth/song
+  // BE will return a song object with song id.
+  /*
+  const songToConnectToEvent = {
+    song_id: response.id
+  }
+
+  if (que_num !== '') {
+    songToConnectToEvent.que_num = que_num;
+  }
+  */
+  // Now, POST songToConnectToEvent -- endpoint will be something like
+  // /auth/event/:event_id/playlist/add_song
+
+  const songToAdd = {
+    songInfo: { ...songInfo, votes: 0 },
+    event_id: add_to_event_id
+  };
+  dispatch({
+    type: ADD_SONG_TO_PLAYLIST_SUCCESS,
+    payload: songToAdd
+  });
+};
+
+export const removeSongFromPlaylistDJ = (songId, event_id) => dispatch => {
+  dispatch({ type: REMOVE_SONG_FROM_PLAYLIST_START });
+
+  const info = {
+    songId: songId,
+    event_id: event_id
+  };
+  dispatch({
+    type: REMOVE_SONG_FROM_PLAYLIST_SUCCESS,
+    payload: info
+  });
+};
+
+export const addVoteToSong = (event_id, song_id) => dispatch => {
+  dispatch({ type: ADD_VOTE_START });
+
+  const info = {
+    event_id: event_id,
+    song_id: song_id
+  };
+  dispatch({ type: ADD_VOTE_SUCCESS, payload: info });
 };
 
 // songs
@@ -452,7 +460,7 @@ export const getDJ = id => dispatch => {
     });
 };
 
-// getting events
+// getting events by DJ id
 
 export const getEvents = dj_id => dispatch => {
   // GET https://api.dj-helper.com/api/events

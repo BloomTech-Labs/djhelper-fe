@@ -99,7 +99,7 @@ export const songReducer = (state = initialState, action) => {
       newSongArr = songArr.concat(song);
 
       if (songArr.length > 0) {
-        for (var i = 0; i < songArr.length; i++) {
+        for (let i = 0; i < songArr.length; i++) {
           if (songArr[i]['id'] === song.id) {
             newSongArr = songArr;
             break;
