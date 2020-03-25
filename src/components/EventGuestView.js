@@ -25,9 +25,15 @@ const EventGuestView = props => {
     // This will get the token and put it in localStorage.
     if (!localStorage.getItem('spotifyAccessToken')) {
       // Getting client id, secret, and grant type into correct format
+      /*
       let data = new URLSearchParams({
         client_id:
           'OGZlMzYxN2QxMjc0NGY2YmI3YzRmZGFmNWMwMjJlMDI6YzMzYWZkNjY1NTI5NDE4YjgwZTkyZTYyOGM5MTQwMGE=',
+        grant_type: 'client_credentials'
+      });
+      */
+      const data = new URLSearchParams({
+        client_id: process.env.REACT_APP_SPOTIFY_CLIENT_ID,
         grant_type: 'client_credentials'
       });
       // Getting an access token for the spotify API

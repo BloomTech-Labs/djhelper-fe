@@ -82,6 +82,8 @@ In order for the app to function correctly, the user must set up their own envir
 
     * CI=true - this is needed to run the test coverage reports for Code Climate
 
+    * REACT_APP_SPOTIFY_CLIENT_ID - you can get this by registering for the Spotify API
+
 # Testing
 
 Testing is done using the @testing-library/jest-dom, @testing-library/react, and @testing-library/user-event packages. Tests are located in the [src/tests directory](https://github.com/Lambda-School-Labs/djhelper-fe/tree/master/src/tests). Tests are grouped into files by component.
