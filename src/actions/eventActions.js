@@ -85,14 +85,11 @@ export const addEvent = (eventInfo, history) => dispatch => {
       axiosWithAuth()
         .post('/auth/event/', eventToSubmit)
         .then(response2 => {
-          // TODO: Modify what is returned for playlist_id and request_list_id once functionality is built for that
           dispatch({
             type: ADD_EVENT_SUCCESS,
             payload: {
               ...response2.data,
-              event_id: response2.data.id,
-              playlist_id: response2.data.id,
-              request_list_id: response2.data.id
+              event_id: response2.data.id
             }
           });
           dispatch({
@@ -163,8 +160,6 @@ export const getEvents = dj_id => dispatch => {
   axiosWithAuth()
     .get('/events')
     .then(response => {
-      // TODO: Modify what is returned for playlist_id and request_list_id once functionality is built for that
-
       const filteredEvents = response.data.filter(
         event => event.dj_id === dj_id
       );
@@ -179,8 +174,6 @@ export const getEvents = dj_id => dispatch => {
           start_time: event.start_time,
           end_time: event.end_time,
           location_id: event.location_id,
-          request_list_id: event.id,
-          playlist_id: event.id,
           img_url: event.img_url,
           dj_id: event.dj_id
         };
