@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { allEvents } from '../data/allEvents';
+// import { allEvents } from '../data/allEvents';  // Uncomment if you want to use dummy data
 
 // actions
 import {
@@ -63,7 +63,7 @@ const initialState = {
   id: '',
   bio: '',
   profile_img_src: '',
-  events: { ...allEvents, active: '' },
+  events: { active: '' }, // { ...allEvents, active: '' }, // if you want to use dummy data
   locations: [],
   registerUserStart: false,
   registerUserError: false,
