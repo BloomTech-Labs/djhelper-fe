@@ -108,9 +108,9 @@ export const loginUser = (userInfo, history) => dispatch => {
       dispatch({ type: LOGIN_USER_SUCCESS, payload: response.data });
 
       // Getting client id, secret, and grant type into correct format
-      let data = new URLSearchParams({
-        client_id:
-          'OGZlMzYxN2QxMjc0NGY2YmI3YzRmZGFmNWMwMjJlMDI6YzMzYWZkNjY1NTI5NDE4YjgwZTkyZTYyOGM5MTQwMGE=',
+
+      const data = new URLSearchParams({
+        client_id: process.env.REACT_APP_SPOTIFY_CLIENT_ID,
         grant_type: 'client_credentials'
       });
 
