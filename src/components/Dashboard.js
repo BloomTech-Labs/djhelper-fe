@@ -24,7 +24,6 @@ const Dashboard = props => {
 
   useEffect(() => {
     dispatch(getEvents(id));
-    // setData(events);
   }, []);
 
   useEffect(() => {
@@ -85,7 +84,7 @@ const Dashboard = props => {
       <div className="upcoming-events" data-testid="upcoming-carousel">
         <div className="labels">
           <h5>Upcoming</h5>
-          <button id="new-event" onClick={handleNewEvent}>
+          <button id="new-event" onClick={handleNewEvent} type="button">
             <h6>Add new event</h6>
           </button>
         </div>
