@@ -72,15 +72,21 @@
                 display: flex;
                  flex-flow: column wrap;
                 align-items: center;
+                .search {
+                    margin-top: 50%;
+
+                }
                 .mobile-add-button {
+                    position: relative;
                     width: 35%;
                     font-size: 0.65rem;
                     background: none;
-                    margin-top: 7%;
                     border-radius: 25px;
                     border: solid rgba(255, 255, 255, 0.5) 1px;
+                    z-index: 100000 !important;
                 }
                 .mobile-switch-buttons {
+                    margin-bottom: 5%;
                     display: flex;
                     width: 100%;
                     flex-flow: row nowrap;
@@ -181,13 +187,19 @@
         }
         //Start of playlist class
         .event-playlist-location {
+            display: flex;
             width:50%;
             margin-left: 25%;
             /* Phone styling */
             @include for-phone-only {
                 margin: 0;
                 width: 80vw;
-                margin-top: 15%;
+                margin-top: 40%;
+                flex-flow: column wrap;
+                .search {
+                    margin-top: 10%;
+                }
+
              }
              .label {
                  color: white;
@@ -206,7 +218,6 @@
 
 
                 @include for-phone-only {
-                    display: none;
                  }
 
              }
