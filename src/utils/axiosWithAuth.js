@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const BACKEND_HOST = "https://api.dj-helper.com/";
-console.log(BACKEND_HOST);
+const BACKEND_HOST = process.env.REACT_APP_BACKEND_HOST;
 
 export const axiosWithAuth = () => {
   const token = localStorage.getItem('token');
