@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getDJ } from '../actions/action';
 import { getLocation, getEvents } from '../actions/eventActions';
+import { axiosWithAuthSpotify } from '../utils/axiosWithAuthSpotify';
 
 import Songs from './Songs';
 import formatDate from '../utils/formatDate';
@@ -17,6 +18,32 @@ const EventGuestView = props => {
     dispatch(getDJ(dj_id));
     dispatch(getEvents(dj_id));
   }, [dispatch, dj_id]);
+
+  useEffect(() => {
+    // If a guest comes to this page without logging in as a DJ first,
+    // they need to get a Spotify access token to see the songs' components.
+    // This will get the token and put it in localStorage.
+    if (!localStorage.getItem('spotifyAccessToken')) {
+      // Getting client id, secret, and grant type into correct format
+      let data = new URLSearchParams({
+        client_id:
+          'OGZlMzYxN2QxMjc0NGY2YmI3YzRmZGFmNWMwMjJlMDI6YzMzYWZkNjY1NTI5NDE4YjgwZTkyZTYyOGM5MTQwMGE=',
+        grant_type: 'client_credentials'
+      });
+      // Getting an access token for the spotify API
+      axiosWithAuthSpotify()
+        .post('/api/token', data)
+        .then(response => {
+          localStorage.setItem(
+            'spotifyAccessToken',
+            response.data.access_token
+          );
+        })
+        .catch(err => {
+          // handle error
+        });
+    }
+  }, []);
 
   const [formattedDate, setFormattedDate] = useState(null);
   const [formattedStartTime, setFormattedStartTime] = useState(null);
