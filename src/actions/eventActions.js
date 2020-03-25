@@ -177,6 +177,8 @@ export const getEvents = dj_id => dispatch => {
           img_url: event.img_url,
           dj_id: event.dj_id
         };
+        // TODO: Get playlist from BE once available, instead of the lines below, which
+        // create an empty playlist.
         dispatch({
           type: ADD_TO_SONG_REDUCER_SUCCESS,
           payload: event.id
@@ -185,7 +187,7 @@ export const getEvents = dj_id => dispatch => {
       dispatch({ type: GET_EVENTS_SUCCESS, payload: eventsObject });
     })
     .catch(err => {
-      dispatch({ type: GET_EVENTS_ERROR });
+      dispatch({ type: GET_EVENTS_ERROR, payload: err });
     });
 };
 

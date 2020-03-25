@@ -267,8 +267,32 @@ export const removeSongFromPlaylistDJ = (songId, event_id) => dispatch => {
 
 export const getPlaylist = event_id => dispatch => {
   dispatch({ type: GET_PLAYLIST_START });
-  // TODO: GET endpoint once BE is set up for that.
+  /* TODO: GET endpoint once BE is set up for that.
   // Probably will be something like /event/:event_id/playlist
+
+  // Playlist info will come back with songs formatted like
+  // {name: 'song name', spotify_id: '4jdkfkdsl', id: 5}
+
+  // We will probably need to loop through the playlist to get the spotify info for each song in the playlist.
+  formattedPlaylist = [];
+  response.forEach(
+  axiosWithAuthSpotifySearch()
+    .get(`/tracks${spotify_id}`)
+    .then(res => {
+      formattedPlaylist.push(res.data);
+    })
+    .catch(err => console.log(err));
+  );
+
+  // Something to consider: would it be important to add the id from our BE to the song object??
+
+  Then the playlist can be passed as part of the payload, below called formattedPlaylist:
+  const playlistObject = {
+    eventId: event_id;
+    formattedPlaylist: formattedPlaylist;
+  }
+  dispatch({ type: GET_PLAYLIST_SUCCESS, payload: playlistObject});
+  */
 };
 
 // songs

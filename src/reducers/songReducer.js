@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-//actions
+// actions
 import {
   SEARCH_FOR_TRACK_START,
   SEARCH_FOR_TRACK_SUCCESS,
@@ -15,7 +15,10 @@ import {
   REMOVE_SONG_FROM_PLAYLIST_ERROR,
   ADD_VOTE_START,
   ADD_VOTE_SUCCESS,
-  ADD_VOTE_ERROR
+  ADD_VOTE_ERROR,
+  GET_PLAYLIST_START,
+  GET_PLAYLIST_SUCCESS,
+  GET_PLAYLIST_ERROR
 } from '../actions/action';
 
 const initialState = {
@@ -58,7 +61,9 @@ const initialState = {
   removeSongError: false,
   addVoteStarted: false,
   addVoteError: false,
-  currentPreview: ''
+  currentPreview: '',
+  getPlaylistStart: false,
+  getPlaylistError: false
 };
 
 let id;
@@ -71,10 +76,7 @@ export const songReducer = (state = initialState, action) => {
     case ADD_TO_SONG_REDUCER_START:
       return { ...state, addToSongReducerStarted: true };
     case ADD_TO_SONG_REDUCER_SUCCESS:
-      // TODO: When BE is set up to GET playlist, add that instead of an empty array as value of playlist.
-      // We will need to get spotify info for each song in the BE playlist as well, most likely.
-
-      // We may need to write separate code to create this empty playlist when an event is created.
+      // Note: this creates an empty playlist for an event.
       return {
         ...state,
         eventPlaylists: {
@@ -176,6 +178,32 @@ export const songReducer = (state = initialState, action) => {
             playlist: newTracks
           }
         }
+      };
+
+    case GET_PLAYLIST_START:
+      return { ...state, getPlaylistStart: true };
+
+    case GET_PLAYLIST_SUCCESS:
+      const eventId = action.payload.event_id;
+      const playlistInfo = action.payload.formattedPlaylist;
+      return {
+        ...state,
+        getPlaylistStart: false,
+        eventPlaylists: {
+          ...state.eventPlaylists,
+          addToSongReducerStarted: false,
+          [`event${action.event_id.payload}`]: {
+            ...state.eventPlaylists[`event${eventId}`],
+            playlist: playlistInfo
+          }
+        }
+      };
+
+    case GET_PLAYLIST_ERROR:
+      return {
+        ...state,
+        getPlaylistStart: false,
+        getPlaylistError: true
       };
 
     default:
