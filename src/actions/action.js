@@ -235,6 +235,13 @@ export const addSongToPlaylistDJ = (
   // Now, POST songToConnectToEvent -- endpoint will be something like
   // /auth/event/:event_id/playlist/add_song
 
+  // The BE should return an id that we can include in the songInfo that is used in the payload.
+  /*
+  const songToAdd = {
+    songInfo: { ...songInfo, votes: 0, db_id: response.id },
+    event_id: add_to_event_id
+  };
+  */
   const songToAdd = {
     songInfo: { ...songInfo, votes: 0 },
     event_id: add_to_event_id

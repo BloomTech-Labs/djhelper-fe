@@ -71,6 +71,10 @@ export const songReducer = (state = initialState, action) => {
     case ADD_TO_SONG_REDUCER_START:
       return { ...state, addToSongReducerStarted: true };
     case ADD_TO_SONG_REDUCER_SUCCESS:
+      // TODO: When BE is set up to GET playlist, add that instead of an empty array as value of playlist.
+      // We will need to get spotify info for each song in the BE playlist as well, most likely.
+
+      // We may need to write separate code to create this empty playlist when an event is created.
       return {
         ...state,
         eventPlaylists: {
