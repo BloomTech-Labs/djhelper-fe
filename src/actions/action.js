@@ -7,30 +7,6 @@ import {
 
 import URLSearchParams from '@ungap/url-search-params';
 
-import {
-  ADD_EVENT_START,
-  ADD_EVENT_SUCCESS,
-  ADD_EVENT_ERROR,
-  EDIT_EVENT_START,
-  EDIT_EVENT_SUCCESS,
-  EDIT_EVENT_ERROR,
-  DELETE_EVENT_START,
-  DELETE_EVENT_SUCCESS,
-  DELETE_EVENT_ERROR,
-  ADD_LOCATION_START,
-  ADD_LOCATION_SUCCESS,
-  ADD_LOCATION_ERROR,
-  GET_EVENTS_START,
-  GET_EVENTS_SUCCESS,
-  GET_EVENTS_ERROR,
-  GET_LOCATION_START,
-  GET_LOCATION_SUCCESS,
-  GET_LOCATION_ERROR,
-  EDIT_LOCATION_START,
-  EDIT_LOCATION_SUCCESS,
-  EDIT_LOCATION_ERROR
-} from './eventActions';
-
 export const SET_NAME = 'SET_NAME';
 export const SET_USERNAME = 'SET_USERNAME';
 
@@ -97,7 +73,7 @@ export const ADD_VOTE_ERROR = 'ADD_VOTE_ERROR';
 
 // action creators
 
-// basic action creator examples
+// basic action creators
 
 export const setName = name => {
   return { type: SET_NAME, payload: name };
@@ -233,7 +209,7 @@ export const updateUser = (history, id, userInfo) => dispatch => {
 export const addSongToPlaylistDJ = (
   songInfo,
   add_to_event_id,
-  que_num = ''
+  queue_num = ''
 ) => dispatch => {
   dispatch({ type: ADD_SONG_TO_PLAYLIST_START });
   // TODO: 1. Add song to songs table in BE by POST to BE
@@ -252,8 +228,8 @@ export const addSongToPlaylistDJ = (
     song_id: response.id
   }
 
-  if (que_num !== '') {
-    songToConnectToEvent.que_num = que_num;
+  if (queue_num !== '') {
+    songToConnectToEvent.queue_num = queue_num;
   }
   */
   // Now, POST songToConnectToEvent -- endpoint will be something like
@@ -343,61 +319,5 @@ export const getDJ = id => dispatch => {
     })
     .catch(err => {
       dispatch({ type: GET_DJ_ERROR, payload: err });
-    });
-};
-
-// getting events by DJ id
-
-export const getEvents = dj_id => dispatch => {
-  // GET https://api.dj-helper.com/api/events
-  dispatch({ type: GET_EVENTS_START });
-  axiosWithAuth()
-    .get('/events')
-    .then(response => {
-      // TODO: Modify what is returned for playlist_id and request_list_id once functionality is built for that
-
-      const filteredEvents = response.data.filter(
-        event => event.dj_id === dj_id
-      );
-      const eventsObject = {};
-      filteredEvents.forEach(event => {
-        eventsObject[`event${event.id}`] = {
-          event_id: event.id,
-          name: event.name,
-          event_type: event.event_type,
-          description: event.description,
-          date: event.date,
-          start_time: event.start_time,
-          end_time: event.end_time,
-          location_id: event.location_id,
-          request_list_id: event.id,
-          playlist_id: event.id,
-          img_url: event.img_url,
-          dj_id: event.dj_id
-        };
-        dispatch({
-          type: ADD_TO_SONG_REDUCER_SUCCESS,
-          payload: event.id
-        });
-      });
-      dispatch({ type: GET_EVENTS_SUCCESS, payload: eventsObject });
-    })
-    .catch(err => {
-      dispatch({ type: GET_EVENTS_ERROR });
-    });
-};
-
-// locations
-
-export const getLocation = location_id => dispatch => {
-  // GET https://api.dj-helper.com/api/location/:location_id
-  dispatch({ type: GET_LOCATION_START });
-  axiosWithAuth()
-    .get(`/location/${location_id}`)
-    .then(response => {
-      dispatch({ type: GET_LOCATION_SUCCESS, payload: response.data });
-    })
-    .catch(err => {
-      dispatch({ type: GET_LOCATION_ERROR, payload: err });
     });
 };

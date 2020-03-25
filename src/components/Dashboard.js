@@ -8,7 +8,7 @@ import '@brainhubeu/react-carousel/lib/style.css';
 import PreviewEventDetails from './PreviewEventDetails';
 import NavigationBar from './NavigationBar';
 
-import { getEvents } from '../actions/action';
+import { getEvents } from '../actions/eventActions';
 
 const Dashboard = props => {
   const dispatch = useDispatch();

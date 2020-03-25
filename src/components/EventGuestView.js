@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { getDJ, getEvents, getLocation } from '../actions/action';
+import { getDJ } from '../actions/action';
+import { getLocation, getEvents } from '../actions/eventActions';
 
 import Songs from './Songs';
 import formatDate from '../utils/formatDate';
