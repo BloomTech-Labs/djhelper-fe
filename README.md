@@ -48,6 +48,11 @@ Mission Statement: To be the easiest way for DJs to collect and display relevant
 - DJs can delete their accounts.
 - DJs can see their dashboards.
 
+- DJs can create events.
+- DJs can edit events.
+- DJs can delete events.
+- DJs can search for songs to add to playlists.
+
 ## Tech Stack
 
 ### Front end built using: React.
