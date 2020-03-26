@@ -1,4 +1,5 @@
 import React from 'react';
+import { toBeInTheDocument } from '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { createMemoryHistory } from 'history';
@@ -6,6 +7,8 @@ import { Router } from 'react-router-dom';
 import { store } from './store';
 
 import DjInterface from '../components/DjInterface';
+
+expect.extend({ toBeInTheDocument });
 
 test('DjInterface renders top navbar', () => {
   const history = createMemoryHistory();

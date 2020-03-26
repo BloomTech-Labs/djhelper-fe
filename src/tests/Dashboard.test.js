@@ -1,23 +1,19 @@
 import React from 'react';
-import { debug, render, fireEvent, cleanup } from '@testing-library/react';
-import { Provider, useSelector } from 'react-redux';
-import { Router, BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { toBeInTheDocument } from '@testing-library/jest-dom';
+import { render, fireEvent } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { store } from './store';
 
-import App from '../App.js';
 import Dashboard from '../components/Dashboard';
+
+expect.extend({ toBeInTheDocument });
 
 test('Dashboard page renders correctly', () => {
   const history = createMemoryHistory();
-  const {
-    container,
-    queryByText,
-    getByText,
-    getByLabelText,
-    getByTestId
-  } = render(
+  const { getByText, getByTestId } = render(
     <Provider store={store}>
       <Router history={history}>
         <Dashboard />
@@ -44,13 +40,7 @@ test('Dashboard page renders correctly', () => {
 
 test('Dashboard page navbar profile icon leads to DJProfile component', () => {
   const history = createMemoryHistory();
-  const {
-    container,
-    queryByText,
-    getByText,
-    getByLabelText,
-    getByTestId
-  } = render(
+  const { getByTestId } = render(
     <Provider store={store}>
       <Router history={history}>
         <Dashboard tokenPresent />
@@ -67,13 +57,7 @@ test('Dashboard page navbar profile icon leads to DJProfile component', () => {
 
 test('Dashboard page navbar home icon leads to Dashboard component', () => {
   const history = createMemoryHistory();
-  const {
-    container,
-    queryByText,
-    getByText,
-    getByLabelText,
-    getByTestId
-  } = render(
+  const { getByTestId } = render(
     <Provider store={store}>
       <Router history={history}>
         <Dashboard tokenPresent />

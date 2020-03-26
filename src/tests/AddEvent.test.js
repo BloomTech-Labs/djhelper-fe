@@ -1,10 +1,13 @@
 import React from 'react';
+import { toBeInTheDocument } from '@testing-library/jest-dom';
 import { render, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 import AddEvent from '../components/AddEvent';
 import { store } from './store';
+
+expect.extend({ toBeInTheDocument });
 
 test('Add Event page renders inputs for event data', async () => {
   const history = createMemoryHistory();

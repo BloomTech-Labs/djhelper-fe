@@ -1,10 +1,13 @@
 import React from 'react';
+import { toBeInTheDocument } from '@testing-library/jest-dom';
 import { debug, render, fireEvent, cleanup } from '@testing-library/react';
 import { Provider, useSelector } from 'react-redux';
 import { Router, BrowserRouter, MemoryRouter } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import Login from '../components/Login';
 import { store } from './store';
+
+expect.extend({ toBeInTheDocument });
 
 test('Login page renders correctly', () => {
   const history = createMemoryHistory();
