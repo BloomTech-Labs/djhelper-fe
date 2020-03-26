@@ -4,7 +4,6 @@ import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
-import Event from '../components/Event';
 import Dashboard from '../components/Dashboard';
 import { store } from './store';
 
