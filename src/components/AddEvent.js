@@ -6,7 +6,7 @@ import NavigationBar from './NavigationBar';
 import djTurntable from '../images/djTurntable-min.jpg';
 import stage from '../images/stage-min.jpg';
 import { validUrl } from '../utils/validUrl';
-import { addEvent } from '../actions/action';
+import { addEvent } from '../actions/eventActions';
 
 const AddEvent = props => {
   const id = useSelector(state => state.userReducer.id);

@@ -1,11 +1,14 @@
 import React from 'react';
+import { toBeInTheDocument } from '@testing-library/jest-dom';
 import { render, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { store } from './store';
 
-import SetUpProfile from '../components/SetUpProfile.js';
+import SetUpProfile from '../components/SetUpProfile';
+
+expect.extend({ toBeInTheDocument });
 
 test('SetUpProfile page renders correctly', () => {
   const history = createMemoryHistory();

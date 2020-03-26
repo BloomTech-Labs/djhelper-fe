@@ -17,7 +17,6 @@ const NavigationBar = props => {
   };
 
   const selectedIcon = () => {
-    console.log(window.location.pathname);
     const url = window.location.pathname;
     if (url === '/dj') {
       home = 'selected';

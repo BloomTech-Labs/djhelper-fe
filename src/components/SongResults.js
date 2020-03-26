@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Songs from './Songs';
 
@@ -6,20 +6,27 @@ const SongResults = () => {
   const items = useSelector(state => state.songReducer.results);
   const [page, setPage] = useState({
     pageRangeMin: 0,
-    pageRangeMax: 5,
-  })
-
+    pageRangeMax: 5
+  });
 
   const handlePageChangeNext = () => {
-      if (page.pageRangeMax < 20) {
-          setPage({...page, pageRangeMin: page.pageRangeMin + 5, pageRangeMax: page.pageRangeMax + 5})
-      }
-  }
+    if (page.pageRangeMax < 20) {
+      setPage({
+        ...page,
+        pageRangeMin: page.pageRangeMin + 5,
+        pageRangeMax: page.pageRangeMax + 5
+      });
+    }
+  };
   const handlePageChangePrevious = () => {
-      if (page.pageRangeMin > 0) {
-          setPage({...page, pageRangeMin: page.pageRangeMin - 5, pageRangeMax: page.pageRangeMax - 5})
-      }
-  }
+    if (page.pageRangeMin > 0) {
+      setPage({
+        ...page,
+        pageRangeMin: page.pageRangeMin - 5,
+        pageRangeMax: page.pageRangeMax - 5
+      });
+    }
+  };
 
   let firstTwenty = [];
   if (items) {
@@ -27,20 +34,28 @@ const SongResults = () => {
   }
 
   firstTwenty.sort((a, b) => b.popularity - a.popularity);
-  let currentResults = firstTwenty.slice(page.pageRangeMin, page.pageRangeMax);
+  const currentResults = firstTwenty.slice(
+    page.pageRangeMin,
+    page.pageRangeMax
+  );
 
   const results = () => {
     if (firstTwenty.length > 0) {
-      console.log(firstTwenty);
       return (
-          <>
-              {currentResults.map(element => <Songs items={element} />)}
-              <div className='page-change-buttons'>
-                  <p className='text-buttons' onClick={handlePageChangePrevious}>Previous</p>
-                  <p className='text-buttons' onClick={handlePageChangeNext}>Next</p>
-              </div>
-          </>
-      )
+        <>
+          {currentResults.map(element => (
+            <Songs items={element} key={element.id} />
+          ))}
+          <div className="page-change-buttons">
+            <p className="text-buttons" onClick={handlePageChangePrevious}>
+              Previous
+            </p>
+            <p className="text-buttons" onClick={handlePageChangeNext}>
+              Next
+            </p>
+          </div>
+        </>
+      );
     }
     return <p>Whoops! No results.</p>;
   };

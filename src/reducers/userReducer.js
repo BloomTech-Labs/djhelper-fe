@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { allEvents } from '../data/allEvents';
+// import { allEvents } from '../data/allEvents';  // Uncomment if you want to use dummy data
 
 // actions
 import {
@@ -25,6 +25,12 @@ import {
   UPDATE_USER_START,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
+  GET_DJ_START,
+  GET_DJ_SUCCESS,
+  GET_DJ_ERROR
+} from '../actions/action';
+
+import {
   ADD_EVENT_START,
   ADD_EVENT_SUCCESS,
   ADD_EVENT_ERROR,
@@ -37,9 +43,6 @@ import {
   ADD_LOCATION_START,
   ADD_LOCATION_SUCCESS,
   ADD_LOCATION_ERROR,
-  GET_DJ_START,
-  GET_DJ_SUCCESS,
-  GET_DJ_ERROR,
   GET_EVENTS_START,
   GET_EVENTS_SUCCESS,
   GET_EVENTS_ERROR,
@@ -49,7 +52,7 @@ import {
   EDIT_LOCATION_START,
   EDIT_LOCATION_SUCCESS,
   EDIT_LOCATION_ERROR
-} from '../actions/action';
+} from '../actions/eventActions';
 
 const initialState = {
   username: '',
@@ -60,7 +63,7 @@ const initialState = {
   id: '',
   bio: '',
   profile_img_src: '',
-  events: { ...allEvents, active: '' },
+  events: { active: '' }, // { ...allEvents, active: '' }, // if you want to use dummy data
   locations: [],
   registerUserStart: false,
   registerUserError: false,

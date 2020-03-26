@@ -48,6 +48,11 @@ Mission Statement: To be the easiest way for DJs to collect and display relevant
 - DJs can delete their accounts.
 - DJs can see their dashboards.
 
+- DJs can create events.
+- DJs can edit events.
+- DJs can delete events.
+- DJs can search for songs to add to playlists.
+
 ## Tech Stack
 
 ### Front end built using: React.
@@ -81,6 +86,8 @@ In order for the app to function correctly, the user must set up their own envir
     * REACT_APP_FRONTEND_HOST = 'http://localhost:3000/'  - if running locally, with whichever port you are using for the front end.
 
     * CI=true - this is needed to run the test coverage reports for Code Climate
+
+    * REACT_APP_SPOTIFY_CLIENT_ID - you can get this by registering for the Spotify API
 
 # Testing
 

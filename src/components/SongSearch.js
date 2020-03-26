@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Input } from 'reactstrap';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import SongResults from './SongResults';
 
 import { searchForTrack } from '../actions/action';
@@ -21,14 +21,13 @@ const SongSearch = () => {
   const handleChange = e => {
     setSearchInput({ ...searchInput, [e.target.name]: e.target.value });
     const query = JSON.stringify(searchInput.searchTerm);
-    console.log(query);
     if (searchInput.searchTerm.length > 0) {
       dispatch(searchForTrack(query));
     }
   };
 
   return (
-    <div>
+    <div className='search'>
       <Input
         data-testid="songSearch"
         placeholder="Search artists, tracks..."

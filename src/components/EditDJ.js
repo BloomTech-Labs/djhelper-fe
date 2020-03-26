@@ -87,8 +87,10 @@ const EditDJ = () => {
             alt="dj profile"
             ref={profile}
             onLoad={handleOrientation}
+            data-testid="profile-img"
           />
           <span
+            data-testid="trigger-img-edit"
             className="edit-icon"
             onClick={() => setWantsToChangeImg(!wantsToChangeImg)}
           >
@@ -200,17 +202,6 @@ const EditDJ = () => {
                 id="phone"
                 onChange={handleChange}
                 value={userInfo.phone}
-              />
-            </div>
-
-            <div>
-              <label htmlFor="profile_pic_url">Link to Profile Image</label>
-              <Input
-                name="profile_pic_url"
-                type="text"
-                id="profile_pic_url"
-                onChange={handleChange}
-                value={userInfo.profile_pic_url}
               />
             </div>
           </Form>

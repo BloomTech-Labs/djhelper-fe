@@ -1,4 +1,5 @@
-//actions
+/* eslint-disable import/prefer-default-export */
+// actions
 import {
   SEARCH_FOR_TRACK_START,
   SEARCH_FOR_TRACK_SUCCESS,
@@ -14,7 +15,10 @@ import {
   REMOVE_SONG_FROM_PLAYLIST_ERROR,
   ADD_VOTE_START,
   ADD_VOTE_SUCCESS,
-  ADD_VOTE_ERROR
+  ADD_VOTE_ERROR,
+  GET_PLAYLIST_START,
+  GET_PLAYLIST_SUCCESS,
+  GET_PLAYLIST_ERROR
 } from '../actions/action';
 
 const initialState = {
@@ -57,7 +61,9 @@ const initialState = {
   removeSongError: false,
   addVoteStarted: false,
   addVoteError: false,
-  currentPreview: ''
+  currentPreview: '',
+  getPlaylistStart: false,
+  getPlaylistError: false
 };
 
 let id;
@@ -70,6 +76,7 @@ export const songReducer = (state = initialState, action) => {
     case ADD_TO_SONG_REDUCER_START:
       return { ...state, addToSongReducerStarted: true };
     case ADD_TO_SONG_REDUCER_SUCCESS:
+      // Note: this creates an empty playlist for an event.
       return {
         ...state,
         eventPlaylists: {
@@ -98,7 +105,7 @@ export const songReducer = (state = initialState, action) => {
       newSongArr = songArr.concat(song);
 
       if (songArr.length > 0) {
-        for (var i = 0; i < songArr.length; i++) {
+        for (let i = 0; i < songArr.length; i++) {
           if (songArr[i]['id'] === song.id) {
             newSongArr = songArr;
             break;
@@ -171,6 +178,32 @@ export const songReducer = (state = initialState, action) => {
             playlist: newTracks
           }
         }
+      };
+
+    case GET_PLAYLIST_START:
+      return { ...state, getPlaylistStart: true };
+
+    case GET_PLAYLIST_SUCCESS:
+      const eventId = action.payload.event_id;
+      const playlistInfo = action.payload.formattedPlaylist;
+      return {
+        ...state,
+        getPlaylistStart: false,
+        eventPlaylists: {
+          ...state.eventPlaylists,
+          addToSongReducerStarted: false,
+          [`event${action.event_id.payload}`]: {
+            ...state.eventPlaylists[`event${eventId}`],
+            playlist: playlistInfo
+          }
+        }
+      };
+
+    case GET_PLAYLIST_ERROR:
+      return {
+        ...state,
+        getPlaylistStart: false,
+        getPlaylistError: true
       };
 
     default:

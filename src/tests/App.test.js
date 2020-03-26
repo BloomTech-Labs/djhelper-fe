@@ -1,11 +1,12 @@
 import React from 'react';
-import { debug, render, fireEvent, cleanup } from '@testing-library/react';
-import App from '../components/Home';
-import { Provider, useSelector } from 'react-redux';
-import { compose, applyMiddleware } from 'redux';
+import { render, fireEvent } from '@testing-library/react';
+
+import { Provider } from 'react-redux';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 import { store } from './store';
+
+import App from '../components/Home';
 
 test('App component renders to Homepage', () => {
   const history = createMemoryHistory();
@@ -23,7 +24,7 @@ test('App component renders to Homepage', () => {
 
 test('Login link sends user to the login page', () => {
   const history = createMemoryHistory();
-  const { container, queryByText, getByText } = render(
+  const { getByText } = render(
     <Provider store={store}>
       <Router history={history}>
         <App />

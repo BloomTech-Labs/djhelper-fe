@@ -4,23 +4,22 @@ import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
-import Dashboard from '../components/Dashboard';
 import { store } from './store';
+
+import DjInterface from '../components/DjInterface';
 
 expect.extend({ toBeInTheDocument });
 
-test('Event components on Dashboard component render all event data', async () => {
+test('DjInterface renders top navbar', () => {
   const history = createMemoryHistory();
-  const simulatedDom = render(
+  const { queryAllByText } = render(
     <Router history={history}>
       <Provider store={store}>
-        <Dashboard />
+        <DjInterface />
       </Provider>
     </Router>
   );
 
-  const eventButtons = simulatedDom.queryAllByTestId(/event-component/i);
-  eventButtons.forEach(button => {
-    expect(button).toBeInTheDocument();
-  });
+  const NavHeader = queryAllByText(/DJ Helper/i)[0];
+  expect(NavHeader).toBeInTheDocument();
 });

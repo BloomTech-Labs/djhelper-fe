@@ -1,20 +1,17 @@
 import React from 'react';
-import { debug, render, fireEvent, cleanup } from '@testing-library/react';
-import { Provider, useSelector } from 'react-redux';
-import { Router, BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { toBeInTheDocument } from '@testing-library/jest-dom';
+import { render, fireEvent } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import Register from '../components/Register';
 import { store } from './store';
 
+expect.extend({ toBeInTheDocument });
+
 test('Register page renders correctly', () => {
   const history = createMemoryHistory();
-  const {
-    container,
-    queryByText,
-    getByText,
-    getByLabelText,
-    getByTestId
-  } = render(
+  const { queryByText, getByText, getByTestId } = render(
     <Provider store={store}>
       <Router history={history}>
         <Register />
@@ -37,19 +34,14 @@ test('Register page renders correctly', () => {
   expect(name).toBeInTheDocument();
   expect(username).toBeInTheDocument();
   expect(password).toBeInTheDocument();
+  expect(email).toBeInTheDocument();
   expect(confirmPassword).toBeInTheDocument();
   expect(submit).toBeInTheDocument();
 });
 
 test('here link on Register page takes user to Login page', () => {
   const history = createMemoryHistory();
-  const {
-    container,
-    queryByText,
-    getByText,
-    getByLabelText,
-    getByTestId
-  } = render(
+  const { getByTestId } = render(
     <Provider store={store}>
       <Router history={history}>
         <Register />
