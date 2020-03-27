@@ -209,90 +209,118 @@ export const updateUser = (history, id, userInfo) => dispatch => {
 export const addSongToPlaylistDJ = (
   songInfo,
   add_to_event_id,
-  queue_num = ''
+  queue_num = Math.floor(Math.random() * 10000) + 1 //BE needs a num > 0, for now
 ) => dispatch => {
   dispatch({ type: ADD_SONG_TO_PLAYLIST_START });
-  // TODO: 1. Add song to songs table in BE by POST to BE
-  // TODO: 2. Attach song to event playlist by POST to BE
 
   const songForBE = {
     name: songInfo.name,
     spotify_id: songInfo.id
   };
 
-  // Now, POST songForBE when endpoint is available.
-  // Endpoint will be something like /auth/song
-  // BE will return a song object with song id.
-  /*
-  const songToConnectToEvent = {
-    song_id: response.id
-  }
+  // 1. Add song to songs table in BE by POST to BE
+  // POST https://api.dj-helper.com/api/auth/song/
+  axiosWithAuth()
+    .post('/auth/song', songForBE)
+    .then(response => {
+      // 2. Attach song to event playlist by POST to BE
+      // https://api.dj-helper.com/api/auth/playlist?event=:event_id
 
-  if (queue_num !== '') {
-    songToConnectToEvent.queue_num = queue_num;
-  }
-  */
-  // Now, POST songToConnectToEvent -- endpoint will be something like
-  // /auth/event/:event_id/playlist/add_song
+      const songToConnectToEvent = {
+        song_id: response.data.id,
+        queue_num
+      };
 
-  // The BE should return an id that we can include in the songInfo that is used in the payload.
-  /*
-  const songToAdd = {
-    songInfo: { ...songInfo, votes: 0, db_id: response.id },
-    event_id: add_to_event_id
-  };
-  */
-  const songToAdd = {
-    songInfo: { ...songInfo, votes: 0 },
-    event_id: add_to_event_id
-  };
-  dispatch({
-    type: ADD_SONG_TO_PLAYLIST_SUCCESS,
-    payload: songToAdd
-  });
+      axiosWithAuth()
+        .post(`/auth/playlist?event=${add_to_event_id}`, songToConnectToEvent)
+        .then(res => {
+          // Note: The response returns an id that will be stored in the redux store as connections_id
+          const songToAdd = {
+            songInfo: {
+              ...songInfo,
+              votes: 0,
+              connections_id: res.data.id
+            },
+            event_id: add_to_event_id
+          };
+          dispatch({
+            type: ADD_SONG_TO_PLAYLIST_SUCCESS,
+            payload: songToAdd
+          });
+        })
+        .catch(err2 => {
+          dispatch({
+            type: ADD_SONG_TO_PLAYLIST_ERROR,
+            payload: err2
+          });
+        });
+    })
+    .catch(err => {
+      dispatch({
+        type: ADD_SONG_TO_PLAYLIST_ERROR,
+        payload: err
+      });
+    });
 };
 
-export const removeSongFromPlaylistDJ = (songId, event_id) => dispatch => {
+export const removeSongFromPlaylistDJ = (songInfo, event_id) => dispatch => {
   dispatch({ type: REMOVE_SONG_FROM_PLAYLIST_START });
 
   const info = {
-    songId: songId,
-    event_id: event_id
+    songId: songInfo.id,
+    event_id
   };
-  dispatch({
-    type: REMOVE_SONG_FROM_PLAYLIST_SUCCESS,
-    payload: info
-  });
+  // DELETE https://api.dj-helper.com/api/auth/playlist/entry/:connections_id
+  axiosWithAuth()
+    .delete(`/auth/playlist/entry/${songInfo.connections_id}`)
+    .then(response => {
+      dispatch({
+        type: REMOVE_SONG_FROM_PLAYLIST_SUCCESS,
+        payload: info
+      });
+    })
+    .catch(err => console.log(err));
 };
 
 export const getPlaylist = event_id => dispatch => {
   dispatch({ type: GET_PLAYLIST_START });
-  /* TODO: GET endpoint once BE is set up for that.
-  // Probably will be something like /event/:event_id/playlist
+  // GET https://api.dj-helper.com/api/playlist/:event_id
+  axiosWithAuth()
+    .get(`/playlist/${event_id}`)
+    .then(response => {
+      // response.data includes id (connections_id), event_id, song_id, and queue_num.
+      // We need to use the song_id to get the spotify_id, in order to get all the song info.
+      const playlist = [];
+      response.data.forEach(item => {
+        // GET https://api.dj-helper.com/api/song/:song_id
+        axiosWithAuth()
+          .get(`/song/${item.song_id}`)
+          .then(res => {
+            axiosWithAuthSpotifySearch()
+              .get(`/tracks/${res.data.spotify_id}`)
+              .then(res2 => {
+                res2.data.queue_num = item.queue_num;
+                res2.data.connections_id = item.id;
+                playlist.push(res2.data);
+              })
+              .catch(err2 => {
+                dispatch({ type: GET_PLAYLIST_ERROR, payload: err2 });
+              });
+          })
+          .catch(err => {
+            dispatch({ type: GET_PLAYLIST_ERROR, payload: err });
+          });
+      }); // closes forEach
 
-  // Playlist info will come back with songs formatted like
-  // {name: 'song name', spotify_id: '4jdkfkdsl', id: 5}
-
-  // We will probably need to loop through the playlist to get the spotify info for each song in the playlist.
-  formattedPlaylist = [];
-  response.forEach(
-  axiosWithAuthSpotifySearch()
-    .get(`/tracks${spotify_id}`)
-    .then(res => {
-      formattedPlaylist.push(res.data);
+      const playlistObject = {
+        eventId: event_id,
+        formattedPlaylist: playlist
+      };
+      dispatch({ type: GET_PLAYLIST_SUCCESS, payload: playlistObject });
     })
-    .catch(err => console.log(err));
-  );
-
-  // Something to consider: would it be important to add the id from our BE to the song object??
-
-  Then the playlist can be passed as part of the payload, below called formattedPlaylist:
-  const playlistObject = {
-    eventId: event_id;
-    formattedPlaylist: formattedPlaylist;
-  }
-  dispatch({ type: GET_PLAYLIST_SUCCESS, payload: playlistObject});
-  */
+    .catch(err3 => {
+      dispatch({ type: GET_PLAYLIST_ERROR, payload: err3 });
+    });
 };
 
 // songs
@@ -327,7 +355,7 @@ export const getSongInfoBySpotifyId = spotify_id => dispatch => {
   // TODO: Add cases in reducer to take care of GET_SONG_BY_ID_START, SUCCESS and ERROR
   dispatch({ type: GET_SONG_BY_ID_START });
   axiosWithAuthSpotifySearch()
-    .get(`/tracks${spotify_id}`)
+    .get(`/tracks/${spotify_id}`)
     .then(response => {
       dispatch({
         type: GET_SONG_BY_ID_SUCCESS,
