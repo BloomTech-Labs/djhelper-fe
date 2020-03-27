@@ -220,6 +220,15 @@ export const addSongToPlaylistDJ = (
     spotify_id: songInfo.id
   };
 
+  axiosWithAuth()
+    .post('/auth/song', songForBE)
+    .then(response => {
+      console.log('Add song response: ', response);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
   // Now, POST songForBE when endpoint is available.
   // Endpoint will be something like /auth/song
   // BE will return a song object with song id.
