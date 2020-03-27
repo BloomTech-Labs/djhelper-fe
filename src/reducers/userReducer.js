@@ -272,7 +272,6 @@ export const userReducer = (state = initialState, action) => {
       };
 
     case DELETE_EVENT_SUCCESS:
-      // TODO: Modify this once the app uses the back end for dealing with deleting events
       const parentKey = 'events';
       const childKey = `event${action.payload.event_id}`;
       const { [parentKey]: parentValue, ...noChild } = state;

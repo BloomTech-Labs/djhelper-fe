@@ -284,32 +284,43 @@ export const removeSongFromPlaylistDJ = (songInfo, event_id) => dispatch => {
 
 export const getPlaylist = event_id => dispatch => {
   dispatch({ type: GET_PLAYLIST_START });
-  /* TODO: GET endpoint once BE is set up for that.
-  // Probably will be something like /event/:event_id/playlist
+  // GET https://api.dj-helper.com/api/playlist/:event_id
+  axiosWithAuth()
+    .get(`/playlist/${event_id}`)
+    .then(response => {
+      // response.data includes id (connections_id), event_id, song_id, and queue_num.
+      // We need to use the song_id to get the spotify_id, in order to get all the song info.
+      const playlist = [];
+      response.data.forEach(item => {
+        // GET https://api.dj-helper.com/api/song/:song_id
+        axiosWithAuth()
+          .get(`/song/${item.song_id}`)
+          .then(res => {
+            axiosWithAuthSpotifySearch()
+              .get(`/tracks/${res.data.spotify_id}`)
+              .then(res2 => {
+                res2.data.queue_num = item.queue_num;
+                res2.data.connections_id = item.id;
+                playlist.push(res2.data);
+              })
+              .catch(err2 => {
+                dispatch({ type: GET_PLAYLIST_ERROR, payload: err2 });
+              });
+          })
+          .catch(err => {
+            dispatch({ type: GET_PLAYLIST_ERROR, payload: err });
+          });
+      }); // closes forEach
 
-  // Playlist info will come back with songs formatted like
-  // {name: 'song name', spotify_id: '4jdkfkdsl', id: 5}
-
-  // We will probably need to loop through the playlist to get the spotify info for each song in the playlist.
-  formattedPlaylist = [];
-  response.forEach(
-  axiosWithAuthSpotifySearch()
-    .get(`/tracks${spotify_id}`)
-    .then(res => {
-      formattedPlaylist.push(res.data);
+      const playlistObject = {
+        eventId: event_id,
+        formattedPlaylist: playlist
+      };
+      dispatch({ type: GET_PLAYLIST_SUCCESS, payload: playlistObject });
     })
-    .catch(err => console.log(err));
-  );
-
-  // Something to consider: would it be important to add the id from our BE to the song object??
-
-  Then the playlist can be passed as part of the payload, below called formattedPlaylist:
-  const playlistObject = {
-    eventId: event_id;
-    formattedPlaylist: formattedPlaylist;
-  }
-  dispatch({ type: GET_PLAYLIST_SUCCESS, payload: playlistObject});
-  */
+    .catch(err3 => {
+      dispatch({ type: GET_PLAYLIST_ERROR, payload: err3 });
+    });
 };
 
 // songs
@@ -344,7 +355,7 @@ export const getSongInfoBySpotifyId = spotify_id => dispatch => {
   // TODO: Add cases in reducer to take care of GET_SONG_BY_ID_START, SUCCESS and ERROR
   dispatch({ type: GET_SONG_BY_ID_START });
   axiosWithAuthSpotifySearch()
-    .get(`/tracks${spotify_id}`)
+    .get(`/tracks/${spotify_id}`)
     .then(response => {
       dispatch({
         type: GET_SONG_BY_ID_SUCCESS,

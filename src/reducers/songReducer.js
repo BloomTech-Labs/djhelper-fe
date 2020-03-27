@@ -184,17 +184,15 @@ export const songReducer = (state = initialState, action) => {
       return { ...state, getPlaylistStart: true };
 
     case GET_PLAYLIST_SUCCESS:
-      const eventId = action.payload.event_id;
-      const playlistInfo = action.payload.formattedPlaylist;
       return {
         ...state,
         getPlaylistStart: false,
         eventPlaylists: {
           ...state.eventPlaylists,
           addToSongReducerStarted: false,
-          [`event${action.event_id.payload}`]: {
-            ...state.eventPlaylists[`event${eventId}`],
-            playlist: playlistInfo
+          [`event${action.payload.eventId}`]: {
+            ...state.eventPlaylists[`event${action.payload.eventId}`],
+            playlist: action.payload.formattedPlaylist
           }
         }
       };

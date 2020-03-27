@@ -8,9 +8,10 @@ import SongSearch from './SongSearch';
 import formatDate from '../utils/formatDate';
 
 import EditEvent from './EditEvent';
-import { searchForTrack } from '../actions/action';
+import { searchForTrack, getPlaylist } from '../actions/action';
 
 const EventPage = props => {
+  const dispatch = useDispatch();
   const dj_id = useSelector(state => state.userReducer.id);
   const FRONTEND_HOST =
     process.env.REACT_APP_FRONTEND_HOST || 'https://dj-helper.com/';
@@ -30,6 +31,10 @@ const EventPage = props => {
   useEffect(() => {
     setCurrentEvent(events[`event${event_id}`]);
   }, [events]);
+
+  useEffect(() => {
+    dispatch(getPlaylist(event_id));
+  }, []);
 
   const eventPlaylist = useSelector(
     state => state.songReducer.eventPlaylists[`event${event_id}`].playlist
@@ -69,7 +74,6 @@ const EventPage = props => {
     setAppSize();
   }, []);
 
-  const dispatch = useDispatch();
   const handleClick = () => {
     let text;
     if (switches.buttonText === 'Add Songs') {
