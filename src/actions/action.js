@@ -223,14 +223,12 @@ export const addSongToPlaylistDJ = (
   axiosWithAuth()
     .post('/auth/song', songForBE)
     .then(response => {
-      console.log('Add song response: ', response);
-
-      // TODO: 2. Attach song to event playlist by POST to BE
-      // https://api.dj-helper.com/api/auth/playlist?event=4
+      // 2. Attach song to event playlist by POST to BE
+      // https://api.dj-helper.com/api/auth/playlist?event=:event_id
 
       const songToConnectToEvent = {
         song_id: response.data.id,
-        queue_num: queue_num
+        queue_num
       };
 
       axiosWithAuth()
@@ -241,7 +239,7 @@ export const addSongToPlaylistDJ = (
             songInfo: {
               ...songInfo,
               votes: 0,
-              connections_id: response.data.id
+              connections_id: res.data.id
             },
             event_id: add_to_event_id
           };
@@ -265,17 +263,23 @@ export const addSongToPlaylistDJ = (
     });
 };
 
-export const removeSongFromPlaylistDJ = (songId, event_id) => dispatch => {
+export const removeSongFromPlaylistDJ = (songInfo, event_id) => dispatch => {
   dispatch({ type: REMOVE_SONG_FROM_PLAYLIST_START });
 
   const info = {
-    songId: songId,
-    event_id: event_id
+    songId: songInfo.id,
+    event_id
   };
-  dispatch({
-    type: REMOVE_SONG_FROM_PLAYLIST_SUCCESS,
-    payload: info
-  });
+  // DELETE https://api.dj-helper.com/api/auth/playlist/entry/:connections_id
+  axiosWithAuth()
+    .delete(`/auth/playlist/entry/${songInfo.connections_id}`)
+    .then(response => {
+      dispatch({
+        type: REMOVE_SONG_FROM_PLAYLIST_SUCCESS,
+        payload: info
+      });
+    })
+    .catch(err => console.log(err));
 };
 
 export const getPlaylist = event_id => dispatch => {

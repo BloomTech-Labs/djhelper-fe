@@ -109,14 +109,15 @@ const Songs = props => {
     console.log('no preview available');
   };
 
-  const isEditModeOn = id => {
+  const isEditModeOn = (id, songInfo) => {
     if (props.editModeOn) {
       return (
         <div className="song-element last-two">
           <button
+            type="button"
             id="remove"
             onClick={() => {
-              dispatch(removeSongFromPlaylistDJ(id, eventId));
+              dispatch(removeSongFromPlaylistDJ(songInfo, eventId));
             }}
           >
             <FontAwesomeIcon icon="minus" size="1x" />
@@ -151,6 +152,7 @@ const Songs = props => {
         <div>
           <div className="songs">
             <button
+              type="button"
               style={{ backgroundImage: `url(${album.images[2].url})` }}
               id="song-type"
             >
@@ -202,7 +204,7 @@ const Songs = props => {
                 </button>
               </div>
             )}
-            {isEditModeOn(id)}
+            {isEditModeOn(id, songInfo)}
 
             <br />
           </div>
