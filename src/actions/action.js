@@ -209,56 +209,60 @@ export const updateUser = (history, id, userInfo) => dispatch => {
 export const addSongToPlaylistDJ = (
   songInfo,
   add_to_event_id,
-  queue_num = ''
+  queue_num = Math.floor(Math.random() * 10000) + 1 //BE needs a num > 0, for now
 ) => dispatch => {
   dispatch({ type: ADD_SONG_TO_PLAYLIST_START });
-  // TODO: 1. Add song to songs table in BE by POST to BE
-  // TODO: 2. Attach song to event playlist by POST to BE
 
   const songForBE = {
     name: songInfo.name,
     spotify_id: songInfo.id
   };
 
+  // 1. Add song to songs table in BE by POST to BE
+  // POST https://api.dj-helper.com/api/auth/song/
   axiosWithAuth()
     .post('/auth/song', songForBE)
     .then(response => {
       console.log('Add song response: ', response);
+
+      // TODO: 2. Attach song to event playlist by POST to BE
+      // https://api.dj-helper.com/api/auth/playlist?event=4
+
+      const songToConnectToEvent = {
+        song_id: response.data.id,
+        queue_num: queue_num
+      };
+
+      axiosWithAuth()
+        .post(`/auth/playlist?event=${add_to_event_id}`, songToConnectToEvent)
+        .then(res => {
+          // Note: The response returns an id that will be stored in the redux store as connections_id
+          const songToAdd = {
+            songInfo: {
+              ...songInfo,
+              votes: 0,
+              connections_id: response.data.id
+            },
+            event_id: add_to_event_id
+          };
+          dispatch({
+            type: ADD_SONG_TO_PLAYLIST_SUCCESS,
+            payload: songToAdd
+          });
+        })
+        .catch(err2 => {
+          dispatch({
+            type: ADD_SONG_TO_PLAYLIST_ERROR,
+            payload: err2
+          });
+        });
     })
     .catch(err => {
-      console.log(err);
+      dispatch({
+        type: ADD_SONG_TO_PLAYLIST_ERROR,
+        payload: err
+      });
     });
-
-  // Now, POST songForBE when endpoint is available.
-  // Endpoint will be something like /auth/song
-  // BE will return a song object with song id.
-  /*
-  const songToConnectToEvent = {
-    song_id: response.id
-  }
-
-  if (queue_num !== '') {
-    songToConnectToEvent.queue_num = queue_num;
-  }
-  */
-  // Now, POST songToConnectToEvent -- endpoint will be something like
-  // /auth/event/:event_id/playlist/add_song
-
-  // The BE should return an id that we can include in the songInfo that is used in the payload.
-  /*
-  const songToAdd = {
-    songInfo: { ...songInfo, votes: 0, db_id: response.id },
-    event_id: add_to_event_id
-  };
-  */
-  const songToAdd = {
-    songInfo: { ...songInfo, votes: 0 },
-    event_id: add_to_event_id
-  };
-  dispatch({
-    type: ADD_SONG_TO_PLAYLIST_SUCCESS,
-    payload: songToAdd
-  });
 };
 
 export const removeSongFromPlaylistDJ = (songId, event_id) => dispatch => {
