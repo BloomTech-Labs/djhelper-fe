@@ -8,7 +8,7 @@ import SongSearch from './SongSearch';
 import formatDate from '../utils/formatDate';
 
 import EditEvent from './EditEvent';
-import { searchForTrack, getPlaylist } from '../actions/action';
+import { searchForTrack } from '../actions/action';
 
 const EventPage = props => {
   const dispatch = useDispatch();
