@@ -32,11 +32,6 @@ const EventPage = props => {
     setCurrentEvent(events[`event${event_id}`]);
   }, [events]);
 
-  /*
-  useEffect(() => {
-    dispatch(getPlaylist(event_id));
-  }, []);
-*/
   const eventPlaylist = useSelector(
     state => state.songReducer.eventPlaylists[`event${event_id}`].playlist
   );
