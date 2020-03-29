@@ -1,11 +1,8 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { axiosWithAuthSpotifySearch } from '../utils/axiosWithAuthSpotify';
 import {
   ADD_TO_SONG_REDUCER_START,
   ADD_TO_SONG_REDUCER_SUCCESS,
-  GET_PLAYLIST_START,
-  GET_PLAYLIST_SUCCESS,
-  GET_PLAYLIST_ERROR
+  getPlaylist
 } from './action';
 
 // events actions
@@ -181,51 +178,7 @@ export const getEvents = dj_id => dispatch => {
           img_url: event.img_url,
           dj_id: event.dj_id
         };
-        // TODO: Get playlist from BE once available, instead of the lines below, which
-        // create an empty playlist.
-        dispatch({ type: GET_PLAYLIST_START });
-        // GET https://api.dj-helper.com/api/playlist/:event_id
-        axiosWithAuth()
-          .get(`/playlist/${event.id}`)
-          .then(response => {
-            // response.data includes id (connections_id), event_id, song_id, and queue_num.
-            // We need to use the song_id to get the spotify_id, in order to get all the song info.
-            const playlist = [];
-            response.data.forEach(item => {
-              // GET https://api.dj-helper.com/api/song/:song_id
-              axiosWithAuth()
-                .get(`/song/${item.song_id}`)
-                .then(res => {
-                  axiosWithAuthSpotifySearch()
-                    .get(`/tracks/${res.data.spotify_id}`)
-                    .then(res2 => {
-                      res2.data.queue_num = item.queue_num;
-                      res2.data.connections_id = item.id;
-                      playlist.push(res2.data);
-                    })
-                    .catch(err2 => {
-                      dispatch({ type: GET_PLAYLIST_ERROR, payload: err2 });
-                    });
-                })
-                .catch(err => {
-                  dispatch({ type: GET_PLAYLIST_ERROR, payload: err });
-                });
-            }); // closes forEach
-
-            const playlistObject = {
-              eventId: event.id,
-              formattedPlaylist: playlist
-            };
-            dispatch({ type: GET_PLAYLIST_SUCCESS, payload: playlistObject });
-          })
-          .catch(err3 => {
-            dispatch({ type: GET_PLAYLIST_ERROR, payload: err3 });
-          });
-
-        dispatch({
-          type: ADD_TO_SONG_REDUCER_SUCCESS,
-          payload: event.id
-        });
+        dispatch(getPlaylist(event.id));
       });
       dispatch({ type: GET_EVENTS_SUCCESS, payload: eventsObject });
     })
