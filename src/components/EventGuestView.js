@@ -170,6 +170,7 @@ const EventGuestView2 = props => {
         {location && (
           <div>
             <h2>Venue:</h2>
+            {location.name && <h3>{location.name}</h3>}
             {location.address_line_1 && <p>{location.address_line_1}</p>}
             {location.address_line_2 && <p>{location.address_line_2}</p>}
             <p>
