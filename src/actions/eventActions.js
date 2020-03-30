@@ -11,6 +11,10 @@ export const GET_EVENTS_START = 'GET_EVENTS_START';
 export const GET_EVENTS_SUCCESS = 'GET_EVENTS_SUCCESS';
 export const GET_EVENTS_ERROR = 'GET_EVENTS_ERROR';
 
+export const GET_EVENT_START = 'GET_EVENT_START';
+export const GET_EVENT_SUCCESS = 'GET_EVENT_SUCCESS';
+export const GET_EVENT_ERROR = 'GET_EVENT_ERROR';
+
 export const ADD_EVENT_START = 'ADD_EVENT_START';
 export const ADD_EVENT_SUCCESS = 'ADD_EVENT_SUCCESS';
 export const ADD_EVENT_ERROR = 'ADD_EVENT_ERROR';
@@ -184,6 +188,33 @@ export const getEvents = dj_id => dispatch => {
     })
     .catch(err => {
       dispatch({ type: GET_EVENTS_ERROR, payload: err });
+    });
+};
+
+export const getEvent = event_id => dispatch => {
+  // GET https://api.dj-helper.com/api/event/:event_id
+  dispatch({ type: GET_EVENT_START });
+  axiosWithAuth()
+    .get(`/event/${event_id}`)
+    .then(response => {
+      const eventObject = {
+        event_id: response.data.id,
+        name: response.data.name,
+        event_type: response.data.event_type,
+        description: response.data.description,
+        date: response.data.date,
+        start_time: response.data.start_time,
+        end_time: response.data.end_time,
+        location_id: response.data.location_id,
+        img_url: response.data.img_url,
+        dj_id: response.data.dj_id,
+        notes: response.data.notes
+      };
+      dispatch(getPlaylist(event_id));
+      dispatch({ type: GET_EVENT_SUCCESS, payload: [eventObject, event_id] });
+    })
+    .catch(err => {
+      dispatch({ type: GET_EVENT_ERROR, payload: err });
     });
 };
 

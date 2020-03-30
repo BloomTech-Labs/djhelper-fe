@@ -46,6 +46,9 @@ import {
   GET_EVENTS_START,
   GET_EVENTS_SUCCESS,
   GET_EVENTS_ERROR,
+  GET_EVENT_START,
+  GET_EVENT_SUCCESS,
+  GET_EVENT_ERROR,
   GET_LOCATION_START,
   GET_LOCATION_SUCCESS,
   GET_LOCATION_ERROR,
@@ -322,10 +325,33 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         getEventsStart: false,
-        events: { ...state.events, ...action.payload } // { ...state.events, ...action.payload }
+        events: { ...state.events, ...action.payload }
       };
-    // { ...state.events, newEvents: { ...action.payload } }
+
     case GET_EVENTS_ERROR:
+      return {
+        ...state,
+        getEventsError: true,
+        getEventsStart: false
+      };
+
+    case GET_EVENT_START:
+      return {
+        ...state,
+        getEventsStart: true
+      };
+
+    case GET_EVENT_SUCCESS:
+      return {
+        ...state,
+        getEventsStart: false,
+        events: {
+          ...state.events,
+          [`event${action.payload[1]}`]: action.payload[0]
+        }
+      };
+
+    case GET_EVENT_ERROR:
       return {
         ...state,
         getEventsError: true,
