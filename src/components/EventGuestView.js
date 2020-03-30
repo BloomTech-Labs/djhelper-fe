@@ -35,9 +35,14 @@ const EventGuestView2 = props => {
   const event = useSelector(
     state => state.userReducer.events[`event${event_id}`]
   );
-  const location = useSelector(state => state.userReducer.locations[0]);
-  const [eventPlaylist, setEventPlaylist] = useState(null);
 
+  const location = useSelector(state =>
+    state.userReducer.locations.filter(
+      item => Number(item.id) === Number(location_id)
+    )
+  )[0];
+
+  const [eventPlaylist, setEventPlaylist] = useState(null);
   const [timeToDisplay, setTimeToDisplay] = useState(false);
 
   // Getting the playlist with using the redux store has been problematic here.
