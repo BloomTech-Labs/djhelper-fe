@@ -13,7 +13,7 @@ import formatTime from '../utils/formatTime';
 import useWindowSize from '../utils/useWindowSize';
 import Songs from './Songs';
 
-const EventGuestView2 = props => {
+const EventGuestView = props => {
   const { dj_id, event_id, location_id } = props.match.params;
   const dispatch = useDispatch();
 
@@ -247,4 +247,4 @@ const EventGuestView2 = props => {
   );
 };
 
-export default EventGuestView2;
+export default EventGuestView;
