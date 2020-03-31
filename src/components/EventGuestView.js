@@ -95,25 +95,21 @@ const EventGuestView = props => {
     // If a guest comes to this page without logging in as a DJ first,
     // they need to get a Spotify access token to see the songs' components.
     // This will get the token and put it in localStorage.
-    if (!localStorage.getItem('spotifyAccessToken')) {
-      // Getting client id, secret, and grant type into correct format
-      const data = new URLSearchParams({
-        client_id: process.env.REACT_APP_SPOTIFY_CLIENT_ID,
-        grant_type: 'client_credentials'
+
+    // Getting client id, secret, and grant type into correct format
+    const data = new URLSearchParams({
+      client_id: process.env.REACT_APP_SPOTIFY_CLIENT_ID,
+      grant_type: 'client_credentials'
+    });
+    // Getting an access token for the spotify API
+    axiosWithAuthSpotify()
+      .post('/api/token', data)
+      .then(response => {
+        localStorage.setItem('spotifyAccessToken', response.data.access_token);
+      })
+      .catch(err => {
+        // handle error
       });
-      // Getting an access token for the spotify API
-      axiosWithAuthSpotify()
-        .post('/api/token', data)
-        .then(response => {
-          localStorage.setItem(
-            'spotifyAccessToken',
-            response.data.access_token
-          );
-        })
-        .catch(err => {
-          // handle error
-        });
-    }
   }, []);
 
   // Adds nav if mobile display
