@@ -8,7 +8,7 @@ import SongSearch from './SongSearch';
 import formatDate from '../utils/formatDate';
 
 import EditEvent from './EditEvent';
-import { searchForTrack, getPlaylist } from '../actions/action';
+import { searchForTrack } from '../actions/action';
 
 const EventPage = props => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const EventPage = props => {
   const FRONTEND_HOST =
     process.env.REACT_APP_FRONTEND_HOST || 'https://dj-helper.com/';
 
-  const [qrCode, setQrCode] = useState('');
+  const [qrCode, setQrCode] = useState(null);
   const [showQrCode, setShowQrCode] = useState(false);
 
   const { event_id } = props.location.state.event;
@@ -31,10 +31,6 @@ const EventPage = props => {
   useEffect(() => {
     setCurrentEvent(events[`event${event_id}`]);
   }, [events]);
-
-  useEffect(() => {
-    dispatch(getPlaylist(event_id));
-  }, []);
 
   const eventPlaylist = useSelector(
     state => state.songReducer.eventPlaylists[`event${event_id}`].playlist
@@ -135,9 +131,9 @@ const EventPage = props => {
   };
   const handleQRDisplay = () => {
     if (!qrCode) {
-      const eventPage = `${FRONTEND_HOST}dj/${dj_id}/event/${event_id}`;
+      const locationID = currentEvent.location_id;
+      const eventPage = `${FRONTEND_HOST}dj/${dj_id}/event/${event_id}/location/${locationID}`;
       const qrLink = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${eventPage}`;
-      console.log(qrLink);
       setQrCode(qrLink);
     }
     setShowQrCode(!showQrCode);
@@ -174,8 +170,10 @@ const EventPage = props => {
               <p>{currentEvent.description}</p>
               <p>
                 <b className="bold">Sharable Event Page:</b>{' '}
-                <Link to={`/dj/${dj_id}/event/${event_id}`}>
-                  {`${FRONTEND_HOST}dj/${dj_id}/event/${event_id}`}
+                <Link
+                  to={`/dj/${dj_id}/event/${event_id}/location/${currentEvent.location_id}`}
+                >
+                  {`${FRONTEND_HOST}dj/${dj_id}/event/${event_id}/location/${currentEvent.location_id}`}
                 </Link>
               </p>
               <button

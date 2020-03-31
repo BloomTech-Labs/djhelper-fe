@@ -39,7 +39,10 @@ function App() {
           <Route path="/about" component={About} />
           <PrivateRoute path="/dj/setup" component={SetUpProfile} />
           <PrivateRoute path="/dj/addEvent" component={AddEvent} />
-          <Route path="/dj/:dj_id/event/:event_id" component={EventGuestView} />
+          <Route
+            path="/dj/:dj_id/event/:event_id/location/:location_id"
+            component={EventGuestView}
+          />
         </BrowserRouter>
       </div>
     </div>
