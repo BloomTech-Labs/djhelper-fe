@@ -29,6 +29,10 @@ const Songs = props => {
     dispatch(addSongToPlaylistDJ(songInfo, eventId));
   };
 
+  const handleDeleteSong = (songInfo, eventId) => {
+    dispatch(removeSongFromPlaylistDJ(songInfo, eventId));
+  };
+
   Audio.prototype.stop = function() {
     this.pause();
     this.currentTime = 0;
@@ -131,7 +135,7 @@ const Songs = props => {
             type="button"
             id="remove"
             onClick={() => {
-              handleAddSong(songInfo, eventId);
+              handleDeleteSong(songInfo, eventId);
             }}
           >
             <FontAwesomeIcon icon="minus" size="1x" />
