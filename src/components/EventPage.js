@@ -36,7 +36,7 @@ const EventPage = props => {
     state => state.songReducer.eventPlaylists[`event${event_id}`].playlist
   );
 
-  eventPlaylist.sort((a, b) => b.votes - a.votes);
+  eventPlaylist.sort((a, b) => a.queue_num - b.queue_num);
   const [switches, setSwitches] = useState({
     buttonText: 'Add Songs',
     searchVisible: false,
