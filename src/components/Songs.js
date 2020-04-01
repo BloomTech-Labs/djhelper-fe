@@ -7,7 +7,8 @@ import { axiosWithAuthSpotifySearch } from '../utils/axiosWithAuthSpotify';
 import {
   addSongToPlaylistDJ,
   removeSongFromPlaylistDJ,
-  addVoteToSong
+  addVoteToSong,
+  editQueueNum
 } from '../actions/action';
 
 const Songs = props => {
@@ -126,7 +127,7 @@ const Songs = props => {
             type="button"
             id="vote"
             onClick={() => {
-              dispatch(addVoteToSong(eventId, id));
+              dispatch(editQueueNum(songInfo.connections_id, 1));
             }}
           >
             <FontAwesomeIcon icon="arrows-alt-v" size="2x" />

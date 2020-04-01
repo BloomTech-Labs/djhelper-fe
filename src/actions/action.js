@@ -72,8 +72,8 @@ export const ADD_VOTE_SUCCESS = 'ADD_VOTE_SUCCESS';
 export const ADD_VOTE_ERROR = 'ADD_VOTE_ERROR';
 
 export const EDIT_QUEUE_NUM_START = 'EDIT_QUEUE_NUM_START';
-export const EDIT_QUEUE_NUM_SUCCESS = 'EDIT_QUEUE_NUM_START';
-export const EDIT_QUEUE_NUM_ERROR = 'EDIT_QUEUE_NUM_START';
+export const EDIT_QUEUE_NUM_SUCCESS = 'EDIT_QUEUE_NUM_SUCCESS';
+export const EDIT_QUEUE_NUM_ERROR = 'EDIT_QUEUE_NUM_ERROR';
 
 // action creators
 
@@ -347,7 +347,7 @@ export const editQueueNum = (connections_id, queue_num) => dispatch => {
   };
   // PUT https://api.dj-helper.com/api/auth/playlist/entry/:connections_id
   axiosWithAuth()
-    .put(`/playlist/${connections_id}`, requestBody)
+    .put(`auth/playlist/entry/${connections_id}`, requestBody)
     .then(response => {
       console.log(response);
       dispatch({ type: EDIT_QUEUE_NUM_SUCCESS, payload: response.data });

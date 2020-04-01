@@ -222,9 +222,8 @@ export const songReducer = (state = initialState, action) => {
       let playlistArr = state.eventPlaylists[`event${event}`].playlist;
       let desiredSong = playlistArr.filter(
         item => Number(item.connections_id) === Number(connections_id)
-      );
-      let songCopy = [...desiredSong];
-      songCopy.queue_num = new_queue_num;
+      )[0];
+      let songCopy = { ...desiredSong, queue_num: new_queue_num };
       let playlistWithoutSong = playlistArr.filter(
         item => Number(item.connections_id) !== Number(connections_id)
       );
