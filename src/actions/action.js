@@ -71,6 +71,10 @@ export const ADD_VOTE_START = 'ADD_VOTE_START';
 export const ADD_VOTE_SUCCESS = 'ADD_VOTE_SUCCESS';
 export const ADD_VOTE_ERROR = 'ADD_VOTE_ERROR';
 
+export const EDIT_QUEUE_NUM_START = 'EDIT_QUEUE_NUM_START';
+export const EDIT_QUEUE_NUM_SUCCESS = 'EDIT_QUEUE_NUM_START';
+export const EDIT_QUEUE_NUM_ERROR = 'EDIT_QUEUE_NUM_START';
+
 // action creators
 
 // basic action creators
@@ -333,6 +337,24 @@ export const addVoteToSong = (event_id, song_id) => dispatch => {
     song_id: song_id
   };
   dispatch({ type: ADD_VOTE_SUCCESS, payload: info });
+};
+
+export const editQueueNum = (connections_id, queue_num) => dispatch => {
+  dispatch({ type: EDIT_QUEUE_NUM_START });
+  const requestBody = {
+    queue_num: queue_num
+  };
+  // PUT https://api.dj-helper.com/api/auth/playlist/entry/:connections_id
+  axiosWithAuth()
+    .put(`/playlist/${connections_id}`, requestBody)
+    .then(response => {
+      console.log(response);
+      dispatch({ type: EDIT_QUEUE_NUM_SUCCESS, payload: response.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: EDIT_QUEUE_NUM_ERROR, payload: err });
+    });
 };
 
 export const searchForTrack = searchTerm => dispatch => {

@@ -122,6 +122,16 @@ const Songs = props => {
           >
             <FontAwesomeIcon icon="minus" size="1x" />
           </button>
+          <button
+            type="button"
+            id="vote"
+            onClick={() => {
+              dispatch(addVoteToSong(eventId, id));
+            }}
+          >
+            <FontAwesomeIcon icon="arrows-alt-v" size="2x" />
+          </button>
+          {songInfo.queue_num}
         </div>
       );
     }
@@ -179,18 +189,7 @@ const Songs = props => {
             </div>
 
             {props.playlist ? (
-              <div className="song-element">
-                <button
-                  type="button"
-                  id="vote"
-                  onClick={() => {
-                    dispatch(addVoteToSong(eventId, id));
-                  }}
-                >
-                  <FontAwesomeIcon icon="caret-up" size="2x" />
-                </button>
-                <p>{props.items.votes}</p>
-              </div>
+              <div className="song-element"></div>
             ) : (
               <div>
                 <button

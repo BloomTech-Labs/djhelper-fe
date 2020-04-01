@@ -18,7 +18,10 @@ import {
   ADD_VOTE_ERROR,
   GET_PLAYLIST_START,
   GET_PLAYLIST_SUCCESS,
-  GET_PLAYLIST_ERROR
+  GET_PLAYLIST_ERROR,
+  EDIT_QUEUE_NUM_START,
+  EDIT_QUEUE_NUM_SUCCESS,
+  EDIT_QUEUE_NUM_ERROR
 } from '../actions/action';
 
 const initialState = {
@@ -63,7 +66,9 @@ const initialState = {
   addVoteError: false,
   currentPreview: '',
   getPlaylistStart: false,
-  getPlaylistError: false
+  getPlaylistError: false,
+  editQueueNumStart: false,
+  editQueueNumError: false
 };
 
 let id;
@@ -202,6 +207,46 @@ export const songReducer = (state = initialState, action) => {
         ...state,
         getPlaylistStart: false,
         getPlaylistError: true
+      };
+
+    case EDIT_QUEUE_NUM_START:
+      return {
+        ...state,
+        editQueueNumStart: true
+      };
+
+    case EDIT_QUEUE_NUM_SUCCESS:
+      const event = action.payload.event_id;
+      const connections_id = action.payload.id;
+      const new_queue_num = action.payload.queue_num;
+      let playlistArr = state.eventPlaylists[`event${event}`].playlist;
+      let desiredSong = playlistArr.filter(
+        item => Number(item.connections_id) === Number(connections_id)
+      );
+      let songCopy = [...desiredSong];
+      songCopy.queue_num = new_queue_num;
+      let playlistWithoutSong = playlistArr.filter(
+        item => Number(item.connections_id) !== Number(connections_id)
+      );
+      let updatedPlaylist = [...playlistWithoutSong, songCopy];
+
+      return {
+        ...state,
+        editQueueNumStart: false,
+        eventPlaylists: {
+          ...state.eventPlaylists,
+          [`event${event}`]: {
+            ...state.eventPlaylists[`event${event}`],
+            playlist: updatedPlaylist
+          }
+        }
+      };
+
+    case EDIT_QUEUE_NUM_ERROR:
+      return {
+        ...state,
+        editQueueNumStart: false,
+        editQueueNumError: true
       };
 
     default:
