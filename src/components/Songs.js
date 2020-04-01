@@ -189,9 +189,7 @@ const Songs = props => {
               </Truncate>
             </div>
 
-            {props.playlist ? (
-              <div className="song-element"></div>
-            ) : (
+            {!props.playlist && (
               <div>
                 <button
                   type="button"
