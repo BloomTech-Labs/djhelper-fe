@@ -243,7 +243,8 @@ export const addSongToPlaylistDJ = (
             songInfo: {
               ...songInfo,
               votes: 0,
-              connections_id: res.data.id
+              connections_id: res.data.id,
+              queue_num: queue_num
             },
             event_id: add_to_event_id
           };

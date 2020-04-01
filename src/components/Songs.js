@@ -156,6 +156,7 @@ const Songs = props => {
 
   const placeholderVsResults = () => {
     if (props.items) {
+      // Display playlist if props.items exists
       const { album, artists, name, id } = props.items;
       const songInfo = props.items;
       return (
@@ -211,6 +212,8 @@ const Songs = props => {
         </div>
       );
     }
+
+    // If not props.items, display placeholder song list
     return (
       <div className="songs">
         <button
