@@ -25,6 +25,10 @@ const Songs = props => {
     dispatch(editQueueNum(connections_id, newQueueNum));
   };
 
+  const handleAddSong = (songInfo, eventId) => {
+    dispatch(addSongToPlaylistDJ(songInfo, eventId));
+  };
+
   Audio.prototype.stop = function() {
     this.pause();
     this.currentTime = 0;
@@ -127,7 +131,7 @@ const Songs = props => {
             type="button"
             id="remove"
             onClick={() => {
-              dispatch(removeSongFromPlaylistDJ(songInfo, eventId));
+              handleAddSong(songInfo, eventId);
             }}
           >
             <FontAwesomeIcon icon="minus" size="1x" />
@@ -170,7 +174,7 @@ const Songs = props => {
 
   const placeholderVsResults = () => {
     if (props.items) {
-      // Display playlist if props.items exists
+      // Display song info if props.items exists
       const { album, artists, name, id } = props.items;
       const songInfo = props.items;
       return (
@@ -225,7 +229,7 @@ const Songs = props => {
       );
     }
 
-    // If not props.items, display placeholder song list
+    // If not props.items, display placeholder song info
     return (
       <div className="songs">
         <button

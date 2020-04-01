@@ -210,11 +210,7 @@ export const updateUser = (history, id, userInfo) => dispatch => {
 
 // playlist action creators
 
-export const addSongToPlaylistDJ = (
-  songInfo,
-  add_to_event_id,
-  queue_num = Math.floor(Math.random() * 10000) + 1 //BE needs a num > 0, for now
-) => dispatch => {
+export const addSongToPlaylistDJ = (songInfo, add_to_event_id) => dispatch => {
   dispatch({ type: ADD_SONG_TO_PLAYLIST_START });
 
   const songForBE = {
@@ -226,32 +222,46 @@ export const addSongToPlaylistDJ = (
   // POST https://api.dj-helper.com/api/auth/song/
   axiosWithAuth()
     .post('/auth/song', songForBE)
-    .then(response => {
+    .then(response1 => {
       // 2. Attach song to event playlist by POST to BE
       // https://api.dj-helper.com/api/auth/playlist?event=:event_id
 
-      const songToConnectToEvent = {
-        song_id: response.data.id,
-        queue_num
-      };
-
+      // 2.5 Find length of playlist to know what the initial queue_num should be for this song.
       axiosWithAuth()
-        .post(`/auth/playlist?event=${add_to_event_id}`, songToConnectToEvent)
-        .then(res => {
-          // Note: The response returns an id that will be stored in the redux store as connections_id
-          const songToAdd = {
-            songInfo: {
-              ...songInfo,
-              votes: 0,
-              connections_id: res.data.id,
-              queue_num
-            },
-            event_id: add_to_event_id
+        .get(`/playlist/${add_to_event_id}`)
+        .then(response2 => {
+          const songToConnectToEvent = {
+            song_id: response1.data.id,
+            queue_num: response2.data.length + 1
           };
-          dispatch({
-            type: ADD_SONG_TO_PLAYLIST_SUCCESS,
-            payload: songToAdd
-          });
+
+          axiosWithAuth()
+            .post(
+              `/auth/playlist?event=${add_to_event_id}`,
+              songToConnectToEvent
+            )
+            .then(response3 => {
+              // Note: The response returns an id that will be stored in the redux store as connections_id
+              const songToAdd = {
+                songInfo: {
+                  ...songInfo,
+                  votes: 0,
+                  connections_id: response3.data.id,
+                  queue_num: response2.data.length + 1
+                },
+                event_id: add_to_event_id
+              };
+              dispatch({
+                type: ADD_SONG_TO_PLAYLIST_SUCCESS,
+                payload: songToAdd
+              });
+            })
+            .catch(err3 => {
+              dispatch({
+                type: ADD_SONG_TO_PLAYLIST_ERROR,
+                payload: err3
+              });
+            });
         })
         .catch(err2 => {
           dispatch({
@@ -260,10 +270,10 @@ export const addSongToPlaylistDJ = (
           });
         });
     })
-    .catch(err => {
+    .catch(err1 => {
       dispatch({
         type: ADD_SONG_TO_PLAYLIST_ERROR,
-        payload: err
+        payload: err1
       });
     });
 };
