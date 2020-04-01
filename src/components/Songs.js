@@ -16,6 +16,15 @@ const Songs = props => {
   const url = window.location.pathname;
   const eventId = url.substring(url.lastIndexOf('/') + 1);
 
+  const [newQueueNum, setNewQueueNum] = useState(1);
+  const handleInputChange = e => {
+    setNewQueueNum(e.target.value);
+  };
+  const handleEditSubmit = (e, connections_id) => {
+    e.preventDefault();
+    dispatch(editQueueNum(connections_id, newQueueNum));
+  };
+
   Audio.prototype.stop = function() {
     this.pause();
     this.currentTime = 0;
@@ -123,15 +132,20 @@ const Songs = props => {
           >
             <FontAwesomeIcon icon="minus" size="1x" />
           </button>
-          <button
-            type="button"
-            id="vote"
-            onClick={() => {
-              dispatch(editQueueNum(songInfo.connections_id, 1));
-            }}
-          >
-            <FontAwesomeIcon icon="arrows-alt-v" size="2x" />
-          </button>
+          <form onSubmit={e => handleEditSubmit(e, songInfo.connections_id)}>
+            <button type="submit" id="vote">
+              <FontAwesomeIcon icon="arrows-alt-v" size="2x" />
+            </button>
+            <input
+              type="number"
+              min="0"
+              step="1"
+              name="queue_num_input"
+              onChange={handleInputChange}
+              value={newQueueNum}
+              style={{ width: '2rem' }}
+            />
+          </form>
           {songInfo.queue_num}
         </div>
       );
