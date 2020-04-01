@@ -282,6 +282,8 @@
         &:hover {
           color: grey;
         }
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
       }
       #vote {
         color: green;
@@ -295,7 +297,9 @@
         background: transparent;
         box-shadow: none;
         border: none;
-        padding-left: 1rem;
+        &:hover {
+          color: grey;
+        }
       }
 
       form {
@@ -355,6 +359,9 @@
 
         .last-two {
           margin-right: 0%;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
         }
       }
     }

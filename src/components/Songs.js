@@ -131,15 +131,7 @@ const Songs = props => {
     if (props.editModeOn) {
       return (
         <div className="song-element last-two">
-          <button
-            type="button"
-            id="remove"
-            onClick={() => {
-              handleDeleteSong(songInfo, eventId);
-            }}
-          >
-            <FontAwesomeIcon icon="minus" size="1x" />
-          </button>
+          {songInfo.queue_num}
           <form onSubmit={e => handleEditSubmit(e, songInfo.connections_id)}>
             <button type="submit" className="edit">
               <FontAwesomeIcon icon="arrows-alt-v" size="2x" />
@@ -153,7 +145,16 @@ const Songs = props => {
               value={newQueueNum}
             />
           </form>
-          {songInfo.queue_num}
+
+          <button
+            type="button"
+            id="remove"
+            onClick={() => {
+              handleDeleteSong(songInfo, eventId);
+            }}
+          >
+            <FontAwesomeIcon icon="times" size="1x" />
+          </button>
         </div>
       );
     }
