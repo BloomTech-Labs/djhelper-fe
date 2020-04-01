@@ -133,7 +133,7 @@ const Songs = props => {
             <FontAwesomeIcon icon="minus" size="1x" />
           </button>
           <form onSubmit={e => handleEditSubmit(e, songInfo.connections_id)}>
-            <button type="submit" id="vote">
+            <button type="submit" className="edit">
               <FontAwesomeIcon icon="arrows-alt-v" size="2x" />
             </button>
             <input
@@ -143,7 +143,6 @@ const Songs = props => {
               name="queue_num_input"
               onChange={handleInputChange}
               value={newQueueNum}
-              style={{ width: '2rem' }}
             />
           </form>
           {songInfo.queue_num}

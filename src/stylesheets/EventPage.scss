@@ -290,6 +290,25 @@
         border: none;
         margin-left: 50%;
       }
+      .edit {
+        color: green;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+        padding-left: 1rem;
+      }
+
+      form {
+        padding-right: 0.8rem;
+        display: flex;
+        align-items: center;
+        input {
+          border: none;
+          width: 2.5rem;
+          border-radius: 2px;
+        }
+      }
+
       #song-type {
         display: flex;
         flex-flow: row nowrap;
