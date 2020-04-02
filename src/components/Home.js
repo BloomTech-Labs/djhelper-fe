@@ -5,11 +5,12 @@ import NavigationBar from './NavigationBar';
 
 const Home = props => {
   const name = useSelector(state => state.userReducer.name);
+  const tokenPresent = useSelector(state => state.userReducer.tokenPresent);
 
   return (
     <div className="home-page">
       <div className="header">
-        <NavigationBar />
+        <NavigationBar tokenPresent={tokenPresent} />
         <h1>DJ Helper</h1>
         <h2>How DJs easily collect song requests</h2>
         <h2>And everyone upvotes the songs they also want to hear!</h2>
@@ -27,10 +28,7 @@ const Home = props => {
             </h3>
           </>
         )}
-        {name && <h2>
-Welcome,{name}
-!
-</h2>}
+        {name && <h2>Welcome,{name}!</h2>}
       </div>
     </div>
   );

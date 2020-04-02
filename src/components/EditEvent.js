@@ -104,16 +104,11 @@ const EditEvent = props => {
 
   const toggleVenueDisplay = () => {
     setShowVenue(!showVenue);
-    console.log('currentLocation.img_url: ', currentLocation.img_url);
     setCurrentLocation({
       ...currentLocation,
       venue_name: currentLocation.name,
       venue_img_url: currentLocation.img_url
     });
-    console.log(
-      'currentLocation.venue_img_url: ',
-      currentLocation.venue_img_url
-    );
   };
 
   return (
