@@ -58,7 +58,7 @@ export const addEvent = (eventInfo, history) => dispatch => {
     phone: eventInfo.phone,
     website: eventInfo.website,
     email: eventInfo.email,
-    img_url: eventInfo.img_url,
+    img_url: eventInfo.location_img_url,
     name: eventInfo.location_name
   };
   axiosWithAuth()
@@ -74,7 +74,9 @@ export const addEvent = (eventInfo, history) => dispatch => {
         description: eventInfo.description,
         location_id: response.data.id,
         date: eventInfo.date,
-        dj_id: eventInfo.dj_id
+        dj_id: eventInfo.dj_id,
+        notes: eventInfo.notes,
+        img_url: eventInfo.img_url
       };
 
       // Only adds start_time and end_time if the user has put values in those fields
@@ -131,7 +133,8 @@ export const editEvent = (eventInfo, event_id) => dispatch => {
         event_type: response.data.event_type,
         location_id: response.data.location_id,
         img_url: response.data.img_url,
-        description: response.data.description
+        description: response.data.description,
+        notes: response.data.notes
       };
       dispatch({
         type: EDIT_EVENT_SUCCESS,

@@ -23,9 +23,7 @@ const PreviewEventDetails = props => {
         </p>
         <p className="bold">Description:</p>
         <p>
-          <Truncate lines={3}>
-            <p className="description">{currentlyActive.description}</p>
-          </Truncate>
+          <Truncate lines={3}>{currentlyActive.description}</Truncate>
         </p>
         <Link
           to={{
