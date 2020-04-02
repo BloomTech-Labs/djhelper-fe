@@ -166,8 +166,10 @@ const EventPage = props => {
                 <b className="bold">Date: </b>
                 {formattedDate}
               </p>
-              <p className="bold">Description:</p>
+              <p className="bold">Description: </p>
               <p>{currentEvent.description}</p>
+              {currentEvent.notes && <p className="bold">Notes:</p>}
+              {currentEvent.notes && <p>{currentEvent.notes}</p>}
               <p>
                 <b className="bold">Sharable Event Page:</b>{' '}
                 <Link

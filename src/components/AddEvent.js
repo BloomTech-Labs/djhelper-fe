@@ -18,6 +18,7 @@ const AddEvent = props => {
     end_time: '',
     event_type: '',
     description: '',
+    notes: '',
     img_url: '',
     address_line_1: '',
     address_line_2: '',
@@ -136,7 +137,12 @@ const AddEvent = props => {
             </div>
 
             <div className="input-group">
-              <label htmlFor="description">Description: </label>
+              <label htmlFor="description">
+                Description:{' '}
+                <span style={{ fontStyle: 'italic' }}>
+                  (to be displayed on sharable page)
+                </span>
+              </label>
               <textarea
                 type="text"
                 name="description"
@@ -144,6 +150,20 @@ const AddEvent = props => {
                 onChange={handleInputChange}
                 value={eventData.description}
                 required
+              />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="notes">
+                Notes:{' '}
+                <span style={{ fontStyle: 'italic' }}>(private to you)</span>
+              </label>
+              <textarea
+                type="text"
+                name="notes"
+                id="notes"
+                onChange={handleInputChange}
+                value={eventData.notes}
               />
             </div>
           </div>

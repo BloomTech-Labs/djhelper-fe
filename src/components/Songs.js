@@ -25,10 +25,6 @@ const Songs = props => {
     dispatch(editQueueNum(connections_id, newQueueNum));
   };
 
-  const handleAddSong = (songInfo, eventId) => {
-    dispatch(addSongToPlaylistDJ(songInfo, eventId));
-  };
-
   const handleDeleteSong = (songInfo, eventId) => {
     dispatch(removeSongFromPlaylistDJ(songInfo, eventId));
   };

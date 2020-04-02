@@ -74,7 +74,7 @@ const initialState = {
   loginUserError: false,
   logoutUserStart: false,
   logoutUserError: false,
-  tokenPresent: false,
+  tokenPresent: false, // Consider using !!localStorage.getItem('token')
   deleteUserStart: false,
   deleteUserError: false,
   editUserStart: false,
@@ -146,7 +146,7 @@ export const userReducer = (state = initialState, action) => {
       return { ...state, logoutUserStart: true };
 
     case LOGOUT_USER_SUCCESS:
-      return initialState;
+      return { ...initialState, tokenPresent: false };
 
     case LOGOUT_USER_ERROR:
       return { ...state, logoutUserStart: false, logoutUserError: true };

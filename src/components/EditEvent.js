@@ -35,7 +35,8 @@ const EditEvent = props => {
       date: currentEvent.date,
       start_time: currentEvent.start_time,
       end_time: currentEvent.end_time,
-      img_url: currentEvent.img_url
+      img_url: currentEvent.img_url,
+      notes: currentEvent.notes
     };
     dispatch(editEvent(eventToSend, props.event_id));
   };
@@ -104,16 +105,11 @@ const EditEvent = props => {
 
   const toggleVenueDisplay = () => {
     setShowVenue(!showVenue);
-    console.log('currentLocation.img_url: ', currentLocation.img_url);
     setCurrentLocation({
       ...currentLocation,
       venue_name: currentLocation.name,
       venue_img_url: currentLocation.img_url
     });
-    console.log(
-      'currentLocation.venue_img_url: ',
-      currentLocation.venue_img_url
-    );
   };
 
   return (
@@ -163,7 +159,7 @@ const EditEvent = props => {
                     id="start_time"
                     name="start_time"
                     onChange={handleChanges}
-                    value={currentEvent.start_time}
+                    value={currentEvent.start_time || undefined}
                   />
                 </div>
                 <div className="input-group">
@@ -173,7 +169,7 @@ const EditEvent = props => {
                     id="end_time"
                     name="end_time"
                     onChange={handleChanges}
-                    value={currentEvent.end_time}
+                    value={currentEvent.end_time || undefined}
                   />
                 </div>
               </div>
@@ -186,6 +182,15 @@ const EditEvent = props => {
                   value={currentEvent.description}
                 />
               </div>
+              <div className="input-group description">
+                <label htmlFor="notes">Notes:</label>
+                <textarea
+                  id="notes"
+                  name="notes"
+                  onChange={handleChanges}
+                  value={currentEvent.notes || ''}
+                />
+              </div>
               <div className="input-group">
                 <label htmlFor="img_url">Image Url: </label>
                 <input
@@ -193,7 +198,7 @@ const EditEvent = props => {
                   name="img_url"
                   id="img_url"
                   onChange={handleChanges}
-                  value={currentEvent.img_url}
+                  value={currentEvent.img_url || ''}
                 />
               </div>
               <button type="submit" data-testid="submit-button">
