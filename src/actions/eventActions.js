@@ -180,7 +180,8 @@ export const getEvents = dj_id => dispatch => {
           end_time: event.end_time,
           location_id: event.location_id,
           img_url: event.img_url,
-          dj_id: event.dj_id
+          dj_id: event.dj_id,
+          notes: event.notes
         };
         dispatch(getPlaylist(event.id));
       });
