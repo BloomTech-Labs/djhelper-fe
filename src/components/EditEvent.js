@@ -159,7 +159,7 @@ const EditEvent = props => {
                     id="start_time"
                     name="start_time"
                     onChange={handleChanges}
-                    value={currentEvent.start_time}
+                    value={currentEvent.start_time || undefined}
                   />
                 </div>
                 <div className="input-group">
@@ -169,7 +169,7 @@ const EditEvent = props => {
                     id="end_time"
                     name="end_time"
                     onChange={handleChanges}
-                    value={currentEvent.end_time}
+                    value={currentEvent.end_time || undefined}
                   />
                 </div>
               </div>
@@ -188,7 +188,7 @@ const EditEvent = props => {
                   id="notes"
                   name="notes"
                   onChange={handleChanges}
-                  value={currentEvent.notes}
+                  value={currentEvent.notes || ''}
                 />
               </div>
               <div className="input-group">
@@ -198,7 +198,7 @@ const EditEvent = props => {
                   name="img_url"
                   id="img_url"
                   onChange={handleChanges}
-                  value={currentEvent.img_url}
+                  value={currentEvent.img_url || ''}
                 />
               </div>
               <button type="submit" data-testid="submit-button">
