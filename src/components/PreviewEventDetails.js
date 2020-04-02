@@ -22,9 +22,11 @@ const PreviewEventDetails = props => {
           {formattedDate}
         </p>
         <p className="bold">Description:</p>
-        <Truncate lines={3}>
-          <p className="description">{currentlyActive.description}</p>
-        </Truncate>
+        <p>
+          <Truncate lines={3}>
+            <p className="description">{currentlyActive.description}</p>
+          </Truncate>
+        </p>
         <Link
           to={{
             pathname: `/dj/event/${currentlyActive.event_id}`,
