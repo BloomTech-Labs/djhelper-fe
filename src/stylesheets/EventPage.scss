@@ -273,7 +273,7 @@
         }
       }
       #remove {
-        color: white;
+        color: rgb(172, 8, 136);
         padding: 0;
         background: transparent;
         box-shadow: none;
@@ -282,6 +282,8 @@
         &:hover {
           color: grey;
         }
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
       }
       #vote {
         color: green;
@@ -290,6 +292,27 @@
         border: none;
         margin-left: 50%;
       }
+      .edit {
+        color: green;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+        &:hover {
+          color: grey;
+        }
+      }
+
+      form {
+        padding-right: 0.8rem;
+        display: flex;
+        align-items: center;
+        input {
+          border: none;
+          width: 2.5rem;
+          border-radius: 2px;
+        }
+      }
+
       #song-type {
         display: flex;
         flex-flow: row nowrap;
@@ -336,6 +359,9 @@
 
         .last-two {
           margin-right: 0%;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
         }
       }
     }

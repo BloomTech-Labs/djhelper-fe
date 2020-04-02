@@ -7,13 +7,31 @@ import { axiosWithAuthSpotifySearch } from '../utils/axiosWithAuthSpotify';
 import {
   addSongToPlaylistDJ,
   removeSongFromPlaylistDJ,
-  addVoteToSong
+  addVoteToSong,
+  editQueueNum
 } from '../actions/action';
 
 const Songs = props => {
   const dispatch = useDispatch();
   const url = window.location.pathname;
   const eventId = url.substring(url.lastIndexOf('/') + 1);
+
+  const [newQueueNum, setNewQueueNum] = useState(1);
+  const handleInputChange = e => {
+    setNewQueueNum(e.target.value);
+  };
+  const handleEditSubmit = (e, connections_id) => {
+    e.preventDefault();
+    dispatch(editQueueNum(connections_id, newQueueNum));
+  };
+
+  const handleAddSong = (songInfo, eventId) => {
+    dispatch(addSongToPlaylistDJ(songInfo, eventId));
+  };
+
+  const handleDeleteSong = (songInfo, eventId) => {
+    dispatch(removeSongFromPlaylistDJ(songInfo, eventId));
+  };
 
   Audio.prototype.stop = function() {
     this.pause();
@@ -113,14 +131,29 @@ const Songs = props => {
     if (props.editModeOn) {
       return (
         <div className="song-element last-two">
+          {songInfo.queue_num}
+          <form onSubmit={e => handleEditSubmit(e, songInfo.connections_id)}>
+            <button type="submit" className="edit">
+              <FontAwesomeIcon icon="arrows-alt-v" size="2x" />
+            </button>
+            <input
+              type="number"
+              min="0"
+              step="1"
+              name="queue_num_input"
+              onChange={handleInputChange}
+              value={newQueueNum}
+            />
+          </form>
+
           <button
             type="button"
             id="remove"
             onClick={() => {
-              dispatch(removeSongFromPlaylistDJ(songInfo, eventId));
+              handleDeleteSong(songInfo, eventId);
             }}
           >
-            <FontAwesomeIcon icon="minus" size="1x" />
+            <FontAwesomeIcon icon="times" size="1x" />
           </button>
         </div>
       );
@@ -146,6 +179,7 @@ const Songs = props => {
 
   const placeholderVsResults = () => {
     if (props.items) {
+      // Display song info if props.items exists
       const { album, artists, name, id } = props.items;
       const songInfo = props.items;
       return (
@@ -178,20 +212,7 @@ const Songs = props => {
               </Truncate>
             </div>
 
-            {props.playlist ? (
-              <div className="song-element">
-                <button
-                  type="button"
-                  id="vote"
-                  onClick={() => {
-                    dispatch(addVoteToSong(eventId, id));
-                  }}
-                >
-                  <FontAwesomeIcon icon="caret-up" size="2x" />
-                </button>
-                <p>{props.items.votes}</p>
-              </div>
-            ) : (
+            {!props.playlist && (
               <div>
                 <button
                   type="button"
@@ -212,6 +233,8 @@ const Songs = props => {
         </div>
       );
     }
+
+    // If not props.items, display placeholder song info
     return (
       <div className="songs">
         <button

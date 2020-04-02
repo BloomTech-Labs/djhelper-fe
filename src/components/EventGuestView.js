@@ -234,9 +234,11 @@ const EventGuestView = props => {
             </div>
           )}
           {timeToDisplay &&
-            eventPlaylist.map(element => (
-              <Songs items={element} playlist key={element.name} />
-            ))}
+            eventPlaylist
+              .sort((a, b) => a.queue_num - b.queue_num)
+              .map(element => (
+                <Songs items={element} playlist key={element.name} />
+              ))}
         </div>
       </div>
     </div>
