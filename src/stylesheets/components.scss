@@ -1,0 +1,12 @@
+.button-signup {
+  box-sizing: border-box;
+  padding: 0.5rem 1.5rem;
+
+  &:hover {
+    border: 1px solid $color-secondary;
+    border-radius: 3.5rem;
+    & a {
+      color: $color-secondary;
+    }
+  }
+}
