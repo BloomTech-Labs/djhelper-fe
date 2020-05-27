@@ -5,13 +5,12 @@
   justify-content: space-between;
   font-weight: 700;
 
-
-  padding-left: 2%;
-  padding-right: 5%;
-  background: #121212;
-    @include for-phone-only {
-        font-size: 10px;
-    }
+  padding-left: 3%;
+  padding-right: 3%;
+  background: $color-grey-darkest;
+  @include for-phone-only {
+    font-size: 10px;
+  }
 
   .logout-item {
     cursor: pointer;
@@ -33,7 +32,7 @@
     width: 100%;
     margin-left: 43%;
     @include for-phone-only {
-        margin-left: 18%;
+      margin-left: 18%;
     }
   }
   #profile {
@@ -41,19 +40,16 @@
     margin-right: 13%;
   }
 
-
   .navElements {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    align-items: center;
     width: 20%;
     @include for-phone-only {
-        width: 65%;
-        margin-left: 25%;
+      width: 65%;
+      margin-left: 25%;
     }
-
-
-
   }
 
   .navElementsIcons {
@@ -79,5 +75,18 @@
     flex-flow: row nowrap;
     justify-content: space-between;
     width: 65%;
+  }
+
+  .navElementsStatice {
+    & > * {
+      margin-left: 10px;
+    }
+  }
+
+  &__static {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
   }
 }

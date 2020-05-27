@@ -59,15 +59,28 @@ const NavigationBar = props => {
     return (
       <Nav className="navElements" navbar>
         <NavItem>
+          <NavLink to="/login">sign in</NavLink>
+        </NavItem>
+        <NavItem className="button-signup">
           <NavLink data-testid="register-nav" to="/register">
-            Register
+            sign up
           </NavLink>
+        </NavItem>
+      </Nav>
+    );
+  };
+
+  const staticMenu = () => {
+    return (
+      <Nav className="navElementsStatice" navbar>
+        <NavItem>
+          <NavLink to="/home">Home</NavLink>
         </NavItem>
         <NavItem>
           <NavLink to="/about">About</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/login">Login</NavLink>
+          <NavLink to="/help">Help</NavLink>
         </NavItem>
       </Nav>
     );
@@ -75,7 +88,10 @@ const NavigationBar = props => {
 
   return (
     <Navbar className="navBar" data-testid="navBar" dark expand="md">
-      <NavbarBrand href="/">DJ Helper</NavbarBrand>
+      <div className="navBar__static">
+        <NavbarBrand href="/">DJ Helper</NavbarBrand>
+        {staticMenu()}
+      </div>
       {navState()}
     </Navbar>
   );
