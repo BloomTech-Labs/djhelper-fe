@@ -1,23 +1,28 @@
 // The cascade matters!
 
-// Vars and Mixins
-@import './variables.scss';
-@import './Mixins.scss';
+// Abstracts Vars and Mixins
+@import './abstracts/variables.scss';
+@import './abstracts/Mixins.scss';
 
 // General Styles Here
 
-// Components Here
-@import './App.scss';
-@import './Navbar.scss';
-@import './Register.scss';
-@import './Login.scss';
-@import './dashboard.scss';
-@import './EventPage.scss';
-@import './About.scss';
-@import './DJProfile.scss';
-@import './SetUpProfile.scss';
-@import './Home.scss';
-@import './AddEvent.scss';
-@import './EventGuestView.scss';
-@import './EditEvent.scss';
-@import './components.scss';
+// @import './base/reset.scss';
+@import './base/global.scss';
+
+// Layouts for React Components Here
+@import './layouts/App.scss';
+@import './layouts/Navbar.scss';
+@import './layouts/Register.scss';
+@import './layouts/Login.scss';
+@import './layouts/dashboard.scss';
+@import './layouts/EventPage.scss';
+@import './layouts/About.scss';
+@import './layouts/DJProfile.scss';
+@import './layouts/SetUpProfile.scss';
+@import './layouts/Home.scss';
+@import './layouts/AddEvent.scss';
+@import './layouts/EventGuestView.scss';
+@import './layouts/EditEvent.scss';
+
+// components
+@import './components/buttons.scss';
