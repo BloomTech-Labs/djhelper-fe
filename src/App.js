@@ -28,23 +28,21 @@ library.add(
 function App() {
   return (
     <div className="App">
-      <div className="overlay">
-        <BrowserRouter>
-          <Route exact path="/" component={Home} />
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
-          <PrivateRoute exact path="/dj" component={DjInterface} />
-          <PrivateRoute exact path="/dj/event/:id" component={EventPage} />
-          <PrivateRoute path="/dj/profile" component={DJProfile} />
-          <Route path="/about" component={About} />
-          <PrivateRoute path="/dj/setup" component={SetUpProfile} />
-          <PrivateRoute path="/dj/addEvent" component={AddEvent} />
-          <Route
-            path="/dj/:dj_id/event/:event_id/location/:location_id"
-            component={EventGuestView}
-          />
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <Route exact path="/" component={Home} />
+        <Route path="/register" component={Register} />
+        <Route path="/login" component={Login} />
+        <PrivateRoute exact path="/dj" component={DjInterface} />
+        <PrivateRoute exact path="/dj/event/:id" component={EventPage} />
+        <PrivateRoute path="/dj/profile" component={DJProfile} />
+        <Route path="/about" component={About} />
+        <PrivateRoute path="/dj/setup" component={SetUpProfile} />
+        <PrivateRoute path="/dj/addEvent" component={AddEvent} />
+        <Route
+          path="/dj/:dj_id/event/:event_id/location/:location_id"
+          component={EventGuestView}
+        />
+      </BrowserRouter>
     </div>
   );
 }

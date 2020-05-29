@@ -3,20 +3,34 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import NavigationBar from './NavigationBar';
 
+import Phone2 from '../images/Phone-2.png';
+
 const Home = props => {
   const name = useSelector(state => state.userReducer.name);
   const tokenPresent = useSelector(state => state.userReducer.tokenPresent);
 
   return (
     <div className="home-page">
-      <div className="header">
-        <NavigationBar tokenPresent={tokenPresent} />
-        <h1>DJ Helper</h1>
-        <h2>How DJs easily collect song requests</h2>
-        <h2>And everyone upvotes the songs they also want to hear!</h2>
-      </div>
+      <NavigationBar tokenPresent={tokenPresent} />
 
-      <div className="main-content">
+      <header className="header">
+        <section className="header__left">
+          <h1>The top-requested tracks at your fingertips.</h1>
+          <div className="header__left-subSection">
+            <button className="btn-fancy" type="button">
+              Start Today Free
+            </button>
+            <a href="/#" className="btn-inline u-margin-left-medium">
+              Lear more about DJ Helper &#62;
+            </a>
+          </div>
+        </section>
+        <section className="header__right">
+          <img src={Phone2} alt="" />
+        </section>
+      </header>
+
+      {/* <div className="main-content">
         {!name && (
           <>
             <h2>Welcome!</h2>
@@ -29,7 +43,7 @@ const Home = props => {
           </>
         )}
         {name && <h2>Welcome,{name}!</h2>}
-      </div>
+      </div> */}
     </div>
   );
 };

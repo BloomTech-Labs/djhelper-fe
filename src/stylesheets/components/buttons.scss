@@ -1,14 +1,46 @@
 .button-signup {
   box-sizing: border-box;
-  padding: 0.5rem 1.5rem;
-  border: 1px solid transparent;
+  padding: 1rem 3rem;
 
-  &:hover {
-    border: 1px solid $color-secondary;
-    border-radius: 3.5rem;
-    box-sizing: border-box;
-    & a {
-      color: $color-secondary;
-    }
+  border: 2px solid $color-secondary-light;
+  border-radius: 5rem;
+
+  & a {
+    font-family: Mukta;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 3.3rem;
+    color: $color-secondary-light;
   }
+
+  // border: 1px solid transparent;
+  // transition: all 0.2s ease-in;
+  // &:hover {
+
+  // }
+}
+
+.btn-fancy {
+  width: 22rem;
+  height: 6rem;
+  background: $color-secondary;
+  border-radius: 5rem;
+  cursor: pointer;
+  font-family: Mukta;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2.4rem;
+  line-height: 4rem;
+  color: $color-white-2;
+}
+
+.btn-inline {
+  font-family: Mukta;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2.4rem;
+  line-height: 4rem;
+  cursor: pointer;
+  color: $color-blue-light;
 }
