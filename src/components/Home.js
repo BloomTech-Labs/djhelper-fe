@@ -21,7 +21,7 @@ const Home = props => {
               Start Today Free
             </button>
             <a href="/#" className="btn-inline u-margin-left-medium">
-              Lear more about DJ Helper &#62;
+              Learn more about DJ Helper &#62;
             </a>
           </div>
         </section>
