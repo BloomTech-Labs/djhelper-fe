@@ -1,17 +1,4 @@
-.App {
-  background-image: url('../../images/djHelperBackground-min.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  min-height: 110vh; /*Responsive unit, will now set height to viewheight*/
-}
-
 .loader {
   margin: 2rem auto;
   width: 10%;
-}
-
-.overlay {
-  background: rgba(211, 98, 255, 0.4);
-  min-height: 110vh;
 }

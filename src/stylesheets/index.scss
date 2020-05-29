@@ -1,5 +1,10 @@
 // The cascade matters!
 
+// import Google fonts
+
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta+Mahee:wght@200;300;400;500;600;700;800&display=swap');
+
 // Abstracts Vars and Mixins
 @import './abstracts/variables.scss';
 @import './abstracts/Mixins.scss';
@@ -8,6 +13,8 @@
 
 // @import './base/reset.scss';
 @import './base/global.scss';
+@import './base/page-layouts.scss';
+@import './base//utilites.scss';
 
 // Layouts for React Components Here
 @import './layouts/App.scss';
