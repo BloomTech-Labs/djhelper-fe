@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Carousel from '@brainhubeu/react-carousel';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import DashboardWelcome from './DashboardWelcome';
 import Event from './Event';
@@ -11,6 +12,7 @@ import NavigationBar from './NavigationBar';
 import { getEvents } from '../actions/eventActions';
 
 const Dashboard = props => {
+  console.log('historyprops', props.history);
   const dispatch = useDispatch();
   const name = useSelector(state => state.userReducer.name);
   const events = useSelector(state => state.userReducer.events);
@@ -57,6 +59,11 @@ const Dashboard = props => {
     setPastIds(pastArray.map(event => event.event_id));
   }, [events]);
 
+  console.log('upid', upcomingIds);
+
+  const handleNewEvent = () => {
+    props.history.push('/dj/addEvent');
+  };
   const whichComponent = () => {
     if (data.active.length > 1) {
       return (
@@ -72,67 +79,30 @@ const Dashboard = props => {
     return <DashboardWelcome name={name} />;
   };
 
-  const handleNewEvent = () => {
-    props.history.push('/dj/addEvent');
-  };
-
   return (
     <div className="dashboard">
       <NavigationBar tokenPresent={props.tokenPresent} />
       {whichComponent()}
+      <h2>Events </h2>
 
       <div className="upcoming-events" data-testid="upcoming-carousel">
-        <div className="labels">
-          <h5>Upcoming</h5>
-          <button id="new-event" onClick={handleNewEvent} type="button">
-            <h6>Add new event</h6>
-          </button>
+        <div className="eventCard" onClick={handleNewEvent} type="button">
+          {/* <h>Add new event</h> */}
+          <i className="fas fa-plus-circle eventCard__icon "></i>
         </div>
-        <Carousel
-          className="carousel"
-          slidesPerPage={4}
-          arrows
-          arrowLeft={<FontAwesomeIcon icon="caret-left" size="2x" />}
-          arrowRight={<FontAwesomeIcon icon="caret-right" size="2x" />}
-          addArrowClickHandler
-          infinite
-        >
-          {events &&
-            upcomingIds.map(eventId => {
-              return (
-                <Event
-                  num={eventId}
-                  data={data}
-                  setData={setData}
-                  key={eventId}
-                />
-              );
-            })}
-        </Carousel>
-      </div>
-      <div className="past-events" data-testid="past-carousel">
-        <h5> Past Events</h5>
-        <Carousel
-          className="carousel"
-          slidesPerPage={4}
-          arrows
-          arrowLeft={<FontAwesomeIcon icon="caret-left" size="2x" />}
-          arrowRight={<FontAwesomeIcon icon="caret-right" size="2x" />}
-          addArrowClickHandler
-          infinite
-        >
-          {events &&
-            pastIds.map(eventId => {
-              return (
-                <Event
-                  num={eventId}
-                  data={data}
-                  setData={setData}
-                  key={eventId}
-                />
-              );
-            })}
-        </Carousel>
+
+        {events &&
+          upcomingIds.map(eventId => {
+            return (
+              <Event
+                history={props.history}
+                num={eventId}
+                data={data}
+                setData={setData}
+                key={eventId}
+              />
+            );
+          })}
       </div>
     </div>
   );
