@@ -4,7 +4,7 @@ import React from 'react';
 const DashboardWelcome = props => {
   return (
     <div className="welcome">
-      <h1 data-testid="header"> Welcome,{props.name}!</h1>
+      <h1 data-testid="header"> Welcome back,{props.name}!</h1>
     </div>
   );
 };

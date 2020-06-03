@@ -1,11 +1,7 @@
 import React from 'react';
+import './fontawesome';
+
 import { Route, BrowserRouter } from 'react-router-dom';
-
-// import the library
-import { library } from '@fortawesome/fontawesome-svg-core';
-
-// import your icons
-import { fas } from '@fortawesome/free-solid-svg-icons';
 
 import Home from './components/Home';
 import Register from './components/Register';
@@ -21,10 +17,6 @@ import EventGuestView from './components/EventGuestView';
 
 import './stylesheets/index.scss';
 
-library.add(
-  fas
-  // more icons go here
-);
 function App() {
   return (
     <div className="App">

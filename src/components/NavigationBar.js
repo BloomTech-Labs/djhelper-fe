@@ -7,6 +7,7 @@ import { logoutUser } from '../actions/action';
 
 const NavigationBar = props => {
   const tokenPresent = useSelector(state => state.userReducer.tokenPresent);
+  const token = localStorage.token;
 
   let home;
   let djProfile;
@@ -89,7 +90,7 @@ const NavigationBar = props => {
   return (
     <Navbar className="navBar" data-testid="navBar" dark expand="md">
       <div className="navBar__static">
-        <NavbarBrand href="/">DJ Helper</NavbarBrand>
+        <NavbarBrand href={token ? '/dj' : '/'}>DJ Helper</NavbarBrand>
         {staticMenu()}
       </div>
       {navState()}
