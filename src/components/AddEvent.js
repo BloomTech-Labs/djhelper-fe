@@ -125,7 +125,7 @@ const AddEvent = props => {
             </div>
 
             <div className="input-group">
-              <label htmlFor="event_type">Type of Event: </label>
+              <label htmlFor="event_type"> Event Type: </label>
               <input
                 type="text"
                 name="event_type"
@@ -167,7 +167,7 @@ const AddEvent = props => {
               />
             </div>
           </div>
-
+{/* 
           <div className="form-section">
             <h2>Where: </h2>
             <div className="input-group">
@@ -180,20 +180,11 @@ const AddEvent = props => {
                 value={eventData.address_line_1}
                 required
               />
-            </div>
+            </div> */}
 
-            <div className="input-group">
-              <label htmlFor="address-line-2">Address Line 2: </label>
-              <input
-                type="text"
-                name="address_line_2"
-                id="address_line_2"
-                onChange={handleInputChange}
-                value={eventData.address_line_2}
-              />
-            </div>
-            <div className="last-line-address">
-              <div className="input-group city">
+            
+            {/* <div className="last-line-address"> */}
+              {/* <div className="input-group city">
                 <label htmlFor="city">City: </label>
                 <input
                   type="text"
@@ -203,9 +194,9 @@ const AddEvent = props => {
                   value={eventData.city}
                   required
                 />
-              </div>
+              </div> */}
 
-              <div className="input-group state">
+              {/* <div className="input-group state">
                 <label htmlFor="state">State: </label>
                 <input
                   type="text"
@@ -215,20 +206,21 @@ const AddEvent = props => {
                   value={eventData.state}
                   required
                 />
-              </div>
+              </div> */}
 
-              <div className="input-group zip">
+              {/* <div className="input-group zip">
                 <label htmlFor="zip">Zip: </label>
                 <input
                   type="text"
                   name="zip"
                   id="zip"
-                  onChange={handleInputChange}
+                  onChange={handleInputChange
+                  }
                   value={eventData.zip}
                   required
                 />
-              </div>
-            </div>
+              </div> */}
+            {/* </div> */}
 
             {showMoreLocationData && (
               <div className="venue-info-title">
@@ -309,7 +301,7 @@ const AddEvent = props => {
                 ? 'Show More Venue Info'
                 : 'Hide More Venue Info'}
             </button>
-          </div>
+          {/* </div> */}
 
           <div className="form-section">
             <h2>When: </h2>
