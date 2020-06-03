@@ -9,11 +9,11 @@
   display: flex;
   // margin-top: 2px;
   flex-flow: column nowrap;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   padding: 1rem 2rem;
   width: 164px;
-height: 164px;
+  height: 164px;
   color: white;
   transition: 0.3s;
   @include for-phone-only {

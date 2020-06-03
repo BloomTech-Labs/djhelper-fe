@@ -1,10 +1,13 @@
 import React from 'react';
 
-
 import formatDate from '../utils/formatDate';
 
 const Event = props => {
-  console.log("propsEvent", props.history)
+  // <<<<<<< Updated upstream
+  //   console.log("propsEvent", props.history)
+  // =======
+  //   console.log('My props: ', props);
+  // >>>>>>> Stashed changes
   let eventClass;
   if (props.data.active === `event${props.num}`) {
     eventClass = 'selected';
@@ -12,17 +15,11 @@ const Event = props => {
     eventClass = '';
   }
 
-
-
-  
   const eventNum = `event${props.num}`;
   const event = props.data[eventNum];
   const formattedDate = formatDate(event.date);
   return (
-    
-   
     <div
-      
       data-testid="event-component"
       className={`eventCard ${eventClass}`}
       onClick={() =>
@@ -32,8 +29,6 @@ const Event = props => {
       {event && <h2>{event.name}</h2>}
       {event && <p> Date: {formattedDate} </p>}
     </div>
-    
-   
   );
 };
 

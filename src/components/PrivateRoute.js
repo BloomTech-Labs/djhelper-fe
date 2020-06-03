@@ -4,11 +4,12 @@ import { useSelector } from 'react-redux';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const tokenPresent = useSelector(state => state.userReducer.tokenPresent);
+  const token = localStorage.token;
   return (
     <Route
       {...rest}
       render={props => {
-        if (tokenPresent) {
+        if (token) {
           return <Component {...props} />;
         }
         return <Redirect to="/" />;
