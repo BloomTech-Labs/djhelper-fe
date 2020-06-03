@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Carousel from '@brainhubeu/react-carousel';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import DashboardWelcome from './DashboardWelcome';
 import Event from './Event';
 import '@brainhubeu/react-carousel/lib/style.css';
@@ -88,7 +89,7 @@ const Dashboard = props => {
       <div className="upcoming-events" data-testid="upcoming-carousel">
         <div className="eventCard" onClick={handleNewEvent} type="button">
           {/* <h>Add new event</h> */}
-          <i className="fas fa-plus-circle eventCard__icon "></i>
+          <FontAwesomeIcon icon="plus-circle" className="eventCard__icon" />
         </div>
 
         {events &&
