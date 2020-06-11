@@ -31,14 +31,15 @@ const AddEvent = props => {
     phone: '',
     website: '',
     email: '',
-    location_img_url: ''
+    location_img_url: '',
+    primaryContact:""
   });
 
   const [changeEventImage, setChangeEventImage] = useState(false);
   const [changeLocationImage, setChangeLocationImage] = useState(false);
   const [showMoreLocationData, setShowMoreLocationData] = useState(false);
 
-  const EventPic = useRef();
+   const EventPic = useRef();
   const LocationPic = useRef();
   const dispatch = useDispatch();
 
@@ -85,7 +86,7 @@ const AddEvent = props => {
       <div className="main-form">
         <form onSubmit={handleSubmit}>
           <div className="form-section">
-            <div className="img-container" data-testid="event-img-container">
+            {/* <div className="img-container" data-testid="event-img-container">
               <span
                 className="pencil"
                 onClick={handleEventImageChange}
@@ -94,7 +95,7 @@ const AddEvent = props => {
                 <FontAwesomeIcon icon="pencil-alt" size="2x" />
               </span>
               <img src={djTurntable} ref={EventPic} alt="event" />
-            </div>
+            </div> */}
 
             {changeEventImage && (
               <div className="input-group">
@@ -111,7 +112,7 @@ const AddEvent = props => {
           </div>
 
           <div className="form-section">
-            <h2>What: </h2>
+            
             <div className="input-group">
               <label htmlFor="name">Event Name:</label>
               <input
@@ -139,9 +140,9 @@ const AddEvent = props => {
             <div className="input-group">
               <label htmlFor="description">
                 Description:{' '}
-                <span style={{ fontStyle: 'italic' }}>
+                {/* <span style={{ fontStyle: 'italic' }}>
                   (to be displayed on sharable page)
-                </span>
+                </span> */}
               </label>
               <textarea
                 type="text"
@@ -156,73 +157,34 @@ const AddEvent = props => {
             <div className="input-group">
               <label htmlFor="notes">
                 Notes:{' '}
-                <span style={{ fontStyle: 'italic' }}>(private to you)</span>
+                {/* <span style={{ fontStyle: 'italic' }}>(private to you)</span> */}
               </label>
               <textarea
-                type="text"
+                type="textarea"
                 name="notes"
                 id="notes"
                 onChange={handleInputChange}
-                value={eventData.notes}
+                 value={eventData.notes}
+                // value={eventData.primaryContact}
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="primaryContact">
+                Primary Contact:{' '}
+                {/* <span style={{ fontStyle: 'italic' }}>(private to you)</span> */}
+              </label>
+              <textarea
+                type="text"
+                name="primaryContact"
+                id="primaryContact"
+                onChange={handleInputChange}
+                value={eventData.primaryContact}
               />
             </div>
           </div>
-{/* 
-          <div className="form-section">
-            <h2>Where: </h2>
-            <div className="input-group">
-              <label htmlFor="address_line_1">Address Line 1: </label>
-              <input
-                type="text"
-                name="address_line_1"
-                id="address_line_1"
-                onChange={handleInputChange}
-                value={eventData.address_line_1}
-                required
-              />
-            </div> */}
 
-            
-            {/* <div className="last-line-address"> */}
-              {/* <div className="input-group city">
-                <label htmlFor="city">City: </label>
-                <input
-                  type="text"
-                  name="city"
-                  id="city"
-                  onChange={handleInputChange}
-                  value={eventData.city}
-                  required
-                />
-              </div> */}
 
-              {/* <div className="input-group state">
-                <label htmlFor="state">State: </label>
-                <input
-                  type="text"
-                  name="state"
-                  id="state"
-                  onChange={handleInputChange}
-                  value={eventData.state}
-                  required
-                />
-              </div> */}
-
-              {/* <div className="input-group zip">
-                <label htmlFor="zip">Zip: </label>
-                <input
-                  type="text"
-                  name="zip"
-                  id="zip"
-                  onChange={handleInputChange
-                  }
-                  value={eventData.zip}
-                  required
-                />
-              </div> */}
-            {/* </div> */}
-
-            {showMoreLocationData && (
+            {/* {showMoreLocationData && (
               <div className="venue-info-title">
                 <h2>Venue Info: </h2>
               </div>
@@ -238,9 +200,9 @@ const AddEvent = props => {
                   value={eventData.location_name}
                 />
               </div>
-            )}
+            )} */}
 
-            {showMoreLocationData && (
+            {/* {showMoreLocationData && (
               <div className="input-group">
                 <label htmlFor="website">Venue Website: </label>
                 <input
@@ -251,7 +213,7 @@ const AddEvent = props => {
                   value={eventData.website}
                 />
               </div>
-            )}
+            )} */}
 
             {showMoreLocationData && (
               <div className="input-group">
@@ -279,7 +241,7 @@ const AddEvent = props => {
               </div>
             )}
 
-            {showMoreLocationData && changeLocationImage && (
+            {/* {showMoreLocationData && changeLocationImage && (
               <div className="input-group">
                 <label htmlFor="location_img_url">Link to Venue Image:</label>
                 <input
@@ -300,12 +262,12 @@ const AddEvent = props => {
               {!showMoreLocationData
                 ? 'Show More Venue Info'
                 : 'Hide More Venue Info'}
-            </button>
+            </button> */}
           {/* </div> */}
 
           <div className="form-section">
-            <h2>When: </h2>
-            <div className="when-inputs">
+            
+            {/* <div className="when-inputs">
               <div className="input-group date">
                 <label htmlFor="date">Date: </label>
                 <input
@@ -316,9 +278,9 @@ const AddEvent = props => {
                   value={eventData.date}
                   required
                 />
-              </div>
+              </div> */}
 
-              <div className="input-group">
+              {/* <div className="input-group">
                 <label htmlFor="start_time">Start Time: </label>
                 <input
                   type="time"
@@ -327,9 +289,9 @@ const AddEvent = props => {
                   value={eventData.start_time}
                   onChange={handleInputChange}
                 />
-              </div>
+              </div> */}
 
-              <div className="input-group">
+              {/* <div className="input-group">
                 <label htmlFor="end_time">End Time: </label>
                 <input
                   type="time"
@@ -338,10 +300,14 @@ const AddEvent = props => {
                   value={eventData.end_time}
                   onChange={handleInputChange}
                 />
-              </div>
+
+              </div> */}
+              <button type="submit" data-testid="submit-button">
+              Add Event
+            </button>
             </div>
 
-            {showMoreLocationData && (
+            {/* {showMoreLocationData && (
               <div
                 className="img-container"
                 data-testid="location-img-container"
@@ -355,11 +321,9 @@ const AddEvent = props => {
                 </span>
                 <img src={stage} alt="sample stage" ref={LocationPic} />
               </div>
-            )}
-            <button type="submit" data-testid="submit-button">
-              Add Event
-            </button>
-          </div>
+            )} */}
+            
+          {/* </div> */}
         </form>
       </div>
     </div>

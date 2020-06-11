@@ -14,7 +14,7 @@ const EventPage = props => {
   const dispatch = useDispatch();
   const dj_id = useSelector(state => state.userReducer.id);
   const FRONTEND_HOST =
-    process.env.REACT_APP_FRONTEND_HOST || 'https://dj-helper.com/';
+    process.env.REACT_APP_FRONTEND_HOST || "https://dj-helper-be.herokuapp.com";
 
   const [qrCode, setQrCode] = useState(null);
   const [showQrCode, setShowQrCode] = useState(false);
