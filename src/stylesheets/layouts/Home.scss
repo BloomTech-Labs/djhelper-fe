@@ -71,6 +71,60 @@
     align-items: center;
   }
 }
+.beheard{
+  text-align: center;
+  color: white;
+}
+.bottom-imgs{
+  display: flex;
+  flex-direction: row;
+  
+  color: white;
+  font-size: 1.5rem;
+  padding: 1rem;
+  margin: 2rem;
+ 
+  .img1{
+    height:350px;
+    width: 350px;
+    margin: 2rem;
+    text-align: center;
+
+
+  }
+  .img2{
+    height:350px;
+    width: 350px;
+    margin: 2rem;
+    text-align: center;
+
+  }
+  .img3{
+    height:350px;
+    width: 350px;
+    margin: 1rem;
+    text-align: center;
+
+  }
+  
+}
+.bottom-mid{
+  text-align: center;
+  color: white;
+  button {
+    align-self: center;
+    width: 40%;
+    font-size: 1vw;
+    font-weight: 700;
+    margin: 1rem;
+    color: white;
+    background: black;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+}
+
 
 // margin-bottom: 1.6rem;
 //   padding-bottom: 3.2rem;
