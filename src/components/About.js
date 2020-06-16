@@ -72,12 +72,6 @@ const About = () => {
           <p>Lorem Ipsum</p>
           <p>Lorem Ipsum</p>
         </div>
-        <div className ="team">
-          <img src ={Maxwell}></img>
-          <h3>Maxwell</h3>
-          <p>Lorem Ipsum</p>
-          <p>Lorem Ipsum</p>
-        </div>
         </section>
         <h1 className= "title">UX Team</h1>
         <section className= "djTeam">
