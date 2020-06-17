@@ -48,72 +48,46 @@ export const addEvent = (eventInfo, history) => dispatch => {
 
   // First, add location to locations table. POST https://api.dj-helper.com/api/auth/location/
 
-  dispatch({ type: ADD_LOCATION_START });
-  const locationInfo = {
-    address_line_1: eventInfo.address_line_1,
-    address_line_2: eventInfo.address_line_2 || '',
-    city: eventInfo.city,
-    state: eventInfo.state,
-    zip: eventInfo.zip,
-    phone: eventInfo.phone,
-    website: eventInfo.website,
-    email: eventInfo.email,
-    img_url: eventInfo.location_img_url,
-    name: eventInfo.location_name
+  const eventToSubmit = {
+    name: eventInfo.name,
+    event_type: eventInfo.event_type,
+    description: eventInfo.description,
+    date: eventInfo.date,
+    dj_id: eventInfo.dj_id,
+    notes: eventInfo.notes
   };
+
+  // Only adds start_time and end_time if the user has put values in those fields
+  // (Without these lines, app crashes if the start_time and end_time are left blank)
+  if (eventInfo.start_time !== '') {
+    eventToSubmit.start_time = eventInfo.start_time;
+  }
+
+  if (eventInfo.end_time !== '') {
+    eventToSubmit.end_time = eventInfo.end_time;
+  }
+
   axiosWithAuth()
-    .post('/auth/location/', locationInfo)
-    .then(response => {
-      dispatch({ type: ADD_LOCATION_SUCCESS, payload: response.data });
-
-      // Next, POST to https://api.dj-helper.com/api/auth/event/
-
-      const eventToSubmit = {
-        name: eventInfo.name,
-        event_type: eventInfo.event_type,
-        description: eventInfo.description,
-        location_id: response.data.id,
-        date: eventInfo.date,
-        dj_id: eventInfo.dj_id,
-        notes: eventInfo.notes,
-        img_url: eventInfo.img_url
-      };
-
-      // Only adds start_time and end_time if the user has put values in those fields
-      // (Without these lines, app crashes if the start_time and end_time are left blank)
-      if (eventInfo.start_time !== '') {
-        eventToSubmit.start_time = eventInfo.start_time;
-      }
-
-      if (eventInfo.end_time !== '') {
-        eventToSubmit.end_time = eventInfo.end_time;
-      }
-
-      axiosWithAuth()
-        .post('/auth/event/', eventToSubmit)
-        .then(response2 => {
-          dispatch({
-            type: ADD_EVENT_SUCCESS,
-            payload: {
-              ...response2.data,
-              event_id: response2.data.id
-            }
-          });
-          dispatch({
-            type: ADD_TO_SONG_REDUCER_SUCCESS,
-            payload: response2.data.id
-          });
-          history.push('/dj');
-        })
-        .catch(err2 => {
-          dispatch({
-            type: ADD_EVENT_ERROR,
-            payload: err2
-          });
-        })
-        .catch(err => {
-          dispatch({ type: ADD_LOCATION_ERROR, payload: err });
-        });
+    .post('/auth/event/', eventToSubmit)
+    .then(response2 => {
+      dispatch({
+        type: ADD_EVENT_SUCCESS,
+        payload: {
+          ...response2.data,
+          event_id: response2.data.id
+        }
+      });
+      dispatch({
+        type: ADD_TO_SONG_REDUCER_SUCCESS,
+        payload: response2.data.id
+      });
+      history.push('/dj');
+    })
+    .catch(err2 => {
+      dispatch({
+        type: ADD_EVENT_ERROR,
+        payload: err2
+      });
     });
 };
 
