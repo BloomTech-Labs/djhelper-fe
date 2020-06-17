@@ -27,17 +27,17 @@ export const DELETE_EVENT_START = 'DELETE_EVENT_START';
 export const DELETE_EVENT_SUCCESS = 'DELETE_EVENT_SUCCESS';
 export const DELETE_EVENT_ERROR = 'DELETE_EVENT_ERROR';
 
-export const ADD_LOCATION_START = 'ADD_LOCATION_START';
-export const ADD_LOCATION_SUCCESS = 'ADD_LOCATION_SUCCESS';
-export const ADD_LOCATION_ERROR = 'ADD_LOCATION_ERROR';
+// export const ADD_LOCATION_START = 'ADD_LOCATION_START';
+// export const ADD_LOCATION_SUCCESS = 'ADD_LOCATION_SUCCESS';
+// export const ADD_LOCATION_ERROR = 'ADD_LOCATION_ERROR';
 
-export const GET_LOCATION_START = 'GET_LOCATION_START';
-export const GET_LOCATION_SUCCESS = 'GET_LOCATION_SUCCESS';
-export const GET_LOCATION_ERROR = 'GET_LOCATION_ERROR';
+// export const GET_LOCATION_START = 'GET_LOCATION_START';
+// export const GET_LOCATION_SUCCESS = 'GET_LOCATION_SUCCESS';
+// export const GET_LOCATION_ERROR = 'GET_LOCATION_ERROR';
 
-export const EDIT_LOCATION_START = 'EDIT_LOCATION_START';
-export const EDIT_LOCATION_SUCCESS = 'EDIT_LOCATION_SUCCESS';
-export const EDIT_LOCATION_ERROR = 'EDIT_LOCATION_ERROR';
+// export const EDIT_LOCATION_START = 'EDIT_LOCATION_START';
+// export const EDIT_LOCATION_SUCCESS = 'EDIT_LOCATION_SUCCESS';
+// export const EDIT_LOCATION_ERROR = 'EDIT_LOCATION_ERROR';
 
 // events action creators
 
@@ -89,6 +89,7 @@ export const addEvent = (eventInfo, history) => dispatch => {
         payload: err2
       });
     });
+ 
 };
 
 export const editEvent = (eventInfo, event_id) => dispatch => {
@@ -198,28 +199,28 @@ export const getEvent = event_id => dispatch => {
 
 // locations
 
-export const getLocation = location_id => dispatch => {
-  // GET https://api.dj-helper.com/api/location/:location_id
-  dispatch({ type: GET_LOCATION_START });
-  axiosWithAuth()
-    .get(`/location/${location_id}`)
-    .then(response => {
-      dispatch({ type: GET_LOCATION_SUCCESS, payload: response.data });
-    })
-    .catch(err => {
-      dispatch({ type: GET_LOCATION_ERROR, payload: err });
-    });
-};
+// export const getLocation = location_id => dispatch => {
+//   // GET https://api.dj-helper.com/api/location/:location_id
+//   dispatch({ type: GET_LOCATION_START });
+//   axiosWithAuth()
+//     .get(`/location/${location_id}`)
+//     .then(response => {
+//       dispatch({ type: GET_LOCATION_SUCCESS, payload: response.data });
+//     })
+//     .catch(err => {
+//       dispatch({ type: GET_LOCATION_ERROR, payload: err });
+//     });
+// };
 
-export const editLocation = (location_id, locationInfo) => dispatch => {
-  dispatch({ type: EDIT_LOCATION_START });
-  // PUT https://api.dj-helper.com/api/auth/location/:id
-  axiosWithAuth()
-    .put(`/auth/location/${location_id}`, locationInfo)
-    .then(response => {
-      dispatch({ type: EDIT_LOCATION_SUCCESS, payload: response.data });
-    })
-    .catch(err => {
-      dispatch({ type: EDIT_LOCATION_ERROR, payload: err });
-    });
-};
+// export const editLocation = (location_id, locationInfo) => dispatch => {
+//   dispatch({ type: EDIT_LOCATION_START });
+//   // PUT https://api.dj-helper.com/api/auth/location/:id
+//   axiosWithAuth()
+//     .put(`/auth/location/${location_id}`, locationInfo)
+//     .then(response => {
+//       dispatch({ type: EDIT_LOCATION_SUCCESS, payload: response.data });
+//     })
+//     .catch(err => {
+//       dispatch({ type: EDIT_LOCATION_ERROR, payload: err });
+//     });
+// };

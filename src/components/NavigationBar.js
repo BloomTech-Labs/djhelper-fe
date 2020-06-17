@@ -17,39 +17,39 @@ const NavigationBar = props => {
     dispatch(logoutUser());
   };
 
-  const selectedIcon = () => {
-    const url = window.location.pathname;
-    if (url === '/dj') {
-      home = 'selected';
-      djProfile = '';
-    } else {
-      home = '';
-      djProfile = 'selected';
-    }
-  };
+  // const selectedIcon = () => {
+  //   const url = window.location.pathname;
+  //   if (url === '/dj') {
+  //     home = 'selected';
+  //     djProfile = '';
+  //   } else {
+  //     home = '';
+  //     djProfile = 'selected';
+  //   }
+  // };
 
   const navState = () => {
     if (tokenPresent || props.tokenPresent) {
       return (
         <Nav className="navElementsIcons" navbar>
-          {selectedIcon()}
+          {/* {selectedIcon()} */}
           <NavItem id="profile">
             <NavLink
               to="/dj/profile"
               className={djProfile}
               data-testid="profile"
             >
-              <FontAwesomeIcon icon="user" size="2x" />
+              {/* <FontAwesomeIcon icon="user" size="2x" /> */}
             </NavLink>
           </NavItem>
           <NavItem id="home">
             <NavLink id="home" className={home} data-testid="home" to="/dj">
-              <FontAwesomeIcon icon="home" size="2x" />
+              {/* <FontAwesomeIcon icon="home" size="2x" /> */}
             </NavLink>
           </NavItem>
 
           <NavItem className="links">
-            <NavLink to="/about">About</NavLink>
+            {/* <NavLink to="/about">About</NavLink> */}
             <Nav className="logout-item" onClick={handleLogout}>
               Logout
             </Nav>
@@ -75,7 +75,7 @@ const NavigationBar = props => {
     return (
       <Nav className="navElementsStatice" navbar>
         <NavItem>
-          <NavLink to="/home">Home</NavLink>
+          <NavLink to="/">Home</NavLink>
         </NavItem>
         <NavItem>
           <NavLink to="/about">About</NavLink>
@@ -90,7 +90,7 @@ const NavigationBar = props => {
   return (
     <Navbar className="navBar" data-testid="navBar" dark expand="md">
       <div className="navBar__static">
-        <NavbarBrand href={token ? '/dj' : '/'}>DJ Helper</NavbarBrand>
+        <NavbarBrand >DJ Helper</NavbarBrand>
         {staticMenu()}
       </div>
       {navState()}
