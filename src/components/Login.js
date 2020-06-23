@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Input } from 'reactstrap';
 import PropTypes from 'prop-types';
 import NavigationBar from './NavigationBar';
@@ -10,6 +10,7 @@ import Modal from 'react-modal';
 import { loginUser } from '../actions/action';
 
 const Login = props => {
+  let history=useHistory()
   const [userInfo, setUserInfo] = useState({
     username: '',
     password: ''
@@ -17,12 +18,18 @@ const Login = props => {
 
   const isLoggingIn = useSelector(state => state.userReducer.loginUserStart);
 
+
+
   const dispatch = useDispatch();
 
-  const handleSubmit = (e , props) => {
+  console.log("history", history)
+  
+
+  const handleSubmit = (e , history) => {
+   
     e.preventDefault();
-    console.log("historyprops",props)
-    dispatch(loginUser(userInfo, props));
+    console.log("historyprops",history)
+    dispatch(loginUser(userInfo, history));
   };
 
   const handleChange = e => {
