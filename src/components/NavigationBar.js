@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from 'react-router-dom';
 import { Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
-import { logoutUser } from '../actions/action';
 import Modal from 'react-modal';
-import { Input } from 'reactstrap';
-import LoginModal from './LoginModal';
-// import { faBalanceScale } from '@fortawesome/free-solid-svg-icons';
-import { loginUser } from '../actions/action';
+
+import { loginUser, logoutUser } from '../actions/action';
+
 import Login from './Login';
-import reactstrap from 'reactstrap';
 
 const NavigationBar = props => {
   const tokenPresent = useSelector(state => state.userReducer.tokenPresent);
@@ -18,76 +14,22 @@ const NavigationBar = props => {
 
   let home;
   let djProfile;
+
   const [modalIsOpen, setIsOpen] = useState(false);
   const [userInfo, setUserInfo] = useState({
     username: '',
     password: ''
   });
   const dispatch = useDispatch();
-
   const handleLogout = () => {
     dispatch(logoutUser());
   };
 
-  // const selectedIcon = () => {
-  //   const url = window.location.pathname;
-  //   if (url === '/dj') {
-  //     home = 'selected';
-  //     djProfile = '';
-  //   } else {
-  //     home = '';
-  //     djProfile = 'selected';
-  //   }
-  // };
-
-  // const selectedIcon = () => {
-  //   const url = window.location.pathname;
-  //   if (url === '/dj') {
-  //     home = 'selected';
-  //     djProfile = '';
-  //   } else {
-  //     home = '';
-  //     djProfile = 'selected';
-  //   }
-  // };
   const openModal = () => {
     setIsOpen(true);
   };
   const closeModal = () => {
     setIsOpen(false);
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    dispatch(loginUser(userInfo, props.history));
-  };
-  const handleChange = e => {
-    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
-  };
-
-  // const selectedIcon = () => {
-  //   const url = window.location.pathname;
-  //   if (url === '/dj') {
-  //     home = 'selected';
-  //     djProfile = '';
-  //   } else {
-  //     home = '';
-  //     djProfile = 'selected';
-  //   }
-  // };
-  const openModal = () => {
-    setIsOpen(true);
-  };
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    dispatch(loginUser(userInfo, props.history));
-  };
-  const handleChange = e => {
-    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
 
   const navState = () => {
@@ -109,7 +51,6 @@ const NavigationBar = props => {
               {/* <FontAwesomeIcon icon="home" size="2x" /> */}
             </NavLink>
           </NavItem>
-
           <NavItem className="links">
             {/* <NavLink to="/about">About</NavLink> */}
             <Nav className="logout-item" onClick={handleLogout}>
@@ -119,44 +60,17 @@ const NavigationBar = props => {
         </Nav>
       );
     }
+
     return (
       <Nav className="navElements" navbar>
         <NavItem>
-          <button className="button-signup" onClick={openModal}>
+          <button className="button-signup" type="button" onClick={openModal}>
             SignIn
           </button>
           <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
             <Login />
-
-            {/* <h1> Welcome </h1>
-           
-          <div>
-            <label htmlFor="username">Username: </label>
-            <Input
-              id="username"
-              data-testid="usernameInput"
-              name="username"
-              type="text"
-              required
-               onChange={handleChange}
-            />
-          </div>
-          <div>
-          <label htmlFor="password">Password: </label>
-           <Input
-              data-testid="passwordInput"
-              name="password"
-              type="password"
-              id="password"
-              required
-              onChange={handleChange}
-              placeholder="password"
-            />
-             </div> */}
-            {/* <button onClick={handleSubmit}>Log In</button> */}
           </Modal>
         </NavItem>
-
         <NavItem className="button-signup">
           <NavLink data-testid="register-nav" to="/register">
             sign up
@@ -165,7 +79,6 @@ const NavigationBar = props => {
       </Nav>
     );
   };
-
   const staticMenu = () => {
     return (
       <Nav className="navElementsStatice" navbar>
@@ -181,7 +94,6 @@ const NavigationBar = props => {
       </Nav>
     );
   };
-
   return (
     <Navbar className="navBar" data-testid="navBar" dark expand="md">
       <div className="navBar__static">
@@ -192,5 +104,4 @@ const NavigationBar = props => {
     </Navbar>
   );
 };
-
 export default NavigationBar;

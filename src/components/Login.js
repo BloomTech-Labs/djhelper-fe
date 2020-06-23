@@ -4,13 +4,13 @@ import Loader from 'react-loader-spinner';
 import { Link, useHistory } from 'react-router-dom';
 import { Input } from 'reactstrap';
 import PropTypes from 'prop-types';
-import NavigationBar from './NavigationBar';
 import Modal from 'react-modal';
 
 import { loginUser } from '../actions/action';
 
 const Login = props => {
-  let history=useHistory()
+  const history = useHistory();
+
   const [userInfo, setUserInfo] = useState({
     username: '',
     password: ''
@@ -18,17 +18,10 @@ const Login = props => {
 
   const isLoggingIn = useSelector(state => state.userReducer.loginUserStart);
 
-
-
   const dispatch = useDispatch();
 
-  console.log("history", history)
-  
-
-  const handleSubmit = (e , history) => {
-   
+  const handleSubmit = e => {
     e.preventDefault();
-    console.log("historyprops",history)
     dispatch(loginUser(userInfo, history));
   };
 
@@ -78,7 +71,7 @@ const Login = props => {
           </button>
 
           <p>
-            Don&rsquo;t have an account yet?{' '}
+            Don&rsquo;t have an account yet?
             <b>
               <Link data-testid="toRegistration" to="/register">
                 Register here!

@@ -1,11 +1,11 @@
 /* eslint-disable camelcase */
-import React from "react";
+import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import {
   axiosWithAuthSpotify,
   axiosWithAuthSpotifySearch
 } from '../utils/axiosWithAuthSpotify';
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom';
 
 import URLSearchParams from '@ungap/url-search-params';
 import keyMirror from 'keymirror';
@@ -109,34 +109,12 @@ export const registerUserAction = (infoNeeded, history) => dispatch => {
 
 export const loginUser = (userInfo, history) => dispatch => {
   dispatch({ type: LOGIN_USER_START });
-  console.log("loginhistory", history)
 
   axiosWithAuth()
     .post('/login/dj/', userInfo)
     .then(response => {
-      console.log("loginresponse", response)
       localStorage.setItem('token', response.data.token);
       dispatch({ type: LOGIN_USER_SUCCESS, payload: response.data });
-
-      // Getting client id, secret, and grant type into correct format
-
-      // const data = new URLSearchParams({
-      //   client_id: process.env.REACT_APP_SPOTIFY_CLIENT_ID,
-      //   grant_type: 'client_credentials'
-      // });
-
-      // Getting an access token for the spotify API
-      // axiosWithAuthSpotify()
-      //   .post('/api/token', data)
-      //   .then(response => {
-      //     localStorage.setItem(
-      //       'spotifyAccessToken',
-      //       response.data.access_token
-      //     );
-      //   })
-      //   .catch(err => {
-      //     // handle error
-      //   });
 
       if (
         !response.data.bio &&
@@ -144,9 +122,7 @@ export const loginUser = (userInfo, history) => dispatch => {
         !response.data.website &&
         !response.data.profile_pic_url
       ) {
-        // history.push('/dj/setup');
-        
-        return <Redirect to="/dj" />
+        history.push('/dj/setup');
       } else {
         history.push('/dj');
       }
