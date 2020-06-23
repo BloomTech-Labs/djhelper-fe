@@ -40,21 +40,21 @@ import {
   DELETE_EVENT_START,
   DELETE_EVENT_SUCCESS,
   DELETE_EVENT_ERROR,
-  ADD_LOCATION_START,
-  ADD_LOCATION_SUCCESS,
-  ADD_LOCATION_ERROR,
+  // ADD_LOCATION_START,
+  // ADD_LOCATION_SUCCESS,
+  // ADD_LOCATION_ERROR,
   GET_EVENTS_START,
   GET_EVENTS_SUCCESS,
   GET_EVENTS_ERROR,
   GET_EVENT_START,
   GET_EVENT_SUCCESS,
   GET_EVENT_ERROR,
-  GET_LOCATION_START,
-  GET_LOCATION_SUCCESS,
-  GET_LOCATION_ERROR,
-  EDIT_LOCATION_START,
-  EDIT_LOCATION_SUCCESS,
-  EDIT_LOCATION_ERROR
+  // GET_LOCATION_START,
+  // GET_LOCATION_SUCCESS,
+  // GET_LOCATION_ERROR,
+  // EDIT_LOCATION_START,
+  // EDIT_LOCATION_SUCCESS,
+  // EDIT_LOCATION_ERROR
 } from '../actions/eventActions';
 
 const initialState = {
@@ -229,22 +229,22 @@ export const userReducer = (state = initialState, action) => {
         addEventError: true
       };
 
-    case ADD_LOCATION_START:
-      return { ...state, addLocationStart: true };
+    // case ADD_LOCATION_START:
+    //   return { ...state, addLocationStart: true };
 
-    case ADD_LOCATION_SUCCESS:
-      return {
-        ...state,
-        addLocationStart: false,
-        locations: [...state.locations, action.payload]
-      };
+    // case ADD_LOCATION_SUCCESS:
+    //   return {
+    //     ...state,
+    //     addLocationStart: false,
+    //     locations: [...state.locations, action.payload]
+    //   };
 
-    case ADD_LOCATION_ERROR:
-      return {
-        ...state,
-        addLocationStart: false,
-        addLocationError: true
-      };
+    // case ADD_LOCATION_ERROR:
+    //   return {
+    //     ...state,
+    //     addLocationStart: false,
+    //     addLocationError: true
+    //   };
 
     case EDIT_EVENT_START:
       return {
@@ -359,49 +359,49 @@ export const userReducer = (state = initialState, action) => {
         getEventsStart: false
       };
 
-    case GET_LOCATION_START:
-      return {
-        ...state,
-        getLocationStart: true
-      };
+  //   case GET_LOCATION_START:
+  //     return {
+  //       ...state,
+  //       getLocationStart: true
+  //     };
 
-    case GET_LOCATION_SUCCESS:
-      const filteredLocations2 = state.locations.filter(
-        location => location.id !== action.payload.id
-      );
-      return {
-        ...state,
-        getLocationStart: false,
-        locations: [...filteredLocations2, action.payload] // [...state.locations, action.payload]
-      };
+  //   case GET_LOCATION_SUCCESS:
+  //     const filteredLocations2 = state.locations.filter(
+  //       location => location.id !== action.payload.id
+  //     );
+  //     return {
+  //       ...state,
+  //       getLocationStart: false,
+  //       locations: [...filteredLocations2, action.payload] // [...state.locations, action.payload]
+  //     };
 
-    case GET_LOCATION_ERROR:
-      return {
-        ...state,
-        getLocationError: true
-      };
+  //   case GET_LOCATION_ERROR:
+  //     return {
+  //       ...state,
+  //       getLocationError: true
+  //     };
 
-    case EDIT_LOCATION_START:
-      return {
-        ...state,
-        getLocationStart: true
-      };
+  //   case EDIT_LOCATION_START:
+  //     return {
+  //       ...state,
+  //       getLocationStart: true
+  //     };
 
-    case EDIT_LOCATION_SUCCESS:
-      const filteredLocations = state.locations.filter(
-        location => location.id !== action.payload.id
-      );
-      return {
-        ...state,
-        locations: [...filteredLocations, action.payload],
-        getLocationStart: false
-      };
+  //   case EDIT_LOCATION_SUCCESS:
+  //     const filteredLocations = state.locations.filter(
+  //       location => location.id !== action.payload.id
+  //     );
+  //     return {
+  //       ...state,
+  //       locations: [...filteredLocations, action.payload],
+  //       getLocationStart: false
+  //     };
 
-    case EDIT_LOCATION_ERROR:
-      return {
-        ...state,
-        getLocationError: true
-      };
+  //   case EDIT_LOCATION_ERROR:
+  //     return {
+  //       ...state,
+  //       getLocationError: true
+  //     };
 
     default:
       return state;

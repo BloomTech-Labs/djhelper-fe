@@ -1,31 +1,25 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from 'react-router-dom';
 import { Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
 import { logoutUser } from '../actions/action';
 import Modal from 'react-modal';
-import { Input } from 'reactstrap'
-import LoginModal from "./LoginModal"
+import { Input } from 'reactstrap';
+import LoginModal from './LoginModal';
 // import { faBalanceScale } from '@fortawesome/free-solid-svg-icons';
 import { loginUser } from '../actions/action';
-import Login from "./Login"
-import reactstrap from "reactstrap"
-  
-
- 
-
-  
+import Login from './Login';
+import reactstrap from 'reactstrap';
 
 const NavigationBar = props => {
-  
   const tokenPresent = useSelector(state => state.userReducer.tokenPresent);
   const token = localStorage.token;
 
   let home;
   let djProfile;
-   const [modalIsOpen, setIsOpen]=useState(false)
-   const [userInfo, setUserInfo] = useState({
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [userInfo, setUserInfo] = useState({
     username: '',
     password: ''
   });
@@ -34,20 +28,6 @@ const NavigationBar = props => {
   const handleLogout = () => {
     dispatch(logoutUser());
   };
-
-<<<<<<< Updated upstream
-  const selectedIcon = () => {
-    const url = window.location.pathname;
-    if (url === '/dj') {
-      home = 'selected';
-      djProfile = '';
-    } else {
-      home = '';
-      djProfile = 'selected';
-    }
-  };
-=======
-
 
   // const selectedIcon = () => {
   //   const url = window.location.pathname;
@@ -59,14 +39,23 @@ const NavigationBar = props => {
   //     djProfile = 'selected';
   //   }
   // };
-  const openModal=()=>{
-    setIsOpen(true)
-  }
-  const closeModal=()=>{
-    setIsOpen(false)
-  }
-  
-  
+
+  // const selectedIcon = () => {
+  //   const url = window.location.pathname;
+  //   if (url === '/dj') {
+  //     home = 'selected';
+  //     djProfile = '';
+  //   } else {
+  //     home = '';
+  //     djProfile = 'selected';
+  //   }
+  // };
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -75,32 +64,54 @@ const NavigationBar = props => {
   const handleChange = e => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
-  
-  
->>>>>>> Stashed changes
+
+  // const selectedIcon = () => {
+  //   const url = window.location.pathname;
+  //   if (url === '/dj') {
+  //     home = 'selected';
+  //     djProfile = '';
+  //   } else {
+  //     home = '';
+  //     djProfile = 'selected';
+  //   }
+  // };
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(loginUser(userInfo, props.history));
+  };
+  const handleChange = e => {
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+  };
 
   const navState = () => {
     if (tokenPresent || props.tokenPresent) {
       return (
         <Nav className="navElementsIcons" navbar>
-          {selectedIcon()}
+          {/* {selectedIcon()} */}
           <NavItem id="profile">
             <NavLink
               to="/dj/profile"
               className={djProfile}
               data-testid="profile"
             >
-              <FontAwesomeIcon icon="user" size="2x" />
+              {/* <FontAwesomeIcon icon="user" size="2x" /> */}
             </NavLink>
           </NavItem>
           <NavItem id="home">
             <NavLink id="home" className={home} data-testid="home" to="/dj">
-              <FontAwesomeIcon icon="home" size="2x" />
+              {/* <FontAwesomeIcon icon="home" size="2x" /> */}
             </NavLink>
           </NavItem>
 
           <NavItem className="links">
-            <NavLink to="/about">About</NavLink>
+            {/* <NavLink to="/about">About</NavLink> */}
             <Nav className="logout-item" onClick={handleLogout}>
               Logout
             </Nav>
@@ -110,15 +121,14 @@ const NavigationBar = props => {
     }
     return (
       <Nav className="navElements" navbar>
-     
         <NavItem>
-          <button className="button-signup" onClick={openModal}>SignIn</button>
-          <Modal isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-            >
-          <Login/>
-          
-          {/* <h1> Welcome </h1>
+          <button className="button-signup" onClick={openModal}>
+            SignIn
+          </button>
+          <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+            <Login />
+
+            {/* <h1> Welcome </h1>
            
           <div>
             <label htmlFor="username">Username: </label>
@@ -143,23 +153,16 @@ const NavigationBar = props => {
               placeholder="password"
             />
              </div> */}
-             {/* <button onClick={handleSubmit}>Log In</button> */}
-          </Modal> 
-          
-          
-         
-          
+            {/* <button onClick={handleSubmit}>Log In</button> */}
+          </Modal>
         </NavItem>
-        
+
         <NavItem className="button-signup">
           <NavLink data-testid="register-nav" to="/register">
             sign up
           </NavLink>
-        
         </NavItem>
-        
       </Nav>
-       
     );
   };
 
@@ -167,7 +170,7 @@ const NavigationBar = props => {
     return (
       <Nav className="navElementsStatice" navbar>
         <NavItem>
-          <NavLink to="/home">Home</NavLink>
+          <NavLink to="/">Home</NavLink>
         </NavItem>
         <NavItem>
           <NavLink to="/about">About</NavLink>
@@ -182,12 +185,12 @@ const NavigationBar = props => {
   return (
     <Navbar className="navBar" data-testid="navBar" dark expand="md">
       <div className="navBar__static">
-        <NavbarBrand href={token ? '/dj' : '/'}>DJ Helper</NavbarBrand>
+        <NavbarBrand>DJ Helper</NavbarBrand>
         {staticMenu()}
       </div>
       {navState()}
     </Navbar>
   );
-  };
+};
 
 export default NavigationBar;

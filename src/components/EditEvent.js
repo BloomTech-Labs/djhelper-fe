@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
-import {
+ import {
   editEvent,
   deleteEvent,
-  getLocation,
-  editLocation
-} from '../actions/eventActions';
+//   getLocation,
+//   editLocation
+ } from '../actions/eventActions';
 import formatDateForInput from '../utils/formatDateForInput';
 
 const EditEvent = props => {
@@ -64,9 +64,9 @@ const EditEvent = props => {
   const [showLocation, setShowLocation] = useState(false);
   const [showVenue, setShowVenue] = useState(false);
 
-  useEffect(() => {
-    dispatch(getLocation(currentEvent.location_id));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getLocation(currentEvent.location_id));
+  // }, []);
 
   useEffect(() => {
     setCurrentLocation(
@@ -96,9 +96,9 @@ const EditEvent = props => {
       img_url: currentLocation.venue_img_url
     };
     console.log('currentLocation to submit: ', locationToSubmit);
-    dispatch(editLocation(currentEvent.location_id, locationToSubmit));
-    setShowLocation(false);
-    setShowVenue(false);
+    // dispatch(editLocation(currentEvent.location_id, locationToSubmit));
+    // setShowLocation(false);
+    // setShowVenue(false);
   };
 
   // Venue Editing
