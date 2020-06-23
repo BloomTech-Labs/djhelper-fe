@@ -8,7 +8,7 @@ import Phone2 from '../images/Phone-2.png';
 const Home = props => {
   const name = useSelector(state => state.userReducer.name);
   const tokenPresent = useSelector(state => state.userReducer.tokenPresent);
-
+  
   return (
     <div className="home-page">
       <NavigationBar tokenPresent={tokenPresent} />
@@ -30,20 +30,7 @@ const Home = props => {
         </section>
       </header>
 
-      {/* <div className="main-content">
-        {!name && (
-          <>
-            <h2>Welcome!</h2>
-            <h3>
-              Please
-              <Link to="/register"> register</Link> or
-              <Link to="/login"> log in </Link>
-              to continue.
-            </h3>
-          </>
-        )}
-        {name && <h2>Welcome,{name}!</h2>}
-      </div> */}
+      
     </div>
   );
 };
