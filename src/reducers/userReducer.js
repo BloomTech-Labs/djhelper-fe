@@ -125,6 +125,7 @@ export const userReducer = (state = initialState, action) => {
       return { ...state, loginUserStart: true };
 
     case LOGIN_USER_SUCCESS:
+     
       return {
         ...state,
         tokenPresent: true,

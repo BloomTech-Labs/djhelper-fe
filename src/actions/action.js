@@ -1,11 +1,14 @@
 /* eslint-disable camelcase */
+import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import {
   axiosWithAuthSpotify,
   axiosWithAuthSpotifySearch
 } from '../utils/axiosWithAuthSpotify';
+import { Route, Redirect } from 'react-router-dom';
 
 import URLSearchParams from '@ungap/url-search-params';
+import keyMirror from 'keymirror';
 
 export const SET_NAME = 'SET_NAME';
 export const SET_USERNAME = 'SET_USERNAME';
@@ -74,6 +77,8 @@ export const ADD_VOTE_ERROR = 'ADD_VOTE_ERROR';
 export const EDIT_QUEUE_NUM_START = 'EDIT_QUEUE_NUM_START';
 export const EDIT_QUEUE_NUM_SUCCESS = 'EDIT_QUEUE_NUM_SUCCESS';
 export const EDIT_QUEUE_NUM_ERROR = 'EDIT_QUEUE_NUM_ERROR';
+export const HIDE_MODAL = 'HIDE_MODAL';
+export const SHOW_MODAL = 'SHOW_MODAL';
 
 // action creators
 
@@ -110,26 +115,6 @@ export const loginUser = (userInfo, history) => dispatch => {
     .then(response => {
       localStorage.setItem('token', response.data.token);
       dispatch({ type: LOGIN_USER_SUCCESS, payload: response.data });
-
-      // Getting client id, secret, and grant type into correct format
-
-      const data = new URLSearchParams({
-        client_id: process.env.REACT_APP_SPOTIFY_CLIENT_ID,
-        grant_type: 'client_credentials'
-      });
-
-      // Getting an access token for the spotify API
-      axiosWithAuthSpotify()
-        .post('/api/token', data)
-        .then(response => {
-          localStorage.setItem(
-            'spotifyAccessToken',
-            response.data.access_token
-          );
-        })
-        .catch(err => {
-          // handle error
-        });
 
       if (
         !response.data.bio &&
@@ -413,3 +398,23 @@ export const getDJ = id => dispatch => {
       dispatch({ type: GET_DJ_ERROR, payload: err });
     });
 };
+
+// create modal
+
+// export const  ActionTypes = keyMirror({
+//   HIDE_MODAL: null,
+//   SHOW_MODAL: null,
+// })
+
+// export const showModal = ({ modalProps, modalType }) => dispatch => {
+//   dispatch({
+//     type: ActionTypes.SHOW_MODAL,
+//     modalProps,
+//     modalType
+//   })
+// }
+// export const hideModal = () => dispatch => {
+//   dispatch({
+//     type: ActionTypes.HIDE_MODAL
+//   })
+// }
