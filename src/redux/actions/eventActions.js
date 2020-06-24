@@ -1,4 +1,5 @@
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+
 import {
   ADD_TO_SONG_REDUCER_START,
   ADD_TO_SONG_REDUCER_SUCCESS,
@@ -81,6 +82,7 @@ export const addEvent = (eventInfo, history) => dispatch => {
         type: ADD_TO_SONG_REDUCER_SUCCESS,
         payload: response2.data.id
       });
+
       history.push('/dj');
     })
     .catch(err2 => {
@@ -89,7 +91,6 @@ export const addEvent = (eventInfo, history) => dispatch => {
         payload: err2
       });
     });
- 
 };
 
 export const editEvent = (eventInfo, event_id) => dispatch => {

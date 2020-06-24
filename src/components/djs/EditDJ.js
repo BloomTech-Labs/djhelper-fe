@@ -5,9 +5,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { editUser, cancelEditUser, deleteUser } from '../actions/action';
+import {
+  editUser,
+  cancelEditUser,
+  deleteUser
+} from '../../redux/actions/action';
 
-import DJMixer from '../images/DJMixer.jpg';
+import DJMixer from '../../images/DJMixer.jpg';
 
 const EditDJ = () => {
   const dispatch = useDispatch();

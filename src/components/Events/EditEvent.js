@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
- import {
+import {
   editEvent,
-  deleteEvent,
-//   getLocation,
-//   editLocation
- } from '../actions/eventActions';
-import formatDateForInput from '../utils/formatDateForInput';
+  deleteEvent
+  //   getLocation,
+  //   editLocation
+} from '../../redux/actions/eventActions';
+import formatDateForInput from '../../utils/formatDateForInput';
 
 const EditEvent = props => {
   const dispatch = useDispatch();

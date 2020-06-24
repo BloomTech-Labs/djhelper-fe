@@ -1,13 +1,8 @@
 import React from 'react';
 
-import formatDate from '../utils/formatDate';
+import formatDate from '../../utils/formatDate';
 
 const Event = props => {
-  // <<<<<<< Updated upstream
-  //   console.log("propsEvent", props.history)
-  // =======
-  //   console.log('My props: ', props);
-  // >>>>>>> Stashed changes
   let eventClass;
   if (props.data.active === `event${props.num}`) {
     eventClass = 'selected';

@@ -48,7 +48,7 @@ import {
   GET_EVENTS_ERROR,
   GET_EVENT_START,
   GET_EVENT_SUCCESS,
-  GET_EVENT_ERROR,
+  GET_EVENT_ERROR
   // GET_LOCATION_START,
   // GET_LOCATION_SUCCESS,
   // GET_LOCATION_ERROR,
@@ -112,7 +112,6 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         registerUserStart: false,
-        name: action.payload.name,
         username: action.payload.username,
         id: action.payload.id,
         email: action.payload.email
@@ -125,7 +124,6 @@ export const userReducer = (state = initialState, action) => {
       return { ...state, loginUserStart: true };
 
     case LOGIN_USER_SUCCESS:
-     
       return {
         ...state,
         tokenPresent: true,
@@ -359,49 +357,49 @@ export const userReducer = (state = initialState, action) => {
         getEventsStart: false
       };
 
-  //   case GET_LOCATION_START:
-  //     return {
-  //       ...state,
-  //       getLocationStart: true
-  //     };
+    //   case GET_LOCATION_START:
+    //     return {
+    //       ...state,
+    //       getLocationStart: true
+    //     };
 
-  //   case GET_LOCATION_SUCCESS:
-  //     const filteredLocations2 = state.locations.filter(
-  //       location => location.id !== action.payload.id
-  //     );
-  //     return {
-  //       ...state,
-  //       getLocationStart: false,
-  //       locations: [...filteredLocations2, action.payload] // [...state.locations, action.payload]
-  //     };
+    //   case GET_LOCATION_SUCCESS:
+    //     const filteredLocations2 = state.locations.filter(
+    //       location => location.id !== action.payload.id
+    //     );
+    //     return {
+    //       ...state,
+    //       getLocationStart: false,
+    //       locations: [...filteredLocations2, action.payload] // [...state.locations, action.payload]
+    //     };
 
-  //   case GET_LOCATION_ERROR:
-  //     return {
-  //       ...state,
-  //       getLocationError: true
-  //     };
+    //   case GET_LOCATION_ERROR:
+    //     return {
+    //       ...state,
+    //       getLocationError: true
+    //     };
 
-  //   case EDIT_LOCATION_START:
-  //     return {
-  //       ...state,
-  //       getLocationStart: true
-  //     };
+    //   case EDIT_LOCATION_START:
+    //     return {
+    //       ...state,
+    //       getLocationStart: true
+    //     };
 
-  //   case EDIT_LOCATION_SUCCESS:
-  //     const filteredLocations = state.locations.filter(
-  //       location => location.id !== action.payload.id
-  //     );
-  //     return {
-  //       ...state,
-  //       locations: [...filteredLocations, action.payload],
-  //       getLocationStart: false
-  //     };
+    //   case EDIT_LOCATION_SUCCESS:
+    //     const filteredLocations = state.locations.filter(
+    //       location => location.id !== action.payload.id
+    //     );
+    //     return {
+    //       ...state,
+    //       locations: [...filteredLocations, action.payload],
+    //       getLocationStart: false
+    //     };
 
-  //   case EDIT_LOCATION_ERROR:
-  //     return {
-  //       ...state,
-  //       getLocationError: true
-  //     };
+    //   case EDIT_LOCATION_ERROR:
+    //     return {
+    //       ...state,
+    //       getLocationError: true
+    //     };
 
     default:
       return state;

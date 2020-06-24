@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Truncate from 'react-truncate';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { axiosWithAuthSpotifySearch } from '../utils/axiosWithAuthSpotify';
+import { axiosWithAuthSpotifySearch } from '../../utils/axiosWithAuthSpotify';
 
 import {
   addSongToPlaylistDJ,
   removeSongFromPlaylistDJ,
   addVoteToSong,
   editQueueNum
-} from '../actions/action';
+} from '../../redux/actions/action';
 
 const Songs = props => {
   const dispatch = useDispatch();
@@ -39,11 +39,11 @@ const Songs = props => {
     return Math.floor(Math.random() * (max - min + 1)) + min; // The maximum is inclusive and the minimum is inclusive
   }
   const imageList = {
-    image1: require('../images/Blue.svg'),
-    image2: require('../images/Orange.svg'),
-    image3: require('../images/Green.svg'),
-    image4: require('../images/Pink.svg'),
-    image5: require('../images/Yellow.svg')
+    image1: require('../../images/Blue.svg'),
+    image2: require('../../images/Orange.svg'),
+    image3: require('../../images/Green.svg'),
+    image4: require('../../images/Pink.svg'),
+    image5: require('../../images/Yellow.svg')
   };
   const [songState, setSongState] = useState({
     readyToPlay: true,

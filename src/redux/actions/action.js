@@ -1,10 +1,10 @@
 /* eslint-disable camelcase */
 import React from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import {
   axiosWithAuthSpotify,
   axiosWithAuthSpotifySearch
-} from '../utils/axiosWithAuthSpotify';
+} from '../../utils/axiosWithAuthSpotify';
 import { Route, Redirect } from 'react-router-dom';
 
 import URLSearchParams from '@ungap/url-search-params';
@@ -93,20 +93,6 @@ export const setUsername = username => {
 };
 
 // onboarding
-
-export const registerUserAction = (infoNeeded, history) => dispatch => {
-  dispatch({ type: REGISTER_USER_START });
-  axiosWithAuth()
-    .post('/register/dj/', infoNeeded)
-    .then(response => {
-      history.push('/login');
-      dispatch({ type: REGISTER_USER_SUCCESS, payload: response.data });
-    })
-    .catch(err => {
-      dispatch({ type: REGISTER_USER_ERROR, payload: err });
-    });
-};
-
 export const loginUser = (userInfo, history) => dispatch => {
   dispatch({ type: LOGIN_USER_START });
 
@@ -126,11 +112,23 @@ export const loginUser = (userInfo, history) => dispatch => {
       // } else {
       //   history.push('/dj');
       // }
-      
-      
     })
     .catch(err => {
       dispatch({ type: LOGIN_USER_ERROR, payload: err });
+    });
+};
+
+export const registerUserAction = (infoNeeded, history) => dispatch => {
+  dispatch({ type: REGISTER_USER_START });
+  axiosWithAuth()
+    .post('/register/dj/', infoNeeded)
+    .then(response => {
+      // history.push('/dj');
+      dispatch({ type: REGISTER_USER_SUCCESS, payload: response.data });
+      dispatch({ type: LOGIN_USER_SUCCESS, payload: response.data });
+    })
+    .catch(err => {
+      dispatch({ type: REGISTER_USER_ERROR, payload: err });
     });
 };
 

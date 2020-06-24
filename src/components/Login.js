@@ -6,7 +6,7 @@ import { Input } from 'reactstrap';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 
-import { loginUser } from '../actions/action';
+import { loginUser } from '../redux/actions/action';
 
 const Login = props => {
   const history = useHistory();

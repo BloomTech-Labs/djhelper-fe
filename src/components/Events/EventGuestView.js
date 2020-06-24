@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
-import { getDJ, getPlaylist } from '../actions/action';
-import { getEvent} from '../actions/eventActions';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { getDJ, getPlaylist } from '../../redux/actions/action';
+import { getEvent } from '../../redux/actions/eventActions';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import {
   axiosWithAuthSpotifySearch,
   axiosWithAuthSpotify
-} from '../utils/axiosWithAuthSpotify';
-import formatDate from '../utils/formatDate';
-import formatTime from '../utils/formatTime';
-import useWindowSize from '../utils/useWindowSize';
-import Songs from './Songs';
+} from '../../utils/axiosWithAuthSpotify';
+import formatDate from '../../utils/formatDate';
+import formatTime from '../../utils/formatTime';
+import useWindowSize from '../../utils/useWindowSize';
+import Songs from '../songs/Songs';
 
 const EventGuestView = props => {
   const { dj_id, event_id, location_id } = props.match.params;

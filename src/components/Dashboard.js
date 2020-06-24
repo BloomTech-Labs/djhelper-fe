@@ -5,12 +5,12 @@ import Carousel from '@brainhubeu/react-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import DashboardWelcome from './DashboardWelcome';
-import Event from './Event';
+import Event from './events/Event';
 import '@brainhubeu/react-carousel/lib/style.css';
-import PreviewEventDetails from './PreviewEventDetails';
+import PreviewEventDetails from './events/PreviewEventDetails';
 import NavigationBar from './NavigationBar';
 
-import { getEvents } from '../actions/eventActions';
+import { getEvents } from '../redux/actions/eventActions';
 
 const Dashboard = props => {
   console.log('historyprops', props.history);

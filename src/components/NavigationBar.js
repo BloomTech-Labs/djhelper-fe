@@ -4,10 +4,10 @@ import { NavLink } from 'react-router-dom';
 import { Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
 import Modal from 'react-modal';
 
-import { loginUser, logoutUser } from '../actions/action';
+import { loginUser, logoutUser } from '../redux/actions/action';
 
 import Login from './Login';
-import Register from "./Register"
+import Register from './Register';
 
 const NavigationBar = props => {
   const tokenPresent = useSelector(state => state.userReducer.tokenPresent);
@@ -71,28 +71,27 @@ const NavigationBar = props => {
 
     return (
       <Nav className="navElements" navbar>
-      
         <NavItem>
           <button className="button-signup" type="button" onClick={openModal}>
             Sign In
           </button>
-          <Modal isOpen={modalIsOpen} onRequestClose={closeModal}
-         >
+          <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
             <Login />
-         </Modal>
-           
+          </Modal>
         </NavItem>
-        
+
         <NavItem>
-        <button className="register-button" type="button" onClick={openModal2}>
+          <button
+            className="register-button"
+            type="button"
+            onClick={openModal2}
+          >
             Sign Up
           </button>
           <Modal isOpen={modalIsOpen2} onRequestClose={closeModal2}>
-          <Register/>
+            <Register />
           </Modal>
         </NavItem>
-       
-       
       </Nav>
     );
   };
