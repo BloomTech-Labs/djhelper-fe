@@ -115,17 +115,19 @@ export const loginUser = (userInfo, history) => dispatch => {
     .then(response => {
       localStorage.setItem('token', response.data.token);
       dispatch({ type: LOGIN_USER_SUCCESS, payload: response.data });
-
-      if (
-        !response.data.bio &&
-        !response.data.phone &&
-        !response.data.website &&
-        !response.data.profile_pic_url
-      ) {
-        history.push('/dj/setup');
-      } else {
-        history.push('/dj');
-      }
+      history.push('/dj');
+      // if (
+      //   !response.data.bio &&
+      //   !response.data.phone &&
+      //   !response.data.website &&
+      //   !response.data.profile_pic_url
+      // ) {
+      //   history.push('/dj/setup');
+      // } else {
+      //   history.push('/dj');
+      // }
+      
+      
     })
     .catch(err => {
       dispatch({ type: LOGIN_USER_ERROR, payload: err });

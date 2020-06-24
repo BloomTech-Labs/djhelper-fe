@@ -7,6 +7,7 @@ import Modal from 'react-modal';
 import { loginUser, logoutUser } from '../actions/action';
 
 import Login from './Login';
+import Register from "./Register"
 
 const NavigationBar = props => {
   const tokenPresent = useSelector(state => state.userReducer.tokenPresent);
@@ -16,6 +17,7 @@ const NavigationBar = props => {
   let djProfile;
 
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalIsOpen2, setIsOpen2] = useState(false);
   const [userInfo, setUserInfo] = useState({
     username: '',
     password: ''
@@ -30,6 +32,12 @@ const NavigationBar = props => {
   };
   const closeModal = () => {
     setIsOpen(false);
+  };
+  const openModal2 = () => {
+    setIsOpen2(true);
+  };
+  const closeModal2 = () => {
+    setIsOpen2(false);
   };
 
   const navState = () => {
@@ -63,19 +71,28 @@ const NavigationBar = props => {
 
     return (
       <Nav className="navElements" navbar>
+      
         <NavItem>
           <button className="button-signup" type="button" onClick={openModal}>
-            SignIn
+            Sign In
           </button>
-          <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+          <Modal isOpen={modalIsOpen} onRequestClose={closeModal}
+         >
             <Login />
+         </Modal>
+           
+        </NavItem>
+        
+        <NavItem>
+        <button className="register-button" type="button" onClick={openModal2}>
+            Sign Up
+          </button>
+          <Modal isOpen={modalIsOpen2} onRequestClose={closeModal2}>
+          <Register/>
           </Modal>
         </NavItem>
-        <NavItem className="button-signup">
-          <NavLink data-testid="register-nav" to="/register">
-            sign up
-          </NavLink>
-        </NavItem>
+       
+       
       </Nav>
     );
   };
