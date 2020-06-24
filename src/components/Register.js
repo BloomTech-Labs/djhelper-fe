@@ -110,7 +110,7 @@ const Register = props => {
 
   return (
     <div className="registration-page">
-      <NavigationBar />
+      {/* <NavigationBar /> */}
       <div className="registration-page-block">
         <h1>Know what your audience wants.</h1>
       </div>
