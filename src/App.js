@@ -2,23 +2,22 @@ import React from 'react';
 import './fontawesome';
 
 import { Route, BrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
-
-import Home from './components/Home';
+import Home from './components/pages/Home';
 import Register from './components/Register';
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
-import DjInterface from './components/DjInterface';
-import EventPage from './components/EventPage';
-import About from './components/About';
-import DJProfile from './components/DJProfile';
-import SetUpProfile from './components/SetUpProfile';
-import AddEvent from './components/Events/AddEvent';
-import EventGuestView from './components/EventGuestView';
+import DjInterface from './components/djs/DjInterface';
+import EventPage from './components/events/EventPage';
+import About from './components/pages/About';
+import DJProfile from './components/djs/DJProfile';
+import SetUpProfile from './components/djs/SetUpProfile';
+import AddEvent from './components/events/AddEvent';
+import EventGuestView from './components/events/EventGuestView';
 // import LoginModal from './components/LoginModal'
 
 import './stylesheets/index.scss';
-
 
 function App() {
   return (
@@ -27,7 +26,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
-        
+
         <PrivateRoute exact path="/dj" component={DjInterface} />
         <PrivateRoute exact path="/dj/event/:id" component={EventPage} />
         <PrivateRoute path="/dj/profile" component={DJProfile} />
@@ -39,6 +38,7 @@ function App() {
           component={EventGuestView}
         />
       </BrowserRouter>
+      <ToastContainer autoClass={3000} hideProgressBar />
     </div>
   );
 }

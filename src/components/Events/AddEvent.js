@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import NavigationBar from '../NavigationBar';
 
-import { addEvent } from '../../actions/eventActions';
+import { addEvent } from '../../redux/actions/eventActions';
 import EventInputForm from './EventInputForm';
 
 const AddEvent = props => {
@@ -24,7 +24,6 @@ const AddEvent = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('event to submit: ', eventData);
     dispatch(addEvent(eventData, props.history));
   };
 

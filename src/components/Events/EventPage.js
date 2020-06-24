@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import NavigationBar from './NavigationBar';
-import Songs from './Songs';
-import SongSearch from './SongSearch';
+import NavigationBar from '../NavigationBar';
+import Songs from '../songs/Songs';
+import SongSearch from '../songs/SongSearch';
 
-import formatDate from '../utils/formatDate';
+import formatDate from '../../utils/formatDate';
 
 import EditEvent from './EditEvent';
-import { searchForTrack } from '../actions/action';
+import { searchForTrack } from '../../redux/actions/action';
 
 const EventPage = props => {
   const dispatch = useDispatch();
   const dj_id = useSelector(state => state.userReducer.id);
   const FRONTEND_HOST =
-    process.env.REACT_APP_FRONTEND_HOST || "https://dj-helper-be.herokuapp.com";
+    process.env.REACT_APP_FRONTEND_HOST || 'https://dj-helper-be.herokuapp.com';
 
   const [qrCode, setQrCode] = useState(null);
   const [showQrCode, setShowQrCode] = useState(false);

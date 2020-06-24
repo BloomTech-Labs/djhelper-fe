@@ -3,7 +3,7 @@ import { Input } from 'reactstrap';
 import { useDispatch } from 'react-redux';
 import SongResults from './SongResults';
 
-import { searchForTrack } from '../actions/action';
+import { searchForTrack } from '../../redux/actions/action';
 
 const SongSearch = () => {
   const [searchInput, setSearchInput] = useState({
@@ -27,7 +27,7 @@ const SongSearch = () => {
   };
 
   return (
-    <div className='search'>
+    <div className="search">
       <Input
         data-testid="songSearch"
         placeholder="Search artists, tracks..."

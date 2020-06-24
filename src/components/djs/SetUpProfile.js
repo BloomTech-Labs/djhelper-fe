@@ -4,8 +4,8 @@ import { faCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import PropTypes from 'prop-types';
-import { updateUser } from '../actions/action';
-import { validUrl } from '../utils/validUrl';
+import { updateUser } from '../../redux/actions/action';
+import { validUrl } from '../../utils/validUrl';
 
 const SetUpProfile = props => {
   const dispatch = useDispatch();

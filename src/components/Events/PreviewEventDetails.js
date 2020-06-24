@@ -1,9 +1,9 @@
 import React from 'react';
 import Truncate from 'react-truncate';
 import { Link } from 'react-router-dom';
-import Songs from './Songs';
+import Songs from '../songs/Songs';
 
-import formatDate from '../utils/formatDate';
+import formatDate from '../../utils/formatDate';
 
 const PreviewEventDetails = props => {
   const { currentlyActive } = props;

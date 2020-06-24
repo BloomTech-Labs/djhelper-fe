@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import { Form, Input } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavigationBar from './NavigationBar';
-import { registerUserAction } from '../actions/action';
+
+import { registerUserAction } from '../redux/actions/action';
 
 const Register = props => {
+  const history = useHistory();
+
   const dispatch = useDispatch();
   const [userInfo, setUserInfo] = useState({
     username: '',
     password: '',
     repassword: '',
-    name: '',
     email: ''
   });
 
@@ -26,10 +28,9 @@ const Register = props => {
     const infoNeeded = {
       username: userInfo.username,
       password: userInfo.password,
-      name: userInfo.name,
       email: userInfo.email
     };
-    dispatch(registerUserAction(infoNeeded, props.history));
+    dispatch(registerUserAction(infoNeeded, history));
   };
 
   const handleChange = e => {
@@ -126,16 +127,6 @@ const Register = props => {
           <Form data-testid="registerForm" onSubmit={handleSubmit}>
             <legend>Register</legend>
             <hr />
-            <div>
-              <label htmlFor="name">Name</label>
-              <Input
-                name="name"
-                type="text"
-                id="name"
-                required
-                onChange={handleChange}
-              />
-            </div>
             <div>
               <label htmlFor="email">Email</label>
               <Input

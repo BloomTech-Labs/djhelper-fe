@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { startEditUser } from '../actions/action';
+import { startEditUser } from '../../redux/actions/action';
 
 import EditDJ from './EditDJ';
-import NavigationBar from './NavigationBar';
+import NavigationBar from '../NavigationBar';
 
-import DJMixer from '../images/DJMixer.jpg';
+import DJMixer from '../../images/DJMixer.jpg';
 
 const DJProfile = props => {
   const dispatch = useDispatch();
