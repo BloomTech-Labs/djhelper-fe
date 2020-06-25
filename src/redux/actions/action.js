@@ -94,6 +94,7 @@ export const setUsername = username => {
 
 // onboarding
 export const loginUser = (userInfo, history) => dispatch => {
+  console.log('loing actions hit');
   dispatch({ type: LOGIN_USER_START });
 
   axiosWithAuth()
@@ -125,7 +126,22 @@ export const registerUserAction = (infoNeeded, history) => dispatch => {
     .then(response => {
       // history.push('/dj');
       dispatch({ type: REGISTER_USER_SUCCESS, payload: response.data });
-      dispatch({ type: LOGIN_USER_SUCCESS, payload: response.data });
+
+      // login user
+
+      dispatch({ type: LOGIN_USER_START });
+      axiosWithAuth()
+        .post('/login/dj/', infoNeeded)
+        .then(response2 => {
+          localStorage.setItem('token', response2.data.token);
+          dispatch({ type: LOGIN_USER_SUCCESS, payload: response2.data });
+          history.push('/dj');
+        })
+        .catch(err => {
+          dispatch({ type: LOGIN_USER_ERROR, payload: err });
+        });
+
+      // end of login user
     })
     .catch(err => {
       dispatch({ type: REGISTER_USER_ERROR, payload: err });

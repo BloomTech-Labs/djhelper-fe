@@ -1,5 +1,6 @@
 import React from 'react';
 import './fontawesome';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { Route, BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -38,7 +39,7 @@ function App() {
           component={EventGuestView}
         />
       </BrowserRouter>
-      <ToastContainer autoClass={3000} hideProgressBar />
+      <ToastContainer autoClose={3000} hideProgressBar />
     </div>
   );
 }

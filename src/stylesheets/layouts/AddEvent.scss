@@ -1,23 +1,18 @@
 .add-event {
-  background: $dark3;
   color: white;
-  // background-image: url('../../images/profile-banner.svg');
-  background-repeat: repeat-x;
-  min-height: 120vh;
   .add-event-title {
     text-align: center;
-    padding-top: 6rem;
   }
   .main-form {
     width: 80%;
-    margin: 8rem auto 2rem;
+    margin: 1rem auto 2rem;
     form {
       display: flex;
       flex-flow: row wrap;
       justify-content: space-around;
       align-items: stretch;
       .form-section {
-        width: 40%;
+        width: 100%;
         @media (max-width: 600px) {
           width: 100%;
         }
@@ -25,7 +20,7 @@
         flex-flow: column;
         justify-content: space-around;
         align-items: stretch;
-        margin-top: 2rem;
+        margin-top: 0rem;
         .venue-info-title {
           margin-top: 1.5rem;
         }
@@ -139,5 +134,17 @@
         }
       }
     }
+  }
+}
+
+.btn-closeModal {
+  position: absolute;
+  top: 0px;
+  right: 2px;
+
+  &__icon {
+    font-size: 5rem;
+    background: $color-blue-light;
+    color: $color-white-1;
   }
 }

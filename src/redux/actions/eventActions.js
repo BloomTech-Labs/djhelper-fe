@@ -44,10 +44,7 @@ export const DELETE_EVENT_ERROR = 'DELETE_EVENT_ERROR';
 
 export const addEvent = (eventInfo, history) => dispatch => {
   dispatch({ type: ADD_EVENT_START });
-
   dispatch({ type: ADD_TO_SONG_REDUCER_START });
-
-  // First, add location to locations table. POST https://api.dj-helper.com/api/auth/location/
 
   const eventToSubmit = {
     name: eventInfo.name,
@@ -58,17 +55,7 @@ export const addEvent = (eventInfo, history) => dispatch => {
     notes: eventInfo.notes
   };
 
-  // Only adds start_time and end_time if the user has put values in those fields
-  // (Without these lines, app crashes if the start_time and end_time are left blank)
-  if (eventInfo.start_time !== '') {
-    eventToSubmit.start_time = eventInfo.start_time;
-  }
-
-  if (eventInfo.end_time !== '') {
-    eventToSubmit.end_time = eventInfo.end_time;
-  }
-
-  axiosWithAuth()
+  return axiosWithAuth()
     .post('/auth/event/', eventToSubmit)
     .then(response2 => {
       dispatch({
@@ -84,6 +71,7 @@ export const addEvent = (eventInfo, history) => dispatch => {
       });
 
       history.push('/dj');
+      return response2;
     })
     .catch(err2 => {
       dispatch({
