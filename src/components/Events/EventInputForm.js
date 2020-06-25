@@ -5,8 +5,6 @@ function EventInputForm({ handleSubmit, handleInputChange, eventData }) {
   return (
     <div className="main-form">
       <form onSubmit={handleSubmit}>
-        <div className="form-section"></div>
-
         <div className="form-section">
           <div className="input-group">
             <label htmlFor="name">Event Name:</label>
@@ -67,9 +65,6 @@ function EventInputForm({ handleSubmit, handleInputChange, eventData }) {
               value={eventData.date}
             />
           </div>
-        </div>
-
-        <div className="form-section">
           <button type="submit" data-testid="submit-button">
             Add Event
           </button>
