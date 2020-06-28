@@ -5,13 +5,14 @@ import { Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
 import Modal from 'react-modal';
 
 import { loginUser, logoutUser } from '../redux/actions/action';
+import * as Styles from './Styles';
 
-import Login from './Login';
+import Login from './loginRegistration/Login';
 import Register from './Register';
 
 const NavigationBar = props => {
   const tokenPresent = useSelector(state => state.userReducer.tokenPresent);
-  const token = localStorage.token;
+  const { token } = localStorage;
 
   let home;
   let djProfile;
@@ -75,7 +76,11 @@ const NavigationBar = props => {
           <button className="button-signup" type="button" onClick={openModal}>
             Sign In
           </button>
-          <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            style={Styles.loginModalStyles}
+          >
             <Login />
           </Modal>
         </NavItem>

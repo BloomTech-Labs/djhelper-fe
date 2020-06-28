@@ -1,0 +1,60 @@
+.loginForm {
+  width: 100%;
+  background: $color-white-4;
+  height: 400px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+
+  & > * {
+    margin: 5% 0;
+  }
+}
+
+.inputField {
+  width: 100%;
+  background: $color-white-3;
+  border: 1px solid $color-grey-1;
+  border-radius: 3px;
+  height: 4rem;
+  display: block;
+
+  font-family: Mukta;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2.4rem;
+  line-height: 2.8rem;
+  color: $color-black-1;
+  padding: 0 1rem;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+/* Change autocomplete styles in WebKit */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid $color-grey-1;
+  -webkit-text-fill-color: inherit;
+  -webkit-box-shadow: 0 0 0px 1000px $color-white-3 inset;
+  transition: background-color 5000s ease-in-out 0s;
+  padding: 0 1rem;
+}
+
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder,
+:-moz-placeholder {
+  color: $color-grey-1;
+}

@@ -1,115 +1,49 @@
 /*Login Page Styles */
-.login-page {
-  min-height: 110vh;
+.login {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  form {
-    width: 35%;
-    background: rgba(255, 255, 255, 0.75);
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 5px;
-    margin-top: 25vh;
+}
 
-    padding-left: 3rem;
-    padding-right: 3rem;
-    padding-bottom: 1rem;
-    padding-top: 10vh;
-    font-size: 1vw;
-    @include for-phone-only {
-      font-size: 1rem;
-      width: 70%;
-      padding: 1.5rem 1rem;
-      margin-top: 4rem;
-    }
-    p {
-      width: 90%;
-      text-align: left;
-      margin-top: 8%;
-      text-decoration: none;
-      a {
-        color: black;
-      }
-    }
-    div {
-      width: 100%;
-      padding-bottom: 0.5rem;
-      font-size: 1.8vw;
-      display: flex;
-      flex-flow: column nowrap;
-      align-items: center;
-    }
-    legend {
-      font-size: 4vw;
-      font-weight: normal;
-      text-align: center;
-      @include for-phone-only {
-        font-size: 2rem;
-      }
-    }
-    label {
-      width: 90%;
-      font-size: 1vw;
-      font-weight: 700;
-      @include for-phone-only {
-        font-size: 0.8rem;
-      }
-    }
-    input {
-      line-height: 1.5rem;
-      border: none;
-      width: 90%;
-      outline: none;
-      font-size: 1vw;
-      &:hover {
-        border-top: 3px solid black;
-        border-radius: 0px 0px 3px 3px;
-        outline: none;
-      }
-      @include for-phone-only {
-        font-size: 0.8rem;
-      }
-    }
+legend {
+  font-size: 4vw;
+  font-weight: normal;
+  text-align: center;
+}
 
-    .password-area {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-between;
-      align-items: flex-end;
-      div {
-        width: 45%;
-      }
-    }
-    button {
-      align-self: center;
-      width: 40%;
-      font-size: 1vw;
-      font-weight: 700;
-      margin: 1rem;
-      margin-top: 10%;
-      color: white;
-      background: black;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      &:hover {
-        font-style: italic;
-      }
-      @include for-phone-only {
-        font-size: 0.8rem;
-      }
-    }
-  }
-  .registration-page-block {
-    width: 35%;
-    margin: 5rem 3rem;
-  }
-  h1 {
-    font-size: 5rem;
-    color: white;
+.loginForgot {
+  align-self: stretch;
+
+  font-family: Mukta;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2.4rem;
+  line-height: 2.8rem;
+
+  color: $color-grey-dark;
+}
+
+.login-extra {
+  margin-top: 2rem;
+  align-self: stretch;
+  background: $color-white-4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+
+  p,
+  &__link {
+    font-family: Mukta;
+    font-style: normal;
     font-weight: bold;
+    font-size: 20px;
+    line-height: 28px;
+    color: $color-black-1;
+    margin: 0;
+  }
+
+  &__link {
+    color: $color-primary;
   }
 }

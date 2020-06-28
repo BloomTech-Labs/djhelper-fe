@@ -10,19 +10,12 @@ import '@brainhubeu/react-carousel/lib/style.css';
 import PreviewEventDetails from './events/PreviewEventDetails';
 import NavigationBar from './NavigationBar';
 
+import * as Styles from './Styles';
+
 import { getEvents } from '../redux/actions/eventActions';
 import AddEvent from './events/AddEvent';
 
 Modal.setAppElement('#root');
-const customModalStyles = {
-  overlay: { background: 'transparent' },
-  content: {
-    backgroundColor: '#2997ef',
-    maxWidth: '400px',
-    maxHeight: '450px',
-    margin: 'auto'
-  }
-};
 
 const Dashboard = props => {
   const dispatch = useDispatch();
@@ -111,11 +104,12 @@ const Dashboard = props => {
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={() => setModalIsOpen(false)}
-          style={customModalStyles}
+          style={Styles.eventModalStyles}
         >
           <AddEvent setModalIsOpen={setModalIsOpen} history={props.history} />
           <div>
             <button
+              type="button"
               className="btn-closeModal"
               onClick={() => setModalIsOpen(false)}
             >
