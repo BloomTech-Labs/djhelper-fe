@@ -39,7 +39,7 @@ const Home = props => {
       <section className="bottom-imgs">
         <div className="img1">
           <img src={dancing} alt="dancing" />
-          <p>Share your mix with guests</p>
+          <p>Share your mix with guests </p>
         </div>
         <div className="img2">
           <img src={headphone} alt="headphone" />
@@ -54,7 +54,16 @@ const Home = props => {
         <div className="bottom-mid">
           <h1>Let the music speak for itself</h1>
           <p>Start taking requests</p>
-          <button>Start Today Free</button>
+          <button >Start Today Free</button>
+        </div>
+      </section>
+      <section>
+        <div className="footer1">
+        2020 DJ-Helper all rights reserved</div>
+       <div className="footer2"> 
+       <p>Home</p>
+       <p>IPA Libaray</p>
+       <p>Contact</p>
         </div>
       </section>
     </div>

@@ -112,18 +112,43 @@
   text-align: center;
   color: white;
   button {
-    align-self: center;
-    width: 40%;
-    font-size: 1vw;
-    font-weight: 700;
-    margin: 1rem;
-    color: white;
-    background: black;
+    width: 180px;
+    height: 40px;
+    background:$color-secondary;
+    border-radius: 5rem;
+    margin: 1%;
+    cursor: pointer;
+    font-family: Mukta;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 40px;
+    color: $color-white-2;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
+  }
 }
-}
+  .footer1{
+    width: 700px;
+    height: 26px;
+  left: 50px;
+  top: 2074px;
+  color: #F1F1F1;
+  padding-left: 2%;
+  font-family: Mako;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 20px;
+  }
+  .footer2{
+    padding-left:5%;
+    width: 700px;
+    height: 26px;
+    color: #F1F1F1;
+    display: flex;
+    flex-flow: row wrap;
+  }
+
 
 
 // margin-bottom: 1.6rem;
