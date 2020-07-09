@@ -6,7 +6,7 @@ import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 import { store } from './store';
 
-import EditDJ from '../components/DJProfile';
+import EditDJ from '../components/djs/EditDJ';
 
 expect.extend({ toBeInTheDocument });
 

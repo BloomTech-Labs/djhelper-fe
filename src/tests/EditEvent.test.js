@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
-import EditEvent from '../components/AddEvent';
+import EditEvent from '../components/Events/AddEvent';
 import { store } from './store';
 
 expect.extend({ toBeInTheDocument });

@@ -6,7 +6,7 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { store } from './store';
 
-import SetUpProfile from '../components/SetUpProfile';
+import SetUpProfile from '../components/djs/SetUpProfile';
 
 expect.extend({ toBeInTheDocument });
 

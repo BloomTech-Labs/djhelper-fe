@@ -6,7 +6,7 @@ import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 import { store } from './store';
 
-import App from '../components/Home';
+import App from '../components/pages/Home';
 
 test('App component renders to Homepage', () => {
   const history = createMemoryHistory();

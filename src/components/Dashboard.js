@@ -5,13 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Modal from 'react-modal';
 
 import DashboardWelcome from './DashboardWelcome';
-import Event from './events/Event';
+import Event from './Events/Event';
 import '@brainhubeu/react-carousel/lib/style.css';
-import PreviewEventDetails from './events/PreviewEventDetails';
+import PreviewEventDetails from './Events/PreviewEventDetails';
 import NavigationBar from './NavigationBar';
 
 import { getEvents } from '../redux/actions/eventActions';
-import AddEvent from './events/AddEvent';
+import AddEvent from './Events/AddEvent';
 
 Modal.setAppElement('#root');
 const customModalStyles = {
