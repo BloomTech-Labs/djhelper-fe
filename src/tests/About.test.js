@@ -6,7 +6,7 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { store } from './store';
 
-import About from '../components/About';
+import About from '../components/pages/About';
 
 expect.extend({ toBeInTheDocument });
 

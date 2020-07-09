@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { store } from './store';
+import { store } from '../redux/reducers/index';
 
 import Dashboard from '../components/Dashboard';
 
