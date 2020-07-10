@@ -1,7 +1,7 @@
-.loginForm {
+.inputForm {
   width: 100%;
   background: $color-white-4;
-  height: 400px;
+  height: 50rem;
 
   display: flex;
   flex-direction: column;
@@ -12,6 +12,10 @@
   & > * {
     margin: 5% 0;
   }
+}
+
+.registerForm {
+  height: 55rem;
 }
 
 .inputField {

@@ -7,13 +7,18 @@ import PropTypes from 'prop-types';
 import { loginUser } from '../../redux/actions/action';
 import LoginForm from './loginForm';
 
-const Login = () => {
+const Login = ({ toggleLoginModal, toggleRegisterModal }) => {
   const history = useHistory();
 
   const [userInfo, setUserInfo] = useState({
     username: '',
     password: ''
   });
+
+  const toggleRgistration = () => {
+    toggleLoginModal();
+    toggleRegisterModal();
+  };
 
   const isLoggingIn = useSelector(state => state.userReducer.loginUserStart);
 
@@ -39,17 +44,18 @@ const Login = () => {
       {!isLoggingIn && (
         <>
           <LoginForm handleSubmit={handleSubmit} handleChange={handleChange} />
-          <div className="login-extra">
+
+          <div className="form-extra">
             <p>
               Don&rsquo;t have an account yet?&nbsp;
               <b>
-                <Link
-                  data-testid="toRegistration"
-                  to="/register"
-                  className="login-extra__link"
+                <button
+                  type="button"
+                  className="btn-link"
+                  onClick={toggleRgistration}
                 >
                   Sign up!
-                </Link>
+                </button>
               </b>
             </p>
           </div>

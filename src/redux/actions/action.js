@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import React from 'react';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 import {
   axiosWithAuthSpotify,
   axiosWithAuthSpotifySearch

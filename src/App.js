@@ -6,7 +6,6 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import Home from './components/pages/Home';
-import Register from './components/Register';
 import PrivateRoute from './components/PrivateRoute';
 import DjInterface from './components/djs/DjInterface';
 import EventPage from './components/events/EventPage';
@@ -24,7 +23,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Route exact path="/" component={Home} />
-        <Route path="/register" component={Register} />
 
         <PrivateRoute exact path="/dj" component={DjInterface} />
         <PrivateRoute exact path="/dj/event/:id" component={EventPage} />

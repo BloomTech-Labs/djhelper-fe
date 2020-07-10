@@ -76,6 +76,11 @@
   line-height: 28px;
 
   color: $color-white-2;
+  cursor: pointer;
+
+  &:hover {
+    background: $color-black-1;
+  }
 }
 
 .btn-wrapper {
@@ -92,5 +97,23 @@
     background-color: grey;
     margin: 0 6px;
     flex: 1;
+  }
+}
+
+.btn-link {
+  color: $color-primary;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 600;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    text-decoration: underline black;
+    color: $color-black-1;
   }
 }

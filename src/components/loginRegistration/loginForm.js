@@ -1,10 +1,9 @@
 import React from 'react';
-import { Input } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 function LoginForm({ handleSubmit, handleChange }) {
   return (
-    <form onSubmit={handleSubmit} className="loginForm">
+    <form onSubmit={handleSubmit} className="inputForm">
       <legend>DJ Helper</legend>
 
       <input

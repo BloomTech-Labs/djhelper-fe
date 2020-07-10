@@ -10,8 +10,19 @@ export const eventModalStyles = {
 
 export const loginModalStyles = {
   content: {
-    width: '345px',
-    height: '600px',
+    width: '37rem',
+    height: '65rem',
+    margin: 'auto',
+    padding: 0,
+    background: 'transparent',
+    border: 'none'
+  }
+};
+
+export const registerModalStyles = {
+  content: {
+    width: '37rem',
+    height: '65rem',
     margin: 'auto',
     padding: 0,
     background: 'transparent',
