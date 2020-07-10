@@ -5,19 +5,20 @@ import { Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
 import Modal from 'react-modal';
 
 import { loginUser, logoutUser } from '../redux/actions/action';
+import * as Styles from './Styles';
 
-import Login from './Login';
-import Register from './Register';
+import Login from './loginRegistration/Login';
+import Register from './loginRegistration/Register';
 
 const NavigationBar = props => {
   const tokenPresent = useSelector(state => state.userReducer.tokenPresent);
-  const token = localStorage.token;
+  const { token } = localStorage;
 
   let home;
   let djProfile;
 
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [modalIsOpen2, setIsOpen2] = useState(false);
+  const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
+  const [registerModalIsOpen, setregisterModalIsOpen] = useState(false);
   const [userInfo, setUserInfo] = useState({
     username: '',
     password: ''
@@ -27,17 +28,12 @@ const NavigationBar = props => {
     dispatch(logoutUser());
   };
 
-  const openModal = () => {
-    setIsOpen(true);
+  const toggleLoginModal = () => {
+    setLoginModalIsOpen(!loginModalIsOpen);
   };
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-  const openModal2 = () => {
-    setIsOpen2(true);
-  };
-  const closeModal2 = () => {
-    setIsOpen2(false);
+
+  const toggleRegisterModal = () => {
+    setregisterModalIsOpen(!registerModalIsOpen);
   };
 
   const navState = () => {
@@ -72,11 +68,22 @@ const NavigationBar = props => {
     return (
       <Nav className="navElements" navbar>
         <NavItem>
-          <button className="button-signup" type="button" onClick={openModal}>
+          <button
+            className="button-signup"
+            type="button"
+            onClick={toggleLoginModal}
+          >
             Sign In
           </button>
-          <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-            <Login />
+          <Modal
+            isOpen={loginModalIsOpen}
+            onRequestClose={toggleLoginModal}
+            style={Styles.loginModalStyles}
+          >
+            <Login
+              toggleLoginModal={toggleLoginModal}
+              toggleRegisterModal={toggleRegisterModal}
+            />
           </Modal>
         </NavItem>
 
@@ -84,12 +91,19 @@ const NavigationBar = props => {
           <button
             className="register-button"
             type="button"
-            onClick={openModal2}
+            onClick={toggleRegisterModal}
           >
             Sign Up
           </button>
-          <Modal isOpen={modalIsOpen2} onRequestClose={closeModal2}>
-            <Register />
+          <Modal
+            isOpen={registerModalIsOpen}
+            onRequestClose={toggleRegisterModal}
+            style={Styles.registerModalStyles}
+          >
+            <Register
+              toggleLoginModal={toggleLoginModal}
+              toggleRegisterModal={toggleRegisterModal}
+            />
           </Modal>
         </NavItem>
       </Nav>

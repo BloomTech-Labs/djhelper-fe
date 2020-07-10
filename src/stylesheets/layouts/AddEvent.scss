@@ -136,15 +136,3 @@
     }
   }
 }
-
-.btn-closeModal {
-  position: absolute;
-  top: 0px;
-  right: 2px;
-
-  &__icon {
-    font-size: 5rem;
-    background: $color-blue-light;
-    color: $color-white-1;
-  }
-}
