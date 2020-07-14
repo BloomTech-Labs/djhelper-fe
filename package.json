@@ -33,7 +33,7 @@
     "react-router-dom": "^5.1.2",
     "react-router-modal": "^1.5.2",
     "react-scripts": "3.4.0",
-    "react-toastify": "^6.0.6",
+    "react-toastify": "^6.0.8",
     "react-truncate": "^2.4.0",
     "react-window-size-listener": "^1.5.4",
     "reactstrap": "^8.4.1",
