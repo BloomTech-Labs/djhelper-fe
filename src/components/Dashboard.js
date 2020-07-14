@@ -8,6 +8,7 @@ import DashboardWelcome from './DashboardWelcome';
 import Event from './events/Event';
 import '@brainhubeu/react-carousel/lib/style.css';
 import PreviewEventDetails from './events/PreviewEventDetails';
+import NavigationBar from './NavigationBar';
 
 import * as Styles from './Styles';
 
@@ -86,6 +87,7 @@ const Dashboard = props => {
 
   return (
     <div className="dashboard">
+      <NavigationBar tokenPresent={props.tokenPresent} />
       {whichComponent()}
       <h2>Events </h2>
 
