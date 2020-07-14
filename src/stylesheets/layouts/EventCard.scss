@@ -12,9 +12,11 @@
   justify-content: center;
   align-items: center;
   padding: 1rem 2rem;
-  width: 164px;
-  height: 164px;
+  width: 920px;
+  height: 160px;
   color: white;
+  background: #333333;
+  border-radius: 8px;
   transition: 0.3s;
   @include for-phone-only {
     height: 90%;

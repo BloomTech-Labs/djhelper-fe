@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import Register from '../components/Register';
-import { store } from './store';
+import { store } from '../redux/reducers';
 
 expect.extend({ toBeInTheDocument });
 
