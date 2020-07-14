@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
-import NavigationBar from '../NavigationBar';
+import NavigationBar from '../navigation/NavigationBar';
 import Chawn from '../../images/Chawn.jpg';
 import Shaya from '../../images/Shaya.jpg';
 import Josh from '../../images/Josh.jpg';

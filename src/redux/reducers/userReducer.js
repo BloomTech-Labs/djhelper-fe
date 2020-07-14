@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 // import { allEvents } from '../data/allEvents';  // Uncomment if you want to use dummy data
+import { UserInitialState } from './initialState';
 
 // actions
 import {
@@ -57,48 +58,7 @@ import {
   // EDIT_LOCATION_ERROR
 } from '../actions/eventActions';
 
-const initialState = {
-  username: '',
-  name: '',
-  email: '',
-  phone: '',
-  website: '',
-  id: '',
-  bio: '',
-  profile_img_src: '',
-  events: { active: '' }, // { ...allEvents, active: '' }, // if you want to use dummy data
-  locations: [],
-  registerUserStart: false,
-  registerUserError: false,
-  loginUserStart: false,
-  loginUserError: false,
-  logoutUserStart: false,
-  logoutUserError: false,
-  tokenPresent: false, // Consider using !!localStorage.getItem('token')
-  deleteUserStart: false,
-  deleteUserError: false,
-  editUserStart: false,
-  editUserError: false,
-  editUserProcessing: false,
-  addEventStart: false,
-  addEventError: false,
-  editEventStart: false,
-  editEventError: false,
-  deleteEventStart: true,
-  deleteEventError: false,
-  addLocationStart: false,
-  addLocationError: false,
-  getDJError: false,
-  getDJStart: false,
-  getEventsStart: false,
-  getEventsError: false,
-  getLocationStart: false,
-  getLocationError: false,
-  editLocationStart: false,
-  editLocationError: false
-};
-
-export const userReducer = (state = initialState, action) => {
+export const userReducer = (state = UserInitialState, action) => {
   switch (action.type) {
     case SET_NAME:
       return { ...state, name: action.payload };
@@ -145,7 +105,7 @@ export const userReducer = (state = initialState, action) => {
       return { ...state, logoutUserStart: true };
 
     case LOGOUT_USER_SUCCESS:
-      return { ...initialState, tokenPresent: false };
+      return { ...UserInitialState, tokenPresent: false };
 
     case LOGOUT_USER_ERROR:
       return { ...state, logoutUserStart: false, logoutUserError: true };
@@ -154,7 +114,7 @@ export const userReducer = (state = initialState, action) => {
       return { ...state, deleteUserStart: true };
 
     case DELETE_USER_SUCCESS:
-      return initialState;
+      return UserInitialState;
 
     case DELETE_USER_ERROR:
       return { ...state, deleteUserStart: false, deleteUserError: true };

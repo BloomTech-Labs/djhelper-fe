@@ -1,10 +1,8 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-  const tokenPresent = useSelector(state => state.userReducer.tokenPresent);
-  const token = localStorage.token;
+const PrivateRoute = ({ component: Component, token, ...rest }) => {
   return (
     <Route
       {...rest}
@@ -18,4 +16,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-export default PrivateRoute;
+const mapStateToProps = state => {
+  return {
+    token: state.userReducer.tokenPresent
+  };
+};
+
+export default connect(mapStateToProps)(PrivateRoute);

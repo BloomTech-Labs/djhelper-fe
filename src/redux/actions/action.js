@@ -94,7 +94,6 @@ export const setUsername = username => {
 
 // onboarding
 export const loginUser = (userInfo, history) => dispatch => {
-  console.log('loing actions hit');
   dispatch({ type: LOGIN_USER_START });
 
   axiosWithAuth()

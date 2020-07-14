@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import NavigationBar from '../NavigationBar';
+import NavigationBar from '../navigation/NavigationBar';
 import dancing from '../../images/dancing.png';
 import headphone from '../../images/headphone dude.png';
 
@@ -11,12 +11,9 @@ import Phone2 from '../../images/Phone-2.png';
 
 const Home = props => {
   const name = useSelector(state => state.userReducer.name);
-  const tokenPresent = useSelector(state => state.userReducer.tokenPresent);
 
   return (
     <div className="home-page">
-      <NavigationBar tokenPresent={tokenPresent} />
-
       <header className="header">
         <section className="header__left">
           <h1>The top-requested tracks at your fingertips.</h1>
@@ -54,16 +51,15 @@ const Home = props => {
         <div className="bottom-mid">
           <h1>Let the music speak for itself</h1>
           <p>Start taking requests</p>
-          <button >Start Today Free</button>
+          <button>Start Today Free</button>
         </div>
       </section>
       <section>
-        <div className="footer1">
-        2020 DJ-Helper all rights reserved</div>
-       <div className="footer2"> 
-       <p>Home</p>
-       <p>IPA Libaray</p>
-       <p>Contact</p>
+        <div className="footer1">2020 DJ-Helper all rights reserved</div>
+        <div className="footer2">
+          <p>Home</p>
+          <p>IPA Libaray</p>
+          <p>Contact</p>
         </div>
       </section>
     </div>

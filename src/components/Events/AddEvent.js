@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { toast } from 'react-toastify';
 
-import NavigationBar from '../NavigationBar';
+import NavigationBar from '../navigation/NavigationBar';
 
 import * as eventActions from '../../redux/actions/eventActions';
 import EventInputForm from './EventInputForm';

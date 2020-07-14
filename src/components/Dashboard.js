@@ -5,15 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Modal from 'react-modal';
 
 import DashboardWelcome from './DashboardWelcome';
-import Event from './Events/Event';
+import Event from './events/Event';
 import '@brainhubeu/react-carousel/lib/style.css';
-import PreviewEventDetails from './Events/PreviewEventDetails';
-import NavigationBar from './NavigationBar';
+import PreviewEventDetails from './events/PreviewEventDetails';
 
 import * as Styles from './Styles';
 
 import { getEvents } from '../redux/actions/eventActions';
-import AddEvent from './Events/AddEvent';
+import AddEvent from './events/AddEvent';
 
 Modal.setAppElement('#root');
 
@@ -87,7 +86,6 @@ const Dashboard = props => {
 
   return (
     <div className="dashboard">
-      <NavigationBar tokenPresent={props.tokenPresent} />
       {whichComponent()}
       <h2>Events </h2>
 
