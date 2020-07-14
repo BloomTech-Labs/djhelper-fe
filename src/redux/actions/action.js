@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import React from 'react';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 import {
   axiosWithAuthSpotify,
   axiosWithAuthSpotifySearch
@@ -94,7 +94,6 @@ export const setUsername = username => {
 
 // onboarding
 export const loginUser = (userInfo, history) => dispatch => {
-  console.log('loing actions hit');
   dispatch({ type: LOGIN_USER_START });
 
   axiosWithAuth()

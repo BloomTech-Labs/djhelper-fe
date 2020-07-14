@@ -11,7 +11,7 @@
 
 // General Styles Here
 
-// @import './base/reset.scss';
+@import './base/reset.scss';
 @import './base/global.scss';
 @import './base/page-layouts.scss';
 @import './base//utilites.scss';
@@ -19,8 +19,7 @@
 // Layouts for React Components Here
 @import './layouts/App.scss';
 @import './layouts/Navbar.scss';
-@import './layouts/Register.scss';
-@import './layouts/Login.scss';
+@import './layouts/LoginRegister.scss';
 @import './layouts/dashboard.scss';
 @import './layouts/EventPage.scss';
 @import './layouts/About.scss';
@@ -34,3 +33,4 @@
 
 // components
 @import './components/buttons.scss';
+@import './components/form.scss';

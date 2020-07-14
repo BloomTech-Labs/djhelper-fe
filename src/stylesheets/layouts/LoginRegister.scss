@@ -1,0 +1,49 @@
+/*Login Page Styles */
+.login {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+legend {
+  font-size: 4vw;
+  font-weight: normal;
+  text-align: center;
+}
+
+.loginForgot {
+  align-self: stretch;
+
+  font-family: Mukta;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2.4rem;
+  line-height: 2.8rem;
+
+  color: $color-grey-dark;
+}
+
+.form-extra {
+  margin-top: 2rem;
+  align-self: stretch;
+  background: $color-white-4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+
+  p,
+  &__link {
+    font-family: Mukta;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 28px;
+    color: $color-black-1;
+    margin: 0;
+  }
+
+  &__link {
+    color: $color-primary;
+  }
+}

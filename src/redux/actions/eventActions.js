@@ -1,4 +1,4 @@
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 import {
   ADD_TO_SONG_REDUCER_START,
@@ -69,7 +69,7 @@ export const addEvent = (eventInfo, history) => dispatch => {
         type: ADD_TO_SONG_REDUCER_SUCCESS,
         payload: response2.data.id
       });
-
+      console.log('response 2 from ations: ', response2);
       history.push('/dj');
       return response2;
     })

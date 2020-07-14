@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { getDJ, getPlaylist } from '../../redux/actions/action';
 import { getEvent } from '../../redux/actions/eventActions';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 import {
   axiosWithAuthSpotifySearch,
   axiosWithAuthSpotify

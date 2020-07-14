@@ -1,38 +1,22 @@
-.button-signup {
+.register-button {
   box-sizing: border-box;
   padding: 1rem 3rem;
 
   border: 2px solid $color-secondary-light;
   border-radius: 5rem;
- font-family: Mukta;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 2rem;
-    line-height: 3.3rem;
-    color: $color-secondary-light;
-    background-color:black;
-
-}
-
-.register-button{
-  box-sizing: border-box;
-  padding: 1rem 3rem;
-
-  border: 2px solid $color-secondary-light;
-  border-radius: 5rem;
- font-family: Mukta;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 2rem;
-    line-height: 3.3rem;
-    color: $color-secondary-light;
-    background-color:black;
+  font-family: Mukta;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 3.3rem;
+  color: $color-secondary-light;
+  background-color: black;
 }
 
 .btn-fancy {
   width: 22rem;
   height: 6rem;
-  background:$color-secondary;
+  background: $color-secondary;
   border-radius: 5rem;
   cursor: pointer;
   font-family: Mukta;
@@ -52,4 +36,88 @@
   line-height: 4rem;
   cursor: pointer;
   color: $color-blue-light;
+}
+
+.btn-closeModal {
+  position: absolute;
+  top: 0px;
+  right: 2px;
+
+  &__icon {
+    font-size: 5rem;
+    background: $color-blue-light;
+    color: $color-white-1;
+  }
+}
+
+.btn {
+  background: $color-secondary-2;
+  border-radius: 50px;
+  padding: 0.5rem 1.5rem;
+  font-family: Mukta;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+
+  color: $color-white-2;
+  cursor: pointer;
+
+  &:hover {
+    background: $color-black-1;
+  }
+}
+
+.btn-login,
+.btn-signup {
+  padding: 0.5rem 2.5rem;
+  border: 2px solid $color-secondary-light;
+  border-radius: 5rem;
+  font-family: Mukta;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 3.3rem;
+  color: $color-secondary-light;
+  background-color: black;
+  margin-left: 1rem;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.btn-wrapper {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:before,
+  &:after {
+    content: '';
+    height: 2px;
+    background-color: grey;
+    margin: 0 6px;
+    flex: 1;
+  }
+}
+
+.btn-link {
+  color: $color-primary;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 600;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    text-decoration: underline black;
+    color: $color-black-1;
+  }
 }

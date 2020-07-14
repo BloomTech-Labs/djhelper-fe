@@ -5,9 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Route, BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
+import NavigationBar from './components/navigation/NavigationBar';
 import Home from './components/pages/Home';
-import Register from './components/Register';
-import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import DjInterface from './components/djs/DjInterface';
 import EventPage from './components/Events/EventPage';
@@ -24,10 +23,9 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Route exact path="/" component={Home} />
-        <Route path="/register" component={Register} />
-        <Route path="/login" component={Login} />
+        <Route path="/" component={NavigationBar} />
 
+        <Route exact path="/" component={Home} />
         <PrivateRoute exact path="/dj" component={DjInterface} />
         <PrivateRoute exact path="/dj/event/:id" component={EventPage} />
         <PrivateRoute path="/dj/profile" component={DJProfile} />

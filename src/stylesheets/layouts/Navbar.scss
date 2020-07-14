@@ -1,95 +1,43 @@
 .navBar {
-  width: 100%;
   display: flex;
-  flex-flow: row nowrap;
   justify-content: space-between;
+  align-items: center;
   font-weight: 700;
-
   padding: 1.6rem 3%;
-
   background: $color-grey-darkest;
-  @include for-phone-only {
-    font-size: 1rem;
-  }
+  height: 8rem;
 
-  .logout-item {
-    cursor: pointer;
-  }
-
-  a {
-    color: white;
-    font-size: 2rem;
-    font-weight: 600;
-
-    text-decoration: none;
-    &:hover {
-      color: lightgrey;
-    }
-  }
-
-  .links {
+  &__navItems {
     display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    width: 100%;
-    margin-left: 43%;
-    @include for-phone-only {
-      margin-left: 18%;
-    }
-  }
-  #profile {
-    margin-left: 10%;
-    margin-right: 13%;
-  }
-
-  .navElements {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    width: 20%;
-    @include for-phone-only {
-      width: 65%;
-      margin-left: 25%;
-    }
-  }
 
-  .navElementsIcons {
+    & > * {
+      margin: 0 1rem;
+      padding: 1rem 1rem;
+      cursor: pointer;
+    }
+
     a {
-      color: grey;
+      color: white;
+      font-size: 2rem;
+      font-weight: 600;
+
+      text-decoration: none;
       &:hover {
         color: lightgrey;
       }
-
-      &:active {
-        color: white;
-      }
     }
 
-    .selected {
-      color: white;
-      &:hover {
-        color: white;
-      }
+    button {
+      all: unset;
+      color: $color-primary;
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 3.3rem;
+      cursor: pointer;
     }
-
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    width: 65%;
-  }
-
-  .navElementsStatice {
-    & > * {
-      margin-left: 1.6rem;
-    }
-  }
-
-  &__static {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
   }
 
   .navbar-brand {
@@ -98,5 +46,97 @@
     font-weight: 800;
     line-height: 4.3rem;
     color: $color-white-1;
+    cursor: pointer;
   }
+
+  &__mobile {
+    border-top: 2px solid grey;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 4rem;
+    position: fixed;
+    top: 8.1rem;
+    right: -900px;
+    height: 100%;
+    z-index: 100;
+    background: red;
+    max-width: 60rem;
+    width: 100%;
+    background: $color-grey-darkest;
+
+    transition: right 0.2s ease-out;
+  }
+
+  &__active {
+    right: 0px;
+  }
+}
+
+.mobileMenIcon {
+  display: flex;
+  position: relative;
+
+  &,
+  &::before,
+  &::after {
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 3rem;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    position: absolute;
+    left: 0;
+  }
+
+  &::before {
+    top: -1rem;
+  }
+
+  &::after {
+    top: 1rem;
+  }
+}
+
+.mobileMenIconActive {
+  position: relative;
+  background-color: transparent;
+  padding-right: 2rem;
+
+  &,
+  &::before,
+  &::after {
+    width: 3rem;
+    height: 2px;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    background-color: white;
+    transition: all 0.2s;
+  }
+
+  &::before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+
+  &::after {
+    top: 0;
+    transform: rotate(-135deg);
+  }
+}
+
+.btn-icon {
+  all: unset;
+  -webkit-text-fill-color: none;
+  cursor: pointer;
 }
