@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import NavigationBar from '../NavigationBar';
 import Songs from '../songs/Songs';
 import SongSearch from '../songs/SongSearch';
 
@@ -145,7 +144,6 @@ const EventPage = props => {
 
   return (
     <div className="event-page">
-      <NavigationBar tokenPresent={props.location.state.tokenPresent} />
       <div className="event-details">
         <div className="event-description">
           {isEditing && (

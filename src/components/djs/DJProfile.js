@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { startEditUser } from '../../redux/actions/action';
 
 import EditDJ from './EditDJ';
-import NavigationBar from '../NavigationBar';
 
 import DJMixer from '../../images/DJMixer.jpg';
 
@@ -47,7 +46,6 @@ const DJProfile = props => {
 
   return (
     <div className="dj-profile-page">
-      <NavigationBar />
       {!editUserStart && (
         <div className="main-content">
           <div className="image-side">
