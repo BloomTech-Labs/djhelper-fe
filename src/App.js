@@ -16,6 +16,7 @@ import SetUpProfile from './components/djs/SetUpProfile';
 import AddEvent from './components/events/AddEvent';
 import EventGuestView from './components/events/EventGuestView';
 // import LoginModal from './components/LoginModal'
+import EventDetail from './components/events/EventDetail';
 
 import './stylesheets/index.scss';
 
@@ -27,6 +28,7 @@ function App() {
 
         <Route exact path="/" component={Home} />
         <PrivateRoute exact path="/dj" component={DjInterface} />
+        <PrivateRoute exact path="/dj/event/:slug" component={EventDetail} />
         <PrivateRoute exact path="/dj/event/:id" component={EventPage} />
         <PrivateRoute path="/dj/profile" component={DJProfile} />
         <Route path="/about" component={About} />

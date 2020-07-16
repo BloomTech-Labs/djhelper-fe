@@ -89,7 +89,7 @@ function RegisterForm({ userInfo, handleChange, handleSubmit }) {
 
   return (
     <Form onSubmit={handleSubmit} className="inputForm registerForm">
-      <legend>Register</legend>
+      <legend>DJ Helper</legend>
 
       <input
         className="inputField"
