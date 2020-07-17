@@ -40,11 +40,13 @@ const Event = props => {
       onClick={() =>
         props.setData({ ...props.data, active: `event${props.num}` })
       }
-    >
+    > {event && <img className = 'eventImg' src ={randomImageGenerator(imageArray)} alt ="eventImages"/>}
       {event && <h2>{event.name}</h2>}
-      {event && <p> Date: {formattedDate} </p>}
+      <div className = 'Notifications'>
+      {event && <h3> #Notifications {formattedDate} </h3>}
       {event && <p> Days away {daysAway} </p>}
-      {event && <img src ={randomImageGenerator(imageArray)} alt ="eventImages"/>}
+      </div>
+      
     </div>
   );
 };

@@ -8,8 +8,8 @@
   text-align: left;
   display: flex;
   // margin-top: 2px;
-  flex-flow: column nowrap;
-  justify-content: center;
+  flex-flow:row;
+  justify-content: space-around;
   align-items: center;
   padding: 1rem 2rem;
   width: 920px;
@@ -23,15 +23,31 @@
     border-top: solid 3px rgba(252, 123, 255, 0);
   }
   h2 {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     font-weight: 700;
     @include for-phone-only {
       font-size: 0.5rem;
       margin-top: 9%;
     }
   }
+  #Notifications{
+    display: flex;
+    flex-direction: column;
+
+  
+  h3 {
+    font-size: 2.75rem;
+
+  }
+  img {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+  }
   p {
-    font-size: 0.75rem;
+    display: flex;
+    flex-flow: column;
+    font-size: 1rem;
     @include for-phone-only {
       font-size: 0.5rem;
     }
@@ -39,4 +55,5 @@
   &__icon {
     font-size: 6.4rem;
   }
+}
 }
