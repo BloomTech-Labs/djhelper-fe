@@ -9,6 +9,7 @@ import Event from './events/Event';
 import '@brainhubeu/react-carousel/lib/style.css';
 import PreviewEventDetails from './events/PreviewEventDetails';
 
+
 import * as Styles from './Styles';
 
 import { getEvents } from '../redux/actions/eventActions';
@@ -86,6 +87,7 @@ const Dashboard = props => {
 
   return (
     <div className="dashboard">
+
       {whichComponent()}
       <h2>Events </h2>
 

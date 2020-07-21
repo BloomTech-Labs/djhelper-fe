@@ -7,57 +7,24 @@ function EventInputForm({ handleSubmit, handleInputChange, eventData }) {
       <form onSubmit={handleSubmit}>
         <div className="form-section">
           <div className="input-group">
-            <label htmlFor="name">Event Name:</label>
+            <label htmlFor="name"></label>
             <input
               type="text"
               name="name"
               id="name"
+              placeholder="Event Name*"
               onChange={handleInputChange}
               value={eventData.name}
               required
             />
           </div>
 
-          <div className="input-group">
-            <label htmlFor="event_type"> Event Type: </label>
-            <input
-              type="text"
-              name="event_type"
-              id="event_type"
-              onChange={handleInputChange}
-              value={eventData.event_type}
-              required
-            />
-          </div>
-
-          <div className="input-group">
-            <label htmlFor="description">Description:</label>
-            <textarea
-              type="text"
-              name="description"
-              id="description"
-              onChange={handleInputChange}
-              value={eventData.description}
-              required
-            />
-          </div>
-
-          <div className="input-group">
-            <label htmlFor="notes">Notes:</label>
-            <textarea
-              type="textarea"
-              name="notes"
-              id="notes"
-              onChange={handleInputChange}
-              value={eventData.notes}
-              // value={eventData.primaryContact}
-            />
-          </div>
+       
           <div className="input-group">
             <label htmlFor="date">Event Date:</label>
-
-            <input
+           <input
               type="date"
+              placeholder="Date*"
               id="date"
               name="date"
               min={new Date()}
@@ -65,8 +32,34 @@ function EventInputForm({ handleSubmit, handleInputChange, eventData }) {
               value={eventData.date}
             />
           </div>
-          <button type="submit" data-testid="submit-button">
-            Add Event
+        </div>
+        <div className="test_area">
+          <div>Optional fields</div>
+          <div> 
+          <input
+            type="checkbox"/>
+          <label htmlFor="tracks">
+            Allow repeat tracks
+            </label>
+            
+            
+            <p>
+          <label htmlFor="notes"></label>
+            <textarea
+              type="textarea"
+              name="notes"
+              placeholder="Notes"
+              id="notes"
+              onChange={handleInputChange}
+              value={eventData.notes}
+              // value={eventData.primaryContact}
+            />
+            </p>
+            </div>
+            
+          
+          <button className="create" type="submit" data-testid="submit-button">
+            Create
           </button>
         </div>
       </form>

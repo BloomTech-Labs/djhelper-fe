@@ -1,9 +1,19 @@
 .add-event {
-  color: white;
+  color: #525252;
+
+  
+  background-color: #F2F2F2;
   .add-event-title {
-    text-align: center;
+    font-family: Mukta;
+    color: #525252;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 80px;
+    text-align: left;
   }
   .main-form {
+  
     width: 80%;
     margin: 1rem auto 2rem;
     form {
@@ -58,6 +68,7 @@
         }
       }
       .input-group {
+
         display: flex;
         flex-flow: column wrap;
         margin-top: 0.5rem;
@@ -66,14 +77,18 @@
           margin-left: 0.5rem;
         }
         input {
-          background: $dark2;
+          font-family: Mukta;
+          font-style: normal;
+          font-weight: bold;
+          background: #F2F2F2;
           outline: none;
-          border: none;
+          border: 1px solid #BFBFBF;
           color: white;
           border-radius: 3px;
           line-height: 2rem;
           padding-left: 1rem;
         }
+        
         textarea {
           background: $dark2;
           outline: none;
@@ -106,13 +121,14 @@
         }
       }
       button {
-        width: 16rem;
-        background: black;
+        width: 10rem;
+        background: #7E00E1;
+        border-radius: 50px;
         margin-bottom: 3rem;
         margin-top: 1rem;
         align-self: center;
         color: white;
-        border-radius: 3px;
+        
         border: none;
         outline: none;
         transition: 0.3s;
