@@ -87,7 +87,7 @@ const Dashboard = props => {
 
   return (
     <div className="dashboard">
-     
+
       {whichComponent()}
       <h2>Events </h2>
 

@@ -9,12 +9,12 @@ import NavigationBar from './components/navigation/NavigationBar';
 import Home from './components/pages/Home';
 import PrivateRoute from './components/PrivateRoute';
 import DjInterface from './components/djs/DjInterface';
-import EventPage from './components/events/EventPage';
+import EventPage from './components/Events/EventPage';
 import About from './components/pages/About';
 import DJProfile from './components/djs/DJProfile';
 import SetUpProfile from './components/djs/SetUpProfile';
-import AddEvent from './components/events/AddEvent';
-import EventGuestView from './components/events/EventGuestView';
+import AddEvent from './components/Events/AddEvent';
+import EventGuestView from './components/Events/EventGuestView';
 // import LoginModal from './components/LoginModal'
 
 import './stylesheets/index.scss';
