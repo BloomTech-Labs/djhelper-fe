@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { toast } from 'react-toastify';
 
-import NavigationBar from '../navigation/NavigationBar';
+
 
 import * as eventActions from '../../redux/actions/eventActions';
 import EventInputForm from './EventInputForm';
@@ -38,8 +38,9 @@ const AddEvent = ({ actions, history, setModalIsOpen }) => {
   return (
     <div className="add-event">
       <div className="add-event-title">
-        <h1>Add an Event</h1>
+        <h1>Create Event</h1>
       </div>
+      <div>*Required fields</div>
 
       <EventInputForm
         handleSubmit={handleSubmit}

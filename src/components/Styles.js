@@ -1,9 +1,11 @@
 export const eventModalStyles = {
   overlay: { background: 'transparent' },
   content: {
-    backgroundColor: '#2997ef',
-    maxWidth: '400px',
-    maxHeight: '450px',
+    // backgroundColor: '#2997ef',
+    backgroundColor: '#F2F2F2',
+   
+    maxWidth: '620px',
+    maxHeight: '400px',
     margin: 'auto'
   }
 };
