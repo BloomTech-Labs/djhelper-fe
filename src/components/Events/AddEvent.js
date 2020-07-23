@@ -40,7 +40,10 @@ const AddEvent = ({ actions, history, setModalIsOpen }) => {
       <div className="add-event-title">
         <h1>Create Event</h1>
       </div>
-      <div>*Required fields</div>
+      <div className="field1">
+      <p>*Required fields</p>
+      <p>Optional fields</p>
+      </div>
 
       <EventInputForm
         handleSubmit={handleSubmit}
