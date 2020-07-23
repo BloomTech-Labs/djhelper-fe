@@ -18,13 +18,20 @@ export default function NavLogic({
   handleLogout,
   NavigationItemStyle,
   navOpen,
-  toggleNavItem
+  toggleNavItem,
+  currentWindowWidth
 }) {
-  const isActivStyle = navOpen ? 'navBar__active' : '';
+  const isActivStyle = navOpen ? 'mobileNav__active' : '';
 
   if (token) {
     return (
       <ul className={`${NavigationItemStyle} ${isActivStyle}`}>
+        {currentWindowWidth <= 900 ? (
+          <h2 className="mobileNav__title">Options</h2>
+        ) : (
+          ''
+        )}
+
         {NavItems.map(item => (
           <li key={item.name}>
             <Link onClick={toggleNavItem} to={item.path}>
@@ -47,6 +54,11 @@ export default function NavLogic({
 
   return (
     <Nav className={`${NavigationItemStyle} ${isActivStyle}`} navbar>
+      {currentWindowWidth <= 900 ? (
+        <h2 className="mobileNav__title">Options</h2>
+      ) : (
+        ''
+      )}
       <NavItem onClick={toggleNavItem}>
         <button
           className="btn btn-login"

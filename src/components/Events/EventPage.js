@@ -205,12 +205,14 @@ const EventPage = props => {
           <div className="mobile">
             <div className="mobile-switch-buttons">
               <button
+                type="button"
                 className={`playlist-buttons ${requestButtonStyle}`}
                 onClick={() => switchToRequests()}
               >
                 Requests
               </button>
               <button
+                type="button"
                 className={`playlist-buttons ${playlistButtonStyle}`}
                 onClick={() => switchToPlaylist()}
               >
@@ -218,6 +220,7 @@ const EventPage = props => {
               </button>
             </div>
             <button
+              type="button"
               className={`bold mobile-add-button ${addSongsButtonStyle}`}
               onClick={() => handleClick()}
             >

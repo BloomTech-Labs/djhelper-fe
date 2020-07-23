@@ -1,10 +1,10 @@
 import React from 'react';
 import Dashboard from '../Dashboard';
 
-const DjInterface = props => {
+const DjInterface = ({ history }) => {
   return (
     <>
-      <Dashboard history={props.history} />
+      <Dashboard history={history} />
     </>
   );
 };

@@ -17,7 +17,7 @@ const NavigationBar = ({ token, actions, history, windowSize }) => {
 
   const NavigationItemStyle =
     currentWindowWidth <= 900
-      ? 'navBar__navItems navBar__mobile'
+      ? 'navBar__navItems mobileNav'
       : 'navBar__navItems';
 
   const hamburgerIconStyle = navOpen ? 'mobileMenIconActive' : 'mobileMenIcon';
@@ -25,6 +25,7 @@ const NavigationBar = ({ token, actions, history, windowSize }) => {
   const handleLogout = () => {
     actions.logout();
     setLoginModalIsOpen(false);
+    history.push('/');
   };
 
   const toggleNavItem = () => {
@@ -54,7 +55,6 @@ const NavigationBar = ({ token, actions, history, windowSize }) => {
         >
           <span className={hamburgerIconStyle}>&nbsp;</span>
         </button>
-
         <NavLogic
           toggleLoginModal={toggleLoginModal}
           loginModalIsOpen={loginModalIsOpen}
@@ -65,6 +65,7 @@ const NavigationBar = ({ token, actions, history, windowSize }) => {
           NavigationItemStyle={NavigationItemStyle}
           navOpen={navOpen}
           toggleNavItem={toggleNavItem}
+          currentWindowWidth={currentWindowWidth}
         />
       </Navbar>
     );
@@ -87,6 +88,7 @@ const NavigationBar = ({ token, actions, history, windowSize }) => {
         NavigationItemStyle={NavigationItemStyle}
         navOpen={navOpen}
         toggleNavItem={toggleNavItem}
+        currentWindowWidth={currentWindowWidth}
       />
     </Navbar>
   );
