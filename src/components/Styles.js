@@ -4,8 +4,8 @@ export const eventModalStyles = {
     // backgroundColor: '#2997ef',
     backgroundColor: '#F2F2F2',
    
-    maxWidth: '620px',
-    maxHeight: '400px',
+    maxWidth: '520px',
+    maxHeight: '300px',
     margin: 'auto'
   }
 };
