@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 
 function EventInputForm({ handleSubmit, handleInputChange, eventData }) {
   return (
+    <form onSubmit={handleSubmit}>
+      <section className="section1">
     <div className="main-form">
-      <form onSubmit={handleSubmit}>
+      
+      
         <div className="form-section">
           <div className="input-group">
             <label htmlFor="name"></label>
@@ -21,7 +24,7 @@ function EventInputForm({ handleSubmit, handleInputChange, eventData }) {
 
        
           <div className="input-group">
-            <label htmlFor="date">Event Date:</label>
+            <label htmlFor="date"></label>
            <input
               type="date"
               placeholder="Date*"
@@ -33,8 +36,11 @@ function EventInputForm({ handleSubmit, handleInputChange, eventData }) {
             />
           </div>
         </div>
+        
+
+        
         <div className="test_area">
-          <div>Optional fields</div>
+         
           <div> 
           <input
             type="checkbox"/>
@@ -62,8 +68,10 @@ function EventInputForm({ handleSubmit, handleInputChange, eventData }) {
             Create
           </button>
         </div>
-      </form>
+       
     </div>
+    </section>
+    </form>
   );
 }
 
