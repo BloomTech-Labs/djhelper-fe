@@ -46,14 +46,17 @@ export const addEvent = (eventInfo, history) => dispatch => {
   dispatch({ type: ADD_EVENT_START });
   dispatch({ type: ADD_TO_SONG_REDUCER_START });
 
+  console.log('eventData: ', eventInfo);
+
   const eventToSubmit = {
     name: eventInfo.name,
-    event_type: eventInfo.event_type,
-    description: eventInfo.description,
     date: eventInfo.date,
     dj_id: eventInfo.dj_id,
+    isExplicit: eventInfo.isExplicit,
     notes: eventInfo.notes
   };
+
+  console.log('eventToSubmit: ', eventToSubmit);
 
   return axiosWithAuth()
     .post('/auth/event/', eventToSubmit)

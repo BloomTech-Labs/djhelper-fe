@@ -10,7 +10,6 @@ import event5 from '../../images/event5.png';
 import event6 from '../../images/event6.png';
 
 const Event = props => {
-  console.log('props: ', props);
   let eventClass;
   if (props.data.active === `event${props.num}`) {
     eventClass = 'selected';
@@ -23,7 +22,6 @@ const Event = props => {
   const formattedDate = formatDate(event.date);
   const daysAway = Number(Date.now()) - formattedDate;
   const imageArray = [event1, event2, event3, event4, event5, event6];
-  console.log('imageArray', imageArray);
 
   const randomImageGenerator = imgAr => {
     let number = Math.floor(Math.random() * imageArray.length);
