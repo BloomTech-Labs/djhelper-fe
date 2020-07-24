@@ -30,6 +30,7 @@ const About = () => {
              It has survived not only five centuries, but also the leap into electronic
               typesetting, remaining essentially unchanged. It was popularised in the 
               1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>
+
         </div>
       </section>
       <h1 className= "title">Web Development Team</h1>
@@ -66,7 +67,7 @@ const About = () => {
         </section>
         <h1 className= "title">Data Science Team</h1>
         <section className= "djTeam">
-        <div className ="team">
+        <div className ="DataTeam">
           <img src ={Evgenii}></img>
           <h3>Evgenii</h3>
           <p>Lorem Ipsum</p>
@@ -75,12 +76,12 @@ const About = () => {
         </section>
         <h1 className= "title">UX Team</h1>
         <section className= "djTeam">
-      <div className ="team">
+      <div className ="UXTeam">
           <img src ={Brian}></img>
           <h3>Brian</h3>
           <p>Lorem Ipsum</p>
           <p>Lorem Ipsum</p>
-        </div><div className ="team">
+        </div><div className ="UXTeam">
           <img src ={Dennis}></img>
           <h3>Dennis</h3>
           <p>Lorem Ipsum</p>
@@ -89,12 +90,12 @@ const About = () => {
         </section>
         <h1 className= "title">IOS Team</h1>
         <section className="djTeam">
-      <div className ="team">
+      <div className ="IOSTeam">
           <img src ={Craig}></img>
           <h3>Craig</h3>
           <p>Lorem Ipsum</p>
           <p>Lorem Ipsum</p>
-        </div><div className ="team">
+        </div><div className ="IOSTeam">
           <img src ={Michael}></img>
           <h3>Michael</h3>
           <p>Lorem Ipsum</p>

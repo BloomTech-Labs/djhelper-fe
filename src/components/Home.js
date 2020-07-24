@@ -24,13 +24,13 @@ const Home = props => {
             <button className="btn-fancy" type="button">
               Start Today Free
             </button>
-            <a href="/#" className="btn-inline u-margin-left-medium">
-              Learn more about DJ Helper &#62;
+            <a href="/#" className="btn-inline-u-margin-left-medium">
+              Now Available for iOS &#62;
             </a>
           </div>
         </section>
         <section className="header__right">
-          <img src={Phone2} alt="" />
+          <img  alt="" />
         </section>   
       </header>
       <div className= "beheard"><h1>Be Heard</h1></div>
