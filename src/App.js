@@ -17,7 +17,6 @@ import AddEvent from './components/events/AddEvent';
 import EventGuestView from './components/events/EventGuestView';
 // import LoginModal from './components/LoginModal'
 import EventDetail from './components/events/EventDetail';
-
 import './stylesheets/index.scss';
 
 function App() {
