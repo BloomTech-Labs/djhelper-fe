@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from './node_modules/react';
+import { useSelector, useDispatch } from './node_modules/react-redux';
 import NavigationBar from '../NavigationBar';
 
 import { addEvent } from '../../actions/eventActions';

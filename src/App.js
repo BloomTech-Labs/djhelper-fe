@@ -12,7 +12,7 @@ import EventPage from './components/EventPage';
 import About from './components/About';
 import DJProfile from './components/DJProfile';
 import SetUpProfile from './components/SetUpProfile';
-import AddEvent from './components/Events/AddEvent';
+import AddEvent from './components/events/AddEvent';
 import EventGuestView from './components/EventGuestView';
 
 import './stylesheets/index.scss';
