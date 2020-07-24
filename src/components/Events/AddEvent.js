@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { toast } from 'react-toastify';
 
-
-
 import * as eventActions from '../../redux/actions/eventActions';
 import EventInputForm from './EventInputForm';
 
@@ -15,15 +13,24 @@ const AddEvent = ({ actions, history, setModalIsOpen }) => {
     dj_id: id,
     name: '',
     date: '',
-    event_type: '',
-    description: '',
+    isExplicit: false,
     notes: ''
   });
 
   // const dispatch = useDispatch();
 
   const handleInputChange = e => {
-    setEventData({ ...eventData, [e.target.name]: e.target.value });
+    setEventData({
+      ...eventData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleCheckedChange = e => {
+    setEventData({
+      ...eventData,
+      isExplicit: e.target.checked
+    });
   };
 
   const handleSubmit = e => {
@@ -41,13 +48,14 @@ const AddEvent = ({ actions, history, setModalIsOpen }) => {
         <h1>Create Event</h1>
       </div>
       <div className="field1">
-      <p>*Required fields</p>
-      <p>Optional fields</p>
+        <p>*Required fields</p>
+        <p>Optional fields</p>
       </div>
 
       <EventInputForm
         handleSubmit={handleSubmit}
         handleInputChange={handleInputChange}
+        handleCheckedChange={handleCheckedChange}
         eventData={eventData}
       />
     </div>
