@@ -20,8 +20,14 @@ const Event = props => {
   const eventNum = `event${props.num}`;
   const event = props.data[eventNum];
   const formattedDate = formatDate(event.date);
-  const daysAway = Number(Date.now()) - formattedDate;
+  const daysAway = Number(event.date - formattedDate );
   const imageArray = [event1, event2, event3, event4, event5, event6];
+
+  console.log("daysaway", daysAway)
+  console.log("date", event.date)
+  console.log("formattedDate", formattedDate)
+
+ console.log(Number(event.date)) 
 
   const randomImageGenerator = imgAr => {
     let number = Math.floor(Math.random() * imageArray.length);
@@ -44,12 +50,16 @@ const Event = props => {
           props.setData({ ...props.data, active: `event${props.num}` })
         }
       >
-        {event && <h2>{event.name}</h2>}
-        {event && <p> Date: {formattedDate} </p>}
-        {event && <p> Days away {daysAway} </p>}
-        {event && (
+      {event && (
           <img src={randomImageGenerator(imageArray)} alt="eventImages" />
         )}
+        {event && <h2>{event.name}</h2>}
+        <div>
+        {event && <h3> #Notifications:  </h3>}
+        {event && <p> #daysaway  </p>}
+        </div>
+        
+        
       </div>
 
       <Link to={`/dj/event/${props.data.name}`}>{props.data.name}</Link>
