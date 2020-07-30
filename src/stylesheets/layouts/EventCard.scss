@@ -3,13 +3,12 @@
   margin: 1%;
   background: #2e2e2e;
   border-top: solid 5px rgba(252, 123, 255, 0);
-  // padding-left: 5%;
-  // padding-right: 5%;
-  text-align: left;
+   
+ text-align: left;
   display: flex;
-  // margin-top: 2px;
+  margin-top: 2px;
   flex-flow:row;
-  justify-content: space-around;
+  //justify-content: space-around;
   align-items: center;
   padding: 1rem 2rem;
   width: 920px;
@@ -42,12 +41,12 @@
   img {
     display: flex;
     align-items: flex-start;
-    justify-content: space-around;
+    
   }
   p {
     display: flex;
     flex-flow: column;
-    font-size: 1rem;
+    font-size: 2rem;
     @include for-phone-only {
       font-size: 0.5rem;
     }
@@ -55,5 +54,26 @@
   &__icon {
     font-size: 6.4rem;
   }
+}
+.plusbutton{
+
+  justify-content: left;
+  
+}
+h2{
+  //position: absolute;
+width: 308px;
+height: 57px;
+left: 176px;
+top: 51px;
+padding-left: 20px;
+
+}
+h3{
+  // font-family: Mukta;
+font-style: normal;
+font-weight: 600;
+font-size: 40px;
+line-height: 47px;
 }
 }
