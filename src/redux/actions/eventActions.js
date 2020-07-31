@@ -1,50 +1,10 @@
 import axiosWithAuth from '../../utils/axiosWithAuth';
-
-import {
-  ADD_TO_SONG_REDUCER_START,
-  ADD_TO_SONG_REDUCER_SUCCESS,
-  getPlaylist
-} from './action';
-
-// events actions
-
-export const GET_EVENTS_START = 'GET_EVENTS_START';
-export const GET_EVENTS_SUCCESS = 'GET_EVENTS_SUCCESS';
-export const GET_EVENTS_ERROR = 'GET_EVENTS_ERROR';
-
-export const GET_EVENT_START = 'GET_EVENT_START';
-export const GET_EVENT_SUCCESS = 'GET_EVENT_SUCCESS';
-export const GET_EVENT_ERROR = 'GET_EVENT_ERROR';
-
-export const ADD_EVENT_START = 'ADD_EVENT_START';
-export const ADD_EVENT_SUCCESS = 'ADD_EVENT_SUCCESS';
-export const ADD_EVENT_ERROR = 'ADD_EVENT_ERROR';
-
-export const EDIT_EVENT_START = 'EDIT_EVENT_START';
-export const EDIT_EVENT_SUCCESS = 'EDIT_EVENT_SUCCESS';
-export const EDIT_EVENT_ERROR = 'EDIT_EVENT_ERROR';
-
-export const DELETE_EVENT_START = 'DELETE_EVENT_START';
-export const DELETE_EVENT_SUCCESS = 'DELETE_EVENT_SUCCESS';
-export const DELETE_EVENT_ERROR = 'DELETE_EVENT_ERROR';
-
-// export const ADD_LOCATION_START = 'ADD_LOCATION_START';
-// export const ADD_LOCATION_SUCCESS = 'ADD_LOCATION_SUCCESS';
-// export const ADD_LOCATION_ERROR = 'ADD_LOCATION_ERROR';
-
-// export const GET_LOCATION_START = 'GET_LOCATION_START';
-// export const GET_LOCATION_SUCCESS = 'GET_LOCATION_SUCCESS';
-// export const GET_LOCATION_ERROR = 'GET_LOCATION_ERROR';
-
-// export const EDIT_LOCATION_START = 'EDIT_LOCATION_START';
-// export const EDIT_LOCATION_SUCCESS = 'EDIT_LOCATION_SUCCESS';
-// export const EDIT_LOCATION_ERROR = 'EDIT_LOCATION_ERROR';
-
-// events action creators
+import * as ActionTypes from './actionTypes';
+import { getPlaylist } from './action';
 
 export const addEvent = (eventInfo, history) => dispatch => {
-  dispatch({ type: ADD_EVENT_START });
-  dispatch({ type: ADD_TO_SONG_REDUCER_START });
+  dispatch({ type: ActionTypes.ADD_EVENT_START });
+  dispatch({ type: ActionTypes.ADD_TO_SONG_REDUCER_START });
 
   console.log('eventData: ', eventInfo);
 
@@ -62,14 +22,14 @@ export const addEvent = (eventInfo, history) => dispatch => {
     .post('/auth/event/', eventToSubmit)
     .then(response2 => {
       dispatch({
-        type: ADD_EVENT_SUCCESS,
+        type: ActionTypes.ADD_EVENT_SUCCESS,
         payload: {
           ...response2.data,
           event_id: response2.data.id
         }
       });
       dispatch({
-        type: ADD_TO_SONG_REDUCER_SUCCESS,
+        type: ActionTypes.ADD_TO_SONG_REDUCER_SUCCESS,
         payload: response2.data.id
       });
       console.log('response 2 from ations: ', response2);
@@ -78,14 +38,14 @@ export const addEvent = (eventInfo, history) => dispatch => {
     })
     .catch(err2 => {
       dispatch({
-        type: ADD_EVENT_ERROR,
+        type: ActionTypes.ADD_EVENT_ERROR,
         payload: err2
       });
     });
 };
 
 export const editEvent = (eventInfo, event_id) => dispatch => {
-  dispatch({ type: EDIT_EVENT_START });
+  dispatch({ type: ActionTypes.EDIT_EVENT_START });
   // PUT https://api.dj-helper.com/api/auth/event/:event_id
   axiosWithAuth()
     .put(`/auth/event/${event_id}`, eventInfo)
@@ -104,26 +64,26 @@ export const editEvent = (eventInfo, event_id) => dispatch => {
         notes: response.data.notes
       };
       dispatch({
-        type: EDIT_EVENT_SUCCESS,
+        type: ActionTypes.EDIT_EVENT_SUCCESS,
         payload: [formattedResponse, event_id]
       });
     })
     .catch(err => {
-      dispatch({ type: EDIT_EVENT_ERROR, payload: err });
+      dispatch({ type: ActionTypes.EDIT_EVENT_ERROR, payload: err });
     });
 };
 
 export const deleteEvent = (event, history) => dispatch => {
-  dispatch({ type: DELETE_EVENT_START });
+  dispatch({ type: ActionTypes.DELETE_EVENT_START });
   // DELETE https://api.dj-helper.com/api/auth/event/:event_id
   history.push('/dj');
   axiosWithAuth()
     .delete(`/auth/event/${event.event_id}`)
     .then(response => {
-      dispatch({ type: DELETE_EVENT_SUCCESS, payload: event });
+      dispatch({ type: ActionTypes.DELETE_EVENT_SUCCESS, payload: event });
     })
     .catch(err => {
-      dispatch({ type: DELETE_EVENT_ERROR, payload: err });
+      dispatch({ type: ActionTypes.DELETE_EVENT_ERROR, payload: err });
     });
 };
 
@@ -131,7 +91,7 @@ export const deleteEvent = (event, history) => dispatch => {
 
 export const getEvents = dj_id => dispatch => {
   // GET https://api.dj-helper.com/api/events
-  dispatch({ type: GET_EVENTS_START });
+  dispatch({ type: ActionTypes.GET_EVENTS_START });
   axiosWithAuth()
     .get('/events')
     .then(response => {
@@ -155,16 +115,16 @@ export const getEvents = dj_id => dispatch => {
         };
         dispatch(getPlaylist(event.id));
       });
-      dispatch({ type: GET_EVENTS_SUCCESS, payload: eventsObject });
+      dispatch({ type: ActionTypes.GET_EVENTS_SUCCESS, payload: eventsObject });
     })
     .catch(err => {
-      dispatch({ type: GET_EVENTS_ERROR, payload: err });
+      dispatch({ type: ActionTypes.GET_EVENTS_ERROR, payload: err });
     });
 };
 
 export const getEvent = event_id => dispatch => {
   // GET https://api.dj-helper.com/api/event/:event_id
-  dispatch({ type: GET_EVENT_START });
+  dispatch({ type: ActionTypes.GET_EVENT_START });
   axiosWithAuth()
     .get(`/event/${event_id}`)
     .then(response => {
@@ -182,37 +142,12 @@ export const getEvent = event_id => dispatch => {
         notes: response.data.notes
       };
       dispatch(getPlaylist(event_id));
-      dispatch({ type: GET_EVENT_SUCCESS, payload: [eventObject, event_id] });
+      dispatch({
+        type: ActionTypes.GET_EVENT_SUCCESS,
+        payload: [eventObject, event_id]
+      });
     })
     .catch(err => {
-      dispatch({ type: GET_EVENT_ERROR, payload: err });
+      dispatch({ type: ActionTypes.GET_EVENT_ERROR, payload: err });
     });
 };
-
-// locations
-
-// export const getLocation = location_id => dispatch => {
-//   // GET https://api.dj-helper.com/api/location/:location_id
-//   dispatch({ type: GET_LOCATION_START });
-//   axiosWithAuth()
-//     .get(`/location/${location_id}`)
-//     .then(response => {
-//       dispatch({ type: GET_LOCATION_SUCCESS, payload: response.data });
-//     })
-//     .catch(err => {
-//       dispatch({ type: GET_LOCATION_ERROR, payload: err });
-//     });
-// };
-
-// export const editLocation = (location_id, locationInfo) => dispatch => {
-//   dispatch({ type: EDIT_LOCATION_START });
-//   // PUT https://api.dj-helper.com/api/auth/location/:id
-//   axiosWithAuth()
-//     .put(`/auth/location/${location_id}`, locationInfo)
-//     .then(response => {
-//       dispatch({ type: EDIT_LOCATION_SUCCESS, payload: response.data });
-//     })
-//     .catch(err => {
-//       dispatch({ type: EDIT_LOCATION_ERROR, payload: err });
-//     });
-// };
