@@ -14,6 +14,8 @@ import * as Styles from './Styles';
 import { getEvents } from '../redux/actions/eventActions';
 import AddEvent from './events/AddEvent';
 
+import plus from "../images/plus.png"
+
 Modal.setAppElement('#root');
 
 const Dashboard = props => {
@@ -87,7 +89,7 @@ const Dashboard = props => {
   return (
     <div className="dashboard">
       {whichComponent()}
-      <h2>Events </h2>
+     
 
       <div className="upcoming-events" data-testid="upcoming-carousel">
         <div
@@ -96,7 +98,13 @@ const Dashboard = props => {
           type="button"
         >
           {/* <h>Add new event</h> */}
-          <FontAwesomeIcon icon="plus-circle" className="eventCard__icon" />
+          <div className="plusbutton">
+          <img  src={plus}/> 
+         
+          </div>
+          <h2>Add new event </h2>
+
+          
         </div>
 
         <Modal
