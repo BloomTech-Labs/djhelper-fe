@@ -1,118 +1,102 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Modal from 'react-modal';
 
 import DashboardWelcome from './DashboardWelcome';
+import AddEvent from './events/AddEvent';
 import Event from './events/Event';
-import '@brainhubeu/react-carousel/lib/style.css';
+import * as eventActions from '../redux/actions/eventActions';
+
 import PreviewEventDetails from './events/PreviewEventDetails';
 
 import * as Styles from './Styles';
-
-import { getEvents } from '../redux/actions/eventActions';
-import AddEvent from './events/AddEvent';
-
-import plus from "../images/plus.png"
+import plus from '../images/plus.png';
+import { upcomingEvents } from '../data/upcomingEvents';
 
 Modal.setAppElement('#root');
 
-const Dashboard = props => {
-  const dispatch = useDispatch();
-  const name = useSelector(state => state.userReducer.name);
-  const events = useSelector(state => state.userReducer.events);
-  const id = useSelector(state => state.userReducer.id);
-  const [data, setData] = useState(events);
-  const [upcomingIds, setUpcomingIds] = useState([]);
-  const [pastIds, setPastIds] = useState([]);
+const Dashboard = ({ events, id, name, getEvents, history, ...props }) => {
+  const [upComingEvents, setUpComingEvents] = useState([]);
+  const [pastEvents, setPastEvents] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const thing = data.active;
-  const currentlyActive = data[thing];
-
   useEffect(() => {
-    dispatch(getEvents(id));
+    if (events.length === 0) {
+      getEvents(5);
+    }
   }, []);
 
   useEffect(() => {
-    setData(events);
-  }, [events]);
-
-  useEffect(() => {
     // Creates an array with the 2 important properties: id and date
-    const dateArray = Object.values(events).map(event => {
+
+    const correctedEventDate = events.map(event => {
       const eventDate = new Date(event.date);
       eventDate.setDate(eventDate.getDate() + 1);
       return {
-        event_id: event.event_id,
+        ...event,
         formattedDate: eventDate
       };
     });
 
     // Divides the array into 2 sorted arrays: upcomingArray and pastArray, and sets the corresponding ids in state
+
     const today = new Date();
     today.setHours(0);
     today.setMinutes(0);
 
-    const upcomingArray = dateArray
+    const futureEvents = correctedEventDate
       .filter(x => x.formattedDate >= today)
       .sort((a, b) => a.formattedDate - b.formattedDate);
-    setUpcomingIds(upcomingArray.map(event => event.event_id));
+    setUpComingEvents(futureEvents);
 
-    const pastArray = dateArray
+    const pastEventsArray = correctedEventDate
       .filter(x => x.formattedDate < today)
       .sort((a, b) => b.formattedDate - a.formattedDate);
-    setPastIds(pastArray.map(event => event.event_id));
+    setPastEvents(pastEventsArray);
   }, [events]);
 
-  console.log('upid', upcomingIds);
-
-  const handleNewEvent = () => {
-    props.history.push('/dj/addEvent');
-  };
-  const whichComponent = () => {
-    if (data.active.length > 1) {
-      return (
-        <PreviewEventDetails
-          data={data}
-          setData={setData}
-          currentlyActive={currentlyActive}
-          tokenPresent={props.tokenPresent}
-          history={props.history}
-        />
-      );
-    }
-    return <DashboardWelcome name={name} />;
-  };
+  // const whichComponent = () => {
+  //   if (data.active.length > 1) {
+  //     return (
+  //       <PreviewEventDetails
+  //         data={data}
+  //         setData={setData}
+  //         currentlyActive={currentlyActive}
+  //         tokenPresent={props.tokenPresent}
+  //         history={props.history}
+  //       />
+  //     );
+  //   }
+  //   return <DashboardWelcome name={name} />;
+  // };
 
   return (
     <div className="dashboard">
-      {whichComponent()}
-     
+      {/* {whichComponent()} */}
+      <DashboardWelcome name={name} />
 
       <div className="upcoming-events" data-testid="upcoming-carousel">
-        <div
+        <button
           className="eventCard"
           onClick={() => setModalIsOpen(true)}
           type="button"
         >
-          {/* <h>Add new event</h> */}
           <div className="plusbutton">
-          <img  src={plus}/> 
-         
+            <img src={plus} alt="Add New Event" />
           </div>
           <h2>Add new event </h2>
-
-          
-        </div>
+        </button>
 
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={() => setModalIsOpen(false)}
           style={Styles.eventModalStyles}
         >
-          <AddEvent setModalIsOpen={setModalIsOpen} history={props.history} />
+          <AddEvent setModalIsOpen={setModalIsOpen} history={history} />
           <div>
             <button
               type="button"
@@ -125,6 +109,16 @@ const Dashboard = props => {
         </Modal>
 
         {events &&
+          upComingEvents.map(event => {
+            return (
+              <Link to={`/dj/events/${event.name}`} key={event.id}>
+                <Event event={event} key={event.id} />
+              </Link>
+            );
+          })}
+
+        {/* <h2>another type of events</h2> */}
+        {/* {events &&
           upcomingIds.map(eventId => {
             return (
               <Event
@@ -135,10 +129,30 @@ const Dashboard = props => {
                 key={eventId}
               />
             );
-          })}
+          })} */}
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+Dashboard.propTypes = {
+  events: PropTypes.instanceOf(Array).isRequired,
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  getEvents: PropTypes.func.isRequired,
+  history: PropTypes.oneOfType([PropTypes.object]).isRequired
+};
+
+const mapStateToProps = state => {
+  return {
+    events: state.eventReducer.events,
+    id: state.userReducer.id,
+    name: state.userReducer.name
+  };
+};
+
+const mapDispatchToProps = {
+  getEvents: eventActions.getEvents
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

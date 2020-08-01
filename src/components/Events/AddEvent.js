@@ -37,7 +37,13 @@ const AddEvent = ({ actions, history, setModalIsOpen }) => {
     e.preventDefault();
     // dispatch(addEvent(eventData, props.history));
     actions.addEvent(eventData, history).then(newEvent => {
-      toast.success(`${newEvent.data.name} event has been added`);
+      console.log('new Event added: ', newEvent);
+      if (newEvent.data) {
+        toast.success(`${newEvent.data.name} event has been added`);
+      } else {
+        toast.error(`error occurred; ${newEvent} `);
+      }
+
       setModalIsOpen(false);
     });
   };

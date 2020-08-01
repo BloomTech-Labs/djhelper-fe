@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import formatDate from '../../utils/formatDate';
 import event1 from '../../images/event1.png';
@@ -9,62 +9,41 @@ import event4 from '../../images/event4.png';
 import event5 from '../../images/event5.png';
 import event6 from '../../images/event6.png';
 
-const Event = props => {
-  let eventClass;
-  if (props.data.active === `event${props.num}`) {
-    eventClass = 'selected';
-  } else {
-    eventClass = '';
-  }
-
-  const eventNum = `event${props.num}`;
-  const event = props.data[eventNum];
-  const formattedDate = formatDate(event.date);
-  const daysAway = Number(event.date - formattedDate );
+const Event = ({ event }) => {
   const imageArray = [event1, event2, event3, event4, event5, event6];
 
-  console.log("daysaway", daysAway)
-  console.log("date", event.date)
-  console.log("formattedDate", formattedDate)
-
- console.log(Number(event.date)) 
-
   const randomImageGenerator = imgAr => {
-    let number = Math.floor(Math.random() * imageArray.length);
-    let image = imgAr[number];
-
+    const number = Math.floor(Math.random() * imageArray.length);
+    const image = imgAr[number];
     return image;
+  };
+
+  const generateNumberOfDays = eventDate => {
+    const today = new Date();
+    const futureDate = new Date(eventDate);
+    const timeinmilisec = futureDate.getTime() - today.getTime();
+
+    return Math.ceil(timeinmilisec / (1000 * 60 * 60 * 24));
   };
 
   return (
     <>
-      <div
-        role="button"
-        tabIndex={0}
-        data-testid="event-component"
-        className={`eventCard ${eventClass}`}
-        onClick={() =>
-          props.setData({ ...props.data, active: `event${props.num}` })
-        }
-        onKeyDown={() =>
-          props.setData({ ...props.data, active: `event${props.num}` })
-        }
-      >
-      {event && (
-          <img src={randomImageGenerator(imageArray)} alt="eventImages" />
-        )}
-        {event && <h2>{event.name}</h2>}
+      <div data-testid="event-component" className="eventCard">
+        <img src={randomImageGenerator(imageArray)} alt="eventImages" />
+        <h2>{event.name}</h2>
         <div>
-        {event && <h3> #Notifications:  </h3>}
-        {event && <p> #daysaway  </p>}
+          {event && <h3> #Notifications: </h3>}
+          <p style={{ fontSize: '48px' }}>
+            {`${generateNumberOfDays(event.date)} days away`}
+          </p>
         </div>
-        
-        
       </div>
-
-      <Link to={`/dj/event/${props.data.name}`}>{props.data.name}</Link>
     </>
   );
+};
+
+Event.propTypes = {
+  event: PropTypes.oneOfType([PropTypes.object]).isRequired
 };
 
 export default Event;

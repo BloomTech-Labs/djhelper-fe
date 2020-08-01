@@ -6,8 +6,6 @@ export const addEvent = (eventInfo, history) => dispatch => {
   dispatch({ type: ActionTypes.ADD_EVENT_START });
   dispatch({ type: ActionTypes.ADD_TO_SONG_REDUCER_START });
 
-  console.log('eventData: ', eventInfo);
-
   const eventToSubmit = {
     name: eventInfo.name,
     date: eventInfo.date,
@@ -16,23 +14,14 @@ export const addEvent = (eventInfo, history) => dispatch => {
     notes: eventInfo.notes
   };
 
-  console.log('eventToSubmit: ', eventToSubmit);
-
   return axiosWithAuth()
     .post('/auth/event/', eventToSubmit)
     .then(response2 => {
+      console.log('response2: ', response2);
       dispatch({
         type: ActionTypes.ADD_EVENT_SUCCESS,
-        payload: {
-          ...response2.data,
-          event_id: response2.data.id
-        }
+        payload: { ...response2.data }
       });
-      dispatch({
-        type: ActionTypes.ADD_TO_SONG_REDUCER_SUCCESS,
-        payload: response2.data.id
-      });
-      console.log('response 2 from ations: ', response2);
       history.push('/dj');
       return response2;
     })
@@ -41,6 +30,7 @@ export const addEvent = (eventInfo, history) => dispatch => {
         type: ActionTypes.ADD_EVENT_ERROR,
         payload: err2
       });
+      return err2;
     });
 };
 
@@ -89,33 +79,36 @@ export const deleteEvent = (event, history) => dispatch => {
 
 // getting events by DJ id
 
-export const getEvents = dj_id => dispatch => {
+export const getEvents = djId => dispatch => {
   // GET https://api.dj-helper.com/api/events
   dispatch({ type: ActionTypes.GET_EVENTS_START });
   axiosWithAuth()
     .get('/events')
     .then(response => {
       const filteredEvents = response.data.filter(
-        event => event.dj_id === dj_id
+        event => event.dj_id === djId
       );
-      const eventsObject = {};
-      filteredEvents.forEach(event => {
-        eventsObject[`event${event.id}`] = {
-          event_id: event.id,
-          name: event.name,
-          event_type: event.event_type,
-          description: event.description,
-          date: event.date,
-          start_time: event.start_time,
-          end_time: event.end_time,
-          location_id: event.location_id,
-          img_url: event.img_url,
-          dj_id: event.dj_id,
-          notes: event.notes
-        };
-        dispatch(getPlaylist(event.id));
+      // const eventsObject = {};
+      // filteredEvents.forEach(event => {
+      //   eventsObject[`event${event.id}`] = {
+      //     event_id: event.id,
+      //     name: event.name,
+      //     event_type: event.event_type,
+      //     description: event.description,
+      //     date: event.date,
+      //     start_time: event.start_time,
+      //     end_time: event.end_time,
+      //     location_id: event.location_id,
+      //     img_url: event.img_url,
+      //     dj_id: event.dj_id,
+      //     notes: event.notes
+      //   };
+      //   dispatch(getPlaylist(event.id));
+      // });
+      dispatch({
+        type: ActionTypes.GET_EVENTS_SUCCESS,
+        payload: filteredEvents
       });
-      dispatch({ type: ActionTypes.GET_EVENTS_SUCCESS, payload: eventsObject });
     })
     .catch(err => {
       dispatch({ type: ActionTypes.GET_EVENTS_ERROR, payload: err });

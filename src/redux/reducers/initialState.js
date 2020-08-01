@@ -21,7 +21,11 @@ export const UserInitialState = {
   deleteUserError: false,
   editUserStart: false,
   editUserError: false,
-  editUserProcessing: false,
+  editUserProcessing: false
+};
+
+export const EventInitialState = {
+  events: [],
   addEventStart: false,
   addEventError: false,
   editEventStart: false,
@@ -33,13 +37,8 @@ export const UserInitialState = {
   getDJError: false,
   getDJStart: false,
   getEventsStart: false,
-  getEventsError: false,
-  getLocationStart: false,
-  getLocationError: false,
-  editLocationStart: false,
-  editLocationError: false
+  getEventsError: false
 };
-
 // song initial states
 
 export const SongInitialState = {
