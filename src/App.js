@@ -15,6 +15,7 @@ import DJProfile from './components/djs/DJProfile';
 import SetUpProfile from './components/djs/SetUpProfile';
 import AddEvent from './components/events/AddEvent';
 import EventGuestView from './components/events/EventGuestView';
+import Help from "./components/pages/Help"
 // import LoginModal from './components/LoginModal'
 import EventDetail from './components/events/EventDetail';
 import './stylesheets/index.scss';
@@ -24,7 +25,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Route path="/" component={NavigationBar} />
-
+        <Route path="/help" component={Help} />
         <Route exact path="/" component={Home} />
         <PrivateRoute exact path="/dj" component={DjInterface} />
         <PrivateRoute exact path="/dj/events/:id" component={EventDetail} />

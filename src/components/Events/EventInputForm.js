@@ -48,7 +48,7 @@ function EventInputForm({
                 onChange={handleCheckedChange}
                 value={eventData.isExplicit}
               />
-              <label htmlFor="tracks">Allow repeat tracks</label>
+              <label htmlFor="tracks">Allow explicit tracks</label>
 
               <p>
                 <label htmlFor="notes"></label>
