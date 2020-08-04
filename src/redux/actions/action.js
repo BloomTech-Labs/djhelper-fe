@@ -1,5 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
+import * as ActionTypes from './actionTypes';
+
 import axiosWithAuth from '../../utils/axiosWithAuth';
 import {
   axiosWithAuthSpotify,
@@ -10,200 +12,132 @@ import { Route, Redirect } from 'react-router-dom';
 import URLSearchParams from '@ungap/url-search-params';
 import keyMirror from 'keymirror';
 
-export const SET_NAME = 'SET_NAME';
-export const SET_USERNAME = 'SET_USERNAME';
-
-export const REGISTER_USER_START = 'REGISTER_USER_START';
-export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
-export const REGISTER_USER_ERROR = 'REGISTER_USER_ERROR';
-
-export const LOGIN_USER_START = 'LOGIN_USER_START';
-export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
-export const LOGIN_USER_ERROR = 'LOGIN_USER_ERROR';
-
-export const LOGOUT_USER_START = 'LOGOUT_USER_START';
-export const LOGOUT_USER_SUCCESS = 'LOGOUT_USER_SUCCESS';
-export const LOGOUT_USER_ERROR = 'LOGOUT_USER_ERROR';
-
-export const DELETE_USER_START = 'DELETE_USER_START';
-export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
-export const DELETE_USER_ERROR = 'DELETE_USER_ERROR';
-
-export const EDIT_USER_START = 'EDIT_USER_START';
-export const EDIT_USER_START_PROCESSING = 'EDIT_USER_START_PROCESSING';
-export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
-export const EDIT_USER_ERROR = 'EDIT_USER_ERROR';
-export const EDIT_USER_CANCEL = 'EDIT_USER_CANCEL';
-
-export const UPDATE_USER_START = 'UPDATE_USER_START';
-export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
-export const UPDATE_USER_ERROR = 'UPDATE_USER_ERROR';
-
-export const SEARCH_FOR_TRACK_START = 'SEARCH_FOR_TRACK_START';
-export const SEARCH_FOR_TRACK_SUCCESS = 'SEARCH_FOR_TRACK_SUCCESS';
-export const SEARCH_FOR_TRACK_ERROR = 'SEARCH_FOR_TRACK_ERROR';
-
-export const GET_DJ_START = 'GET_DJ_START';
-export const GET_DJ_SUCCESS = 'GET_DJ_SUCCESS';
-export const GET_DJ_ERROR = 'GET_DJ_ERROR';
-
-export const ADD_SONG_TO_PLAYLIST_START = 'ADD_SONG_TO_PLAYLIST_START';
-export const ADD_SONG_TO_PLAYLIST_SUCCESS = 'ADD_SONG_TO_PLAYLIST_SUCCESS';
-export const ADD_SONG_TO_PLAYLIST_ERROR = 'ADD_SONG_TO_PLAYLIST_ERROR';
-
-export const REMOVE_SONG_FROM_PLAYLIST_START =
-  'REMOVE_SONG_FROM_PLAYLIST_START';
-export const REMOVE_SONG_FROM_PLAYLIST_SUCCESS =
-  'REMOVE_SONG_FROM_PLAYLIST_SUCCESS';
-export const REMOVE_SONG_FROM_PLAYLIST_ERROR =
-  'REMOVE_SONG_FROM_PLAYLIST_ERROR';
-
-export const GET_PLAYLIST_START = 'GET_PLAYLIST_START';
-export const GET_PLAYLIST_SUCCESS = 'GET_PLAYLIST_SUCCESS';
-export const GET_PLAYLIST_ERROR = 'GET_PLAYLIST_ERROR';
-
-export const ADD_TO_SONG_REDUCER_START = 'ADD_TO_SONG_REDUCER_START';
-export const ADD_TO_SONG_REDUCER_SUCCESS = 'ADD_TO_SONG_REDUCER_SUCCESS';
-export const ADD_TO_SONG_REDUCER_ERROR = 'ADD_TO_SONG_REDUCER_ERROR';
-
-export const GET_SONG_BY_ID_START = 'GET_SONG_BY_ID_START';
-export const GET_SONG_BY_ID_SUCCESS = 'GET_SONG_BY_ID_SUCCESS';
-export const GET_SONG_BY_ID_ERROR = 'GET_SONG_BY_ID_ERROR';
-
-export const ADD_VOTE_START = 'ADD_VOTE_START';
-export const ADD_VOTE_SUCCESS = 'ADD_VOTE_SUCCESS';
-export const ADD_VOTE_ERROR = 'ADD_VOTE_ERROR';
-
-export const EDIT_QUEUE_NUM_START = 'EDIT_QUEUE_NUM_START';
-export const EDIT_QUEUE_NUM_SUCCESS = 'EDIT_QUEUE_NUM_SUCCESS';
-export const EDIT_QUEUE_NUM_ERROR = 'EDIT_QUEUE_NUM_ERROR';
-export const HIDE_MODAL = 'HIDE_MODAL';
-export const SHOW_MODAL = 'SHOW_MODAL';
-
-// action creators
-
-// basic action creators
-
 export const setName = name => {
-  return { type: SET_NAME, payload: name };
+  return { type: ActionTypes.SET_NAME, payload: name };
 };
 
 export const setUsername = username => {
-  return { type: SET_USERNAME, payload: username };
+  return { type: ActionTypes.SET_USERNAME, payload: username };
 };
 
 // onboarding
 export const loginUser = (userInfo, history) => dispatch => {
-  dispatch({ type: LOGIN_USER_START });
+  dispatch({ type: ActionTypes.LOGIN_USER_START });
 
   axiosWithAuth()
     .post('/login/dj/', userInfo)
     .then(response => {
       localStorage.setItem('token', response.data.token);
-      dispatch({ type: LOGIN_USER_SUCCESS, payload: response.data });
+      localStorage.setItem('id', response.data.id);
+      dispatch({
+        type: ActionTypes.LOGIN_USER_SUCCESS,
+        payload: response.data
+      });
       history.push('/dj');
-      // if (
-      //   !response.data.bio &&
-      //   !response.data.phone &&
-      //   !response.data.website &&
-      //   !response.data.profile_pic_url
-      // ) {
-      //   history.push('/dj/setup');
-      // } else {
-      //   history.push('/dj');
-      // }
     })
     .catch(err => {
-      dispatch({ type: LOGIN_USER_ERROR, payload: err });
+      dispatch({ type: ActionTypes.LOGIN_USER_ERROR, payload: err });
     });
 };
 
 export const registerUserAction = (infoNeeded, history) => dispatch => {
-  dispatch({ type: REGISTER_USER_START });
+  dispatch({ type: ActionTypes.REGISTER_USER_START });
   axiosWithAuth()
     .post('/register/dj/', infoNeeded)
     .then(response => {
       // history.push('/dj');
-      dispatch({ type: REGISTER_USER_SUCCESS, payload: response.data });
+      dispatch({
+        type: ActionTypes.REGISTER_USER_SUCCESS,
+        payload: response.data
+      });
 
       // login user
 
-      dispatch({ type: LOGIN_USER_START });
+      dispatch({ type: ActionTypes.LOGIN_USER_START });
       axiosWithAuth()
         .post('/login/dj/', infoNeeded)
         .then(response2 => {
           localStorage.setItem('token', response2.data.token);
-          dispatch({ type: LOGIN_USER_SUCCESS, payload: response2.data });
+          dispatch({
+            type: ActionTypes.LOGIN_USER_SUCCESS,
+            payload: response2.data
+          });
           history.push('/dj');
         })
         .catch(err => {
-          dispatch({ type: LOGIN_USER_ERROR, payload: err });
+          dispatch({ type: ActionTypes.LOGIN_USER_ERROR, payload: err });
         });
 
       // end of login user
     })
     .catch(err => {
-      dispatch({ type: REGISTER_USER_ERROR, payload: err });
+      dispatch({ type: ActionTypes.REGISTER_USER_ERROR, payload: err });
     });
 };
 
 export const logoutUser = () => dispatch => {
-  dispatch({ type: LOGOUT_USER_START });
+  dispatch({ type: ActionTypes.LOGOUT_USER_START });
   if (localStorage.getItem('token')) {
     localStorage.removeItem('token');
-    dispatch({ type: LOGOUT_USER_SUCCESS });
+    dispatch({ type: ActionTypes.LOGOUT_USER_SUCCESS });
   } else {
-    dispatch({ type: LOGOUT_USER_ERROR, payload: 'no token found' });
+    dispatch({
+      type: ActionTypes.LOGOUT_USER_ERROR,
+      payload: 'no token found'
+    });
   }
 };
 
 // CRUD for DJs
 
 export const deleteUser = id => dispatch => {
-  dispatch({ type: DELETE_USER_START });
+  dispatch({ type: ActionTypes.DELETE_USER_START });
   axiosWithAuth()
     .delete(`/auth/dj/${id}`)
     .then(response => {
       if (localStorage.getItem('token')) {
         localStorage.removeItem('token');
       }
-      dispatch({ type: DELETE_USER_SUCCESS });
+      dispatch({ type: ActionTypes.DELETE_USER_SUCCESS });
     })
     .catch(err => {
-      dispatch({ type: DELETE_USER_ERROR, payload: err });
+      dispatch({ type: ActionTypes.DELETE_USER_ERROR, payload: err });
     });
 };
 
 export const startEditUser = () => dispatch => {
-  dispatch({ type: EDIT_USER_START });
+  dispatch({ type: ActionTypes.EDIT_USER_START });
 };
 
 export const editUser = (id, userInfo) => dispatch => {
-  dispatch({ type: EDIT_USER_START_PROCESSING });
+  dispatch({ type: ActionTypes.EDIT_USER_START_PROCESSING });
   axiosWithAuth()
     .put(`/auth/dj/${id}`, userInfo)
     .then(response => {
-      dispatch({ type: EDIT_USER_SUCCESS, payload: response.data });
+      dispatch({ type: ActionTypes.EDIT_USER_SUCCESS, payload: response.data });
     })
     .catch(err => {
-      dispatch({ type: EDIT_USER_ERROR, payload: err });
+      dispatch({ type: ActionTypes.EDIT_USER_ERROR, payload: err });
     });
 };
 
 export const cancelEditUser = () => dispatch => {
-  dispatch({ type: EDIT_USER_CANCEL });
+  dispatch({ type: ActionTypes.EDIT_USER_CANCEL });
 };
 
 export const updateUser = (history, id, userInfo) => dispatch => {
-  dispatch({ type: UPDATE_USER_START });
+  dispatch({ type: ActionTypes.UPDATE_USER_START });
   axiosWithAuth()
     .put(`/auth/dj/${id}`, userInfo)
     .then(response => {
-      dispatch({ type: UPDATE_USER_SUCCESS, payload: response.data });
+      dispatch({
+        type: ActionTypes.UPDATE_USER_SUCCESS,
+        payload: response.data
+      });
       history.push('/dj');
     })
     .catch(err => {
-      dispatch({ type: UPDATE_USER_ERROR, payload: err });
+      dispatch({ type: ActionTypes.UPDATE_USER_ERROR, payload: err });
       history.push('/dj');
     });
 };
@@ -211,7 +145,7 @@ export const updateUser = (history, id, userInfo) => dispatch => {
 // playlist action creators
 
 export const addSongToPlaylistDJ = (songInfo, add_to_event_id) => dispatch => {
-  dispatch({ type: ADD_SONG_TO_PLAYLIST_START });
+  dispatch({ type: ActionTypes.ADD_SONG_TO_PLAYLIST_START });
 
   const songForBE = {
     name: songInfo.name,
@@ -252,34 +186,34 @@ export const addSongToPlaylistDJ = (songInfo, add_to_event_id) => dispatch => {
                 event_id: add_to_event_id
               };
               dispatch({
-                type: ADD_SONG_TO_PLAYLIST_SUCCESS,
+                type: ActionTypes.ADD_SONG_TO_PLAYLIST_SUCCESS,
                 payload: songToAdd
               });
             })
             .catch(err3 => {
               dispatch({
-                type: ADD_SONG_TO_PLAYLIST_ERROR,
+                type: ActionTypes.ADD_SONG_TO_PLAYLIST_ERROR,
                 payload: err3
               });
             });
         })
         .catch(err2 => {
           dispatch({
-            type: ADD_SONG_TO_PLAYLIST_ERROR,
+            type: ActionTypes.ADD_SONG_TO_PLAYLIST_ERROR,
             payload: err2
           });
         });
     })
     .catch(err1 => {
       dispatch({
-        type: ADD_SONG_TO_PLAYLIST_ERROR,
+        type: ActionTypes.ADD_SONG_TO_PLAYLIST_ERROR,
         payload: err1
       });
     });
 };
 
 export const removeSongFromPlaylistDJ = (songInfo, event_id) => dispatch => {
-  dispatch({ type: REMOVE_SONG_FROM_PLAYLIST_START });
+  dispatch({ type: ActionTypes.REMOVE_SONG_FROM_PLAYLIST_START });
 
   const info = {
     songId: songInfo.id,
@@ -290,7 +224,7 @@ export const removeSongFromPlaylistDJ = (songInfo, event_id) => dispatch => {
     .delete(`/auth/playlist/entry/${songInfo.connections_id}`)
     .then(response => {
       dispatch({
-        type: REMOVE_SONG_FROM_PLAYLIST_SUCCESS,
+        type: ActionTypes.REMOVE_SONG_FROM_PLAYLIST_SUCCESS,
         payload: info
       });
     })
@@ -298,7 +232,7 @@ export const removeSongFromPlaylistDJ = (songInfo, event_id) => dispatch => {
 };
 
 export const getPlaylist = event_id => dispatch => {
-  dispatch({ type: GET_PLAYLIST_START });
+  dispatch({ type: ActionTypes.GET_PLAYLIST_START });
   // GET https://api.dj-helper.com/api/playlist/:event_id
   axiosWithAuth()
     .get(`/playlist/${event_id}`)
@@ -319,11 +253,14 @@ export const getPlaylist = event_id => dispatch => {
                 playlist.push(res2.data);
               })
               .catch(err2 => {
-                dispatch({ type: GET_PLAYLIST_ERROR, payload: err2 });
+                dispatch({
+                  type: ActionTypes.GET_PLAYLIST_ERROR,
+                  payload: err2
+                });
               });
           })
           .catch(err => {
-            dispatch({ type: GET_PLAYLIST_ERROR, payload: err });
+            dispatch({ type: ActionTypes.GET_PLAYLIST_ERROR, payload: err });
           });
       }); // closes forEach
 
@@ -331,27 +268,30 @@ export const getPlaylist = event_id => dispatch => {
         eventId: event_id,
         formattedPlaylist: playlist
       };
-      dispatch({ type: GET_PLAYLIST_SUCCESS, payload: playlistObject });
+      dispatch({
+        type: ActionTypes.GET_PLAYLIST_SUCCESS,
+        payload: playlistObject
+      });
     })
     .catch(err3 => {
-      dispatch({ type: GET_PLAYLIST_ERROR, payload: err3 });
+      dispatch({ type: ActionTypes.GET_PLAYLIST_ERROR, payload: err3 });
     });
 };
 
 // songs
 
 export const addVoteToSong = (event_id, song_id) => dispatch => {
-  dispatch({ type: ADD_VOTE_START });
+  dispatch({ type: ActionTypes.ADD_VOTE_START });
 
   const info = {
     event_id: event_id,
     song_id: song_id
   };
-  dispatch({ type: ADD_VOTE_SUCCESS, payload: info });
+  dispatch({ type: ActionTypes.ADD_VOTE_SUCCESS, payload: info });
 };
 
 export const editQueueNum = (connections_id, queue_num) => dispatch => {
-  dispatch({ type: EDIT_QUEUE_NUM_START });
+  dispatch({ type: ActionTypes.EDIT_QUEUE_NUM_START });
   const requestBody = {
     queue_num: queue_num
   };
@@ -360,76 +300,59 @@ export const editQueueNum = (connections_id, queue_num) => dispatch => {
     .put(`auth/playlist/entry/${connections_id}`, requestBody)
     .then(response => {
       console.log(response);
-      dispatch({ type: EDIT_QUEUE_NUM_SUCCESS, payload: response.data });
+      dispatch({
+        type: ActionTypes.EDIT_QUEUE_NUM_SUCCESS,
+        payload: response.data
+      });
     })
     .catch(err => {
       console.log(err);
-      dispatch({ type: EDIT_QUEUE_NUM_ERROR, payload: err });
+      dispatch({ type: ActionTypes.EDIT_QUEUE_NUM_ERROR, payload: err });
     });
 };
 
 export const searchForTrack = searchTerm => dispatch => {
-  dispatch({ type: SEARCH_FOR_TRACK_START });
+  dispatch({ type: ActionTypes.SEARCH_FOR_TRACK_START });
 
   axiosWithAuthSpotifySearch()
     .get(`/search?q=<${searchTerm}>&type=track&market=US`)
     .then(response => {
       dispatch({
-        type: SEARCH_FOR_TRACK_SUCCESS,
+        type: ActionTypes.SEARCH_FOR_TRACK_SUCCESS,
         payload: response.data.tracks.items
       });
     })
     .catch(err => {
-      dispatch({ type: SEARCH_FOR_TRACK_ERROR, payload: err });
+      dispatch({ type: ActionTypes.SEARCH_FOR_TRACK_ERROR, payload: err });
     });
 };
 
 export const getSongInfoBySpotifyId = spotify_id => dispatch => {
   // TODO: Add cases in reducer to take care of GET_SONG_BY_ID_START, SUCCESS and ERROR
-  dispatch({ type: GET_SONG_BY_ID_START });
+  dispatch({ type: ActionTypes.GET_SONG_BY_ID_START });
   axiosWithAuthSpotifySearch()
     .get(`/tracks/${spotify_id}`)
     .then(response => {
       dispatch({
-        type: GET_SONG_BY_ID_SUCCESS,
+        type: ActionTypes.GET_SONG_BY_ID_SUCCESS,
         payload: response.data
       });
     })
     .catch(err => {
-      dispatch({ type: GET_SONG_BY_ID_ERROR });
+      dispatch({ type: ActionTypes.GET_SONG_BY_ID_ERROR });
     });
 };
 
 // get dj
 
 export const getDJ = id => dispatch => {
-  dispatch({ type: GET_DJ_START });
+  dispatch({ type: ActionTypes.GET_DJ_START });
   axiosWithAuth()
     .get(`/dj/${id}`)
     .then(response => {
-      dispatch({ type: GET_DJ_SUCCESS, payload: response.data });
+      dispatch({ type: ActionTypes.GET_DJ_SUCCESS, payload: response.data });
     })
     .catch(err => {
-      dispatch({ type: GET_DJ_ERROR, payload: err });
+      dispatch({ type: ActionTypes.GET_DJ_ERROR, payload: err });
     });
 };
-
-// create modal
-
-// export const  ActionTypes = keyMirror({
-//   HIDE_MODAL: null,
-//   SHOW_MODAL: null,
-// })
-
-// export const showModal = ({ modalProps, modalType }) => dispatch => {
-//   dispatch({
-//     type: ActionTypes.SHOW_MODAL,
-//     modalProps,
-//     modalType
-//   })
-// }
-// export const hideModal = () => dispatch => {
-//   dispatch({
-//     type: ActionTypes.HIDE_MODAL
-//   })
-// }

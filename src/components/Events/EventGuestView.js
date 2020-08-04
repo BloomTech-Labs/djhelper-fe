@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { getDJ, getPlaylist } from '../../redux/actions/action';
-import { getEvent } from '../../redux/actions/eventActions';
+import { getSingleEvent } from '../../redux/actions/eventActions';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 import {
   axiosWithAuthSpotifySearch,
@@ -19,7 +19,7 @@ const EventGuestView = props => {
 
   useEffect(() => {
     dispatch(getDJ(dj_id));
-    dispatch(getEvent(event_id));
+    dispatch(getSingleEvent(event_id));
     dispatch(getPlaylist(event_id));
     // dispatch(getLocation(location_id));
   }, []);

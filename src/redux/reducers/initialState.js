@@ -5,7 +5,7 @@ export const UserInitialState = {
   email: '',
   phone: '',
   website: '',
-  id: '',
+  id: localStorage.getItem('id'),
   bio: '',
   profile_img_src: '',
   events: { active: '' }, // { ...allEvents, active: '' }, // if you want to use dummy data
@@ -21,7 +21,12 @@ export const UserInitialState = {
   deleteUserError: false,
   editUserStart: false,
   editUserError: false,
-  editUserProcessing: false,
+  editUserProcessing: false
+};
+
+export const EventInitialState = {
+  events: [],
+  singleEvent: {},
   addEventStart: false,
   addEventError: false,
   editEventStart: false,
@@ -33,11 +38,53 @@ export const UserInitialState = {
   getDJError: false,
   getDJStart: false,
   getEventsStart: false,
-  getEventsError: false,
-  getLocationStart: false,
-  getLocationError: false,
-  editLocationStart: false,
-  editLocationError: false
+  getEventsError: false
 };
+// song initial states
 
-export const otherInit = {};
+export const SongInitialState = {
+  results: [],
+  eventPlaylists: {
+    event1: {
+      playlist: [],
+      requests: []
+    },
+    event2: {
+      playlist: [],
+      requests: []
+    },
+    event3: {
+      playlist: [],
+      requests: []
+    },
+    event4: {
+      playlist: [],
+      requests: []
+    },
+    event5: {
+      playlist: [],
+      requests: []
+    },
+    event6: {
+      playlist: [],
+      requests: []
+    }
+  },
+  addToSongReducerStarted: false,
+  searchStarted: false,
+  searchError: false,
+  getPreviewStarted: false,
+  getPreviewError: false,
+  addSongStarted: false,
+  addSongError: false,
+  editModeOn: false,
+  removeSongStarted: false,
+  removeSongError: false,
+  addVoteStarted: false,
+  addVoteError: false,
+  currentPreview: '',
+  getPlaylistStart: false,
+  getPlaylistError: false,
+  editQueueNumStart: false,
+  editQueueNumError: false
+};
