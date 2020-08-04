@@ -1,0 +1,38 @@
+.eventDetail {
+  background-color: transparent;
+
+  margin: 5rem auto;
+  max-width: 60rem;
+  width: 100%;
+
+  & > * {
+    margin-top: 2rem;
+    background: grey;
+    box-shadow: 2px 5px 10px black;
+    padding: 3rem 2rem 1rem 2rem;
+  }
+}
+
+.eventDetailTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__one,
+  &__two,
+  &__three,
+  &__four,
+  &__five {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+  }
+}
+
+.btn-trackRequest {
+  width: 100%;
+  cursor: pointer;
+}

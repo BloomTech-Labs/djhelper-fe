@@ -356,23 +356,3 @@ export const getDJ = id => dispatch => {
       dispatch({ type: ActionTypes.GET_DJ_ERROR, payload: err });
     });
 };
-
-// create modal
-
-// export const  ActionTypes = keyMirror({
-//   HIDE_MODAL: null,
-//   SHOW_MODAL: null,
-// })
-
-// export const showModal = ({ modalProps, modalType }) => dispatch => {
-//   dispatch({
-//     type: ActionActionTypes.SHOW_MODAL,
-//     modalProps,
-//     modalType
-//   })
-// }
-// export const hideModal = () => dispatch => {
-//   dispatch({
-//     type: ActionActionTypes.HIDE_MODAL
-//   })
-// }
