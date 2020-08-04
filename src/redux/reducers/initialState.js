@@ -26,6 +26,7 @@ export const UserInitialState = {
 
 export const EventInitialState = {
   events: [],
+  singleEvent: {},
   addEventStart: false,
   addEventError: false,
   editEventStart: false,

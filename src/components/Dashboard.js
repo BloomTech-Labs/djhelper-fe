@@ -15,7 +15,6 @@ import PreviewEventDetails from './events/PreviewEventDetails';
 
 import * as Styles from './Styles';
 import plus from '../images/plus.png';
-import { upcomingEvents } from '../data/upcomingEvents';
 
 Modal.setAppElement('#root');
 
@@ -26,7 +25,8 @@ const Dashboard = ({ events, id, name, getEvents, history, ...props }) => {
 
   useEffect(() => {
     if (events.length === 0) {
-      getEvents(5);
+      // replace id with your userid with id# in getevents (console.log('id', id))
+      getEvents(id);
     }
   }, []);
 
@@ -111,25 +111,11 @@ const Dashboard = ({ events, id, name, getEvents, history, ...props }) => {
         {events &&
           upComingEvents.map(event => {
             return (
-              <Link to={`/dj/events/${event.name}`} key={event.id}>
+              <Link to={`/dj/events/${event.id}`} key={event.id}>
                 <Event event={event} key={event.id} />
               </Link>
             );
           })}
-
-        {/* <h2>another type of events</h2> */}
-        {/* {events &&
-          upcomingIds.map(eventId => {
-            return (
-              <Event
-                history={props.history}
-                num={eventId}
-                data={data}
-                setData={setData}
-                key={eventId}
-              />
-            );
-          })} */}
       </div>
     </div>
   );
@@ -137,7 +123,7 @@ const Dashboard = ({ events, id, name, getEvents, history, ...props }) => {
 
 Dashboard.propTypes = {
   events: PropTypes.instanceOf(Array).isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   getEvents: PropTypes.func.isRequired,
   history: PropTypes.oneOfType([PropTypes.object]).isRequired

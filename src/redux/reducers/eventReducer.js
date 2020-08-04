@@ -86,23 +86,20 @@ export const eventReducer = (state = EventInitialState, action) => {
         getEventsStart: false
       };
 
-    case ActionTypes.GET_EVENT_START:
+    case ActionTypes.GET_SINGLE_EVENT_START:
       return {
         ...state,
         getEventsStart: true
       };
 
-    case ActionTypes.GET_EVENT_SUCCESS:
+    case ActionTypes.GET_SINGLE_EVENT_SUCCESS:
       return {
         ...state,
         getEventsStart: false,
-        events: {
-          ...state.events,
-          [`event${action.payload[1]}`]: action.payload[0]
-        }
+        singleEvent: { ...state.singleEvent, ...action.payload }
       };
 
-    case ActionTypes.GET_EVENT_ERROR:
+    case ActionTypes.GET_SINGLE_EVENT_ERROR:
       return {
         ...state,
         getEventsError: true,

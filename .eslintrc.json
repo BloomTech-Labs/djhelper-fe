@@ -17,6 +17,7 @@
   },
   "plugins": ["prettier"],
   "rules": {
+    "react/destructuring-assignment": "off",
     "prettier/prettier": "error",
     "no-unused-vars": "warn",
     "no-console": "off",

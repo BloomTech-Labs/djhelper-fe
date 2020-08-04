@@ -27,7 +27,7 @@ function App() {
 
         <Route exact path="/" component={Home} />
         <PrivateRoute exact path="/dj" component={DjInterface} />
-        <PrivateRoute exact path="/dj/events/:slug" component={EventDetail} />
+        <PrivateRoute exact path="/dj/events/:id" component={EventDetail} />
         <PrivateRoute exact path="/dj/event/:id" component={EventPage} />
         <PrivateRoute path="/dj/profile" component={DJProfile} />
         <Route path="/about" component={About} />
