@@ -4,8 +4,11 @@ import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 
 import * as eventActions from '../../redux/actions/eventActions';
+import * as searchActions from '../../redux/actions/searchActions';
+
 import * as Styles from '../Styles';
 import TrackSearch from './TrackSearch';
+import TrackCard from '../tracks/trackCard';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class EventDetail extends Component {
@@ -13,21 +16,54 @@ class EventDetail extends Component {
     super(props);
     this.state = {
       eventId: props.match.params.id,
-      trackModalIsOpen: false
+      trackSearchModalIsOpen: false,
+      eventTrackList: []
     };
   }
 
   componentDidMount() {
-    const { getSingleEvent } = this.props;
-    const { eventId } = this.state;
+    const { getSingleEvent, getTrackList, trackList } = this.props;
+    const { eventId, eventTrackList } = this.state;
+
     getSingleEvent(eventId);
+    if (trackList.length === 0) {
+      getTrackList(eventId);
+    }
+
+    this.setState({
+      eventTrackList: trackList.filter(
+        track => track.event_id === parseInt(eventId, 10)
+      )
+    });
   }
 
-  toggleTrackModal = () => {
-    this.setState({ trackModalIsOpen: !this.state.trackModalIsOpen });
+  componentDidUpdate(prevProps, prevState) {
+    const { getSingleEvent, getTrackList, trackList } = this.props;
+    const { eventId, eventTrackList } = this.state;
+
+    if (prevProps.trackList.length !== trackList.length) {
+      getSingleEvent(eventId);
+
+      if (trackList.length === 0) {
+        getTrackList(eventId);
+      }
+
+      this.setState({
+        eventTrackList: trackList.filter(
+          track => track.event_id === parseInt(eventId, 10)
+        )
+      });
+    }
+  }
+
+  toggleTrackSearchModal = () => {
+    this.setState({
+      trackSearchModalIsOpen: !this.state.trackSearchModalIsOpen
+    });
   };
 
   render() {
+    const { getPredictionResults, predictResults, deleteTrack } = this.props;
     const { name, date, notes, isExplicit } = this.props.singleEvent;
     return (
       <div className="eventDetail">
@@ -64,7 +100,7 @@ class EventDetail extends Component {
 
         <section className="eventDetailMiddle">
           <button
-            onClick={this.toggleTrackModal}
+            onClick={this.toggleTrackSearchModal}
             type="button"
             className="btn-trackRequest"
           >
@@ -73,16 +109,30 @@ class EventDetail extends Component {
         </section>
 
         <section className="eventDetailBottom">
-          <p>Tract List</p>
+          {this.state.eventTrackList.map((track, index) => (
+            <TrackCard
+              key={track.id}
+              track={track}
+              index={index}
+              getPredictionResults={getPredictionResults}
+              predictResults={predictResults}
+              eventId={this.state.eventId}
+              deleteTrack={deleteTrack}
+            />
+          ))}
         </section>
 
         {/* Modal for Track Search */}
         <Modal
-          isOpen={this.state.trackModalIsOpen}
-          onRequestClose={this.toggleTrackModal}
-          style={Styles.trackModalStyles}
+          isOpen={this.state.trackSearchModalIsOpen}
+          onRequestClose={this.toggleTrackSearchModal}
+          style={Styles.trackSearchModalStyles}
         >
-          <TrackSearch toggleTrackModal={this.toggleTrackModal} />
+          <TrackSearch
+            isExplicit={isExplicit}
+            eventId={this.state.eventId}
+            toggleTrackSearchModal={this.toggleTrackSearchModal}
+          />
         </Modal>
       </div>
     );
@@ -91,17 +141,23 @@ class EventDetail extends Component {
 
 EventDetail.propTypes = {
   match: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  singleEvent: PropTypes.oneOfType([PropTypes.object]).isRequired
+  singleEvent: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  getSingleEvent: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
   return {
-    singleEvent: state.eventReducer.singleEvent
+    singleEvent: state.eventReducer.singleEvent,
+    trackList: state.searchReducer.trackList,
+    predictResults: state.searchReducer.predictResults
   };
 };
 
 const mapDispatchToProps = {
-  getSingleEvent: eventActions.getSingleEvent
+  getSingleEvent: eventActions.getSingleEvent,
+  getTrackList: searchActions.getTrackList,
+  getPredictionResults: searchActions.getPredictionResults,
+  deleteTrack: searchActions.deleteTrack
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventDetail);

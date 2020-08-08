@@ -104,21 +104,6 @@ export const getSingleEvent = eventId => dispatch => {
   axiosWithAuth()
     .get(`/event/${eventId}`)
     .then(response => {
-      // const eventObject = {
-      //   event_id: response.data.id,
-      //   name: response.data.name,
-      //   event_type: response.data.event_type,
-      //   description: response.data.description,
-      //   date: response.data.date,
-      //   start_time: response.data.start_time,
-      //   end_time: response.data.end_time,
-      //   location_id: response.data.location_id,
-      //   img_url: response.data.img_url,
-      //   dj_id: response.data.dj_id,
-      //   notes: response.data.notes
-      // };
-      // dispatch(getPlaylist(event_id));
-      console.log('event from actions: ', response);
       dispatch({
         type: ActionTypes.GET_SINGLE_EVENT_SUCCESS,
         payload: response.data

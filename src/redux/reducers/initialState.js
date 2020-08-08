@@ -1,3 +1,4 @@
+import { getTrackList } from '../actions/searchActions';
 // user initia state
 export const UserInitialState = {
   username: '',
@@ -87,4 +88,13 @@ export const SongInitialState = {
   getPlaylistError: false,
   editQueueNumStart: false,
   editQueueNumError: false
+};
+
+export const SearchInitialState = {
+  searchResults: [],
+  predictResults: [],
+  trackList: [],
+  addTrackError: '',
+  getTrackListError: '',
+  deleteTrackError: ''
 };
