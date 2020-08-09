@@ -18,8 +18,8 @@ export const searchReducer = (state = SearchInitialState, action) => {
     case ActionTypes.GET_TRACK_LIST:
       return {
         ...state,
-        // trackList: [...state.trackList, ...action.payload]
-        trackList: action.payload
+        trackList: [...state.trackList, ...action.payload]
+        // trackList: action.payload
       };
     case ActionTypes.GET_TRACK_LIST_ERROR:
       return {
@@ -27,7 +27,6 @@ export const searchReducer = (state = SearchInitialState, action) => {
         getTrackListError: action.payload
       };
     case ActionTypes.ADD_SEARCH_TRACK:
-      console.log('action payload: ', action.payload);
       return {
         ...state,
         trackList: [...state.trackList, action.payload],
@@ -41,7 +40,6 @@ export const searchReducer = (state = SearchInitialState, action) => {
         addTrackError: action.payload
       };
     case ActionTypes.DELETE_TRACK_SUCCESS:
-      console.log('delete payload: ', action.payload);
       return {
         ...state,
         trackList: state.trackList.filter(track => track.id !== action.payload)
@@ -50,6 +48,39 @@ export const searchReducer = (state = SearchInitialState, action) => {
       return {
         ...state,
         deleteTrackError: action.payload
+      };
+    case ActionTypes.MOVE_TRACK_SUCCESS:
+      return {
+        ...state,
+        playlistResults: [...state.playlistResults, action.payload],
+        trackList: state.trackList.filter(track => track.id !== action.trackId)
+      };
+    case ActionTypes.MOVE_TRACK_ERROR:
+      return {
+        ...state,
+        moveTrackError: action.payload
+      };
+    case ActionTypes.GET_PLAYLISTS_SUCCESS:
+      return {
+        ...state,
+        playlistResults: [...state.playlistResults, ...action.payload]
+      };
+    case ActionTypes.GET_PLAYLISTS_ERROR:
+      return {
+        ...state,
+        getPlaylistError: action.payload
+      };
+    case ActionTypes.REMOVE_PLAYLIST_TRACK_SUCCESS:
+      return {
+        ...state,
+        playlistResults: state.playlistResults.filter(
+          track => track.id !== action.payload
+        )
+      };
+    case ActionTypes.REMOVE_PLAYLIST_TRACK_ERRROR:
+      return {
+        ...state,
+        removePlaylistTrackError: action.payload
       };
     default:
       return state;

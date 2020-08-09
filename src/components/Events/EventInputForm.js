@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 
 function EventInputForm({
   handleSubmit,
+  handleDeleteSubmit,
   handleInputChange,
   handleCheckedChange,
-  eventData
+  eventData,
+  isEditEvent
 }) {
   return (
     <form onSubmit={handleSubmit}>
@@ -64,13 +66,28 @@ function EventInputForm({
               </p>
             </div>
 
-            <button
-              className="create"
-              type="submit"
-              data-testid="submit-button"
-            >
-              Create
-            </button>
+            {isEditEvent ? (
+              <>
+                <button type="submit" className="btn">
+                  Save
+                </button>
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={handleDeleteSubmit}
+                >
+                  Delete Event
+                </button>
+              </>
+            ) : (
+              <button
+                className="create"
+                type="submit"
+                data-testid="submit-button"
+              >
+                Create
+              </button>
+            )}
           </div>
         </div>
       </section>

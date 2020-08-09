@@ -1,22 +1,47 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default function MenuTrackCard({
+import * as playlistActions from '../../redux/actions/playlistActions';
+
+function MenuTrackCard({
   name,
   id,
   deleteTrack,
-  toggleMenuModal
+  removePlaylistTrack,
+  toggleMenuModal,
+  moveTrack,
+  isPlaylist
 }) {
   const handleRemoveTrack = e => {
-    deleteTrack(id);
+    if (isPlaylist) {
+      removePlaylistTrack(id);
+    } else {
+      deleteTrack(id);
+    }
     toggleMenuModal();
   };
+
+  const handleMoveTrack = e => {
+    moveTrack(id);
+    toggleMenuModal();
+  };
+
   return (
     <div className="menuTrackCard">
       <h2>Track Options</h2>
       <p>{name}</p>
-      <button type="button" className="btn btn-history">
-        Move to history
-      </button>
+
+      {isPlaylist ? (
+        ''
+      ) : (
+        <button
+          onClick={handleMoveTrack}
+          type="button"
+          className="btn btn-history"
+        >
+          Move to history
+        </button>
+      )}
       <button
         onClick={handleRemoveTrack}
         type="button"
@@ -27,3 +52,17 @@ export default function MenuTrackCard({
     </div>
   );
 }
+
+const mapStateToProps = state => {
+  return {
+    singleEvent: state.eventReducer.singleEvent,
+    trackList: state.searchReducer.trackList,
+    predictResults: state.searchReducer.predictResults
+  };
+};
+
+const mapDispatchToProps = {
+  moveTrack: playlistActions.moveTrack
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MenuTrackCard);

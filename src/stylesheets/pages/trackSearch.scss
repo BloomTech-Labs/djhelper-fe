@@ -1,6 +1,27 @@
 .trackSearch {
   border: 1px solid black;
+
+  &__btnclose {
+    all: unset;
+    cursor: pointer;
+    position: absolute;
+
+    margin-bottom: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    background: $color-grey-1;
+  }
+
+  &__icon {
+    margin-top: 0.2rem;
+    margin-right: 1rem;
+    font-size: 3rem;
+    color: $color-secondary-2;
+  }
+
   &__input {
+    margin-top: 3rem;
     width: 100%;
     height: 5rem;
 

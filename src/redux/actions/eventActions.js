@@ -17,7 +17,6 @@ export const addEvent = (eventInfo, history) => dispatch => {
   return axiosWithAuth()
     .post('/auth/event/', eventToSubmit)
     .then(response2 => {
-      console.log('response2: ', response2);
       dispatch({
         type: ActionTypes.ADD_EVENT_SUCCESS,
         payload: { ...response2.data }
@@ -34,28 +33,16 @@ export const addEvent = (eventInfo, history) => dispatch => {
     });
 };
 
-export const editEvent = (eventInfo, event_id) => dispatch => {
+export const editEvent = (eventInfo, eventId) => dispatch => {
+  console.log('editEvent:Submit: ', eventInfo);
+
   dispatch({ type: ActionTypes.EDIT_EVENT_START });
-  // PUT https://api.dj-helper.com/api/auth/event/:event_id
   axiosWithAuth()
-    .put(`/auth/event/${event_id}`, eventInfo)
+    .put(`/auth/event/${eventId}`, eventInfo)
     .then(response => {
-      const formattedResponse = {
-        event_id: response.data.id,
-        dj_id: response.data.dj_id,
-        name: response.data.name,
-        date: response.data.date,
-        start_time: response.data.start_time,
-        end_time: response.data.end_time,
-        event_type: response.data.event_type,
-        location_id: response.data.location_id,
-        img_url: response.data.img_url,
-        description: response.data.description,
-        notes: response.data.notes
-      };
       dispatch({
         type: ActionTypes.EDIT_EVENT_SUCCESS,
-        payload: [formattedResponse, event_id]
+        payload: response.data
       });
     })
     .catch(err => {
@@ -63,14 +50,13 @@ export const editEvent = (eventInfo, event_id) => dispatch => {
     });
 };
 
-export const deleteEvent = (event, history) => dispatch => {
+export const deleteEvent = (eventId, history) => dispatch => {
   dispatch({ type: ActionTypes.DELETE_EVENT_START });
-  // DELETE https://api.dj-helper.com/api/auth/event/:event_id
-  history.push('/dj');
   axiosWithAuth()
-    .delete(`/auth/event/${event.event_id}`)
+    .delete(`/auth/event/${eventId}`)
     .then(response => {
-      dispatch({ type: ActionTypes.DELETE_EVENT_SUCCESS, payload: event });
+      dispatch({ type: ActionTypes.DELETE_EVENT_SUCCESS, payload: eventId });
+      history.push('/dj');
     })
     .catch(err => {
       dispatch({ type: ActionTypes.DELETE_EVENT_ERROR, payload: err });

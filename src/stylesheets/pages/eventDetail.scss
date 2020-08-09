@@ -39,3 +39,28 @@
   width: 100%;
   cursor: pointer;
 }
+
+.sharelink-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+
+  & > * {
+    margin-top: 3rem;
+  }
+
+  a {
+    font-size: 2rem;
+  }
+
+  button {
+    all: unset;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 4rem;
+    cursor: pointer;
+  }
+}

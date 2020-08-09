@@ -96,5 +96,9 @@ export const SearchInitialState = {
   trackList: [],
   addTrackError: '',
   getTrackListError: '',
-  deleteTrackError: ''
+  deleteTrackError: '',
+  playlistResults: [],
+  moveTrackError: '',
+  getPlaylistError: '',
+  removePlaylistTrackError: ''
 };

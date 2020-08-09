@@ -111,7 +111,7 @@ const Dashboard = ({ events, id, name, getEvents, history, ...props }) => {
         {events &&
           upComingEvents.map(event => {
             return (
-              <Link to={`/dj/events/${event.id}`} key={event.id}>
+              <Link to={`/dj/event/${event.id}`} key={event.id}>
                 <Event event={event} key={event.id} />
               </Link>
             );
@@ -123,7 +123,7 @@ const Dashboard = ({ events, id, name, getEvents, history, ...props }) => {
 
 Dashboard.propTypes = {
   events: PropTypes.instanceOf(Array).isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   getEvents: PropTypes.func.isRequired,
   history: PropTypes.oneOfType([PropTypes.object]).isRequired

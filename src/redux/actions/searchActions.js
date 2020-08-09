@@ -90,21 +90,32 @@ export const addTrackResult = (value, eventId) => dispatch => {
       if (res.data.filter(track => track.name === newTrack.name).length > 0) {
         return { ...newTrack, isExists: true };
       }
-      return axiosWithAuth()
-        .post('/track/', newTrack)
-        .then(res2 => {
-          dispatch({
-            type: ActionTypes.ADD_SEARCH_TRACK,
-            payload: res2.data
-          });
 
-          return res2.data;
-        })
-        .catch(err => {
-          dispatch({
-            type: ActionTypes.ADD_SEARCH_TRACK_ERROR,
-            payload: err
-          });
+      return axiosWithAuth()
+        .get(`/event/${eventId}/playlist`)
+        .then(res3 => {
+          if (
+            res3.data.filter(track => track.name === newTrack.name).length > 0
+          ) {
+            return { ...newTrack, isExists: true };
+          }
+
+          return axiosWithAuth()
+            .post('/track/', newTrack)
+            .then(res2 => {
+              dispatch({
+                type: ActionTypes.ADD_SEARCH_TRACK,
+                payload: res2.data
+              });
+
+              return res2.data;
+            })
+            .catch(err => {
+              dispatch({
+                type: ActionTypes.ADD_SEARCH_TRACK_ERROR,
+                payload: err
+              });
+            });
         });
     })
     .catch();

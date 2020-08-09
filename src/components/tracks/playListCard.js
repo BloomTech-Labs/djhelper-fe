@@ -2,20 +2,10 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 
 import * as Styles from '../Styles';
-import PredictSearch from './predictSearch';
 import MenuTrackCard from './menuTrackCard';
 
-export default function TrackCard({
-  track,
-  index,
-  predictResults,
-  getPredictionResults,
-  eventId,
-  deleteTrack,
-  isGuest
-}) {
+function PlayListCard({ track, index, eventId, removePlaylistTrack, isGuest }) {
   const count = index + 1;
-  const [predictModalIsOpen, setPredictModalIsOpen] = useState(false);
   const [menuModalIsOpen, setMenuModalIsOpen] = useState(false);
   const {
     artist_name,
@@ -35,9 +25,6 @@ export default function TrackCard({
     audio.play();
   };
 
-  const togglePredictModal = e => {
-    setPredictModalIsOpen(!predictModalIsOpen);
-  };
   const toggleMenuModal = e => {
     setMenuModalIsOpen(!menuModalIsOpen);
   };
@@ -68,14 +55,6 @@ export default function TrackCard({
             Play Preview
           </button>
         )}
-
-        {/* <button
-          onClick={togglePredictModal}
-          type="button"
-          className="trackCard__similar"
-        >
-          find similar
-        </button> */}
         {isGuest ? (
           ''
         ) : (
@@ -84,18 +63,6 @@ export default function TrackCard({
           </button>
         )}
       </div>
-      <Modal
-        isOpen={predictModalIsOpen}
-        onRequestClose={togglePredictModal}
-        style={Styles.trackSearchModalStyles}
-      >
-        <PredictSearch
-          isExplicit={isExplicit}
-          eventId={eventId}
-          togglePredictModal={togglePredictModal}
-          spotifyId={spotify_id}
-        />
-      </Modal>
 
       <Modal
         isOpen={menuModalIsOpen}
@@ -105,10 +72,13 @@ export default function TrackCard({
         <MenuTrackCard
           name={name}
           id={id}
-          deleteTrack={deleteTrack}
+          removePlaylistTrack={removePlaylistTrack}
           toggleMenuModal={toggleMenuModal}
+          isPlaylist="true"
         />
       </Modal>
     </>
   );
 }
+
+export default PlayListCard;

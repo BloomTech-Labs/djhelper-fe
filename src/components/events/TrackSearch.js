@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 
@@ -37,9 +38,9 @@ function TrackSearch({
         <button
           onClick={toggleTrackSearchModal}
           type="button"
-          className="btn-close"
+          className="trackSearch__btnclose"
         >
-          X
+          <FontAwesomeIcon icon="times" className="trackSearch__icon" />
         </button>
         <form onSubmit={handleSubmit}>
           <div className="trackSearch__input">
