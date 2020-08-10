@@ -1,5 +1,16 @@
 .eventDashboard {
   background: $dark3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__heading {
+    color: white;
+    position: absolute;
+    top: 15rem;
+    font-size: 4rem;
+  }
 }
 .eventDetail {
   position: relative;

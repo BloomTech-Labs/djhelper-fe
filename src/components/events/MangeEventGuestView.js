@@ -11,6 +11,7 @@ import * as Styles from '../Styles';
 
 import EventGuestViewDetail from './EventGuestViewDetail';
 import EditEvent from './EditEvent';
+import DashboardWelcome from '../DashboardWelcome';
 
 class MangeEventGuestView extends Component {
   constructor(props) {
@@ -121,12 +122,10 @@ class MangeEventGuestView extends Component {
     } = this.props;
     const { name, date, notes, isExplicit } = this.props.singleEvent;
     return (
-      <>
-        <h1
-          style={{ fontSize: '24px', margin: '10px auto', textAlign: 'center' }}
-        >
-          Event Guest View
-        </h1>
+      <div className="eventDashboard">
+        <DashboardWelcome isEvent="true" />
+
+        <h1 className="eventDashboard__heading">Event Guest View</h1>
         <EventGuestViewDetail
           eventId={this.state.eventId}
           djId={this.state.djId}
@@ -157,7 +156,7 @@ class MangeEventGuestView extends Component {
             history={this.state.history}
           />
         </Modal>
-      </>
+      </div>
     );
   }
 }

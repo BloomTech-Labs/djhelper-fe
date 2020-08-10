@@ -58,7 +58,7 @@ function PlayListCard({ track, index, eventId, removePlaylistTrack, isGuest }) {
         {isGuest ? (
           ''
         ) : (
-          <button type="button" onClick={toggleMenuModal}>
+          <button className="btn-menu" type="button" onClick={toggleMenuModal}>
             <span className="mobileMenIcon">&nbsp;</span>
           </button>
         )}
