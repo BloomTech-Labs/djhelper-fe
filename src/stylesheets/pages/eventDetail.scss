@@ -1,6 +1,9 @@
+.eventDashboard {
+  background: $dark3;
+}
 .eventDetail {
-  background-color: transparent;
-
+  position: relative;
+  top: -50rem;
   margin: 5rem auto;
   max-width: 80rem;
   width: 100%;
@@ -40,7 +43,11 @@
   cursor: pointer;
 }
 
-.sharelink-component {
+.eventDetailBottom {
+  background: $color-white-1;
+}
+
+.sharelink {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,12 +62,24 @@
     font-size: 2rem;
   }
 
-  button {
+  &__btn-icon {
     all: unset;
     position: absolute;
     top: 1rem;
     right: 1rem;
     font-size: 4rem;
     cursor: pointer;
+  }
+
+  &__copy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      color: red;
+      font-size: 2rem;
+      margin-left: 3rem;
+    }
   }
 }

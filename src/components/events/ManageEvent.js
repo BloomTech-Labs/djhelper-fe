@@ -11,6 +11,7 @@ import * as Styles from '../Styles';
 
 import EventDetail from './EventDetail';
 import EditEvent from './EditEvent';
+import DashboardWelcome from '../DashboardWelcome';
 
 class ManageEvent extends Component {
   constructor(props) {
@@ -117,9 +118,11 @@ class ManageEvent extends Component {
       moveTrack,
       removePlaylistTrack
     } = this.props;
-    const { name, date, notes, isExplicit } = this.props.singleEvent;
+    // const { name, date, notes, isExplicit } = this.props.singleEvent;
     return (
-      <>
+      <div className="eventDashboard">
+        <DashboardWelcome isEvent="true" />
+
         <EventDetail
           eventId={this.state.eventId}
           djId={this.props.id}
@@ -150,7 +153,7 @@ class ManageEvent extends Component {
             history={this.state.history}
           />
         </Modal>
-      </>
+      </div>
     );
   }
 }

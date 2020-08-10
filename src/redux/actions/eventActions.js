@@ -1,10 +1,10 @@
 import axiosWithAuth from '../../utils/axiosWithAuth';
 import * as ActionTypes from './actionTypes';
-import { getPlaylist } from './action';
+// import { getPlaylist } from './action';
 
 export const addEvent = (eventInfo, history) => dispatch => {
   dispatch({ type: ActionTypes.ADD_EVENT_START });
-  dispatch({ type: ActionTypes.ADD_TO_SONG_REDUCER_START });
+  // dispatch({ type: ActionTypes.ADD_TO_SONG_REDUCER_START });
 
   const eventToSubmit = {
     name: eventInfo.name,
@@ -34,8 +34,6 @@ export const addEvent = (eventInfo, history) => dispatch => {
 };
 
 export const editEvent = (eventInfo, eventId) => dispatch => {
-  console.log('editEvent:Submit: ', eventInfo);
-
   dispatch({ type: ActionTypes.EDIT_EVENT_START });
   axiosWithAuth()
     .put(`/auth/event/${eventId}`, eventInfo)
@@ -66,7 +64,6 @@ export const deleteEvent = (eventId, history) => dispatch => {
 // getting events by DJ id
 
 export const getEvents = djId => dispatch => {
-  // GET https://api.dj-helper.com/api/events
   dispatch({ type: ActionTypes.GET_EVENTS_START });
   axiosWithAuth()
     .get('/events')
@@ -85,7 +82,6 @@ export const getEvents = djId => dispatch => {
 };
 
 export const getSingleEvent = eventId => dispatch => {
-  // GET https://api.dj-helper.com/api/event/:event_id
   dispatch({ type: ActionTypes.GET_SINGLE_EVENT_START });
   axiosWithAuth()
     .get(`/event/${eventId}`)

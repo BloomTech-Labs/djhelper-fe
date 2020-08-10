@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Route, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import * as Styles from '../Styles';
 import TrackSearch from './TrackSearch';
@@ -25,8 +26,11 @@ function EventDetail({
 }) {
   const { name, date, notes, isExplicit } = event;
   const [shareLinkModalIsOpen, setShareLinkModalIsOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+
   const toggleShareLinkModal = () => {
     setShareLinkModalIsOpen(!shareLinkModalIsOpen);
+    setCopied(false);
   };
 
   return (
@@ -132,19 +136,33 @@ function EventDetail({
         onRequestClose={toggleShareLinkModal}
         style={Styles.shareLinkModalStyles}
       >
-        <div className="sharelink-component">
+        <div className="sharelink">
           <h2 className="heading-secondary">Sharable Event Page:</h2>
           <p>
             <Link to={`/dj/${djId}/event/${eventId}`}>
               {`${window.location.origin.toString()}/dj/${djId}/event/${eventId}`}
             </Link>
           </p>
-          <button type="button" onClick={toggleShareLinkModal}>
-            <FontAwesomeIcon
-              icon="times"
-              className="sharelink-component__icon"
-            />
+          <button
+            className="sharelink__btn-icon"
+            type="button"
+            onClick={toggleShareLinkModal}
+          >
+            <FontAwesomeIcon icon="times" className="sharelink__icon" />
           </button>
+          {/* copy to clipboard */}
+          <div className="sharelink__copy">
+            <CopyToClipboard
+              text={`${window.location.origin.toString()}/dj/${djId}/event/${eventId}`}
+              onCopy={() => setCopied(true)}
+            >
+              <button type="button" className="btn sharelink__btn-copy">
+                Copy
+              </button>
+            </CopyToClipboard>
+
+            {copied ? <p>Copied.</p> : null}
+          </div>
         </div>
       </Modal>
     </div>

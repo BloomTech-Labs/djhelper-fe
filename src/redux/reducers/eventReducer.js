@@ -27,42 +27,32 @@ export const eventReducer = (state = EventInitialState, action) => {
         ...state,
         editEventStart: true
       };
-
     case ActionTypes.EDIT_EVENT_SUCCESS:
       return {
         ...state,
         editEventStart: false,
+        singleEvent: action.payload,
         events: state.events.map(event =>
           event.id === action.payload.id ? action.payload : event
         )
       };
-
     case ActionTypes.EDIT_EVENT_ERROR:
       return {
         ...state,
         editEventStart: false,
         editEventError: true
       };
-
     case ActionTypes.DELETE_EVENT_START:
       return {
         ...state,
         deleteEventStart: true
       };
-
     case ActionTypes.DELETE_EVENT_SUCCESS:
-      // const parentKey = 'events';
-      // const childKey = `event${action.payload.event_id}`;
-      // const { [parentKey]: parentValue, ...noChild } = state;
-      // const { [childKey]: removedValue, ...childWithout } = parentValue;
-      // const stateCopyWithoutEvent = { ...noChild, [parentKey]: childWithout };
-
       return {
         ...state,
         deleteEventStart: false,
-        events: state.events.filter(event => event.id !== action.payload)
+        events: []
       };
-
     case ActionTypes.DELETE_EVENT_ERROR:
       return {
         ...state,
@@ -100,7 +90,8 @@ export const eventReducer = (state = EventInitialState, action) => {
       return {
         ...state,
         getEventsStart: false,
-        singleEvent: { ...state.singleEvent, ...action.payload }
+        // singleEvent: { ...state.singleEvent, ...action.payload }
+        singleEvent: action.payload
       };
 
     case ActionTypes.GET_SINGLE_EVENT_ERROR:

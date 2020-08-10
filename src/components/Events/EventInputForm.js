@@ -49,6 +49,7 @@ function EventInputForm({
                 id="isExplicit"
                 onChange={handleCheckedChange}
                 value={eventData.isExplicit}
+                checked={eventData.isExplicit}
               />
               <label htmlFor="tracks">Allow explicit tracks</label>
 
