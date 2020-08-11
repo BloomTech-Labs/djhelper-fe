@@ -34,10 +34,10 @@ export const registerModalStyles = {
 export const trackSearchModalStyles = {
   content: {
     width: '80%',
-    margin: '15% auto auto auto',
+    margin: '5% auto auto auto',
     padding: 0,
     background: 'transparent',
-    border: 'none'
+    border: '1px solid grey'
   }
 };
 

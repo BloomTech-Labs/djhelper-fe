@@ -16,6 +16,7 @@ function TrackSearch({
   isExplicit,
   getSearchResults,
   searchResults,
+  getSearchResultStart,
   addTrackResult,
   eventId,
   toggleTrackSearchModal
@@ -61,14 +62,27 @@ function TrackSearch({
       </section>
 
       <section className="searchResults">
-        {searchResults.map(result => (
+        {/* {searchResults.map(result => (
           <ResultCard
             addTrackResult={addTrackResult}
             key={result.id}
             result={result}
             eventId={eventId}
           />
-        ))}
+        ))} */}
+
+        {getSearchResultStart ? (
+          <Loader type="Audio" color="purple" height={200} width={200} />
+        ) : (
+          searchResults.map(result => (
+            <ResultCard
+              addTrackResult={addTrackResult}
+              key={result.id}
+              result={result}
+              eventId={eventId}
+            />
+          ))
+        )}
       </section>
     </div>
   );
@@ -82,7 +96,8 @@ function TrackSearch({
 
 const mapStateToProps = state => {
   return {
-    searchResults: state.searchReducer.searchResults
+    searchResults: state.searchReducer.searchResults,
+    getSearchResultStart: state.searchReducer.getSearchResultStart
   };
 };
 

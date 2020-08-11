@@ -94,11 +94,13 @@ export const SearchInitialState = {
   searchResults: [],
   predictResults: [],
   trackList: [],
+  getSearchResultsError: '',
   addTrackError: '',
   getTrackListError: '',
   deleteTrackError: '',
   playlistResults: [],
   moveTrackError: '',
   getPlaylistError: '',
-  removePlaylistTrackError: ''
+  removePlaylistTrackError: '',
+  getSearchResultStart: false
 };
