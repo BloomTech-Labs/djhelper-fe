@@ -1,19 +1,10 @@
 import React from 'react';
 import ReactDOM from "react-dom";
-
+import * as Styles from '../Styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Modal from 'react-modal';
 Modal.setAppElement('#root');
 
-const customStyles = {
-    content : {
-      top                   : '50%',
-      left                  : '50%',
-      right                 : 'auto',
-      bottom                : 'auto',
-      marginRight           : '-50%',
-      transform             : 'translate(-50%, -50%)'
-    }
-  };
 function Help(){
 var subtitle;
 const[modalIsOpen, setIsOpen]= React.useState(false);
@@ -25,9 +16,9 @@ function afterOpenModal() {
     subtitle.style.color = '#f00';
   }
  
-  function closeModal(){
-    setIsOpen(false);
-  }
+  // function closeModal(){
+  //   setIsOpen(false);
+  // }
  
     return (
       <div>
@@ -35,20 +26,40 @@ function afterOpenModal() {
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
-          onRequestClose={closeModal}
-          style={customStyles}
+          // onRequestClose={closeModal}
+          style={Styles.helpModalStyles}
           contentLabel="Example Modal"
         >
+          <div>
+            <button
+              type="button"
+              className="btn-closeModal"
+              onClick={() => setIsOpen(false)}
+            >
+              <FontAwesomeIcon icon="times" className="btn-closeModal__icon" />
+            </button>
+          </div>
  
-          <h2 ref={_subtitle => (subtitle = _subtitle)}>Hello</h2>
-          <button onClick={closeModal}>close</button>
+          <h2 ref={_subtitle => (subtitle = _subtitle)}>HELP</h2>
+          {/* <button onClick={closeModal}>close</button> */}
           <div>Help</div>
           <form>
             <input />
-            <h1>Submit Query</h1>
+            <p>Your email address</p>
+            <p>Confirm email address</p>
+            <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="email"
+                 
+              />
+              <h1>Submit Query</h1>
+            
+            
             <p>Description of the problem</p>
-            <button>Back</button>
-            <button>Request</button>
+           
+            <button>Submit</button>
           </form>
         </Modal>
       </div>
