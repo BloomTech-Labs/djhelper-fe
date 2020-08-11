@@ -18,7 +18,7 @@
   }
   .hero {
     
-    background-image:url('../../images/djParty-min-cropped.jpg');
+    background-image:url('../../images/desktop_about_-_header_image.png');
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 60vh;
@@ -29,15 +29,19 @@
     align-items: center;
   
   }
+
+  /*.aboutTop{
+    position: absolute;
+    top: 300px;
+  }*/
   .aboutBox{
-    min-height: 30vh;
-    width: 160vh;
+    width: 5vh;
+    height: 20vh;
     display:flex;
     justify-content: center;
     background-color: #525252;
     align-items: center;
-    margin-left: 20vh;
-    padding: 5vh;
+    padding:0px;
     border-radius: 5px;
       p{
         color:black;
@@ -133,7 +137,7 @@
     }
     .hero {
       
-      background-image:url('../../images/djParty-min-cropped.jpg');
+      background-image:url('../../images/desktop_about_-_header_image.png');
       background-size: cover;
       background-repeat: no-repeat;
       min-height: 60vh;
@@ -144,15 +148,20 @@
       margin:0px;
     
     }
+    .aboutTop{
+      position: absolute;
+      top:250px;
+    }
     .aboutBox{
     
       min-height: 30vh;
-      width: 100%;
+      width:130vh;
+      max-width: 100%;
       display:flex;
       justify-content: center;
       background-color:#525252;
       align-items: center;
-      margin: 0px;
+      margin-left: 35vh;
       padding: 5vh;
       border-radius: 5px;
         p{
