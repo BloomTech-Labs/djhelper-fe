@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
+import Loader from 'react-loader-spinner';
 
 import Icon from '../../utils/icon';
 import axiosWithAuth from '../../utils/axiosWithAuth';
