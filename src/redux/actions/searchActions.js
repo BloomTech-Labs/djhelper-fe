@@ -2,6 +2,9 @@ import axiosWithAuth from '../../utils/axiosWithAuth';
 import * as ActionTypes from './actionTypes';
 
 export const getSearchResults = (value, isExplicit) => dispatch => {
+  dispatch({
+    type: ActionTypes.GET_SEARCH_RESULTS_START
+  });
   axiosWithAuth()
     .get(`/track/${value}`)
     .then(res => {

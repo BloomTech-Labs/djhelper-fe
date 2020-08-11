@@ -5,10 +5,22 @@ import * as ActionTypes from '../actions/actionTypes';
 
 export const searchReducer = (state = SearchInitialState, action) => {
   switch (action.type) {
+    case ActionTypes.GET_SEARCH_RESULTS_START:
+      return {
+        ...state,
+        getSearchResultStart: true
+      };
     case ActionTypes.GET_SEARCH_RESULTS:
       return {
         ...state,
-        searchResults: action.payload
+        searchResults: action.payload,
+        getSearchResultStart: false
+      };
+    case ActionTypes.GET_SEARCH_RESULTS_ERROR:
+      return {
+        ...state,
+        getSearchResultsError: action.payload,
+        getSearchResultStart: false
       };
     case ActionTypes.GET_PREDICT_RESULTS_SUCCESS:
       return {

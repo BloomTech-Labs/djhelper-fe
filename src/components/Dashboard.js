@@ -26,7 +26,7 @@ const Dashboard = ({ events, id, name, getEvents, history, ...props }) => {
   useEffect(() => {
     if (events.length === 0) {
       // replace id with your userid with id# in getevents (console.log('id', id))
-      getEvents(id);
+      getEvents(5);
     }
   }, []);
 
