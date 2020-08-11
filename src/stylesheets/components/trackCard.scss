@@ -1,0 +1,60 @@
+.trackCard {
+  background: $color-black-1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  color: $color-white-4;
+  margin-top: 2rem;
+
+  &__count {
+    font-size: 2.4rem;
+    margin-right: 1rem;
+  }
+
+  &__img {
+    all: unset;
+    cursor: pointer;
+    margin-right: 1rem;
+
+    img {
+      height: 100%;
+      width: 3rem;
+    }
+  }
+
+  &__name {
+    all: unset;
+    cursor: pointer;
+    font-size: 2rem;
+    line-height: 3.3rem;
+    margin-right: auto;
+    a {
+      text-decoration: none;
+      color: currentColor;
+      text-transform: capitalize;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__artistName {
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+    margin-right: 1rem;
+  }
+
+  &__preview {
+    all: unset;
+    font-size: 1.8rem;
+    cursor: pointer;
+    margin-right: 1rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

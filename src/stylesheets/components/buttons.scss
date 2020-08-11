@@ -66,6 +66,10 @@
   &:hover {
     background: $color-black-1;
   }
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .btn-login,
@@ -120,4 +124,8 @@
     text-decoration: underline black;
     color: $color-black-1;
   }
+}
+
+.btn-menu {
+  cursor: pointer;
 }
