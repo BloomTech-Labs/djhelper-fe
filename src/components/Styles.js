@@ -61,6 +61,7 @@ export const editEventModalStyles = {
     border: '1px solid black'
   }
 };
+<<<<<<< HEAD
 
 export const shareLinkModalStyles = {
   content: {
@@ -85,3 +86,17 @@ export const HelpModalStyle = {
       transform             : 'translate(-50%, -50%)'
     }
   };
+=======
+export const helpModalStyles = {
+  content: {
+    width: '50rem',
+    height: '25rem',
+    top                   : '50%',
+    left                  : '50%',
+  right                 : 'auto',
+  bottom                : 'auto',
+  marginRight           : '-50%',
+  transform : 'translate(-50%, -50%)'
+  }
+};
+>>>>>>> 7c58f3778f050f6ac26522307433cad08051fdf0
