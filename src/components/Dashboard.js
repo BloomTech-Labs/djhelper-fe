@@ -33,12 +33,12 @@ const Dashboard = ({ events, id, name, getEvents, history, ...props }) => {
   useEffect(() => {
     // Creates an array with the 2 important properties: id and date
 
-    const correctedEventDate = events.map(event => {
+    const correctedEventDate = events.map((event) => {
       const eventDate = new Date(event.date);
       eventDate.setDate(eventDate.getDate() + 1);
       return {
         ...event,
-        formattedDate: eventDate
+        formattedDate: eventDate,
       };
     });
 
@@ -49,12 +49,12 @@ const Dashboard = ({ events, id, name, getEvents, history, ...props }) => {
     today.setMinutes(0);
 
     const futureEvents = correctedEventDate
-      .filter(x => x.formattedDate >= today)
+      .filter((x) => x.formattedDate >= today)
       .sort((a, b) => a.formattedDate - b.formattedDate);
     setUpComingEvents(futureEvents);
 
     const pastEventsArray = correctedEventDate
-      .filter(x => x.formattedDate < today)
+      .filter((x) => x.formattedDate < today)
       .sort((a, b) => b.formattedDate - a.formattedDate);
     setPastEvents(pastEventsArray);
   }, [events]);
@@ -109,9 +109,9 @@ const Dashboard = ({ events, id, name, getEvents, history, ...props }) => {
         </Modal>
 
         {events &&
-          upComingEvents.map(event => {
+          upComingEvents.map((event) => {
             return (
-              <Link to={`/dj/events/${event.id}`} key={event.id}>
+              <Link to={`/dj/event/${event.id}`} key={event.id}>
                 <Event event={event} key={event.id} />
               </Link>
             );
@@ -123,22 +123,22 @@ const Dashboard = ({ events, id, name, getEvents, history, ...props }) => {
 
 Dashboard.propTypes = {
   events: PropTypes.instanceOf(Array).isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   getEvents: PropTypes.func.isRequired,
-  history: PropTypes.oneOfType([PropTypes.object]).isRequired
+  history: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     events: state.eventReducer.events,
     id: state.userReducer.id,
-    name: state.userReducer.name
+    name: state.userReducer.name,
   };
 };
 
 const mapDispatchToProps = {
-  getEvents: eventActions.getEvents
+  getEvents: eventActions.getEvents,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

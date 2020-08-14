@@ -1,0 +1,42 @@
+.resultCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+  background: lightgrey;
+  padding: 1rem 2rem;
+
+  font-size: 2rem;
+
+  &__img {
+    margin-right: 1rem;
+    img {
+      width: 4rem;
+    }
+  }
+
+  h2 {
+    margin-right: auto;
+  }
+  p {
+    margin-right: 2rem;
+  }
+
+  &__preview {
+    all: unset;
+    font-size: 1.4rem;
+
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__btn {
+    cursor: pointer;
+    img {
+      width: 4rem;
+    }
+  }
+}
