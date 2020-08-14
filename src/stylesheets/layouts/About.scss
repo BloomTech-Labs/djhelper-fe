@@ -22,26 +22,33 @@
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 60vh;
-    width: 160vh;
+    width: 100%;
     display: flex;
-    margin-left:20vh ;
     justify-content: flex-start;
     align-items: center;
-  
+    margin-bottom: 60px;
   }
+ 
+ .aboutTop{
+   position: absolute;
+   top: 260px;
+   padding-bottom: 30px;
+   h1{
+     padding-left:93px;
+     padding-right:0px;
+     margin:20px;
+   }
+ }
 
-  /*.aboutTop{
-    position: absolute;
-    top: 300px;
-  }*/
   .aboutBox{
-    width: 5vh;
-    height: 20vh;
+    min-height: 30vh;
+    width: 160vh;
     display:flex;
     justify-content: center;
     background-color: #525252;
     align-items: center;
-    padding:0px;
+    margin-left: 20vh;
+    padding: 5vh;
     border-radius: 5px;
       p{
         color:black;
@@ -50,14 +57,17 @@
   
   }
   .title {
-    text-align:center;
+    text-align: left;
+    margin: 0rem 12rem 0rem 12rem;
+   
+  
    
   }
   .djTeam{
     display: flex;
     flex-direction: row;
     margin: 0rem 12rem 0rem 12rem;
-    justify-content: center;
+    justify-content: left;
     
   
   }
@@ -102,7 +112,8 @@
       width:180px;
       height:180px;
       border-radius: 150px;
-      margin: 30px 15px 0px 15px;
+      margin: 20px 0px 0px 50px;
+    
     }
     h3{
       color: white;
@@ -120,7 +131,7 @@
   }
 
 /////////////////////////tablet////////////////
-@media (max-width:1024px), (min-width:480px){
+@media (max-width:1024px), (min-width:480){
   .about-page {
     background: black;
     padding-bottom: 2rem;
@@ -148,20 +159,17 @@
       margin:0px;
     
     }
-    .aboutTop{
-      position: absolute;
-      top:250px;
-    }
+
+
     .aboutBox{
     
       min-height: 30vh;
-      width:130vh;
-      max-width: 100%;
+      width: 100%;
       display:flex;
       justify-content: center;
       background-color:#525252;
       align-items: center;
-      margin-left: 35vh;
+      margin: 0px;
       padding: 5vh;
       border-radius: 5px;
         p{
