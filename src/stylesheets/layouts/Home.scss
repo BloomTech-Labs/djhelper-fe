@@ -9,6 +9,7 @@
   padding: 2rem;
   border-radius: 3px;
   transition: all 0.2 ease-in-out;
+  
   @include for-phone-only {
     width: 80%;
   }
