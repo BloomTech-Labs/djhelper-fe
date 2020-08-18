@@ -9,6 +9,8 @@ export const getSearchResults = (value, isExplicit) => dispatch => {
     .get(`/track/${value}`)
     .then(res => {
       const resultArrays = Object.keys(res.data).map(i => res.data[i]);
+      console.log('searchResult: ', resultArrays);
+
       let filteredResults = [];
       if (isExplicit) {
         filteredResults = resultArrays;
@@ -32,10 +34,15 @@ export const getSearchResults = (value, isExplicit) => dispatch => {
 };
 
 export const getPredictionResults = (spotifyId, isExplicit) => dispatch => {
+  dispatch({
+    type: ActionTypes.GET_PREDICT_RESULTS_START
+  });
+
   axiosWithAuth()
     .get(`/predict/${spotifyId}`)
     .then(res => {
       const resultArrays = Object.keys(res.data).map(i => res.data[i]);
+      console.log('predicSearch: ', resultArrays);
       let filteredResults = [];
       if (isExplicit) {
         filteredResults = resultArrays;
@@ -47,7 +54,7 @@ export const getPredictionResults = (spotifyId, isExplicit) => dispatch => {
 
       dispatch({
         type: ActionTypes.GET_PREDICT_RESULTS_SUCCESS,
-        payload: filteredResults
+        payload: resultArrays
       });
     })
     .catch(err => {

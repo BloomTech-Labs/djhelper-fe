@@ -63,8 +63,12 @@ function EventDetail({
         </div>
 
         <div className="eventDetailTop__five">
-          <button type="button" className="btn-voting">
-            Voting
+          <button
+            type="button"
+            className="btn"
+            onClick={() => history.push(`/dj/event/${eventId}`)}
+          >
+            Requests
           </button>
           <button
             onClick={() => history.push(`/dj/event/${eventId}/playlist`)}
@@ -82,7 +86,7 @@ function EventDetail({
           type="button"
           className="btn-trackRequest"
         >
-          Request Tract
+          Request Track
         </button>
       </section>
 

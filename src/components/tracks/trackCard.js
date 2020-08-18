@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 
 import * as Styles from '../Styles';
 import PredictSearch from './predictSearch';
+import TrackSearch from '../events/TrackSearch';
 import MenuTrackCard from './menuTrackCard';
 
 export default function TrackCard({
@@ -17,6 +18,8 @@ export default function TrackCard({
   const count = index + 1;
   const [predictModalIsOpen, setPredictModalIsOpen] = useState(false);
   const [menuModalIsOpen, setMenuModalIsOpen] = useState(false);
+  const [playAudio, setPlayAudio] = useState(false);
+
   const {
     artist_name,
     event_id,
@@ -29,10 +32,18 @@ export default function TrackCard({
     url
   } = track;
 
-  const playAudio = e => {
+  const togglePlayAudio = e => {
+    console.log('audio state: ', playAudio);
     e.preventDefault();
     const audio = new Audio(preview);
-    audio.play();
+
+    if (playAudio === false) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+
+    setPlayAudio(!playAudio);
   };
 
   const togglePredictModal = e => {
@@ -63,19 +74,20 @@ export default function TrackCard({
           <button
             type="button"
             className="trackCard__preview"
-            onClick={playAudio}
+            onClick={togglePlayAudio}
           >
             Play Preview
           </button>
         )}
 
-        {/* <button
+        <button
           onClick={togglePredictModal}
           type="button"
           className="trackCard__similar"
         >
           find similar
-        </button> */}
+        </button>
+
         {isGuest ? (
           ''
         ) : (
@@ -89,10 +101,10 @@ export default function TrackCard({
         onRequestClose={togglePredictModal}
         style={Styles.trackSearchModalStyles}
       >
-        <PredictSearch
+        <TrackSearch
           isExplicit={isExplicit}
           eventId={eventId}
-          togglePredictModal={togglePredictModal}
+          toggleTrackSearchModal={togglePredictModal}
           spotifyId={spotify_id}
         />
       </Modal>

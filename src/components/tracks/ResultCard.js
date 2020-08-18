@@ -8,7 +8,12 @@ import axiosWithAuth from '../../utils/axiosWithAuth';
 
 import AddPlusButton from '../../images/add_plus_button.png';
 
-const ResultCard = ({ addTrackResult, result, eventId }) => {
+const ResultCard = ({
+  addTrackResult,
+  result,
+  eventId,
+  getPredictionResults
+}) => {
   const {
     artist_name,
     explicit,
@@ -16,9 +21,17 @@ const ResultCard = ({ addTrackResult, result, eventId }) => {
     id,
     image,
     preview,
-    song_name
+    song_name,
+    spotify_id
   } = result;
 
+  console.log('result from result: ', result);
+
+  const handlePredict = e => {
+    console.log('spotifyID: ', spotify_id);
+    e.preventDefault();
+    getPredictionResults(spotify_id);
+  };
   const playAudio = e => {
     e.preventDefault();
     const audio = new Audio(preview);
@@ -57,6 +70,13 @@ const ResultCard = ({ addTrackResult, result, eventId }) => {
           Play Preview
         </button>
       )}
+      <button
+        onClick={handlePredict}
+        type="button"
+        className="resultCard__similar"
+      >
+        find similar
+      </button>
       <button className="resultCard__btn" type="button" onClick={handleSubmit}>
         <img src={AddPlusButton} alt="Add Track" />
       </button>

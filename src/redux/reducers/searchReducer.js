@@ -22,10 +22,22 @@ export const searchReducer = (state = SearchInitialState, action) => {
         getSearchResultsError: action.payload,
         getSearchResultStart: false
       };
+    case ActionTypes.GET_PREDICT_RESULTS_START:
+      return {
+        ...state,
+        getSearchResultStart: true
+      };
     case ActionTypes.GET_PREDICT_RESULTS_SUCCESS:
       return {
         ...state,
-        predictResults: action.payload
+        searchResults: action.payload,
+        getSearchResultStart: false
+      };
+    case ActionTypes.GET_PREDICT_RESULTS_ERROR:
+      return {
+        ...state,
+        getSearchResultsError: action.payload,
+        getSearchResultStart: false
       };
     case ActionTypes.GET_TRACK_LIST:
       return {
