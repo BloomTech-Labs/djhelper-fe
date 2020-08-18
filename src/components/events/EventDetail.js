@@ -3,12 +3,12 @@ import { Route, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-
+import { addVotes } from '../../redux/actions/searchActions';
 import * as Styles from '../Styles';
 import TrackSearch from './TrackSearch';
 import TrackCard from '../tracks/trackCard';
 import PlaylistCard from '../tracks/playListCard';
-import plus from "../../images/plus.png"
+import plus from '../../images/plus.png';
 
 function EventDetail({
   eventId,
@@ -23,11 +23,14 @@ function EventDetail({
   eventTrackList,
   eventPlayList,
   toggleEditEventModal,
-  history
+  history,
+  addVotes
 }) {
   const { name, date, notes, isExplicit } = event;
   const [shareLinkModalIsOpen, setShareLinkModalIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+
+  console.log('votes');
 
   const toggleShareLinkModal = () => {
     setShareLinkModalIsOpen(!shareLinkModalIsOpen);
@@ -64,7 +67,11 @@ function EventDetail({
         </div>
 
         <div className="eventDetailTop__five">
-          <button type="button" className="btn" onClick={()=> history.push(`/dj/event/${eventId}`)}>
+          <button
+            type="button"
+            className="btn"
+            onClick={() => history.push(`/dj/event/${eventId}`)}
+          >
             Requests
           </button>
           <button
@@ -78,21 +85,21 @@ function EventDetail({
       </section>
 
       <section className="eventDetailMiddle">
-      <div className="btn-trackRequest">
-      
-         <img src={plus} alt="Add New Event"
-          onClick={toggleTrackSearchModal}
-          
-           />
-           <p  className="request">Request a Track </p>
-      
-      </div>
-        
+        <div className="btn-trackRequest">
+          <img
+            src={plus}
+            alt="Add New Event"
+            onClick={toggleTrackSearchModal}
+          />
+          <p className="request">Request a Track </p>
+        </div>
       </section>
 
       <section className="eventDetailBottom">
         <Route exact path={`/dj/event/${eventId}`}>
-          <h1 className="heading-primary" style={{color:"white"}}  >Your Requests</h1>
+          <h1 className="heading-primary" style={{ color: 'white' }}>
+            Your Requests
+          </h1>
 
           {eventTrackList.map((track, index) => (
             <TrackCard
@@ -103,13 +110,15 @@ function EventDetail({
               predictResults={predictResults}
               eventId={eventId}
               deleteTrack={deleteTrack}
+              addVotes={addVotes}
             />
           ))}
         </Route>
         <Route exact path={`/dj/event/${eventId}/playlist`}>
-          
-        <h1 className="heading-primary" style={{color:"white"}}>Your Playlist</h1>
-         
+          <h1 className="heading-primary" style={{ color: 'white' }}>
+            Your Playlist
+          </h1>
+
           {eventPlayList.map((track, index) => (
             <PlaylistCard
               key={track.id}

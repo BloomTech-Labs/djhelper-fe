@@ -92,7 +92,6 @@ export const SongInitialState = {
 
 export const SearchInitialState = {
   searchResults: [],
-  predictResults: [],
   trackList: [],
   getSearchResultsError: '',
   addTrackError: '',
@@ -102,5 +101,6 @@ export const SearchInitialState = {
   moveTrackError: '',
   getPlaylistError: '',
   removePlaylistTrackError: '',
-  getSearchResultStart: false
+  getSearchResultStart: false,
+  getPredictResultStart: false
 };

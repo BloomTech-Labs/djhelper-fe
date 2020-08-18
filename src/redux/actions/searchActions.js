@@ -9,6 +9,8 @@ export const getSearchResults = (value, isExplicit) => dispatch => {
     .get(`/track/${value}`)
     .then(res => {
       const resultArrays = Object.keys(res.data).map(i => res.data[i]);
+      console.log('searchResult2: ', resultArrays);
+
       let filteredResults = [];
       if (isExplicit) {
         filteredResults = resultArrays;
@@ -32,10 +34,15 @@ export const getSearchResults = (value, isExplicit) => dispatch => {
 };
 
 export const getPredictionResults = (spotifyId, isExplicit) => dispatch => {
+  dispatch({
+    type: ActionTypes.GET_PREDICT_RESULTS_START
+  });
+
   axiosWithAuth()
     .get(`/predict/${spotifyId}`)
     .then(res => {
       const resultArrays = Object.keys(res.data).map(i => res.data[i]);
+      console.log('predicSearch: ', resultArrays);
       let filteredResults = [];
       if (isExplicit) {
         filteredResults = resultArrays;
@@ -47,7 +54,7 @@ export const getPredictionResults = (spotifyId, isExplicit) => dispatch => {
 
       dispatch({
         type: ActionTypes.GET_PREDICT_RESULTS_SUCCESS,
-        payload: filteredResults
+        payload: resultArrays
       });
     })
     .catch(err => {
@@ -74,6 +81,19 @@ export const getTrackList = id => dispatch => {
       });
     });
 };
+export const addVotes = trackId => dispatch => {
+  return axiosWithAuth()
+    .post(`/auth/vote`, { trackId: trackId })
+    .then(votes => {
+      dispatch({ type: ActionTypes.ADD_VOTE_SUCCESS, payload: votes.data });
+    })
+    .catch(err => {
+      dispatch({
+        type: ActionTypes.ADD_VOTE_TRACK_ERROR,
+        payload: err
+      });
+    });
+};
 
 export const addTrackResult = (value, eventId) => dispatch => {
   const newTrack = {
@@ -82,6 +102,7 @@ export const addTrackResult = (value, eventId) => dispatch => {
     artist_name: value.artist_name,
     url: value.external_urls,
     isExplicit: value.explicit,
+
     preview: value.preview,
     img: value.image,
     event_id: eventId

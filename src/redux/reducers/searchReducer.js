@@ -22,10 +22,22 @@ export const searchReducer = (state = SearchInitialState, action) => {
         getSearchResultsError: action.payload,
         getSearchResultStart: false
       };
+    case ActionTypes.GET_PREDICT_RESULTS_START:
+      return {
+        ...state,
+        getSearchResultStart: true
+      };
     case ActionTypes.GET_PREDICT_RESULTS_SUCCESS:
       return {
         ...state,
-        predictResults: action.payload
+        searchResults: action.payload,
+        getSearchResultStart: false
+      };
+    case ActionTypes.GET_PREDICT_RESULTS_ERROR:
+      return {
+        ...state,
+        getSearchResultsError: action.payload,
+        getSearchResultStart: false
       };
     case ActionTypes.GET_TRACK_LIST:
       return {
@@ -92,9 +104,20 @@ export const searchReducer = (state = SearchInitialState, action) => {
     case ActionTypes.REMOVE_PLAYLIST_TRACK_ERRROR:
       return {
         ...state,
-        removePlaylistTrackError: action.payload
-      };
+        removePlaylistTrackError: action.payload};
+    case ActionTypes.ADD_VOTE_SUCCESS:
+     
+          return{
+            ...state,
+            trackList: state.trackList.map(track => ({...track, votes: action.payload.votes}))
+          };
+    case ActionTypes.ADD_VOTE_TRACK_ERROR:
+          return{
+            ...state,
+            addVoteTrackError: action.payload
+
+          };
     default:
       return state;
-  }
-};
+        }
+      };

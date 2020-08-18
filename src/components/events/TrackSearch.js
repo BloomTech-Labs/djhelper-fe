@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
@@ -19,9 +19,17 @@ function TrackSearch({
   getSearchResultStart,
   addTrackResult,
   eventId,
-  toggleTrackSearchModal
+  toggleTrackSearchModal,
+  getPredictionResults,
+  spotifyId
 }) {
   const [value, setValue] = useState('');
+
+  useEffect(() => {
+    if (spotifyId) {
+      getPredictionResults(spotifyId);
+    }
+  }, []);
 
   const handleChange = e => {
     e.preventDefault();
@@ -62,24 +70,16 @@ function TrackSearch({
       </section>
 
       <section className="searchResults">
-        {/* {searchResults.map(result => (
-          <ResultCard
-            addTrackResult={addTrackResult}
-            key={result.id}
-            result={result}
-            eventId={eventId}
-          />
-        ))} */}
-
         {getSearchResultStart ? (
           <Loader type="Audio" color="purple" height={200} width={200} />
         ) : (
           searchResults.map(result => (
             <ResultCard
               addTrackResult={addTrackResult}
-              key={result.id}
+              key={result.song_name}
               result={result}
               eventId={eventId}
+              getPredictionResults={getPredictionResults}
             />
           ))
         )}
@@ -103,7 +103,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getSearchResults: searchActions.getSearchResults,
-  addTrackResult: searchActions.addTrackResult
+  addTrackResult: searchActions.addTrackResult,
+  getPredictionResults: searchActions.getPredictionResults
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrackSearch);
