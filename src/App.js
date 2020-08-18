@@ -12,7 +12,6 @@ import DjInterface from './components/djs/DjInterface';
 import About from './components/pages/About';
 import DJProfile from './components/djs/DJProfile';
 import SetUpProfile from './components/djs/SetUpProfile';
-import AddEvent from './components/events/AddEvent';
 import ManageEventGuestView from './components/events/MangeEventGuestView';
 import Help from './components/pages/Help';
 import ManageEvent from './components/events/ManageEvent';
@@ -33,7 +32,6 @@ function App() {
         <PrivateRoute path="/dj/profile" component={DJProfile} />
         <Route path="/about" component={About} />
         <PrivateRoute path="/dj/setup" component={SetUpProfile} />
-        <PrivateRoute path="/dj/addEvent" component={AddEvent} />
         <Route
           path="/dj/:djId/event/:eventId"
           component={ManageEventGuestView}
