@@ -57,4 +57,19 @@
       text-decoration: underline;
     }
   }
+
+  &__btn-icon {
+    margin-right: 1rem;
+    cursor: pointer;
+  }
+
+  &__icon {
+    all: unset;
+    background: #333333;
+    color: red;
+    outline: 1px solid #333333;
+
+    font-size: 2rem;
+    margin-right: 0;
+  }
 }

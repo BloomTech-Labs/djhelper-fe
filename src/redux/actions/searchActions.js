@@ -83,9 +83,13 @@ export const getTrackList = id => dispatch => {
 };
 export const addVotes = trackId => dispatch => {
   return axiosWithAuth()
-    .post(`/auth/vote`, { trackId: trackId })
+    .post(`/auth/vote`, { trackId })
     .then(votes => {
-      dispatch({ type: ActionTypes.ADD_VOTE_SUCCESS, payload: votes.data });
+      dispatch({
+        type: ActionTypes.ADD_VOTE_SUCCESS,
+        payload: votes.data,
+        trackId
+      });
     })
     .catch(err => {
       dispatch({

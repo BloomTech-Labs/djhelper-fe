@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import * as Styles from '../Styles';
 import PredictSearch from './predictSearch';
 import TrackSearch from '../events/TrackSearch';
@@ -14,7 +16,8 @@ export default function TrackCard({
   eventId,
   deleteTrack,
   isGuest,
-  addVotes
+  addVotes,
+  userId
 }) {
   const count = index + 1;
   const [predictModalIsOpen, setPredictModalIsOpen] = useState(false);
@@ -34,8 +37,15 @@ export default function TrackCard({
     votes
   } = track;
 
+  const handleVoting = e => {
+    e.preventDefault();
+    if (isGuest && !userId) {
+      alert('you must be logged in vote. please log in');
+    }
+    addVotes(id);
+  };
+
   const togglePlayAudio = e => {
-    console.log('audio state: ', playAudio);
     e.preventDefault();
     const audio = new Audio(preview);
 
@@ -47,7 +57,7 @@ export default function TrackCard({
 
     setPlayAudio(!playAudio);
   };
- 
+
   const togglePredictModal = e => {
     setPredictModalIsOpen(!predictModalIsOpen);
   };
@@ -69,12 +79,16 @@ export default function TrackCard({
           </a>
         </button>
 
-  <p style={{fontSize: '15px', marginRight: '10px'}}>{votes}</p>
+        <p style={{ fontSize: '15px', marginRight: '10px' }}>{votes}</p>
 
         <button
-        onClick={() => addVotes(id)}>
-        Vote</button>
-
+          type="button"
+          className="trackCard__btn-icon"
+          onClick={handleVoting}
+        >
+          {/* Vote */}
+          <FontAwesomeIcon icon="heart" className="trackCard__icon" />
+        </button>
 
         <h2 className="trackCard__artistName">{artist_name}</h2>
 

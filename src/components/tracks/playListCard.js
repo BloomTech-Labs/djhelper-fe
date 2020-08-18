@@ -16,7 +16,8 @@ function PlayListCard({ track, index, eventId, removePlaylistTrack, isGuest }) {
     name,
     preview,
     spotify_id,
-    url
+    url,
+    votes
   } = track;
 
   const playAudio = e => {
@@ -42,6 +43,9 @@ function PlayListCard({ track, index, eventId, removePlaylistTrack, isGuest }) {
             {name}
           </a>
         </button>
+
+        <p style={{ fontSize: '15px', marginRight: '10px' }}>{votes} votes</p>
+
         <h2 className="trackCard__artistName">{artist_name}</h2>
 
         {preview === 'http://bit.ly/2nXRRfX' ? (

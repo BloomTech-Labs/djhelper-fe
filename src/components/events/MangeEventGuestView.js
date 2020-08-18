@@ -71,13 +71,16 @@ class MangeEventGuestView extends Component {
     } = this.props;
     const { eventId, eventTrackList, eventPlayList } = this.state;
 
-    if (prevProps.trackList.length !== trackList.length) {
-      getSingleEvent(eventId);
+    const isVoteUpdated =
+      prevProps.trackList.filter((prevTrack, prevIndex) => {
+        return prevTrack.votes !== trackList[prevIndex].votes;
+      }).length > 0;
 
+    if (prevProps.trackList.length !== trackList.length || isVoteUpdated) {
+      getSingleEvent(eventId);
       if (trackList.length === 0) {
         getTrackList(eventId);
       }
-
       this.setState({
         eventTrackList: trackList.filter(
           track => track.event_id === parseInt(eventId, 10)
@@ -140,6 +143,8 @@ class MangeEventGuestView extends Component {
           eventPlayList={this.state.eventPlayList}
           toggleEditEventModal={this.toggleEditEventModal}
           history={this.state.history}
+          addVotes={this.props.addVotes}
+          userId={this.props.userId}
         />
 
         <Modal
@@ -172,7 +177,8 @@ const mapStateToProps = state => {
     singleEvent: state.eventReducer.singleEvent,
     trackList: state.searchReducer.trackList,
     predictResults: state.searchReducer.predictResults,
-    playlistResults: state.searchReducer.playlistResults
+    playlistResults: state.searchReducer.playlistResults,
+    userId: state.userReducer.id
   };
 };
 
@@ -184,7 +190,8 @@ const mapDispatchToProps = {
   getPlaysLists: playlistActions.getPlaysLists,
   removePlaylistTrack: playlistActions.removePlaylistTrack,
   editEvent: eventActions.editEvent,
-  deleteEvent: eventActions.deleteEvent
+  deleteEvent: eventActions.deleteEvent,
+  addVotes: searchActions.addVotes
 };
 
 export default connect(
