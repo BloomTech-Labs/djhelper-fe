@@ -28,9 +28,9 @@ const ResultCard = ({
   console.log('result from result: ', result);
 
   const handlePredict = e => {
-    console.log('spotifyID: ', spotify_id);
+    console.log('spotifyID: ', id);
     e.preventDefault();
-    getPredictionResults(spotify_id);
+    getPredictionResults(id);
   };
   const playAudio = e => {
     e.preventDefault();
