@@ -30,6 +30,8 @@ function EventDetail({
   const [shareLinkModalIsOpen, setShareLinkModalIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
+  console.log('votes');
+
   const toggleShareLinkModal = () => {
     setShareLinkModalIsOpen(!shareLinkModalIsOpen);
     setCopied(false);
