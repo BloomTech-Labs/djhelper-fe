@@ -33,6 +33,7 @@ export const addEvent = (eventInfo, history) => dispatch => {
     });
 };
 
+
 export const editEvent = (eventInfo, eventId) => dispatch => {
   dispatch({ type: ActionTypes.EDIT_EVENT_START });
   axiosWithAuth()

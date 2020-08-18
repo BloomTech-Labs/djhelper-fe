@@ -92,9 +92,20 @@ export const searchReducer = (state = SearchInitialState, action) => {
     case ActionTypes.REMOVE_PLAYLIST_TRACK_ERRROR:
       return {
         ...state,
-        removePlaylistTrackError: action.payload
-      };
+        removePlaylistTrackError: action.payload};
+    case ActionTypes.ADD_VOTE_SUCCESS:
+     
+          return{
+            ...state,
+            trackList: state.trackList.map(track => ({...track, votes: action.payload.votes}))
+          };
+    case ActionTypes.ADD_VOTE_TRACK_ERROR:
+          return{
+            ...state,
+            addVoteTrackError: action.payload
+
+          };
     default:
       return state;
-  }
-};
+        }
+      };

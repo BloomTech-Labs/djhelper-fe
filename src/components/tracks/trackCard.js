@@ -12,7 +12,8 @@ export default function TrackCard({
   getPredictionResults,
   eventId,
   deleteTrack,
-  isGuest
+  isGuest,
+  addVotes
 }) {
   const count = index + 1;
   const [predictModalIsOpen, setPredictModalIsOpen] = useState(false);
@@ -26,7 +27,8 @@ export default function TrackCard({
     name,
     preview,
     spotify_id,
-    url
+    url,
+    votes
   } = track;
 
   const playAudio = e => {
@@ -34,7 +36,7 @@ export default function TrackCard({
     const audio = new Audio(preview);
     audio.play();
   };
-
+ 
   const togglePredictModal = e => {
     setPredictModalIsOpen(!predictModalIsOpen);
   };
@@ -55,6 +57,14 @@ export default function TrackCard({
             {name}
           </a>
         </button>
+
+  <p style={{fontSize: '15px', marginRight: '10px'}}>{votes}</p>
+
+        <button
+        onClick={() => addVotes(id)}>
+        Vote</button>
+
+
         <h2 className="trackCard__artistName">{artist_name}</h2>
 
         {preview === 'http://bit.ly/2nXRRfX' ? (
