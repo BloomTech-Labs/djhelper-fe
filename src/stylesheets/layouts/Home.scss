@@ -1,5 +1,3 @@
-//desktop//
-@media(min-width:1024px){
 .main-content {
   width: 40%;
   background: rgba(255, 255, 255, 0.5);
@@ -9,7 +7,6 @@
   padding: 2rem;
   border-radius: 3px;
   transition: all 0.2 ease-in-out;
-  
   @include for-phone-only {
     width: 80%;
   }
@@ -65,9 +62,6 @@
 
   &__right {
     padding-left: 4rem;
-    img{
-      content: url("../../images/web-phone.png");
-     }
   }
 
   &__left-subSection {
@@ -80,67 +74,38 @@
 .beheard{
   text-align: center;
   color: white;
-  font-size: 30px;
-  padding-top: 12rem;
-  padding-bottom: 3rem;
 }
 .bottom-imgs{
   display: flex;
   flex-direction: row;
-  justify-content: center;
- 
+  
   color: white;
   font-size: 1.5rem;
   padding: 1rem;
   margin: 2rem;
-  padding-bottom: 16rem;
  
   .img1{
     height:350px;
     width: 350px;
     margin: 2rem;
     text-align: center;
-    
-    p{
-      font-size: 16px;
-      text-align: center;
-      padding-rigt: 2.5rem;
-      padding-top: 2.3rem;
-      
-      
-    }
+
 
   }
   .img2{
-    height:380px;
+    height:350px;
     width: 350px;
     margin: 2rem;
     text-align: center;
-    p{
-      font-size: 16px;
-      text-align: center;
-      width:35rem;
-      padding-left: 2rem;
-      padding-top: 3rem;
-      
-    }
+
   }
   .img3{
     height:350px;
     width: 350px;
     margin: 1rem;
     text-align: center;
-    p{
-      font-size: 16px;
-      text-align: center;
-      width:30rem;
-      padding-left: 6rem;
-      padding-top: 3rem;
-      
-    }
 
   }
-
   
 }
 .bottom-mid{
@@ -156,31 +121,11 @@
     font-family: Mukta;
     font-style: normal;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 40px;
     color: $color-white-2;
     border: none;
   }
-  h1{
-    font-size:35px;
-    
-  }
-  p{
-    font-size: 20px;
-    padding:10px;
-    
-  }
-}
-.btn-inline-u-margin-left-medium{
-  padding-left: 2rem;
-  text-decoration: none;
-  font-family: Mukta;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 2rem;
-  line-height: 4rem;
-  cursor: pointer;
-  color: $color-blue-light;
 }
   .footer1{
     width: 700px;
@@ -203,219 +148,8 @@
     display: flex;
     flex-flow: row wrap;
   }
-}
-//Tablet//
-@media(max-width:1024px),(min-width:480){
-  .main-content {
-    width: 40%;
-    background: rgba(255, 255, 255, 0.5);
-    margin: 4rem auto;
-    color: black;
-    text-align: center;
-    padding: 2rem;
-    border-radius: 3px;
-    transition: all 0.2 ease-in-out;
-    @include for-phone-only {
-      width: 80%;
-    }
-    &:hover {
-      transform: scale(1.1);
-    }
-    h2 {
-      font-size: 3.5rem;
-      @include for-phone-only {
-        font-size: 2rem;
-      }
-    }
-    h3 {
-      font-size: 2.5rem;
-      @include for-phone-only {
-        font-size: 1.5rem;
-      }
-    }
-    a {
-      color: $darkPurple;
-      &:hover {
-        text-decoration: none;
-        font-style: italic;
-      }
-    }
-  }
-  
-  .header {
-    padding: 2rem 4.43rem 0 2rem;
-    max-width: 100%;
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    &__left {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-  
-      flex: 0 0 45%;
-      padding-left: 2rem;
-  
-      h1 {
-        font-family: Mukta;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 4.8rem;
-        line-height: 125%;
-        color: #f1f1f1;
-      }
-    }
-  
-    &__right {
-      padding-left: 4rem;
-      content: url("../../images/tablet_event_page.png");
-            padding-top: 20px;
-            @media (max-width:480px){
-              content:url("../../images/web-phone.png")
-            }
-    }
-  
-    &__left-subSection {
-      padding-top: 4rem;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-    }
-  }
-  .beheard{
-    text-align: center;
-    color: white;
-    font-size: 30px;
-    padding-top: 12rem;
-    padding-bottom: 3rem;
-  }
-  .bottom-imgs{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-    color: white;
-    font-size: 1.5rem;
-    padding: 1rem;
-    margin: 2rem;
-    padding-bottom: 16rem;
-   
-    .img1{
-      height:350px;
-      width: 350px;
-      margin: 2rem;
-      text-align: center;
-      
-      
-      p{
-        font-size: 16px;
-        text-align: center;
-        padding-top: 2rem;
-        
-      }
-  
-    }
-    .img2{
-      height:350px;
-      width: 350px;
-      margin: 2rem;
-      text-align: center;
-      margin-top: 3rem;
-      p{
-        font-size: 16px;
-        text-align: center;
-        width:35rem;
-        padding-left: 1.6rem;
-        padding-top: 2rem;
-        
-      }
-    }
-    .img3{
-      height:350px;
-      width: 350px;
-      margin: 1rem;
-      margin-top: 3rem;
-      text-align: center;
-      p{
-        font-size: 16px;
-        text-align: center;
-        width:30rem;
-        padding-left: 6rem;
-        padding-top: 3rem;
-        
-      }
-  
-    }
-  
-    
-  }
-  .bottom-mid{
-    text-align: center;
-    color: white;
-    button {
-      width: 180px;
-      height: 40px;
-      background:$color-secondary;
-      border-radius: 5rem;
-      margin: 1%;
-      cursor: pointer;
-      font-family: Mukta;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 21px;
-      line-height: 40px;
-      color: $color-white-2;
-      border: none;
-    }
-    h1{
-      font-size:35px;
-      
-    }
-    p{
-      font-size: 20px;
-      padding:10px;
-      
-    }
-  }
-  .btn-inline-u-margin-left-medium{
-    padding-left: 2rem;
-    text-decoration: none;
-    font-family: Mukta;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 2rem;
-    line-height: 4rem;
-    cursor: pointer;
-    color: $color-blue-light;
-    @media(max-width:480px){
-      display: none;
-    }
-  }
-    .footer1{
-      width: 700px;
-      height: 26px;
-    left: 50px;
-    top: 2074px;
-    color: #F1F1F1;
-    padding-left: 2%;
-    font-family: Mako;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 15px;
-    line-height: 20px;
-    }
-    .footer2{
-      padding-left:5%;
-      width: 700px;
-      height: 26px;
-      color: #F1F1F1;
-      display: flex;
-      flex-flow: row wrap;
-    }
-  }
+
+
 
 // margin-bottom: 1.6rem;
 //   padding-bottom: 3.2rem;

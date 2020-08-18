@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import dashboard from '../images/dashboard.png';
+import dashboard from  "../images/dashboard.png";
 
 const DashboardWelcome = ({ name, isEvent }) => {
   return (

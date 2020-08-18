@@ -18,28 +18,17 @@
   }
   .hero {
     
-    background-image:url('../../images/desktop_about_-_header_image.png');
+    background-image:url('../../images/djParty-min-cropped.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 60vh;
-    width: 100%;
+    width: 160vh;
     display: flex;
+    margin-left:20vh ;
     justify-content: flex-start;
     align-items: center;
-    margin-bottom: 60px;
+  
   }
- 
- .aboutTop{
-   position: absolute;
-   top: 260px;
-   padding-bottom: 30px;
-   h1{
-     padding-left:93px;
-     padding-right:0px;
-     margin:20px;
-   }
- }
-
   .aboutBox{
     min-height: 30vh;
     width: 160vh;
@@ -57,17 +46,14 @@
   
   }
   .title {
-    text-align: left;
-    margin: 0rem 12rem 0rem 12rem;
-   
-  
+    text-align:center;
    
   }
   .djTeam{
     display: flex;
     flex-direction: row;
     margin: 0rem 12rem 0rem 12rem;
-    justify-content: left;
+    justify-content: center;
     
   
   }
@@ -112,8 +98,7 @@
       width:180px;
       height:180px;
       border-radius: 150px;
-      margin: 20px 0px 0px 50px;
-    
+      margin: 30px 15px 0px 15px;
     }
     h3{
       color: white;
@@ -131,7 +116,7 @@
   }
 
 /////////////////////////tablet////////////////
-@media (max-width:1024px), (min-width:480){
+@media (max-width:1024px), (min-width:480px){
   .about-page {
     background: black;
     padding-bottom: 2rem;
@@ -148,7 +133,7 @@
     }
     .hero {
       
-      background-image:url('../../images/desktop_about_-_header_image.png');
+      background-image:url('../../images/djParty-min-cropped.jpg');
       background-size: cover;
       background-repeat: no-repeat;
       min-height: 60vh;
@@ -159,8 +144,6 @@
       margin:0px;
     
     }
-
-
     .aboutBox{
     
       min-height: 30vh;
