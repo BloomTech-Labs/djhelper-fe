@@ -1,0 +1,42 @@
+.guestWelcomeImage{
+    width: 100%;
+    height: 620px;
+    left: 0px;
+    top: 78px;
+    
+    background: radial-gradient(
+        65.1% 70.24% at 52.57% 86.77%,
+        rgba(51, 51, 51, 0) 0%,
+        #0d0d0d 92.68%
+      );
+   
+}
+
+.guest-welcome{
+    position: absolute;
+    width: 566px;
+    height: 74px;
+    left: 437px;
+    top: 354px;
+    font-family: Mukta;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 88px;
+    line-height: 70px;
+    color: #f2f2f2;
+}
+
+.guest-welcome-event{
+    position: absolute;
+    width: 371px;
+    height: 71px;
+    left: 255px;
+    top: 614px;
+   font-family: Mukta;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 70px;
+    color: #f2f2f2;
+}
+

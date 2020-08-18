@@ -8,6 +8,7 @@ import * as Styles from '../Styles';
 import TrackSearch from './TrackSearch';
 import TrackCard from '../tracks/trackCard';
 import PlaylistCard from '../tracks/playListCard';
+import plus from "../../images/plus.png"
 
 function EventDetail({
   eventId,
@@ -63,8 +64,8 @@ function EventDetail({
         </div>
 
         <div className="eventDetailTop__five">
-          <button type="button" className="btn-voting">
-            Voting
+          <button type="button" className="btn" onClick={()=> history.push(`/dj/event/${eventId}`)}>
+            Requests
           </button>
           <button
             onClick={() => history.push(`/dj/event/${eventId}/playlist`)}
@@ -77,18 +78,21 @@ function EventDetail({
       </section>
 
       <section className="eventDetailMiddle">
-        <button
+      <div className="btn-trackRequest">
+      
+         <img src={plus} alt="Add New Event"
           onClick={toggleTrackSearchModal}
-          type="button"
-          className="btn-trackRequest"
-        >
-          Request Tract
-        </button>
+          
+           />
+           <p  className="request">Request a Track </p>
+      
+      </div>
+        
       </section>
 
       <section className="eventDetailBottom">
         <Route exact path={`/dj/event/${eventId}`}>
-          <h1 className="heading-primary">Your Requests</h1>
+          <h1 className="heading-primary" style={{color:"white"}}  >Your Requests</h1>
 
           {eventTrackList.map((track, index) => (
             <TrackCard
@@ -103,8 +107,9 @@ function EventDetail({
           ))}
         </Route>
         <Route exact path={`/dj/event/${eventId}/playlist`}>
-          <h1 className="heading-primary">Your Playlist</h1>
-
+          
+        <h1 className="heading-primary" style={{color:"white"}}>Your Playlist</h1>
+         
           {eventPlayList.map((track, index) => (
             <PlaylistCard
               key={track.id}
