@@ -137,6 +137,7 @@ class ManageEvent extends Component {
           eventPlayList={this.state.eventPlayList}
           toggleEditEventModal={this.toggleEditEventModal}
           history={this.state.history}
+          addVotes={this.props.addVotes}
         />
 
         <Modal
@@ -165,6 +166,7 @@ class ManageEvent extends Component {
 // };
 
 const mapStateToProps = state => {
+  
   return {
     singleEvent: state.eventReducer.singleEvent,
     trackList: state.searchReducer.trackList,
@@ -182,7 +184,8 @@ const mapDispatchToProps = {
   getPlaysLists: playlistActions.getPlaysLists,
   removePlaylistTrack: playlistActions.removePlaylistTrack,
   editEvent: eventActions.editEvent,
-  deleteEvent: eventActions.deleteEvent
+  deleteEvent: eventActions.deleteEvent,
+  addVotes: searchActions.addVotes
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ManageEvent);

@@ -12,7 +12,6 @@ import Brian from '../../images/Brian.jpg';
 import Dennis from '../../images/Dennis.png';
 import Craig from '../../images/Craig.jpg';
 import Michael from '../../images/Michael.jpg';
-
 const About = () => {
   return (
     <div className="about-page">

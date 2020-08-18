@@ -72,3 +72,16 @@ export const shareLinkModalStyles = {
     border: 'none'
   }
 };
+
+export const HelpModalStyle = {
+    content : {
+      width: '50%',
+      height: '40%',
+      top                   : '50%',
+      left                  : '50%',
+      right                 : 'auto',
+      bottom                : 'auto',
+      marginRight           : '-50%',
+      transform             : 'translate(-50%, -50%)'
+    }
+  };

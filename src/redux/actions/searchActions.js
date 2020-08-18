@@ -81,6 +81,19 @@ export const getTrackList = id => dispatch => {
       });
     });
 };
+export const addVotes = trackId => dispatch => {
+  return axiosWithAuth()
+    .post(`/auth/vote`, { trackId: trackId })
+    .then(votes => {
+      dispatch({ type: ActionTypes.ADD_VOTE_SUCCESS, payload: votes.data });
+    })
+    .catch(err => {
+      dispatch({
+        type: ActionTypes.ADD_VOTE_TRACK_ERROR,
+        payload: err
+      });
+    });
+};
 
 export const addTrackResult = (value, eventId) => dispatch => {
   const newTrack = {
@@ -89,6 +102,7 @@ export const addTrackResult = (value, eventId) => dispatch => {
     artist_name: value.artist_name,
     url: value.external_urls,
     isExplicit: value.explicit,
+
     preview: value.preview,
     img: value.image,
     event_id: eventId

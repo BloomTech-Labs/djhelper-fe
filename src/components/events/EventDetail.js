@@ -3,7 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-
+import {addVotes} from "../../redux/actions/searchActions"
 import * as Styles from '../Styles';
 import TrackSearch from './TrackSearch';
 import TrackCard from '../tracks/trackCard';
@@ -22,7 +22,8 @@ function EventDetail({
   eventTrackList,
   eventPlayList,
   toggleEditEventModal,
-  history
+  history,
+  addVotes
 }) {
   const { name, date, notes, isExplicit } = event;
   const [shareLinkModalIsOpen, setShareLinkModalIsOpen] = useState(false);
@@ -103,6 +104,7 @@ function EventDetail({
               predictResults={predictResults}
               eventId={eventId}
               deleteTrack={deleteTrack}
+              addVotes={addVotes}
             />
           ))}
         </Route>
