@@ -3,29 +3,3 @@
         @content;
     }
 }
-@mixin respond($breakpoint) {
-    @if $breakpoint == mobile {
-      @media only screen and (min-width: 40.625em) {
-        // 650px
-        @content;
-      }
-    }
-    @if $breakpoint == tab-port {
-      @media only screen and (max-width: 56.25em) {
-        // 600px
-        @content;
-      }
-    }
-    @if $breakpoint == tab-land {
-      @media only screen and (max-width: 75em) {
-        // 1200px
-        @content;
-      }
-    }
-    @if $breakpoint == desktop {
-      @media only screen and (min-width: 81.25em) {
-        // 1300px
-        @content;
-      }
-    }
-  }

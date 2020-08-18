@@ -1,15 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
 import formatDate from '../../utils/formatDate';
+import Modal from 'react-modal';
 import event1 from '../../images/event1.png';
 import event2 from '../../images/event2.png';
 import event3 from '../../images/event3.png';
 import event4 from '../../images/event4.png';
 import event5 from '../../images/event5.png';
 import event6 from '../../images/event6.png';
+import EditEvent from "../events/EditEvent"
 
-const Event = ({ event }) => {
+import * as Styles from '../Styles';
+
+
+
+
+
+const Event = ({ event,editEvent }) => {
+  const [editEventModal,setEditModal]=useState(false);
+
+const toggleEditModal =()=>{
+  setEditModal(!editEventModal)
+}
+
+
   const imageArray = [event1, event2, event3, event4, event5, event6];
 
   const randomImageGenerator = imgAr => {
@@ -37,7 +52,34 @@ const Event = ({ event }) => {
             {`${generateNumberOfDays(event.date)} days away`}
           </p>
         </div>
+        
+       
       </div>
+      <button className="btn-menu" type="button"
+         >
+            {/* <span className="mobileMenIcon">&nbsp;</span> */}
+            <Modal
+          isOpen={editEventModal}
+          onRequestClose={toggleEditModal}
+          style={Styles.editEventModalStyles}
+        >
+          {/* <EditEvent
+            event={this.props.singleEvent}
+            toggleEditEventModal={this.toggleEditEventModal}
+            editEvent={this.props.editEvent}
+            eventId={this.state.eventId}
+            deleteEvent={this.props.deleteEvent}
+            history={this.state.history}
+          /> */}
+
+          <EditEvent
+            toggleEditEventModal={toggleEditModal}
+            editEvent={editEvent}
+
+          />
+        </Modal>
+          </button>
+      
     </>
   );
 };
