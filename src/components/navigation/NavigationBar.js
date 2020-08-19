@@ -7,10 +7,19 @@ import { Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
 
 import NavLogic from './NavLogic';
 import * as UsrActions from '../../redux/actions/action';
+import * as ModalActions from '../../redux/actions/modalActions';
 
-const NavigationBar = ({ token, actions, history, windowSize }) => {
-  const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
-  const [registerModalIsOpen, setregisterModalIsOpen] = useState(false);
+const NavigationBar = ({
+  token,
+  actions,
+  history,
+  windowSize,
+  loginModalIsOpen,
+  registerModalIsOpen
+}) => {
+  // const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
+  // const [registerModalIsOpen, setregisterModalIsOpen] = useState(false);
+
   const [navOpen, setNavOpen] = useState(false);
 
   let currentWindowWidth = windowSize.windowWidth;
@@ -24,21 +33,24 @@ const NavigationBar = ({ token, actions, history, windowSize }) => {
 
   const handleLogout = () => {
     actions.logout();
-    setLoginModalIsOpen(false);
-    history.push('/');
+    // setLoginModalIsOpen(false);
+    // actions.toggleLoginModal();
+    // actions.toggleRegisterModal();
+
+    // history.push('/');
   };
 
   const toggleNavItem = () => {
     setNavOpen(false);
   };
 
-  const toggleLoginModal = () => {
-    setLoginModalIsOpen(!loginModalIsOpen);
-  };
+  // const toggleLoginModal = () => {
+  //   setLoginModalIsOpen(!loginModalIsOpen);
+  // };
 
-  const toggleRegisterModal = () => {
-    setregisterModalIsOpen(!registerModalIsOpen);
-  };
+  // const toggleRegisterModal = () => {
+  //   setregisterModalIsOpen(!registerModalIsOpen);
+  // };
 
   if (currentWindowWidth <= 900) {
     return (
@@ -56,9 +68,9 @@ const NavigationBar = ({ token, actions, history, windowSize }) => {
           <span className={hamburgerIconStyle}>&nbsp;</span>
         </button>
         <NavLogic
-          toggleLoginModal={toggleLoginModal}
+          toggleLoginModal={actions.toggleLoginModal}
           loginModalIsOpen={loginModalIsOpen}
-          toggleRegisterModal={toggleRegisterModal}
+          toggleRegisterModal={actions.toggleRegisterModal}
           registerModalIsOpen={registerModalIsOpen}
           token={token}
           handleLogout={handleLogout}
@@ -79,9 +91,9 @@ const NavigationBar = ({ token, actions, history, windowSize }) => {
         DJ Helper
       </NavbarBrand>
       <NavLogic
-        toggleLoginModal={toggleLoginModal}
+        toggleLoginModal={actions.toggleLoginModal}
         loginModalIsOpen={loginModalIsOpen}
-        toggleRegisterModal={toggleRegisterModal}
+        toggleRegisterModal={actions.toggleRegisterModal}
         registerModalIsOpen={registerModalIsOpen}
         token={token}
         handleLogout={handleLogout}
@@ -96,14 +108,24 @@ const NavigationBar = ({ token, actions, history, windowSize }) => {
 
 const mapStateToProps = state => {
   return {
-    token: state.userReducer.tokenPresent
+    token: state.userReducer.tokenPresent,
+    loginModalIsOpen: state.modalReducer.loginModalIsOpen,
+    registerModalIsOpen: state.modalReducer.registerModalIsOpen
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     actions: {
-      logout: bindActionCreators(UsrActions.logoutUser, dispatch)
+      logout: bindActionCreators(UsrActions.logoutUser, dispatch),
+      toggleLoginModal: bindActionCreators(
+        ModalActions.toggleLoginModal,
+        dispatch
+      ),
+      toggleRegisterModal: bindActionCreators(
+        ModalActions.toggleRegisterModal,
+        dispatch
+      )
     }
   };
 };

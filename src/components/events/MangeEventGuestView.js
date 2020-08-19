@@ -7,6 +7,8 @@ import Modal from 'react-modal';
 import * as eventActions from '../../redux/actions/eventActions';
 import * as searchActions from '../../redux/actions/searchActions';
 import * as playlistActions from '../../redux/actions/playlistActions';
+import * as modalActions from '../../redux/actions/modalActions';
+
 import * as Styles from '../Styles';
 
 import EventGuestViewDetail from './EventGuestViewDetail';
@@ -25,7 +27,6 @@ class MangeEventGuestView extends Component {
       eventPlayList: [],
       history: props.history
     };
-    console.log('props: ', this.props);
   }
 
   componentDidMount() {
@@ -71,13 +72,16 @@ class MangeEventGuestView extends Component {
     } = this.props;
     const { eventId, eventTrackList, eventPlayList } = this.state;
 
-    if (prevProps.trackList.length !== trackList.length) {
-      getSingleEvent(eventId);
+    const isVoteUpdated =
+      prevProps.trackList.filter((prevTrack, prevIndex) => {
+        return prevTrack.votes !== trackList[prevIndex].votes;
+      }).length > 0;
 
+    if (prevProps.trackList.length !== trackList.length || isVoteUpdated) {
+      getSingleEvent(eventId);
       if (trackList.length === 0) {
         getTrackList(eventId);
       }
-
       this.setState({
         eventTrackList: trackList.filter(
           track => track.event_id === parseInt(eventId, 10)
@@ -140,6 +144,12 @@ class MangeEventGuestView extends Component {
           eventPlayList={this.state.eventPlayList}
           toggleEditEventModal={this.toggleEditEventModal}
           history={this.state.history}
+          addVotes={this.props.addVotes}
+          userId={this.props.userId}
+          toggleLoginModal={this.props.toggleLoginModal}
+          toggleRegisterModal={this.props.toggleRegisterModal}
+          loginModalIsOpen={this.props.loginModalIsOpen}
+          registerModalIsOpen={this.props.registerModalIsOpen}
         />
 
         <Modal
@@ -172,7 +182,10 @@ const mapStateToProps = state => {
     singleEvent: state.eventReducer.singleEvent,
     trackList: state.searchReducer.trackList,
     predictResults: state.searchReducer.predictResults,
-    playlistResults: state.searchReducer.playlistResults
+    playlistResults: state.searchReducer.playlistResults,
+    userId: state.userReducer.id,
+    loginModalIsOpen: state.modalReducer.loginModalIsOpen,
+    registerModalIsOpen: state.modalReducer.registerModalIsOpen
   };
 };
 
@@ -184,7 +197,10 @@ const mapDispatchToProps = {
   getPlaysLists: playlistActions.getPlaysLists,
   removePlaylistTrack: playlistActions.removePlaylistTrack,
   editEvent: eventActions.editEvent,
-  deleteEvent: eventActions.deleteEvent
+  deleteEvent: eventActions.deleteEvent,
+  addVotes: searchActions.addVotes,
+  toggleLoginModal: modalActions.toggleLoginModal,
+  toggleRegisterModal: modalActions.toggleRegisterModal
 };
 
 export default connect(

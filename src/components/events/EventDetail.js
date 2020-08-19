@@ -30,8 +30,6 @@ function EventDetail({
   const [shareLinkModalIsOpen, setShareLinkModalIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  console.log('votes');
-
   const toggleShareLinkModal = () => {
     setShareLinkModalIsOpen(!shareLinkModalIsOpen);
     setCopied(false);
@@ -85,14 +83,15 @@ function EventDetail({
       </section>
 
       <section className="eventDetailMiddle">
-        <div className="btn-trackRequest">
-          <img
-            src={plus}
-            alt="Add New Event"
-            onClick={toggleTrackSearchModal}
-          />
+        <button
+          type="button"
+          className="btn-trackRequest"
+          onClick={toggleTrackSearchModal}
+          style={{ background: '#808080', outline: 'none', border: 'none' }}
+        >
+          <img src={plus} alt="Add New Event" style={{ height: '100%' }} />
           <p className="request">Request a Track </p>
-        </div>
+        </button>
       </section>
 
       <section className="eventDetailBottom">

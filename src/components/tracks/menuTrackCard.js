@@ -39,7 +39,7 @@ function MenuTrackCard({
           type="button"
           className="btn btn-history"
         >
-          Move to history
+          Move to Playlist
         </button>
       )}
       <button

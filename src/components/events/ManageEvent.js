@@ -69,7 +69,15 @@ class ManageEvent extends Component {
     } = this.props;
     const { eventId, eventTrackList, eventPlayList } = this.state;
 
-    if (prevProps.trackList.length !== trackList.length) {
+    const isVoteUpdated =
+      prevProps.trackList.filter((prevTrack, prevIndex) => {
+        // console.log('prevTrack', prevTrack);
+        // console.log('prevIndex:track', trackList[prevIndex].votes);
+        // console.log('prevIndex', prevIndex);
+        return prevTrack !== trackList[prevIndex];
+      }).length > 0;
+
+    if (prevProps.trackList.length !== trackList.length || isVoteUpdated) {
       getSingleEvent(eventId);
 
       if (trackList.length === 0) {
@@ -166,7 +174,6 @@ class ManageEvent extends Component {
 // };
 
 const mapStateToProps = state => {
-  
   return {
     singleEvent: state.eventReducer.singleEvent,
     trackList: state.searchReducer.trackList,

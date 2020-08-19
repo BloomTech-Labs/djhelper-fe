@@ -27,6 +27,7 @@ const Login = ({ toggleLoginModal, toggleRegisterModal }) => {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(loginUser(userInfo, history));
+    toggleLoginModal();
   };
 
   const handleChange = e => {

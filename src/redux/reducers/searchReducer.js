@@ -1,5 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-// import { allEvents } from '../data/allEvents';  // Uncomment if you want to use dummy data
 import { SearchInitialState } from './initialState';
 import * as ActionTypes from '../actions/actionTypes';
 
@@ -104,20 +103,25 @@ export const searchReducer = (state = SearchInitialState, action) => {
     case ActionTypes.REMOVE_PLAYLIST_TRACK_ERRROR:
       return {
         ...state,
-        removePlaylistTrackError: action.payload};
+        removePlaylistTrackError: action.payload
+      };
     case ActionTypes.ADD_VOTE_SUCCESS:
-     
-          return{
-            ...state,
-            trackList: state.trackList.map(track => ({...track, votes: action.payload.votes}))
-          };
-    case ActionTypes.ADD_VOTE_TRACK_ERROR:
-          return{
-            ...state,
-            addVoteTrackError: action.payload
+      return {
+        ...state,
+        trackList: state.trackList.map(track => {
+          if (track.id === action.trackId) {
+            return { ...track, votes: action.payload.votes };
+          }
+          return track;
+        })
+      };
 
-          };
+    case ActionTypes.ADD_VOTE_TRACK_ERROR:
+      return {
+        ...state,
+        addVoteTrackError: action.payload
+      };
     default:
       return state;
-        }
-      };
+  }
+};

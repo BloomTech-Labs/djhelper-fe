@@ -25,8 +25,6 @@ const ResultCard = ({
     spotify_id
   } = result;
 
-  console.log('result from result: ', result);
-
   const handlePredict = e => {
     console.log('spotifyID: ', id);
     e.preventDefault();

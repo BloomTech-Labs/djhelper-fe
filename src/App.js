@@ -16,7 +16,6 @@ import ManageEventGuestView from './components/events/MangeEventGuestView';
 import Help from './components/pages/Help';
 import ManageEvent from './components/events/ManageEvent';
 
-
 import './stylesheets/index.scss';
 
 // this is for change
@@ -27,10 +26,9 @@ function App() {
       <BrowserRouter>
         <Route path="/" component={NavigationBar} />
         <Route path="/help" component={Help} />
-        
-     
+
         <Route exact path="/" component={Home} />
-        
+
         <PrivateRoute exact path="/dj" component={DjInterface} />
         <PrivateRoute path="/dj/event/:id" component={ManageEvent} />
         <PrivateRoute path="/dj/profile" component={DJProfile} />

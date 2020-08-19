@@ -7,6 +7,8 @@ import TrackSearch from './TrackSearch';
 import TrackCard from '../tracks/trackCard';
 import PlaylistCard from '../tracks/playListCard';
 
+import plus from '../../images/plus.png';
+
 function EventGuestViewDetail({
   eventId,
   djId,
@@ -20,7 +22,13 @@ function EventGuestViewDetail({
   eventTrackList,
   eventPlayList,
   toggleEditEventModal,
-  history
+  history,
+  addVotes,
+  userId,
+  toggleLoginModal,
+  toggleRegisterModal,
+  loginModalIsOpen,
+  registerModalIsOpen
 }) {
   const { name, date, notes, isExplicit } = event;
 
@@ -48,8 +56,12 @@ function EventGuestViewDetail({
         </div>
 
         <div className="eventDetailTop__five">
-          <button type="button" className="btn-voting">
-            Voting
+          <button
+            type="button"
+            className="btn"
+            onClick={() => history.push(`/dj/${djId}/event/${eventId}`)}
+          >
+            Request
           </button>
           <button
             onClick={() =>
@@ -64,12 +76,21 @@ function EventGuestViewDetail({
       </section>
 
       <section className="eventDetailMiddle">
-        <button
+        {/* <button
           onClick={toggleTrackSearchModal}
           type="button"
           className="btn-trackRequest"
         >
           Request Tract
+        </button> */}
+        <button
+          type="button"
+          className="btn-trackRequest"
+          onClick={toggleTrackSearchModal}
+          style={{ background: '#808080', outline: 'none', border: 'none' }}
+        >
+          <img src={plus} alt="Add New Event" style={{ height: '100%' }} />
+          <p className="request">Request a Track </p>
         </button>
       </section>
 
@@ -87,6 +108,12 @@ function EventGuestViewDetail({
               eventId={eventId}
               deleteTrack={deleteTrack}
               isGuest="true"
+              addVotes={addVotes}
+              userId={userId}
+              toggleLoginModal={toggleLoginModal}
+              toggleRegisterModal={toggleRegisterModal}
+              loginModalIsOpen={loginModalIsOpen}
+              registerModalIsOpen={registerModalIsOpen}
             />
           ))}
         </Route>

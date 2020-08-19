@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import * as Styles from '../Styles';
 import PredictSearch from './predictSearch';
 import TrackSearch from '../events/TrackSearch';
@@ -14,11 +16,18 @@ export default function TrackCard({
   eventId,
   deleteTrack,
   isGuest,
-  addVotes
+  addVotes,
+  userId,
+  toggleLoginModal,
+  toggleRegisterModal,
+  loginModalIsOpen,
+  registerModalIsOpen
 }) {
   const count = index + 1;
   const [predictModalIsOpen, setPredictModalIsOpen] = useState(false);
   const [menuModalIsOpen, setMenuModalIsOpen] = useState(false);
+  const [guestModalIsOpen, setGuestModalIsOpen] = useState(false);
+
   const [playAudio, setPlayAudio] = useState(false);
 
   const {
@@ -34,8 +43,19 @@ export default function TrackCard({
     votes
   } = track;
 
+  const toggleGuestModal = e => {
+    setGuestModalIsOpen(!guestModalIsOpen);
+  };
+
+  const handleVoting = e => {
+    e.preventDefault();
+    if (isGuest && !userId) {
+      toggleGuestModal();
+    }
+    addVotes(id);
+  };
+
   const togglePlayAudio = e => {
-    console.log('audio state: ', playAudio);
     e.preventDefault();
     const audio = new Audio(preview);
 
@@ -47,13 +67,14 @@ export default function TrackCard({
 
     setPlayAudio(!playAudio);
   };
- 
+
   const togglePredictModal = e => {
     setPredictModalIsOpen(!predictModalIsOpen);
   };
   const toggleMenuModal = e => {
     setMenuModalIsOpen(!menuModalIsOpen);
   };
+
   return (
     <>
       <div className="trackCard">
@@ -69,12 +90,16 @@ export default function TrackCard({
           </a>
         </button>
 
-  <p style={{fontSize: '15px', marginRight: '10px'}}>{votes}</p>
+        <p style={{ fontSize: '15px', marginRight: '10px' }}>{votes}</p>
 
         <button
-        onClick={() => addVotes(id)}>
-        Vote</button>
-
+          type="button"
+          className="trackCard__btn-icon"
+          onClick={handleVoting}
+        >
+          {/* Vote */}
+          <FontAwesomeIcon icon="heart" className="trackCard__icon" />
+        </button>
 
         <h2 className="trackCard__artistName">{artist_name}</h2>
 
@@ -130,6 +155,36 @@ export default function TrackCard({
           deleteTrack={deleteTrack}
           toggleMenuModal={toggleMenuModal}
         />
+      </Modal>
+
+      <Modal
+        isOpen={guestModalIsOpen}
+        onRequestClose={toggleGuestModal}
+        style={Styles.menuModalStyles}
+      >
+        <div className="guestModal">
+          <p>you must be logged in to vote</p>
+          <button
+            type="button"
+            className="btn"
+            onClick={() => {
+              toggleGuestModal();
+              toggleLoginModal();
+            }}
+          >
+            Login
+          </button>
+          <button
+            type="button"
+            className="btn"
+            onClick={() => {
+              toggleGuestModal();
+              toggleRegisterModal();
+            }}
+          >
+            Sign Up
+          </button>
+        </div>
       </Modal>
     </>
   );

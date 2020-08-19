@@ -36,6 +36,7 @@ const Register = ({ toggleLoginModal, toggleRegisterModal }) => {
       email: userInfo.email
     };
     dispatch(registerUserAction(infoNeeded, history));
+    toggleRegisterModal();
   };
 
   const handleChange = e => {
