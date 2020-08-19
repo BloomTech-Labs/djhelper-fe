@@ -1,10 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
+import Loader from 'react-loader-spinner';
+
 import Icon from '../../utils/icon';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 
-export default function TrackSearch() {
+import ResultCard from '../tracks/ResultCard';
+
+import * as searchActions from '../../redux/actions/searchActions';
+
+function TrackSearch({
+  isExplicit,
+  getSearchResults,
+  searchResults,
+  getSearchResultStart,
+  addTrackResult,
+  eventId,
+  toggleTrackSearchModal,
+  getPredictionResults,
+  spotifyId
+}) {
   const [value, setValue] = useState('');
-  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    if (spotifyId) {
+      getPredictionResults(spotifyId);
+    }
+  }, []);
 
   const handleChange = e => {
     e.preventDefault();
@@ -13,19 +38,20 @@ export default function TrackSearch() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axiosWithAuth()
-      .get(`/track/${value}`)
-      .then(res => {
-        const resultArrays = Object.keys(res.data).map(i => res.data[i]);
-        setResults(resultArrays);
-      })
-      .catch(err => console.log(err));
+    getSearchResults(value, isExplicit);
+    setValue('');
   };
 
-  console.log('results: ', results);
   return (
     <div>
       <section className="trackSearch">
+        <button
+          onClick={toggleTrackSearchModal}
+          type="button"
+          className="trackSearch__btnclose"
+        >
+          <FontAwesomeIcon icon="times" className="trackSearch__icon" />
+        </button>
         <form onSubmit={handleSubmit}>
           <div className="trackSearch__input">
             <input type="text" name="search" onChange={handleChange} />
@@ -44,22 +70,41 @@ export default function TrackSearch() {
       </section>
 
       <section className="searchResults">
-        {results.map(result => (
-          <ResultCard key={result.id} result={result} />
-        ))}
+        {getSearchResultStart ? (
+          <Loader type="Audio" color="purple" height={200} width={200} />
+        ) : (
+          searchResults.map(result => (
+            <ResultCard
+              addTrackResult={addTrackResult}
+              key={result.song_name}
+              result={result}
+              eventId={eventId}
+              getPredictionResults={getPredictionResults}
+            />
+          ))
+        )}
       </section>
     </div>
   );
 }
 
-const ResultCard = props => {
-  const { artist_name, explicit, external_urls, id, song_name } = props.result;
-  return (
-    <div className="resultCard">
-      <span>img</span>
-      <h2>{song_name}</h2>
-      <p>{artist_name}</p>
-      <span>add song</span>
-    </div>
-  );
+// TrackSearch.propTypes = {
+//   match: PropTypes.oneOfType([PropTypes.object]).isRequired,
+//   singleEvent: PropTypes.oneOfType([PropTypes.object]).isRequired,
+//   getSingleEvent: PropTypes.func.isRequired
+// };
+
+const mapStateToProps = state => {
+  return {
+    searchResults: state.searchReducer.searchResults,
+    getSearchResultStart: state.searchReducer.getSearchResultStart
+  };
 };
+
+const mapDispatchToProps = {
+  getSearchResults: searchActions.getSearchResults,
+  addTrackResult: searchActions.addTrackResult,
+  getPredictionResults: searchActions.getPredictionResults
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrackSearch);

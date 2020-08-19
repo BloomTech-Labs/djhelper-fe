@@ -1,13 +1,26 @@
-.eventDetail {
-  background-color: transparent;
+.eventDashboard {
+  background: $dark3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
+  &__heading {
+    color: white;
+    position: absolute;
+    top: 15rem;
+    font-size: 4rem;
+  }
+}
+.eventDetail {
+  position: relative;
+  top: -50rem;
   margin: 5rem auto;
-  max-width: 60rem;
+  max-width: 80rem;
   width: 100%;
 
   & > * {
     margin-top: 2rem;
-    background: grey;
     box-shadow: 2px 5px 10px black;
     padding: 3rem 2rem 1rem 2rem;
   }
@@ -17,6 +30,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: grey;
 
   &__one,
   &__two,
@@ -31,8 +45,112 @@
     margin-top: 1rem;
   }
 }
+.eventDetailMiddle {
+  background: grey;
+}
 
 .btn-trackRequest {
   width: 100%;
   cursor: pointer;
+}
+
+.eventDetailBottom {
+  background: #232323;
+}
+
+.sharelink {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+
+  & > * {
+    margin-top: 3rem;
+  }
+
+  a {
+    font-size: 2rem;
+    text-decoration: none;
+  }
+
+  &__btn-icon {
+    all: unset;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 4rem;
+    cursor: pointer;
+  }
+
+  &__copy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      color: red;
+      font-size: 2rem;
+      margin-left: 3rem;
+    }
+  }
+}
+
+.heading-primary a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 60px;
+  line-height: 70px;
+  display: flex;
+  align-items: center;
+
+  color: #f9f9f9;
+}
+
+.eventDetailTop__two {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 33px;
+  display: flex;
+  align-items: center;
+  color: #f2f2f2;
+}
+
+.eventDetailTop__three{
+font-style: normal;
+font-weight: bold;
+font-size: 28px;
+line-height: 33px;
+display: flex;
+align-items: center;
+color: #D9D9D9;
+}
+
+.btn-trackRequest{
+  height:104px;
+  display:flex;
+  
+}
+
+.btn-trackRequest img{
+font-size: 1.7em;
+width: 90px;
+
+
+}
+
+.request{
+  font-style: normal;
+font-weight: 600;
+font-size: 40px;
+line-height: 47px;
+justify-content: center;
+margin-left: 3rem;
+margin-top: 2rem;
+
+
+
+color: #F2F2F2;
+
 }

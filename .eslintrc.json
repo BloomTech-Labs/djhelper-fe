@@ -17,7 +17,10 @@
   },
   "plugins": ["prettier"],
   "rules": {
+    "no-case-declarations": "off",
     "react/destructuring-assignment": "off",
+    "react/no-did-update-set-state": "off",
+    "react/no-access-state-in-setstate": "off",
     "prettier/prettier": "error",
     "no-unused-vars": "warn",
     "no-console": "off",
