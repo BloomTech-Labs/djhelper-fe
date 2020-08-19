@@ -17,11 +17,17 @@ export default function TrackCard({
   deleteTrack,
   isGuest,
   addVotes,
-  userId
+  userId,
+  toggleLoginModal,
+  toggleRegisterModal,
+  loginModalIsOpen,
+  registerModalIsOpen
 }) {
   const count = index + 1;
   const [predictModalIsOpen, setPredictModalIsOpen] = useState(false);
   const [menuModalIsOpen, setMenuModalIsOpen] = useState(false);
+  const [guestModalIsOpen, setGuestModalIsOpen] = useState(false);
+
   const [playAudio, setPlayAudio] = useState(false);
 
   const {
@@ -37,10 +43,14 @@ export default function TrackCard({
     votes
   } = track;
 
+  const toggleGuestModal = e => {
+    setGuestModalIsOpen(!guestModalIsOpen);
+  };
+
   const handleVoting = e => {
     e.preventDefault();
     if (isGuest && !userId) {
-      alert('you must be logged in vote. please log in');
+      toggleGuestModal();
     }
     addVotes(id);
   };
@@ -64,6 +74,7 @@ export default function TrackCard({
   const toggleMenuModal = e => {
     setMenuModalIsOpen(!menuModalIsOpen);
   };
+
   return (
     <>
       <div className="trackCard">
@@ -144,6 +155,36 @@ export default function TrackCard({
           deleteTrack={deleteTrack}
           toggleMenuModal={toggleMenuModal}
         />
+      </Modal>
+
+      <Modal
+        isOpen={guestModalIsOpen}
+        onRequestClose={toggleGuestModal}
+        style={Styles.menuModalStyles}
+      >
+        <div className="guestModal">
+          <p>you must be logged in to vote</p>
+          <button
+            type="button"
+            className="btn"
+            onClick={() => {
+              toggleGuestModal();
+              toggleLoginModal();
+            }}
+          >
+            Login
+          </button>
+          <button
+            type="button"
+            className="btn"
+            onClick={() => {
+              toggleGuestModal();
+              toggleRegisterModal();
+            }}
+          >
+            Sign Up
+          </button>
+        </div>
       </Modal>
     </>
   );

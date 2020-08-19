@@ -28,7 +28,9 @@ export const loginUser = (userInfo, history) => dispatch => {
         type: ActionTypes.LOGIN_USER_SUCCESS,
         payload: response.data
       });
-      history.push('/dj');
+      if (history.location.pathname === '/') {
+        history.push('/dj');
+      }
     })
     .catch(err => {
       dispatch({ type: ActionTypes.LOGIN_USER_ERROR, payload: err });
@@ -57,7 +59,9 @@ export const registerUserAction = (infoNeeded, history) => dispatch => {
             type: ActionTypes.LOGIN_USER_SUCCESS,
             payload: response2.data
           });
-          history.push('/dj');
+          if (history.location.pathname === '/') {
+            history.push('/dj');
+          }
         })
         .catch(err => {
           dispatch({ type: ActionTypes.LOGIN_USER_ERROR, payload: err });

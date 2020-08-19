@@ -73,3 +73,18 @@
     margin-right: 0;
   }
 }
+
+.guestModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    font-size: 1.8rem;
+  }
+
+  & > * {
+    margin-top: 1.5rem;
+  }
+}

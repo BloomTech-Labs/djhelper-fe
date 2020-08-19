@@ -104,3 +104,8 @@ export const SearchInitialState = {
   getSearchResultStart: false,
   getPredictResultStart: false
 };
+
+export const ModalInitialState = {
+  loginModalIsOpen: false,
+  registerModalIsOpen: false
+};

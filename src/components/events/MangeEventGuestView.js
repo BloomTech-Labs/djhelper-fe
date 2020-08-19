@@ -7,6 +7,8 @@ import Modal from 'react-modal';
 import * as eventActions from '../../redux/actions/eventActions';
 import * as searchActions from '../../redux/actions/searchActions';
 import * as playlistActions from '../../redux/actions/playlistActions';
+import * as modalActions from '../../redux/actions/modalActions';
+
 import * as Styles from '../Styles';
 
 import EventGuestViewDetail from './EventGuestViewDetail';
@@ -25,7 +27,6 @@ class MangeEventGuestView extends Component {
       eventPlayList: [],
       history: props.history
     };
-    console.log('props: ', this.props);
   }
 
   componentDidMount() {
@@ -145,6 +146,10 @@ class MangeEventGuestView extends Component {
           history={this.state.history}
           addVotes={this.props.addVotes}
           userId={this.props.userId}
+          toggleLoginModal={this.props.toggleLoginModal}
+          toggleRegisterModal={this.props.toggleRegisterModal}
+          loginModalIsOpen={this.props.loginModalIsOpen}
+          registerModalIsOpen={this.props.registerModalIsOpen}
         />
 
         <Modal
@@ -178,7 +183,9 @@ const mapStateToProps = state => {
     trackList: state.searchReducer.trackList,
     predictResults: state.searchReducer.predictResults,
     playlistResults: state.searchReducer.playlistResults,
-    userId: state.userReducer.id
+    userId: state.userReducer.id,
+    loginModalIsOpen: state.modalReducer.loginModalIsOpen,
+    registerModalIsOpen: state.modalReducer.registerModalIsOpen
   };
 };
 
@@ -191,7 +198,9 @@ const mapDispatchToProps = {
   removePlaylistTrack: playlistActions.removePlaylistTrack,
   editEvent: eventActions.editEvent,
   deleteEvent: eventActions.deleteEvent,
-  addVotes: searchActions.addVotes
+  addVotes: searchActions.addVotes,
+  toggleLoginModal: modalActions.toggleLoginModal,
+  toggleRegisterModal: modalActions.toggleRegisterModal
 };
 
 export default connect(

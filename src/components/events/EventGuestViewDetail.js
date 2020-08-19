@@ -24,7 +24,11 @@ function EventGuestViewDetail({
   toggleEditEventModal,
   history,
   addVotes,
-  userId
+  userId,
+  toggleLoginModal,
+  toggleRegisterModal,
+  loginModalIsOpen,
+  registerModalIsOpen
 }) {
   const { name, date, notes, isExplicit } = event;
 
@@ -106,6 +110,10 @@ function EventGuestViewDetail({
               isGuest="true"
               addVotes={addVotes}
               userId={userId}
+              toggleLoginModal={toggleLoginModal}
+              toggleRegisterModal={toggleRegisterModal}
+              loginModalIsOpen={loginModalIsOpen}
+              registerModalIsOpen={registerModalIsOpen}
             />
           ))}
         </Route>

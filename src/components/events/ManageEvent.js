@@ -71,7 +71,10 @@ class ManageEvent extends Component {
 
     const isVoteUpdated =
       prevProps.trackList.filter((prevTrack, prevIndex) => {
-        return prevTrack.votes !== trackList[prevIndex].votes;
+        // console.log('prevTrack', prevTrack);
+        // console.log('prevIndex:track', trackList[prevIndex].votes);
+        // console.log('prevIndex', prevIndex);
+        return prevTrack !== trackList[prevIndex];
       }).length > 0;
 
     if (prevProps.trackList.length !== trackList.length || isVoteUpdated) {
