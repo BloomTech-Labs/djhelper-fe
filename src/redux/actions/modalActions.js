@@ -1,4 +1,3 @@
-import axiosWithAuth from '../../utils/axiosWithAuth';
 import * as ActionTypes from './actionTypes';
 
 export const toggleLoginModal = () => dispatch => {

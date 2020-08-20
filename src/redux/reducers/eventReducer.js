@@ -90,7 +90,6 @@ export const eventReducer = (state = EventInitialState, action) => {
       return {
         ...state,
         getEventsStart: false,
-        // singleEvent: { ...state.singleEvent, ...action.payload }
         singleEvent: action.payload
       };
 

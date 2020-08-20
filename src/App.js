@@ -12,7 +12,7 @@ import DjInterface from './components/djs/DjInterface';
 import About from './components/pages/About';
 import DJProfile from './components/djs/DJProfile';
 import SetUpProfile from './components/djs/SetUpProfile';
-import ManageEventGuestView from './components/events/MangeEventGuestView';
+import ManageEventGuestView from './components/guests/MangeEventGuestView';
 import Help from './components/pages/Help';
 import ManageEvent from './components/events/ManageEvent';
 

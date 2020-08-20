@@ -1,10 +1,6 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
-
-import Icon from '../../utils/icon';
-import axiosWithAuth from '../../utils/axiosWithAuth';
 
 import AddPlusButton from '../../images/add_plus_button.png';
 

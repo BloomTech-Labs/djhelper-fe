@@ -11,8 +11,6 @@ import AddEvent from './events/AddEvent';
 import Event from './events/Event';
 import * as eventActions from '../redux/actions/eventActions';
 
-import PreviewEventDetails from './events/PreviewEventDetails';
-
 import * as Styles from './Styles';
 import plus from '../images/plus.png';
 
@@ -58,21 +56,6 @@ const Dashboard = ({ events, id, name, getEvents, history, ...props }) => {
       .sort((a, b) => b.formattedDate - a.formattedDate);
     setPastEvents(pastEventsArray);
   }, [events]);
-
-  // const whichComponent = () => {
-  //   if (data.active.length > 1) {
-  //     return (
-  //       <PreviewEventDetails
-  //         data={data}
-  //         setData={setData}
-  //         currentlyActive={currentlyActive}
-  //         tokenPresent={props.tokenPresent}
-  //         history={props.history}
-  //       />
-  //     );
-  //   }
-  //   return <DashboardWelcome name={name} />;
-  // };
 
   return (
     <div className="dashboard">

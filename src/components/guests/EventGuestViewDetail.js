@@ -3,7 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 
 import * as Styles from '../Styles';
-import TrackSearch from './TrackSearch';
+import TrackSearch from '../events/TrackSearch';
 import TrackCard from '../tracks/trackCard';
 import PlaylistCard from '../tracks/playListCard';
 
