@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { Form, Input } from 'reactstrap';
-import { Link, useHistory } from 'react-router-dom';
+import React from 'react';
+import { Form } from 'reactstrap';
 
 function RegisterForm({ userInfo, handleChange, handleSubmit }) {
   const passwordValidation = inputField => {

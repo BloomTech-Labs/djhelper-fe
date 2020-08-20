@@ -1,5 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-// import { allEvents } from '../data/allEvents';  // Uncomment if you want to use dummy data
 import { UserInitialState } from './initialState';
 import * as ActionTypes from '../actions/actionTypes';
 

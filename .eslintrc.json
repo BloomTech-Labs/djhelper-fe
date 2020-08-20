@@ -17,6 +17,7 @@
   },
   "plugins": ["prettier"],
   "rules": {
+    "camelcase": "off",
     "no-case-declarations": "off",
     "react/destructuring-assignment": "off",
     "react/no-did-update-set-state": "off",

@@ -12,7 +12,7 @@ import * as modalActions from '../../redux/actions/modalActions';
 import * as Styles from '../Styles';
 
 import EventGuestViewDetail from './EventGuestViewDetail';
-import EditEvent from './EditEvent';
+import EditEvent from '../events/EditEvent';
 import DashboardWelcome from '../DashboardWelcome';
 
 class MangeEventGuestView extends Component {
