@@ -8,6 +8,7 @@ import Register from '../loginRegistration/Register';
 
 import * as Styles from '../Styles';
 import NavItems from './NavItems';
+import Help from '../pages/Help';
 
 export default function NavLogic({
   toggleLoginModal,
@@ -16,6 +17,7 @@ export default function NavLogic({
   registerModalIsOpen,
   token,
   handleLogout,
+
   NavigationItemStyle,
   navOpen,
   toggleNavItem,
@@ -48,6 +50,7 @@ export default function NavLogic({
         >
           Logout
         </button>
+
       </ul>
     );
   }
@@ -98,6 +101,7 @@ export default function NavLogic({
           />
         </Modal>
       </NavItem>
+     
     </Nav>
   );
 }

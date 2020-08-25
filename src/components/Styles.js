@@ -11,7 +11,7 @@ export const eventModalStyles = {
 
 export const loginModalStyles = {
   content: {
-    width: '37rem',
+    width: '25rem',
     height: '65rem',
     margin: 'auto',
     padding: 0,
@@ -22,7 +22,7 @@ export const loginModalStyles = {
 
 export const registerModalStyles = {
   content: {
-    width: '37rem',
+    width: '35rem',
     height: '65rem',
     margin: 'auto',
     padding: 0,
@@ -75,13 +75,15 @@ export const shareLinkModalStyles = {
 
 export const HelpModalStyle = {
     content : {
-      width: '50%',
-      height: '40%',
+      width: '40%',
+      height: '50%',
       top                   : '50%',
       left                  : '50%',
       right                 : 'auto',
       bottom                : 'auto',
       marginRight           : '-50%',
-      transform             : 'translate(-50%, -50%)'
+      transform             : 'translate(-50%, -50%)',
+      border: '1px solid grey',
+      
     }
   };
