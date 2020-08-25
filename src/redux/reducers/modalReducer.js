@@ -14,6 +14,11 @@ export const modalReducer = (state = ModalInitialState, action) => {
         ...state,
         registerModalIsOpen: !state.registerModalIsOpen
       };
+    case ActionTypes.TOGGLE_HELP_MODAL_SUCCESS:
+      return {
+        ...state,
+        helpModalIsOpen: !state.helpModalIsOpen
+      };
     default:
       return state;
   }
