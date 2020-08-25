@@ -1,39 +1,62 @@
-.profile-page {
-    background: black;
-    align-items: center;
-    height: 100%;
-   
-    color: white;
-.dj_profile {
-    background-image:url('../../images/DJ_profile.png');
-    background-size: cover;
+.profile-page{
+  background: black;
+  height:100rem;
+}
+.profileTopImage{
+  background-image: url("../../images/DJ_profile.png");
+  background-size: cover;
     background-repeat: no-repeat;
     min-height: 60vh;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     margin-bottom: 60px;
 }
-  
-    
- .profile-top{
-    position: absolute;
-    align-items: center;
-    background-color: gray;
-    left: 30%;
-    width:50%;
-    height: 60%;
-    top: 260px;
-    padding-bottom: 30px;
-    h1{
-      padding-left:93px;
-      padding-right:0px;
-      margin:20px;
-    }
+.profile{
+  position: absolute;
+  top: 200px;
+  h3{
+    font-size: 30px;
+    color:white;
+    margin-left: 40rem;
+    margin-bottom: 5rem;
+  }
+  h1{
+    font-size: 50px;
+    color:white;
+    margin-left: 40rem;
   }
 }
-
-    
-
-
+.profileBox{
+  background-color: #333333;
+  margin-left: 40rem;
+  height:50rem;
+  width:80rem;
+  display:flex;
+  flex-direction: row;
+}
+.profileBio, .profileContact, .profileEvents{
+  padding-top: 5rem;
+  padding-left:4rem;
+  h6{
+     font-size:24px;
+     color:#A8A8A8;
+     padding-bottom: 1rem;
+  }
+  p{
+    width: 30rem;
+    padding-left: 1.5rem;
+    color: #F2F2F2;
+    font-size:22px;
+  }
+}
+.profileBoxRight{
+  padding-top: 5rem;
+  padding-left:10rem;
+  h6{
+     font-size:24px;
+    color:#A8A8A8;
+    padding-bottom: 1rem;
+ }
+}
