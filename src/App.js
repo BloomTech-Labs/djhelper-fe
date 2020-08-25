@@ -15,7 +15,7 @@ import SetUpProfile from './components/djs/SetUpProfile';
 import ManageEventGuestView from './components/guests/MangeEventGuestView';
 import Help from './components/pages/Help';
 import ManageEvent from './components/events/ManageEvent';
-import Profile from "./components/pages/Profile"
+import Profile from './components/pages/Profile';
 import './stylesheets/index.scss';
 
 // this is for change
@@ -25,7 +25,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Route path="/" component={NavigationBar} />
-        <Route path="/help" component={Help} />
+        <Route path="/" component={Help} />
         <Route path="/profile" component={Profile} />
 
         <Route exact path="/" component={Home} />

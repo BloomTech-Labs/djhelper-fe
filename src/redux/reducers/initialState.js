@@ -41,54 +41,6 @@ export const EventInitialState = {
   getEventsStart: false,
   getEventsError: false
 };
-// song initial states
-
-// export const SongInitialState = {
-//   results: [],
-//   eventPlaylists: {
-//     event1: {
-//       playlist: [],
-//       requests: []
-//     },
-//     event2: {
-//       playlist: [],
-//       requests: []
-//     },
-//     event3: {
-//       playlist: [],
-//       requests: []
-//     },
-//     event4: {
-//       playlist: [],
-//       requests: []
-//     },
-//     event5: {
-//       playlist: [],
-//       requests: []
-//     },
-//     event6: {
-//       playlist: [],
-//       requests: []
-//     }
-//   },
-//   addToSongReducerStarted: false,
-//   searchStarted: false,
-//   searchError: false,
-//   getPreviewStarted: false,
-//   getPreviewError: false,
-//   addSongStarted: false,
-//   addSongError: false,
-//   editModeOn: false,
-//   removeSongStarted: false,
-//   removeSongError: false,
-//   addVoteStarted: false,
-//   addVoteError: false,
-//   currentPreview: '',
-//   getPlaylistStart: false,
-//   getPlaylistError: false,
-//   editQueueNumStart: false,
-//   editQueueNumError: false
-// };
 
 export const SearchInitialState = {
   searchResults: [],
@@ -107,5 +59,6 @@ export const SearchInitialState = {
 
 export const ModalInitialState = {
   loginModalIsOpen: false,
-  registerModalIsOpen: false
+  registerModalIsOpen: false,
+  helpModalIsOpen: false
 };

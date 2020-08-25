@@ -11,6 +11,7 @@ import NavItems from './NavItems';
 import Help from '../pages/Help';
 
 export default function NavLogic({
+  toggleHelpModal,
   toggleLoginModal,
   loginModalIsOpen,
   toggleRegisterModal,
@@ -34,6 +35,17 @@ export default function NavLogic({
           ''
         )}
 
+        <button
+          className="btn"
+          type="button"
+          onClick={() => {
+            toggleNavItem();
+            toggleHelpModal();
+          }}
+        >
+          Help
+        </button>
+
         {NavItems.map(item => (
           <li key={item.name}>
             <Link onClick={toggleNavItem} to={item.path}>
@@ -50,7 +62,6 @@ export default function NavLogic({
         >
           Logout
         </button>
-
       </ul>
     );
   }
@@ -62,6 +73,12 @@ export default function NavLogic({
       ) : (
         ''
       )}
+      <NavItem onClick={toggleNavItem}>
+        <button className="btn" type="button" onClick={toggleHelpModal}>
+          Help
+        </button>
+      </NavItem>
+
       <NavItem onClick={toggleNavItem}>
         <button
           className="btn btn-login"
@@ -101,7 +118,6 @@ export default function NavLogic({
           />
         </Modal>
       </NavItem>
-     
     </Nav>
   );
 }

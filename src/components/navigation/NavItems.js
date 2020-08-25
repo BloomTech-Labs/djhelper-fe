@@ -7,10 +7,7 @@ export default [
     name: 'Profile',
     path: '/profile'
   },
-  {
-    name: 'Help',
-    path: '/help'
-  },
+
   {
     name: 'about',
     path: '/about'

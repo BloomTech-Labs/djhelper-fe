@@ -1,55 +1,63 @@
-.close{
-    text-align: right;
+.close {
+  text-align: right;
 }
 
-.Text{
-    font-size: 1.5rem;
+.Text {
+  font-size: 1.5rem;
 }
-.btn-submit{
-    padding: 0.5rem 2.5rem;
-    border: 2px solid $color-secondary-light;
-    border-radius: 5rem;
-    font-family: Mukta;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1.5rem;
-    line-height: 3.3rem;
-    color: white;
-    background-color: #7E00E1;
-    margin-left: 1rem;}
-.Title{
-    font-size:3rem;
-    text-align: left;
-    padding-bottom: 1rem;
+.btn-submit {
+  padding: 0.5rem 2.5rem;
+  border: 2px solid $color-secondary-light;
+  border-radius: 5rem;
+  font-family: Mukta;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 3.3rem;
+  color: white;
+  background-color: #7e00e1;
+  margin-left: 1rem;
 }
-.emailField{
-    width: 40%;
+.Title {
+  font-size: 3rem;
+  text-align: left;
+  padding-bottom: 1rem;
+}
+.emailField {
+  width: 40%;
 }
 
-.description{
-    width: 60%;
-    padding-left: 10%;
-    
+.description {
+  width: 60%;
+  padding-left: 10%;
 }
-.content{
-    display: flex;
-    flex-direction: row;
-    align-items: space-between;
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
 }
-.inputField{
-    font-size: 1.5rem;
+.inputField {
+  font-size: 1.5rem;
+}
+.inputField1 {
+  font-size: 1.5rem;
+  height: 80%;
+}
+.descrip_text {
+  font-size: 1.5rem;
+  height: 90%;
+  width: 90%;
+  border-radius: 10px;
+  border: 1px, solid rgb(245, 239, 239);
+}
 
-}
-.inputField1{
-    font-size: 1.5rem;
-    height: 80%;
-    
-}
-.descrip_text{
-    font-size: 1.5rem;
-    height: 90%;
-    width: 90%;
-    border-radius: 10px;
-    border: 1px, solid rgb(245, 239, 239),
+.close {
+  &__btn {
+    all: unset;
+    cursor: pointer;
+  }
 
+  &__icon {
+    font-size: 2.5rem;
+  }
 }
