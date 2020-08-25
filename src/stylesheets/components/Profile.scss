@@ -1,0 +1,39 @@
+.profile-page {
+    background: black;
+    align-items: center;
+    height: 100%;
+   
+    color: white;
+.dj_profile {
+    background-image:url('../../images/DJ_profile.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 60vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 60px;
+}
+  
+    
+ .profile-top{
+    position: absolute;
+    align-items: center;
+    background-color: gray;
+    left: 30%;
+    width:50%;
+    height: 60%;
+    top: 260px;
+    padding-bottom: 30px;
+    h1{
+      padding-left:93px;
+      padding-right:0px;
+      margin:20px;
+    }
+  }
+}
+
+    
+
+

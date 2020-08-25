@@ -1,4 +1,11 @@
-.btn-submit {
+.close{
+    text-align: right;
+}
+
+.Text{
+    font-size: 1.5rem;
+}
+.btn-submit{
     padding: 0.5rem 2.5rem;
     border: 2px solid $color-secondary-light;
     border-radius: 5rem;
@@ -10,3 +17,39 @@
     color: white;
     background-color: #7E00E1;
     margin-left: 1rem;}
+.Title{
+    font-size:3rem;
+    text-align: left;
+    padding-bottom: 1rem;
+}
+.emailField{
+    width: 40%;
+}
+
+.description{
+    width: 60%;
+    padding-left: 10%;
+    
+}
+.content{
+    display: flex;
+    flex-direction: row;
+    align-items: space-between;
+}
+.inputField{
+    font-size: 1.5rem;
+
+}
+.inputField1{
+    font-size: 1.5rem;
+    height: 80%;
+    
+}
+.descrip_text{
+    font-size: 1.5rem;
+    height: 90%;
+    width: 90%;
+    border-radius: 10px;
+    border: 1px, solid rgb(245, 239, 239),
+
+}

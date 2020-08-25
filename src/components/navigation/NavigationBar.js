@@ -15,7 +15,8 @@ const NavigationBar = ({
   history,
   windowSize,
   loginModalIsOpen,
-  registerModalIsOpen
+  registerModalIsOpen,
+ 
 }) => {
   // const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
   // const [registerModalIsOpen, setregisterModalIsOpen] = useState(false);
@@ -39,6 +40,7 @@ const NavigationBar = ({
 
     // history.push('/');
   };
+ 
 
   const toggleNavItem = () => {
     setNavOpen(false);

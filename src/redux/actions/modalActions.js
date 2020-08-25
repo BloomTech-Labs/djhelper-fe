@@ -11,3 +11,9 @@ export const toggleRegisterModal = () => dispatch => {
     type: ActionTypes.TOGGLE_REGISTER_MODAL_SUCCESS
   });
 };
+
+export const toggleHelpModal = () => dispatch => {
+  dispatch({
+    type: ActionTypes.TOGGLE_HELP_MODAL_SUCCESS
+  });
+};
