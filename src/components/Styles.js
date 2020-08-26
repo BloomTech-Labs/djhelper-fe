@@ -11,7 +11,7 @@ export const eventModalStyles = {
 
 export const loginModalStyles = {
   content: {
-    width: '25rem',
+    width: '35rem',
     height: '65rem',
     margin: 'auto',
     padding: 0,
