@@ -32,6 +32,14 @@ function EventGuestViewDetail({
 }) {
   const { name, date, notes, isExplicit } = event;
 
+  const generateNumberOfDays = eventDate => {
+    const today = new Date();
+    const futureDate = new Date(eventDate);
+    const timeinmilisec = futureDate.getTime() - today.getTime();
+
+    return Math.ceil(timeinmilisec / (1000 * 60 * 60 * 24));
+  };
+
   return (
     <div className="eventDetail">
       <section className="eventDetailTop">
@@ -52,7 +60,9 @@ function EventGuestViewDetail({
           </p>
         </div>
         <div className="eventDetailTop__four">
-          <p>number of days away</p>
+          <p style={{ fontSize: '1.8rem' }}>
+            This event is in {generateNumberOfDays(date)} days
+          </p>
         </div>
 
         <div className="eventDetailTop__five">
