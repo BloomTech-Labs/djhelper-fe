@@ -9,7 +9,6 @@ export const getSearchResults = (value, isExplicit) => dispatch => {
     .get(`/track/${value}`)
     .then(res => {
       const resultArrays = Object.keys(res.data).map(i => res.data[i]);
-      console.log('searchResult2: ', resultArrays);
 
       let filteredResults = [];
       if (isExplicit) {
@@ -42,7 +41,6 @@ export const getPredictionResults = (spotifyId, isExplicit) => dispatch => {
     .get(`/predict/${spotifyId}`)
     .then(res => {
       const resultArrays = Object.keys(res.data).map(i => res.data[i]);
-      console.log('predicSearch: ', resultArrays);
       let filteredResults = [];
       if (isExplicit) {
         filteredResults = resultArrays;

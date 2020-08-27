@@ -35,6 +35,14 @@ function EventDetail({
     setCopied(false);
   };
 
+  const generateNumberOfDays = eventDate => {
+    const today = new Date();
+    const futureDate = new Date(eventDate);
+    const timeinmilisec = futureDate.getTime() - today.getTime();
+
+    return Math.ceil(timeinmilisec / (1000 * 60 * 60 * 24));
+  };
+
   return (
     <div className="eventDetail">
       <section className="eventDetailTop">
@@ -61,7 +69,9 @@ function EventDetail({
           </button>
         </div>
         <div className="eventDetailTop__four">
-          <p>number of days away</p>
+          <p style={{ fontSize: '1.8rem' }}>
+            You are hosting this event in {generateNumberOfDays(date)} days
+          </p>
         </div>
 
         <div className="eventDetailTop__five">

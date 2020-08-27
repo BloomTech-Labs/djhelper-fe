@@ -78,7 +78,6 @@ function Help({ helpModalIsOpen, toggleHelpModal }) {
 }
 
 const mapStateToProps = state => {
-  console.log('helpModal: ', state.modalReducer.helpModalIsOpen);
   return {
     helpModalIsOpen: state.modalReducer.helpModalIsOpen
   };
